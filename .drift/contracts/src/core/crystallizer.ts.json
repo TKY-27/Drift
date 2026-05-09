@@ -1,0 +1,1624 @@
+{
+  "source_file": "src/core/crystallizer.ts",
+  "source_hash": "c6d0efaac97f59bbff67e4a0098f391bb0f176bef259e5423b71b691054662c9",
+  "scopes": [
+    {
+      "name": "<module>",
+      "kind": "module",
+      "qualified_name": "<module>",
+      "signature_hash": "58ea489a1b86dfef",
+      "node_hash": "c6d0efaac97f59bb",
+      "line_start": 1,
+      "line_end": 214,
+      "contracts": [
+        {
+          "id": "ct_Q9gE5HqE",
+          "type": "dependency",
+          "description": "Security-sensitive import from ../utils/security.js is preserved",
+          "pattern": "import_constraint",
+          "detection": "import_graph",
+          "severity": "low",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "pattern_match",
+              "line_start": 9,
+              "line_end": 9,
+              "snippet": "import { normalizeRepoRelative, resolveRepoPath, safeReadTextFile, sha256, toPosixRelative } from '../utils/security.js';",
+              "reasoning": "Security-related import detected"
+            }
+          ],
+          "verification": {
+            "strategy": "import_presence",
+            "target": "../utils/security.js",
+            "params": {
+              "names": [
+                "normalizeRepoRelative",
+                "resolveRepoPath",
+                "safeReadTextFile",
+                "sha256",
+                "toPosixRelative"
+              ],
+              "named": [
+                {
+                  "imported": "normalizeRepoRelative",
+                  "local": "normalizeRepoRelative"
+                },
+                {
+                  "imported": "resolveRepoPath",
+                  "local": "resolveRepoPath"
+                },
+                {
+                  "imported": "safeReadTextFile",
+                  "local": "safeReadTextFile"
+                },
+                {
+                  "imported": "sha256",
+                  "local": "sha256"
+                },
+                {
+                  "imported": "toPosixRelative",
+                  "local": "toPosixRelative"
+                }
+              ],
+              "type_only": false
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.509Z",
+          "last_verified_at": "2026-05-09T15:16:00.509Z"
+        }
+      ]
+    },
+    {
+      "name": "discoverSourceFiles",
+      "kind": "function",
+      "qualified_name": "discoverSourceFiles",
+      "signature_hash": "a9f048d28205dd00",
+      "node_hash": "cdd15bb24d282b20",
+      "line_start": 27,
+      "line_end": 49,
+      "contracts": [
+        {
+          "id": "ct_6TdiRmMF",
+          "type": "boundary",
+          "description": "discoverSourceFiles returns Promise<string[]> and may throw",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 27,
+              "line_end": 49,
+              "snippet": "export async function discoverSourceFiles(rootDir: string, config: DriftConfig): Promise<string[]> { const files = await glob(config.include, { cwd: rootDir, ignore: config.exclude, nodir: true, absolute: false, posix: true, follow: false,...",
+              "reasoning": "Explicit return type is Promise<string[]>; no_throw=false"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "discoverSourceFiles",
+            "params": {
+              "expected_return": "Promise<string[]>",
+              "no_throw": false,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.505Z",
+          "last_verified_at": "2026-05-09T15:16:00.505Z"
+        },
+        {
+          "id": "ct_zGJv1sM1",
+          "type": "boundary",
+          "description": "discoverSourceFiles parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 27,
+              "line_end": 49,
+              "snippet": "export async function discoverSourceFiles(rootDir: string, config: DriftConfig): Promise<string[]> { const files = await glob(config.include, { cwd: rootDir, ignore: config.exclude, nodir: true, absolute: false, posix: true, follow: false,...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"config\",\"type\":\"DriftConfig\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "discoverSourceFiles",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.505Z",
+          "last_verified_at": "2026-05-09T15:16:00.505Z"
+        },
+        {
+          "id": "ct_3WDhlWD0",
+          "type": "boundary",
+          "description": "discoverSourceFiles parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 27,
+              "line_end": 49,
+              "snippet": "export async function discoverSourceFiles(rootDir: string, config: DriftConfig): Promise<string[]> { const files = await glob(config.include, { cwd: rootDir, ignore: config.exclude, nodir: true, absolute: false, posix: true, follow: false,...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false},{\"name\":\"config\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "discoverSourceFiles",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.505Z",
+          "last_verified_at": "2026-05-09T15:16:00.505Z"
+        }
+      ]
+    },
+    {
+      "name": "crystallizeProject",
+      "kind": "function",
+      "qualified_name": "crystallizeProject",
+      "signature_hash": "652b2051dbe23278",
+      "node_hash": "dd396731c93579f5",
+      "line_start": 51,
+      "line_end": 70,
+      "contracts": [
+        {
+          "id": "ct__keBdVKj",
+          "type": "boundary",
+          "description": "crystallizeProject returns Promise<CrystallizeResult> and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 51,
+              "line_end": 70,
+              "snippet": "export async function crystallizeProject(rootDir: string, config: DriftConfig, options: CrystallizeOptions = {}): Promise<CrystallizeResult> { const started = Date.now(); const sourceFiles = await discoverSourceFiles(rootDir, config); cons...",
+              "reasoning": "Explicit return type is Promise<CrystallizeResult>; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "crystallizeProject",
+            "params": {
+              "expected_return": "Promise<CrystallizeResult>",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "CrystallizeOptions",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.505Z",
+          "last_verified_at": "2026-05-09T15:16:00.505Z"
+        },
+        {
+          "id": "ct_1CiJ7svO",
+          "type": "boundary",
+          "description": "crystallizeProject parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 51,
+              "line_end": 70,
+              "snippet": "export async function crystallizeProject(rootDir: string, config: DriftConfig, options: CrystallizeOptions = {}): Promise<CrystallizeResult> { const started = Date.now(); const sourceFiles = await discoverSourceFiles(rootDir, config); cons...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"config\",\"type\":\"DriftConfig\",\"optional\":false,\"nullable\":false},{\"name\":\"options\",\"type\":\"CrystallizeOptions\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "crystallizeProject",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "CrystallizeOptions",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.506Z",
+          "last_verified_at": "2026-05-09T15:16:00.506Z"
+        },
+        {
+          "id": "ct__ARxr2um",
+          "type": "boundary",
+          "description": "crystallizeProject parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 51,
+              "line_end": 70,
+              "snippet": "export async function crystallizeProject(rootDir: string, config: DriftConfig, options: CrystallizeOptions = {}): Promise<CrystallizeResult> { const started = Date.now(); const sourceFiles = await discoverSourceFiles(rootDir, config); cons...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false},{\"name\":\"config\",\"nullable\":false,\"optional\":false},{\"name\":\"options\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "crystallizeProject",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "CrystallizeOptions",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.506Z",
+          "last_verified_at": "2026-05-09T15:16:00.506Z"
+        },
+        {
+          "id": "ct_1F6kuGhp",
+          "type": "side_effect",
+          "description": "crystallizeProject writes to a database via store.save",
+          "pattern": "db_write",
+          "detection": "call_graph",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "call_site",
+              "line_start": 61,
+              "line_end": 61,
+              "snippet": "store.save(contract)",
+              "reasoning": "store.save is a db_write side effect"
+            }
+          ],
+          "verification": {
+            "strategy": "call_presence",
+            "target": "store.save",
+            "params": {
+              "category": "db_write",
+              "path_kind": "conditional"
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.506Z",
+          "last_verified_at": "2026-05-09T15:16:00.506Z"
+        }
+      ]
+    },
+    {
+      "name": "crystallizeFile",
+      "kind": "function",
+      "qualified_name": "crystallizeFile",
+      "signature_hash": "85e9985f74bb9b9d",
+      "node_hash": "c736ff8a629a9522",
+      "line_start": 72,
+      "line_end": 97,
+      "contracts": [
+        {
+          "id": "ct_LX7tPGoA",
+          "type": "boundary",
+          "description": "crystallizeFile returns ContractFile and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 72,
+              "line_end": 97,
+              "snippet": "export function crystallizeFile(rootDir: string, config: DriftConfig, sourceFile: string, typeContext?: TypeContext): ContractFile { const normalized = normalizeRepoRelative(sourceFile); const absolute = path.join(rootDir, normalized); con...",
+              "reasoning": "Explicit return type is ContractFile; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "crystallizeFile",
+            "params": {
+              "expected_return": "ContractFile",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "sourceFile",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "typeContext",
+                  "type": "TypeContext",
+                  "optional": true,
+                  "nullable": true
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.506Z",
+          "last_verified_at": "2026-05-09T15:16:00.506Z"
+        },
+        {
+          "id": "ct_EAcRscgG",
+          "type": "boundary",
+          "description": "crystallizeFile parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 72,
+              "line_end": 97,
+              "snippet": "export function crystallizeFile(rootDir: string, config: DriftConfig, sourceFile: string, typeContext?: TypeContext): ContractFile { const normalized = normalizeRepoRelative(sourceFile); const absolute = path.join(rootDir, normalized); con...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"config\",\"type\":\"DriftConfig\",\"optional\":false,\"nullable\":false},{\"name\":\"sourceFile\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"typeContext\",\"type\":\"TypeContext\",\"optional\":true,\"nullable\":true}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "crystallizeFile",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "sourceFile",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "typeContext",
+                  "type": "TypeContext",
+                  "optional": true,
+                  "nullable": true
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.506Z",
+          "last_verified_at": "2026-05-09T15:16:00.506Z"
+        },
+        {
+          "id": "ct_llERZH8R",
+          "type": "boundary",
+          "description": "crystallizeFile parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 72,
+              "line_end": 97,
+              "snippet": "export function crystallizeFile(rootDir: string, config: DriftConfig, sourceFile: string, typeContext?: TypeContext): ContractFile { const normalized = normalizeRepoRelative(sourceFile); const absolute = path.join(rootDir, normalized); con...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false},{\"name\":\"config\",\"nullable\":false,\"optional\":false},{\"name\":\"sourceFile\",\"nullable\":false,\"optional\":false},{\"name\":\"typeContext\",\"nullable\":true,\"optional\":true}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "crystallizeFile",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "sourceFile",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "typeContext",
+                  "type": "TypeContext",
+                  "optional": true,
+                  "nullable": true
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.506Z",
+          "last_verified_at": "2026-05-09T15:16:00.506Z"
+        }
+      ]
+    },
+    {
+      "name": "crystallizeScope",
+      "kind": "function",
+      "qualified_name": "crystallizeScope",
+      "signature_hash": "a13d26235bd1c23c",
+      "node_hash": "c596488ce5a61058",
+      "line_start": 99,
+      "line_end": 111,
+      "contracts": [
+        {
+          "id": "ct_QHIr-voc",
+          "type": "boundary",
+          "description": "crystallizeScope returns ContractScope and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 99,
+              "line_end": 111,
+              "snippet": "function crystallizeScope(config: DriftConfig, parsed: ParsedFile, typeContext: TypeContext, scope: ScopeInfo): ContractScope { const contracts = detectContractsForScope(config, parsed, scope, typeContext); return { name: scope.name, kind:...",
+              "reasoning": "Explicit return type is ContractScope; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "crystallizeScope",
+            "params": {
+              "expected_return": "ContractScope",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "typeContext",
+                  "type": "TypeContext",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.507Z",
+          "last_verified_at": "2026-05-09T15:16:00.507Z"
+        },
+        {
+          "id": "ct_sCKi2twh",
+          "type": "boundary",
+          "description": "crystallizeScope parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 99,
+              "line_end": 111,
+              "snippet": "function crystallizeScope(config: DriftConfig, parsed: ParsedFile, typeContext: TypeContext, scope: ScopeInfo): ContractScope { const contracts = detectContractsForScope(config, parsed, scope, typeContext); return { name: scope.name, kind:...",
+              "reasoning": "Parameter contract: [{\"name\":\"config\",\"type\":\"DriftConfig\",\"optional\":false,\"nullable\":false},{\"name\":\"parsed\",\"type\":\"ParsedFile\",\"optional\":false,\"nullable\":false},{\"name\":\"typeContext\",\"type\":\"TypeContext\",\"optional\":false,\"nullable\":false},{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "crystallizeScope",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "typeContext",
+                  "type": "TypeContext",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.507Z",
+          "last_verified_at": "2026-05-09T15:16:00.507Z"
+        },
+        {
+          "id": "ct_R96xM2lg",
+          "type": "boundary",
+          "description": "crystallizeScope parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 99,
+              "line_end": 111,
+              "snippet": "function crystallizeScope(config: DriftConfig, parsed: ParsedFile, typeContext: TypeContext, scope: ScopeInfo): ContractScope { const contracts = detectContractsForScope(config, parsed, scope, typeContext); return { name: scope.name, kind:...",
+              "reasoning": "Nullability contract: [{\"name\":\"config\",\"nullable\":false,\"optional\":false},{\"name\":\"parsed\",\"nullable\":false,\"optional\":false},{\"name\":\"typeContext\",\"nullable\":false,\"optional\":false},{\"name\":\"scope\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "crystallizeScope",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "typeContext",
+                  "type": "TypeContext",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.507Z",
+          "last_verified_at": "2026-05-09T15:16:00.507Z"
+        }
+      ]
+    },
+    {
+      "name": "crystallizeModuleScope",
+      "kind": "function",
+      "qualified_name": "crystallizeModuleScope",
+      "signature_hash": "3f87bdf420ef4907",
+      "node_hash": "bbea1e327312dfbb",
+      "line_start": 113,
+      "line_end": 139,
+      "contracts": [
+        {
+          "id": "ct_e-to8uj_",
+          "type": "boundary",
+          "description": "crystallizeModuleScope returns ContractScope and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 113,
+              "line_end": 139,
+              "snippet": "function crystallizeModuleScope(config: DriftConfig, parsed: ParsedFile): ContractScope { const moduleScope: ScopeInfo = { name: '<module>', kind: 'module', qualified_name: '<module>', signature_hash: sha256('<module>').slice(0, 16), node_...",
+              "reasoning": "Explicit return type is ContractScope; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "crystallizeModuleScope",
+            "params": {
+              "expected_return": "ContractScope",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.507Z",
+          "last_verified_at": "2026-05-09T15:16:00.507Z"
+        },
+        {
+          "id": "ct_MUAN0O0P",
+          "type": "boundary",
+          "description": "crystallizeModuleScope parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 113,
+              "line_end": 139,
+              "snippet": "function crystallizeModuleScope(config: DriftConfig, parsed: ParsedFile): ContractScope { const moduleScope: ScopeInfo = { name: '<module>', kind: 'module', qualified_name: '<module>', signature_hash: sha256('<module>').slice(0, 16), node_...",
+              "reasoning": "Parameter contract: [{\"name\":\"config\",\"type\":\"DriftConfig\",\"optional\":false,\"nullable\":false},{\"name\":\"parsed\",\"type\":\"ParsedFile\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "crystallizeModuleScope",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.507Z",
+          "last_verified_at": "2026-05-09T15:16:00.507Z"
+        },
+        {
+          "id": "ct_4sVbSazi",
+          "type": "boundary",
+          "description": "crystallizeModuleScope parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 113,
+              "line_end": 139,
+              "snippet": "function crystallizeModuleScope(config: DriftConfig, parsed: ParsedFile): ContractScope { const moduleScope: ScopeInfo = { name: '<module>', kind: 'module', qualified_name: '<module>', signature_hash: sha256('<module>').slice(0, 16), node_...",
+              "reasoning": "Nullability contract: [{\"name\":\"config\",\"nullable\":false,\"optional\":false},{\"name\":\"parsed\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "crystallizeModuleScope",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.507Z",
+          "last_verified_at": "2026-05-09T15:16:00.507Z"
+        }
+      ]
+    },
+    {
+      "name": "mergeWithExisting",
+      "kind": "function",
+      "qualified_name": "mergeWithExisting",
+      "signature_hash": "fe6fd8dffed89254",
+      "node_hash": "0e32a635b78db33c",
+      "line_start": 141,
+      "line_end": 180,
+      "contracts": [
+        {
+          "id": "ct_eCiWHcpU",
+          "type": "boundary",
+          "description": "mergeWithExisting returns ContractFile and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 141,
+              "line_end": 180,
+              "snippet": "function mergeWithExisting(existing: ContractFile | null, fresh: ContractFile): ContractFile { if (!existing) return fresh; const mergedScopes = fresh.scopes.map((freshScope) => { const existingScope = findMatchingScope(existing.scopes, fr...",
+              "reasoning": "Explicit return type is ContractFile; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "mergeWithExisting",
+            "params": {
+              "expected_return": "ContractFile",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "existing",
+                  "type": "ContractFile | null",
+                  "optional": false,
+                  "nullable": true
+                },
+                {
+                  "name": "fresh",
+                  "type": "ContractFile",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.508Z",
+          "last_verified_at": "2026-05-09T15:16:00.508Z"
+        },
+        {
+          "id": "ct_ONdZdB2p",
+          "type": "boundary",
+          "description": "mergeWithExisting parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 141,
+              "line_end": 180,
+              "snippet": "function mergeWithExisting(existing: ContractFile | null, fresh: ContractFile): ContractFile { if (!existing) return fresh; const mergedScopes = fresh.scopes.map((freshScope) => { const existingScope = findMatchingScope(existing.scopes, fr...",
+              "reasoning": "Parameter contract: [{\"name\":\"existing\",\"type\":\"ContractFile | null\",\"optional\":false,\"nullable\":true},{\"name\":\"fresh\",\"type\":\"ContractFile\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "mergeWithExisting",
+            "params": {
+              "parameters": [
+                {
+                  "name": "existing",
+                  "type": "ContractFile | null",
+                  "optional": false,
+                  "nullable": true
+                },
+                {
+                  "name": "fresh",
+                  "type": "ContractFile",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.508Z",
+          "last_verified_at": "2026-05-09T15:16:00.508Z"
+        },
+        {
+          "id": "ct_vCbTu3Jh",
+          "type": "boundary",
+          "description": "mergeWithExisting parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 141,
+              "line_end": 180,
+              "snippet": "function mergeWithExisting(existing: ContractFile | null, fresh: ContractFile): ContractFile { if (!existing) return fresh; const mergedScopes = fresh.scopes.map((freshScope) => { const existingScope = findMatchingScope(existing.scopes, fr...",
+              "reasoning": "Nullability contract: [{\"name\":\"existing\",\"nullable\":true,\"optional\":false},{\"name\":\"fresh\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "mergeWithExisting",
+            "params": {
+              "parameters": [
+                {
+                  "name": "existing",
+                  "type": "ContractFile | null",
+                  "optional": false,
+                  "nullable": true
+                },
+                {
+                  "name": "fresh",
+                  "type": "ContractFile",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.508Z",
+          "last_verified_at": "2026-05-09T15:16:00.508Z"
+        }
+      ]
+    },
+    {
+      "name": "findMatchingScope",
+      "kind": "function",
+      "qualified_name": "findMatchingScope",
+      "signature_hash": "54a01b2d23e18f96",
+      "node_hash": "8c62c0e8513cade1",
+      "line_start": 182,
+      "line_end": 184,
+      "contracts": [
+        {
+          "id": "ct_cliahv4J",
+          "type": "boundary",
+          "description": "findMatchingScope returns ContractScope | null and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 182,
+              "line_end": 184,
+              "snippet": "function findMatchingScope(scopes: ContractScope[], target: ContractScope): ContractScope | null { return scopes.find((scope) => scopesMatch(scope, target)) ?? null; }",
+              "reasoning": "Explicit return type is ContractScope | null; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findMatchingScope",
+            "params": {
+              "expected_return": "ContractScope | null",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "scopes",
+                  "type": "ContractScope[]",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "target",
+                  "type": "ContractScope",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.508Z",
+          "last_verified_at": "2026-05-09T15:16:00.508Z"
+        },
+        {
+          "id": "ct_0kXipre0",
+          "type": "boundary",
+          "description": "findMatchingScope parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 182,
+              "line_end": 184,
+              "snippet": "function findMatchingScope(scopes: ContractScope[], target: ContractScope): ContractScope | null { return scopes.find((scope) => scopesMatch(scope, target)) ?? null; }",
+              "reasoning": "Parameter contract: [{\"name\":\"scopes\",\"type\":\"ContractScope[]\",\"optional\":false,\"nullable\":false},{\"name\":\"target\",\"type\":\"ContractScope\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findMatchingScope",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scopes",
+                  "type": "ContractScope[]",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "target",
+                  "type": "ContractScope",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.508Z",
+          "last_verified_at": "2026-05-09T15:16:00.508Z"
+        },
+        {
+          "id": "ct_vBETm4BC",
+          "type": "boundary",
+          "description": "findMatchingScope parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 182,
+              "line_end": 184,
+              "snippet": "function findMatchingScope(scopes: ContractScope[], target: ContractScope): ContractScope | null { return scopes.find((scope) => scopesMatch(scope, target)) ?? null; }",
+              "reasoning": "Nullability contract: [{\"name\":\"scopes\",\"nullable\":false,\"optional\":false},{\"name\":\"target\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findMatchingScope",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scopes",
+                  "type": "ContractScope[]",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "target",
+                  "type": "ContractScope",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.508Z",
+          "last_verified_at": "2026-05-09T15:16:00.508Z"
+        }
+      ]
+    },
+    {
+      "name": "scopesMatch",
+      "kind": "function",
+      "qualified_name": "scopesMatch",
+      "signature_hash": "d60897f279df467b",
+      "node_hash": "28c8f8879f238bd9",
+      "line_start": 186,
+      "line_end": 190,
+      "contracts": [
+        {
+          "id": "ct_IoqQk3pl",
+          "type": "boundary",
+          "description": "scopesMatch returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 186,
+              "line_end": 190,
+              "snippet": "function scopesMatch(left: ContractScope, right: ContractScope): boolean { if (left.qualified_name && right.qualified_name) return left.qualified_name === right.qualified_name && left.kind === right.kind; if (hasSpecificQualifiedName(left)...",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "scopesMatch",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "left",
+                  "type": "ContractScope",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "right",
+                  "type": "ContractScope",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.508Z",
+          "last_verified_at": "2026-05-09T15:16:00.508Z"
+        },
+        {
+          "id": "ct_XC5ccjc2",
+          "type": "boundary",
+          "description": "scopesMatch parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 186,
+              "line_end": 190,
+              "snippet": "function scopesMatch(left: ContractScope, right: ContractScope): boolean { if (left.qualified_name && right.qualified_name) return left.qualified_name === right.qualified_name && left.kind === right.kind; if (hasSpecificQualifiedName(left)...",
+              "reasoning": "Parameter contract: [{\"name\":\"left\",\"type\":\"ContractScope\",\"optional\":false,\"nullable\":false},{\"name\":\"right\",\"type\":\"ContractScope\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "scopesMatch",
+            "params": {
+              "parameters": [
+                {
+                  "name": "left",
+                  "type": "ContractScope",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "right",
+                  "type": "ContractScope",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.508Z",
+          "last_verified_at": "2026-05-09T15:16:00.508Z"
+        },
+        {
+          "id": "ct_yYe7rIcE",
+          "type": "boundary",
+          "description": "scopesMatch parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 186,
+              "line_end": 190,
+              "snippet": "function scopesMatch(left: ContractScope, right: ContractScope): boolean { if (left.qualified_name && right.qualified_name) return left.qualified_name === right.qualified_name && left.kind === right.kind; if (hasSpecificQualifiedName(left)...",
+              "reasoning": "Nullability contract: [{\"name\":\"left\",\"nullable\":false,\"optional\":false},{\"name\":\"right\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "scopesMatch",
+            "params": {
+              "parameters": [
+                {
+                  "name": "left",
+                  "type": "ContractScope",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "right",
+                  "type": "ContractScope",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.508Z",
+          "last_verified_at": "2026-05-09T15:16:00.508Z"
+        }
+      ]
+    },
+    {
+      "name": "findMatchingContract",
+      "kind": "function",
+      "qualified_name": "findMatchingContract",
+      "signature_hash": "2a4916f71ab1aa82",
+      "node_hash": "ec7845af733dfafd",
+      "line_start": 192,
+      "line_end": 200,
+      "contracts": [
+        {
+          "id": "ct_wBSCdg5a",
+          "type": "boundary",
+          "description": "findMatchingContract returns Contract | null and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 192,
+              "line_end": 200,
+              "snippet": "function findMatchingContract(contracts: Contract[], target: Contract): Contract | null { return contracts.find((contract) => contract.pattern === target.pattern && contract.type === target.type && contract.verification.strategy === target...",
+              "reasoning": "Explicit return type is Contract | null; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findMatchingContract",
+            "params": {
+              "expected_return": "Contract | null",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "contracts",
+                  "type": "Contract[]",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "target",
+                  "type": "Contract",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.508Z",
+          "last_verified_at": "2026-05-09T15:16:00.508Z"
+        },
+        {
+          "id": "ct_qE9CiYCn",
+          "type": "boundary",
+          "description": "findMatchingContract parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 192,
+              "line_end": 200,
+              "snippet": "function findMatchingContract(contracts: Contract[], target: Contract): Contract | null { return contracts.find((contract) => contract.pattern === target.pattern && contract.type === target.type && contract.verification.strategy === target...",
+              "reasoning": "Parameter contract: [{\"name\":\"contracts\",\"type\":\"Contract[]\",\"optional\":false,\"nullable\":false},{\"name\":\"target\",\"type\":\"Contract\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findMatchingContract",
+            "params": {
+              "parameters": [
+                {
+                  "name": "contracts",
+                  "type": "Contract[]",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "target",
+                  "type": "Contract",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.508Z",
+          "last_verified_at": "2026-05-09T15:16:00.508Z"
+        },
+        {
+          "id": "ct_cLgA1Crx",
+          "type": "boundary",
+          "description": "findMatchingContract parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 192,
+              "line_end": 200,
+              "snippet": "function findMatchingContract(contracts: Contract[], target: Contract): Contract | null { return contracts.find((contract) => contract.pattern === target.pattern && contract.type === target.type && contract.verification.strategy === target...",
+              "reasoning": "Nullability contract: [{\"name\":\"contracts\",\"nullable\":false,\"optional\":false},{\"name\":\"target\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findMatchingContract",
+            "params": {
+              "parameters": [
+                {
+                  "name": "contracts",
+                  "type": "Contract[]",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "target",
+                  "type": "Contract",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.508Z",
+          "last_verified_at": "2026-05-09T15:16:00.508Z"
+        }
+      ]
+    },
+    {
+      "name": "uniqueById",
+      "kind": "function",
+      "qualified_name": "uniqueById",
+      "signature_hash": "f761358487cc3008",
+      "node_hash": "2e279f05dce22f4c",
+      "line_start": 202,
+      "line_end": 209,
+      "contracts": [
+        {
+          "id": "ct_uMDjdHkm",
+          "type": "boundary",
+          "description": "uniqueById returns Contract[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 202,
+              "line_end": 209,
+              "snippet": "function uniqueById(contracts: Contract[]): Contract[] { const seen = new Set<string>(); return contracts.filter((contract) => { if (seen.has(contract.id)) return false; seen.add(contract.id); return true; }); }",
+              "reasoning": "Explicit return type is Contract[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "uniqueById",
+            "params": {
+              "expected_return": "Contract[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "contracts",
+                  "type": "Contract[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.509Z",
+          "last_verified_at": "2026-05-09T15:16:00.509Z"
+        },
+        {
+          "id": "ct_KupAic-t",
+          "type": "boundary",
+          "description": "uniqueById parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 202,
+              "line_end": 209,
+              "snippet": "function uniqueById(contracts: Contract[]): Contract[] { const seen = new Set<string>(); return contracts.filter((contract) => { if (seen.has(contract.id)) return false; seen.add(contract.id); return true; }); }",
+              "reasoning": "Parameter contract: [{\"name\":\"contracts\",\"type\":\"Contract[]\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "uniqueById",
+            "params": {
+              "parameters": [
+                {
+                  "name": "contracts",
+                  "type": "Contract[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.509Z",
+          "last_verified_at": "2026-05-09T15:16:00.509Z"
+        },
+        {
+          "id": "ct_-C_jKtjd",
+          "type": "boundary",
+          "description": "uniqueById parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 202,
+              "line_end": 209,
+              "snippet": "function uniqueById(contracts: Contract[]): Contract[] { const seen = new Set<string>(); return contracts.filter((contract) => { if (seen.has(contract.id)) return false; seen.add(contract.id); return true; }); }",
+              "reasoning": "Nullability contract: [{\"name\":\"contracts\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "uniqueById",
+            "params": {
+              "parameters": [
+                {
+                  "name": "contracts",
+                  "type": "Contract[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.509Z",
+          "last_verified_at": "2026-05-09T15:16:00.509Z"
+        }
+      ]
+    },
+    {
+      "name": "hasSpecificQualifiedName",
+      "kind": "function",
+      "qualified_name": "hasSpecificQualifiedName",
+      "signature_hash": "b4b130628e0cde9c",
+      "node_hash": "0a79c3b1f7ae14da",
+      "line_start": 211,
+      "line_end": 213,
+      "contracts": [
+        {
+          "id": "ct_ncV7bfkh",
+          "type": "boundary",
+          "description": "hasSpecificQualifiedName returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 211,
+              "line_end": 213,
+              "snippet": "function hasSpecificQualifiedName(scope: ContractScope): boolean { return Boolean(scope.qualified_name && scope.qualified_name !== scope.name); }",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "hasSpecificQualifiedName",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ContractScope",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.509Z",
+          "last_verified_at": "2026-05-09T15:16:00.509Z"
+        },
+        {
+          "id": "ct_7-g33h7m",
+          "type": "boundary",
+          "description": "hasSpecificQualifiedName parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 211,
+              "line_end": 213,
+              "snippet": "function hasSpecificQualifiedName(scope: ContractScope): boolean { return Boolean(scope.qualified_name && scope.qualified_name !== scope.name); }",
+              "reasoning": "Parameter contract: [{\"name\":\"scope\",\"type\":\"ContractScope\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "hasSpecificQualifiedName",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ContractScope",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.509Z",
+          "last_verified_at": "2026-05-09T15:16:00.509Z"
+        },
+        {
+          "id": "ct_wn9TVkbG",
+          "type": "boundary",
+          "description": "hasSpecificQualifiedName parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 211,
+              "line_end": 213,
+              "snippet": "function hasSpecificQualifiedName(scope: ContractScope): boolean { return Boolean(scope.qualified_name && scope.qualified_name !== scope.name); }",
+              "reasoning": "Nullability contract: [{\"name\":\"scope\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "hasSpecificQualifiedName",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ContractScope",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.509Z",
+          "last_verified_at": "2026-05-09T15:16:00.509Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.509Z",
+    "last_checked_at": "2026-05-09T15:16:00.509Z",
+    "total_contracts": 35
+  }
+}

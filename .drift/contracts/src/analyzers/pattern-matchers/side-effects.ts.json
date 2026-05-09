@@ -1,0 +1,163 @@
+{
+  "source_file": "src/analyzers/pattern-matchers/side-effects.ts",
+  "source_hash": "21a76baa80eecabae8b7424613ba132ed587b01656e509f7cead1ebd2e367108",
+  "scopes": [
+    {
+      "name": "detectSideEffectPatterns",
+      "kind": "function",
+      "qualified_name": "detectSideEffectPatterns",
+      "signature_hash": "5a4ea726ac8fe85a",
+      "node_hash": "9ae7984bf79900c8",
+      "line_start": 16,
+      "line_end": 40,
+      "contracts": [
+        {
+          "id": "ct_l7Fngi8L",
+          "type": "boundary",
+          "description": "detectSideEffectPatterns returns Contract[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 16,
+              "line_end": 40,
+              "snippet": "export function detectSideEffectPatterns(config: DriftConfig, parsed: ParsedFile, scope: ScopeInfo): Contract[] { const contracts: Contract[] = []; for (const call of extractCalls(parsed, scope)) { const category = isSideEffectCall(call); ...",
+              "reasoning": "Explicit return type is Contract[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectSideEffectPatterns",
+            "params": {
+              "expected_return": "Contract[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.400Z",
+          "last_verified_at": "2026-05-09T15:16:00.400Z"
+        },
+        {
+          "id": "ct_OFw9h_KB",
+          "type": "boundary",
+          "description": "detectSideEffectPatterns parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 16,
+              "line_end": 40,
+              "snippet": "export function detectSideEffectPatterns(config: DriftConfig, parsed: ParsedFile, scope: ScopeInfo): Contract[] { const contracts: Contract[] = []; for (const call of extractCalls(parsed, scope)) { const category = isSideEffectCall(call); ...",
+              "reasoning": "Parameter contract: [{\"name\":\"config\",\"type\":\"DriftConfig\",\"optional\":false,\"nullable\":false},{\"name\":\"parsed\",\"type\":\"ParsedFile\",\"optional\":false,\"nullable\":false},{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectSideEffectPatterns",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.400Z",
+          "last_verified_at": "2026-05-09T15:16:00.400Z"
+        },
+        {
+          "id": "ct_lN3tT0lz",
+          "type": "boundary",
+          "description": "detectSideEffectPatterns parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 16,
+              "line_end": 40,
+              "snippet": "export function detectSideEffectPatterns(config: DriftConfig, parsed: ParsedFile, scope: ScopeInfo): Contract[] { const contracts: Contract[] = []; for (const call of extractCalls(parsed, scope)) { const category = isSideEffectCall(call); ...",
+              "reasoning": "Nullability contract: [{\"name\":\"config\",\"nullable\":false,\"optional\":false},{\"name\":\"parsed\",\"nullable\":false,\"optional\":false},{\"name\":\"scope\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectSideEffectPatterns",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.400Z",
+          "last_verified_at": "2026-05-09T15:16:00.400Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.401Z",
+    "last_checked_at": "2026-05-09T15:16:00.401Z",
+    "total_contracts": 3
+  }
+}

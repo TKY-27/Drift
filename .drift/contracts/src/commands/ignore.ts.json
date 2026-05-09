@@ -1,0 +1,163 @@
+{
+  "source_file": "src/commands/ignore.ts",
+  "source_hash": "f3cc5a1db6ef77a4ebcd5c641136e099e1af61f501542968d6c1ca3291d1456f",
+  "scopes": [
+    {
+      "name": "ignoreCommand",
+      "kind": "function",
+      "qualified_name": "ignoreCommand",
+      "signature_hash": "669cdc87ab409e9c",
+      "node_hash": "d8ce94266280eadf",
+      "line_start": 3,
+      "line_end": 26,
+      "contracts": [
+        {
+          "id": "ct_SXtD94tJ",
+          "type": "boundary",
+          "description": "ignoreCommand returns void and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 3,
+              "line_end": 26,
+              "snippet": "export function ignoreCommand(rootDir: string, id: string, options: { reason?: string } = {}): void { const store = new ContractStore(rootDir); const updated = store.updateContract(id, (contract) => { contract.status = 'ignored'; contract....",
+              "reasoning": "Explicit return type is void; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "ignoreCommand",
+            "params": {
+              "expected_return": "void",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "id",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "{ reason?: string }",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.457Z",
+          "last_verified_at": "2026-05-09T15:16:00.457Z"
+        },
+        {
+          "id": "ct_t3GZysff",
+          "type": "boundary",
+          "description": "ignoreCommand parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 3,
+              "line_end": 26,
+              "snippet": "export function ignoreCommand(rootDir: string, id: string, options: { reason?: string } = {}): void { const store = new ContractStore(rootDir); const updated = store.updateContract(id, (contract) => { contract.status = 'ignored'; contract....",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"id\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"options\",\"type\":\"{ reason?: string }\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "ignoreCommand",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "id",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "{ reason?: string }",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.457Z",
+          "last_verified_at": "2026-05-09T15:16:00.457Z"
+        },
+        {
+          "id": "ct_eop5-YFF",
+          "type": "boundary",
+          "description": "ignoreCommand parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 3,
+              "line_end": 26,
+              "snippet": "export function ignoreCommand(rootDir: string, id: string, options: { reason?: string } = {}): void { const store = new ContractStore(rootDir); const updated = store.updateContract(id, (contract) => { contract.status = 'ignored'; contract....",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false},{\"name\":\"id\",\"nullable\":false,\"optional\":false},{\"name\":\"options\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "ignoreCommand",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "id",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "{ reason?: string }",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.457Z",
+          "last_verified_at": "2026-05-09T15:16:00.457Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.457Z",
+    "last_checked_at": "2026-05-09T15:16:00.457Z",
+    "total_contracts": 3
+  }
+}

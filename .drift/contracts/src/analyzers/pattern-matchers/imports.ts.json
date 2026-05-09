@@ -1,0 +1,163 @@
+{
+  "source_file": "src/analyzers/pattern-matchers/imports.ts",
+  "source_hash": "439f5e442814b9695ecfb6dad78d314d7f65e8ebafc3559dba02433d6d043985",
+  "scopes": [
+    {
+      "name": "detectImportConstraintPatterns",
+      "kind": "function",
+      "qualified_name": "detectImportConstraintPatterns",
+      "signature_hash": "5a4ea726ac8fe85a",
+      "node_hash": "c8ef1577cddf66f2",
+      "line_start": 10,
+      "line_end": 38,
+      "contracts": [
+        {
+          "id": "ct_ynM2zfb7",
+          "type": "boundary",
+          "description": "detectImportConstraintPatterns returns Contract[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 10,
+              "line_end": 38,
+              "snippet": "export function detectImportConstraintPatterns(config: DriftConfig, parsed: ParsedFile, scope: ScopeInfo): Contract[] { if (scope.kind !== 'module' || !isPatternEnabled(config, 'import_constraint')) return []; return extractImports(parsed)...",
+              "reasoning": "Explicit return type is Contract[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectImportConstraintPatterns",
+            "params": {
+              "expected_return": "Contract[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.339Z",
+          "last_verified_at": "2026-05-09T15:16:00.339Z"
+        },
+        {
+          "id": "ct_NmbAOcDj",
+          "type": "boundary",
+          "description": "detectImportConstraintPatterns parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 10,
+              "line_end": 38,
+              "snippet": "export function detectImportConstraintPatterns(config: DriftConfig, parsed: ParsedFile, scope: ScopeInfo): Contract[] { if (scope.kind !== 'module' || !isPatternEnabled(config, 'import_constraint')) return []; return extractImports(parsed)...",
+              "reasoning": "Parameter contract: [{\"name\":\"config\",\"type\":\"DriftConfig\",\"optional\":false,\"nullable\":false},{\"name\":\"parsed\",\"type\":\"ParsedFile\",\"optional\":false,\"nullable\":false},{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectImportConstraintPatterns",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.339Z",
+          "last_verified_at": "2026-05-09T15:16:00.339Z"
+        },
+        {
+          "id": "ct_988O6Av_",
+          "type": "boundary",
+          "description": "detectImportConstraintPatterns parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 10,
+              "line_end": 38,
+              "snippet": "export function detectImportConstraintPatterns(config: DriftConfig, parsed: ParsedFile, scope: ScopeInfo): Contract[] { if (scope.kind !== 'module' || !isPatternEnabled(config, 'import_constraint')) return []; return extractImports(parsed)...",
+              "reasoning": "Nullability contract: [{\"name\":\"config\",\"nullable\":false,\"optional\":false},{\"name\":\"parsed\",\"nullable\":false,\"optional\":false},{\"name\":\"scope\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectImportConstraintPatterns",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.339Z",
+          "last_verified_at": "2026-05-09T15:16:00.339Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.340Z",
+    "last_checked_at": "2026-05-09T15:16:00.340Z",
+    "total_contracts": 3
+  }
+}

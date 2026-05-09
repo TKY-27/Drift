@@ -1,0 +1,623 @@
+{
+  "source_file": "src/analyzers/control-flow.ts",
+  "source_hash": "4b3f6dd904a033cbbeec32c2b2c26127ca8c47020be05cd054657a2aa0846e8b",
+  "scopes": [
+    {
+      "name": "enumerateControlFlowPaths",
+      "kind": "function",
+      "qualified_name": "enumerateControlFlowPaths",
+      "signature_hash": "5ecb397096d381ad",
+      "node_hash": "bf33534ecdc14cfe",
+      "line_start": 21,
+      "line_end": 33,
+      "contracts": [
+        {
+          "id": "ct_UPUjlLc8",
+          "type": "boundary",
+          "description": "enumerateControlFlowPaths returns ControlFlowPath[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 21,
+              "line_end": 33,
+              "snippet": "export function enumerateControlFlowPaths(parsed: ParsedFile, scope: ScopeInfo): ControlFlowPath[] { const statements = scope.body ? [...scope.body.statements] : [scope.node]; const paths = enumerateStatements(statements).map((path) => { c...",
+              "reasoning": "Explicit return type is ControlFlowPath[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "enumerateControlFlowPaths",
+            "params": {
+              "expected_return": "ControlFlowPath[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.277Z",
+          "last_verified_at": "2026-05-09T15:16:00.277Z"
+        },
+        {
+          "id": "ct_g3d8ZhK7",
+          "type": "boundary",
+          "description": "enumerateControlFlowPaths parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 21,
+              "line_end": 33,
+              "snippet": "export function enumerateControlFlowPaths(parsed: ParsedFile, scope: ScopeInfo): ControlFlowPath[] { const statements = scope.body ? [...scope.body.statements] : [scope.node]; const paths = enumerateStatements(statements).map((path) => { c...",
+              "reasoning": "Parameter contract: [{\"name\":\"parsed\",\"type\":\"ParsedFile\",\"optional\":false,\"nullable\":false},{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "enumerateControlFlowPaths",
+            "params": {
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.277Z",
+          "last_verified_at": "2026-05-09T15:16:00.277Z"
+        },
+        {
+          "id": "ct_zyKgKEtN",
+          "type": "boundary",
+          "description": "enumerateControlFlowPaths parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 21,
+              "line_end": 33,
+              "snippet": "export function enumerateControlFlowPaths(parsed: ParsedFile, scope: ScopeInfo): ControlFlowPath[] { const statements = scope.body ? [...scope.body.statements] : [scope.node]; const paths = enumerateStatements(statements).map((path) => { c...",
+              "reasoning": "Nullability contract: [{\"name\":\"parsed\",\"nullable\":false,\"optional\":false},{\"name\":\"scope\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "enumerateControlFlowPaths",
+            "params": {
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.277Z",
+          "last_verified_at": "2026-05-09T15:16:00.277Z"
+        }
+      ]
+    },
+    {
+      "name": "detectErrorHandling",
+      "kind": "function",
+      "qualified_name": "detectErrorHandling",
+      "signature_hash": "41065b67706d5517",
+      "node_hash": "b2a603eba164908c",
+      "line_start": 35,
+      "line_end": 48,
+      "contracts": [
+        {
+          "id": "ct_p7pKGIQ6",
+          "type": "boundary",
+          "description": "detectErrorHandling returns ErrorHandlingPattern | null and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 35,
+              "line_end": 48,
+              "snippet": "export function detectErrorHandling(parsed: ParsedFile, scope: ScopeInfo): ErrorHandlingPattern | null { let pattern: ErrorHandlingPattern | null = null; walk(scope.node, (node) => { if (pattern || !ts.isTryStatement(node) || !node.catchCl...",
+              "reasoning": "Explicit return type is ErrorHandlingPattern | null; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectErrorHandling",
+            "params": {
+              "expected_return": "ErrorHandlingPattern | null",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.277Z",
+          "last_verified_at": "2026-05-09T15:16:00.277Z"
+        },
+        {
+          "id": "ct_wUpQV8tb",
+          "type": "boundary",
+          "description": "detectErrorHandling parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 35,
+              "line_end": 48,
+              "snippet": "export function detectErrorHandling(parsed: ParsedFile, scope: ScopeInfo): ErrorHandlingPattern | null { let pattern: ErrorHandlingPattern | null = null; walk(scope.node, (node) => { if (pattern || !ts.isTryStatement(node) || !node.catchCl...",
+              "reasoning": "Parameter contract: [{\"name\":\"parsed\",\"type\":\"ParsedFile\",\"optional\":false,\"nullable\":false},{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectErrorHandling",
+            "params": {
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.277Z",
+          "last_verified_at": "2026-05-09T15:16:00.277Z"
+        },
+        {
+          "id": "ct_qkjiNBYz",
+          "type": "boundary",
+          "description": "detectErrorHandling parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 35,
+              "line_end": 48,
+              "snippet": "export function detectErrorHandling(parsed: ParsedFile, scope: ScopeInfo): ErrorHandlingPattern | null { let pattern: ErrorHandlingPattern | null = null; walk(scope.node, (node) => { if (pattern || !ts.isTryStatement(node) || !node.catchCl...",
+              "reasoning": "Nullability contract: [{\"name\":\"parsed\",\"nullable\":false,\"optional\":false},{\"name\":\"scope\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectErrorHandling",
+            "params": {
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.277Z",
+          "last_verified_at": "2026-05-09T15:16:00.277Z"
+        }
+      ]
+    },
+    {
+      "name": "classifyCatchBlock",
+      "kind": "function",
+      "qualified_name": "classifyCatchBlock",
+      "signature_hash": "9ea7d4bfa8199dd7",
+      "node_hash": "b8dd1d8331c4b82b",
+      "line_start": 50,
+      "line_end": 70,
+      "contracts": [
+        {
+          "id": "ct_7LEtDf-e",
+          "type": "boundary",
+          "description": "classifyCatchBlock returns ErrorStrategy and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 50,
+              "line_end": 70,
+              "snippet": "export function classifyCatchBlock(block: ts.Block): ErrorStrategy { if (block.statements.length === 0) return 'swallow'; let sawConsoleOnly = true; for (const statement of block.statements) { if (ts.isThrowStatement(statement)) { const ex...",
+              "reasoning": "Explicit return type is ErrorStrategy; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "classifyCatchBlock",
+            "params": {
+              "expected_return": "ErrorStrategy",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "block",
+                  "type": "ts.Block",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.277Z",
+          "last_verified_at": "2026-05-09T15:16:00.277Z"
+        },
+        {
+          "id": "ct_dMvru78c",
+          "type": "boundary",
+          "description": "classifyCatchBlock parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 50,
+              "line_end": 70,
+              "snippet": "export function classifyCatchBlock(block: ts.Block): ErrorStrategy { if (block.statements.length === 0) return 'swallow'; let sawConsoleOnly = true; for (const statement of block.statements) { if (ts.isThrowStatement(statement)) { const ex...",
+              "reasoning": "Parameter contract: [{\"name\":\"block\",\"type\":\"ts.Block\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "classifyCatchBlock",
+            "params": {
+              "parameters": [
+                {
+                  "name": "block",
+                  "type": "ts.Block",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.278Z",
+          "last_verified_at": "2026-05-09T15:16:00.278Z"
+        },
+        {
+          "id": "ct_-wVDSwao",
+          "type": "boundary",
+          "description": "classifyCatchBlock parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 50,
+              "line_end": 70,
+              "snippet": "export function classifyCatchBlock(block: ts.Block): ErrorStrategy { if (block.statements.length === 0) return 'swallow'; let sawConsoleOnly = true; for (const statement of block.statements) { if (ts.isThrowStatement(statement)) { const ex...",
+              "reasoning": "Nullability contract: [{\"name\":\"block\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "classifyCatchBlock",
+            "params": {
+              "parameters": [
+                {
+                  "name": "block",
+                  "type": "ts.Block",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.278Z",
+          "last_verified_at": "2026-05-09T15:16:00.278Z"
+        }
+      ]
+    },
+    {
+      "name": "enumerateStatements",
+      "kind": "function",
+      "qualified_name": "enumerateStatements",
+      "signature_hash": "915cf1f9b336b3ea",
+      "node_hash": "dc7591f9c159daf9",
+      "line_start": 78,
+      "line_end": 92,
+      "contracts": [
+        {
+          "id": "ct_cWKY-_0a",
+          "type": "boundary",
+          "description": "enumerateStatements returns PathBuilder[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 78,
+              "line_end": 92,
+              "snippet": "function enumerateStatements(statements: ts.Node[]): PathBuilder[] { let paths: PathBuilder[] = [{ calls: [], exits: false, nodes: [] }]; for (const statement of statements) { const branches = pathsForStatement(statement); paths = paths.fl...",
+              "reasoning": "Explicit return type is PathBuilder[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "enumerateStatements",
+            "params": {
+              "expected_return": "PathBuilder[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "statements",
+                  "type": "ts.Node[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.278Z",
+          "last_verified_at": "2026-05-09T15:16:00.278Z"
+        },
+        {
+          "id": "ct_11uS6EnN",
+          "type": "boundary",
+          "description": "enumerateStatements parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 78,
+              "line_end": 92,
+              "snippet": "function enumerateStatements(statements: ts.Node[]): PathBuilder[] { let paths: PathBuilder[] = [{ calls: [], exits: false, nodes: [] }]; for (const statement of statements) { const branches = pathsForStatement(statement); paths = paths.fl...",
+              "reasoning": "Parameter contract: [{\"name\":\"statements\",\"type\":\"ts.Node[]\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "enumerateStatements",
+            "params": {
+              "parameters": [
+                {
+                  "name": "statements",
+                  "type": "ts.Node[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.278Z",
+          "last_verified_at": "2026-05-09T15:16:00.278Z"
+        },
+        {
+          "id": "ct_EjvXU5oz",
+          "type": "boundary",
+          "description": "enumerateStatements parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 78,
+              "line_end": 92,
+              "snippet": "function enumerateStatements(statements: ts.Node[]): PathBuilder[] { let paths: PathBuilder[] = [{ calls: [], exits: false, nodes: [] }]; for (const statement of statements) { const branches = pathsForStatement(statement); paths = paths.fl...",
+              "reasoning": "Nullability contract: [{\"name\":\"statements\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "enumerateStatements",
+            "params": {
+              "parameters": [
+                {
+                  "name": "statements",
+                  "type": "ts.Node[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.278Z",
+          "last_verified_at": "2026-05-09T15:16:00.278Z"
+        }
+      ]
+    },
+    {
+      "name": "pathsForStatement",
+      "kind": "function",
+      "qualified_name": "pathsForStatement",
+      "signature_hash": "a46bc3d2026fa112",
+      "node_hash": "b6b1d4294ecd73ee",
+      "line_start": 94,
+      "line_end": 113,
+      "contracts": [
+        {
+          "id": "ct_OLHo4xLg",
+          "type": "boundary",
+          "description": "pathsForStatement returns PathBuilder[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 94,
+              "line_end": 113,
+              "snippet": "function pathsForStatement(statement: ts.Node): PathBuilder[] { if (ts.isIfStatement(statement)) { const thenStatements = ts.isBlock(statement.thenStatement) ? [...statement.thenStatement.statements] : [statement.thenStatement]; const else...",
+              "reasoning": "Explicit return type is PathBuilder[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "pathsForStatement",
+            "params": {
+              "expected_return": "PathBuilder[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "statement",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.278Z",
+          "last_verified_at": "2026-05-09T15:16:00.278Z"
+        },
+        {
+          "id": "ct_gEXLpVrM",
+          "type": "boundary",
+          "description": "pathsForStatement parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 94,
+              "line_end": 113,
+              "snippet": "function pathsForStatement(statement: ts.Node): PathBuilder[] { if (ts.isIfStatement(statement)) { const thenStatements = ts.isBlock(statement.thenStatement) ? [...statement.thenStatement.statements] : [statement.thenStatement]; const else...",
+              "reasoning": "Parameter contract: [{\"name\":\"statement\",\"type\":\"ts.Node\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "pathsForStatement",
+            "params": {
+              "parameters": [
+                {
+                  "name": "statement",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.278Z",
+          "last_verified_at": "2026-05-09T15:16:00.278Z"
+        },
+        {
+          "id": "ct_yYGQd1_p",
+          "type": "boundary",
+          "description": "pathsForStatement parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 94,
+              "line_end": 113,
+              "snippet": "function pathsForStatement(statement: ts.Node): PathBuilder[] { if (ts.isIfStatement(statement)) { const thenStatements = ts.isBlock(statement.thenStatement) ? [...statement.thenStatement.statements] : [statement.thenStatement]; const else...",
+              "reasoning": "Nullability contract: [{\"name\":\"statement\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "pathsForStatement",
+            "params": {
+              "parameters": [
+                {
+                  "name": "statement",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.278Z",
+          "last_verified_at": "2026-05-09T15:16:00.278Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.279Z",
+    "last_checked_at": "2026-05-09T15:16:00.279Z",
+    "total_contracts": 15
+  }
+}

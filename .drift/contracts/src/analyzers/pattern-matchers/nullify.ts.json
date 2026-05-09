@@ -1,0 +1,1094 @@
+{
+  "source_file": "src/analyzers/pattern-matchers/nullify.ts",
+  "source_hash": "eb02c2fdbe22c5bb427302033055426b1a65f451d48cc289ecca817d282f38fd",
+  "scopes": [
+    {
+      "name": "findNullifyPatterns",
+      "kind": "function",
+      "qualified_name": "findNullifyPatterns",
+      "signature_hash": "7c7ef84c71416f91",
+      "node_hash": "a23878a2f2389be7",
+      "line_start": 15,
+      "line_end": 32,
+      "contracts": [
+        {
+          "id": "ct_LGu-7g2n",
+          "type": "boundary",
+          "description": "findNullifyPatterns returns NullifyPattern[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 15,
+              "line_end": 32,
+              "snippet": "export function findNullifyPatterns(scope: ScopeInfo): NullifyPattern[] { const results: NullifyPattern[] = []; walk(scope.node, (node) => { if (!ts.isBinaryExpression(node) || isInsideNestedFunction(scope.node, node)) return; if (node.ope...",
+              "reasoning": "Explicit return type is NullifyPattern[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findNullifyPatterns",
+            "params": {
+              "expected_return": "NullifyPattern[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.360Z",
+          "last_verified_at": "2026-05-09T15:16:00.360Z"
+        },
+        {
+          "id": "ct_UlIr_hD6",
+          "type": "boundary",
+          "description": "findNullifyPatterns parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 15,
+              "line_end": 32,
+              "snippet": "export function findNullifyPatterns(scope: ScopeInfo): NullifyPattern[] { const results: NullifyPattern[] = []; walk(scope.node, (node) => { if (!ts.isBinaryExpression(node) || isInsideNestedFunction(scope.node, node)) return; if (node.ope...",
+              "reasoning": "Parameter contract: [{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findNullifyPatterns",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.360Z",
+          "last_verified_at": "2026-05-09T15:16:00.360Z"
+        },
+        {
+          "id": "ct_d2JRp_EU",
+          "type": "boundary",
+          "description": "findNullifyPatterns parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 15,
+              "line_end": 32,
+              "snippet": "export function findNullifyPatterns(scope: ScopeInfo): NullifyPattern[] { const results: NullifyPattern[] = []; walk(scope.node, (node) => { if (!ts.isBinaryExpression(node) || isInsideNestedFunction(scope.node, node)) return; if (node.ope...",
+              "reasoning": "Nullability contract: [{\"name\":\"scope\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findNullifyPatterns",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.360Z",
+          "last_verified_at": "2026-05-09T15:16:00.360Z"
+        }
+      ]
+    },
+    {
+      "name": "detectNullifyPattern",
+      "kind": "function",
+      "qualified_name": "detectNullifyPattern",
+      "signature_hash": "5a4ea726ac8fe85a",
+      "node_hash": "a59bea73a39328a8",
+      "line_start": 34,
+      "line_end": 52,
+      "contracts": [
+        {
+          "id": "ct_mclcrNYv",
+          "type": "boundary",
+          "description": "detectNullifyPattern returns Contract[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 34,
+              "line_end": 52,
+              "snippet": "export function detectNullifyPattern(config: DriftConfig, parsed: ParsedFile, scope: ScopeInfo): Contract[] { if (!isPatternEnabled(config, 'nullify_after_use')) return []; return findNullifyPatterns(scope).filter((pattern) => pattern.afte...",
+              "reasoning": "Explicit return type is Contract[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectNullifyPattern",
+            "params": {
+              "expected_return": "Contract[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.361Z",
+          "last_verified_at": "2026-05-09T15:16:00.361Z"
+        },
+        {
+          "id": "ct_Dg4nlrHk",
+          "type": "boundary",
+          "description": "detectNullifyPattern parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 34,
+              "line_end": 52,
+              "snippet": "export function detectNullifyPattern(config: DriftConfig, parsed: ParsedFile, scope: ScopeInfo): Contract[] { if (!isPatternEnabled(config, 'nullify_after_use')) return []; return findNullifyPatterns(scope).filter((pattern) => pattern.afte...",
+              "reasoning": "Parameter contract: [{\"name\":\"config\",\"type\":\"DriftConfig\",\"optional\":false,\"nullable\":false},{\"name\":\"parsed\",\"type\":\"ParsedFile\",\"optional\":false,\"nullable\":false},{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectNullifyPattern",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.361Z",
+          "last_verified_at": "2026-05-09T15:16:00.361Z"
+        },
+        {
+          "id": "ct_vrrBJgDj",
+          "type": "boundary",
+          "description": "detectNullifyPattern parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 34,
+              "line_end": 52,
+              "snippet": "export function detectNullifyPattern(config: DriftConfig, parsed: ParsedFile, scope: ScopeInfo): Contract[] { if (!isPatternEnabled(config, 'nullify_after_use')) return []; return findNullifyPatterns(scope).filter((pattern) => pattern.afte...",
+              "reasoning": "Nullability contract: [{\"name\":\"config\",\"nullable\":false,\"optional\":false},{\"name\":\"parsed\",\"nullable\":false,\"optional\":false},{\"name\":\"scope\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectNullifyPattern",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.361Z",
+          "last_verified_at": "2026-05-09T15:16:00.361Z"
+        }
+      ]
+    },
+    {
+      "name": "hasGuaranteedNullify",
+      "kind": "function",
+      "qualified_name": "hasGuaranteedNullify",
+      "signature_hash": "4ceee0c90139e309",
+      "node_hash": "0b2866586fe4bd86",
+      "line_start": 54,
+      "line_end": 56,
+      "contracts": [
+        {
+          "id": "ct_eSbnCxaX",
+          "type": "boundary",
+          "description": "hasGuaranteedNullify returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 54,
+              "line_end": 56,
+              "snippet": "export function hasGuaranteedNullify(scope: ScopeInfo, variable: string): boolean { return findNullifyPatterns(scope).some((pattern) => pattern.variable === variable && pattern.afterFinalUse && pattern.allPaths); }",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "hasGuaranteedNullify",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "variable",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.361Z",
+          "last_verified_at": "2026-05-09T15:16:00.361Z"
+        },
+        {
+          "id": "ct_-IVLCXss",
+          "type": "boundary",
+          "description": "hasGuaranteedNullify parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 54,
+              "line_end": 56,
+              "snippet": "export function hasGuaranteedNullify(scope: ScopeInfo, variable: string): boolean { return findNullifyPatterns(scope).some((pattern) => pattern.variable === variable && pattern.afterFinalUse && pattern.allPaths); }",
+              "reasoning": "Parameter contract: [{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false},{\"name\":\"variable\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "hasGuaranteedNullify",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "variable",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.361Z",
+          "last_verified_at": "2026-05-09T15:16:00.361Z"
+        },
+        {
+          "id": "ct_h1bMyECA",
+          "type": "boundary",
+          "description": "hasGuaranteedNullify parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 54,
+              "line_end": 56,
+              "snippet": "export function hasGuaranteedNullify(scope: ScopeInfo, variable: string): boolean { return findNullifyPatterns(scope).some((pattern) => pattern.variable === variable && pattern.afterFinalUse && pattern.allPaths); }",
+              "reasoning": "Nullability contract: [{\"name\":\"scope\",\"nullable\":false,\"optional\":false},{\"name\":\"variable\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "hasGuaranteedNullify",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "variable",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.361Z",
+          "last_verified_at": "2026-05-09T15:16:00.361Z"
+        }
+      ]
+    },
+    {
+      "name": "hasIdentifierReadAfter",
+      "kind": "function",
+      "qualified_name": "hasIdentifierReadAfter",
+      "signature_hash": "9bddd15b4f1360a2",
+      "node_hash": "535c80aa2db5d85f",
+      "line_start": 58,
+      "line_end": 67,
+      "contracts": [
+        {
+          "id": "ct_7Gn_3C94",
+          "type": "boundary",
+          "description": "hasIdentifierReadAfter returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 58,
+              "line_end": 67,
+              "snippet": "function hasIdentifierReadAfter(scope: ScopeInfo, variable: string, position: number): boolean { let found = false; walk(scope.node, (node) => { if (found || node.getStart() <= position || isInsideNestedFunction(scope.node, node)) return; ...",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "hasIdentifierReadAfter",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "variable",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "position",
+                  "type": "number",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.361Z",
+          "last_verified_at": "2026-05-09T15:16:00.361Z"
+        },
+        {
+          "id": "ct_eySs5Lhv",
+          "type": "boundary",
+          "description": "hasIdentifierReadAfter parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 58,
+              "line_end": 67,
+              "snippet": "function hasIdentifierReadAfter(scope: ScopeInfo, variable: string, position: number): boolean { let found = false; walk(scope.node, (node) => { if (found || node.getStart() <= position || isInsideNestedFunction(scope.node, node)) return; ...",
+              "reasoning": "Parameter contract: [{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false},{\"name\":\"variable\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"position\",\"type\":\"number\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "hasIdentifierReadAfter",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "variable",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "position",
+                  "type": "number",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.361Z",
+          "last_verified_at": "2026-05-09T15:16:00.361Z"
+        },
+        {
+          "id": "ct_k5g18wDl",
+          "type": "boundary",
+          "description": "hasIdentifierReadAfter parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 58,
+              "line_end": 67,
+              "snippet": "function hasIdentifierReadAfter(scope: ScopeInfo, variable: string, position: number): boolean { let found = false; walk(scope.node, (node) => { if (found || node.getStart() <= position || isInsideNestedFunction(scope.node, node)) return; ...",
+              "reasoning": "Nullability contract: [{\"name\":\"scope\",\"nullable\":false,\"optional\":false},{\"name\":\"variable\",\"nullable\":false,\"optional\":false},{\"name\":\"position\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "hasIdentifierReadAfter",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "variable",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "position",
+                  "type": "number",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.361Z",
+          "last_verified_at": "2026-05-09T15:16:00.361Z"
+        }
+      ]
+    },
+    {
+      "name": "hasExitAfterSensitiveReadBefore",
+      "kind": "function",
+      "qualified_name": "hasExitAfterSensitiveReadBefore",
+      "signature_hash": "9bddd15b4f1360a2",
+      "node_hash": "b1e2d313d60600f8",
+      "line_start": 69,
+      "line_end": 81,
+      "contracts": [
+        {
+          "id": "ct_FEUw_n-g",
+          "type": "boundary",
+          "description": "hasExitAfterSensitiveReadBefore returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 69,
+              "line_end": 81,
+              "snippet": "function hasExitAfterSensitiveReadBefore(scope: ScopeInfo, variable: string, position: number): boolean { let firstRead: number | null = null; const exits: number[] = []; walk(scope.node, (node) => { if (node.getStart() >= position || isIn...",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "hasExitAfterSensitiveReadBefore",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "variable",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "position",
+                  "type": "number",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.361Z",
+          "last_verified_at": "2026-05-09T15:16:00.361Z"
+        },
+        {
+          "id": "ct_UdKd29uF",
+          "type": "boundary",
+          "description": "hasExitAfterSensitiveReadBefore parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 69,
+              "line_end": 81,
+              "snippet": "function hasExitAfterSensitiveReadBefore(scope: ScopeInfo, variable: string, position: number): boolean { let firstRead: number | null = null; const exits: number[] = []; walk(scope.node, (node) => { if (node.getStart() >= position || isIn...",
+              "reasoning": "Parameter contract: [{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false},{\"name\":\"variable\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"position\",\"type\":\"number\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "hasExitAfterSensitiveReadBefore",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "variable",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "position",
+                  "type": "number",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.361Z",
+          "last_verified_at": "2026-05-09T15:16:00.361Z"
+        },
+        {
+          "id": "ct_j49ad4bW",
+          "type": "boundary",
+          "description": "hasExitAfterSensitiveReadBefore parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 69,
+              "line_end": 81,
+              "snippet": "function hasExitAfterSensitiveReadBefore(scope: ScopeInfo, variable: string, position: number): boolean { let firstRead: number | null = null; const exits: number[] = []; walk(scope.node, (node) => { if (node.getStart() >= position || isIn...",
+              "reasoning": "Nullability contract: [{\"name\":\"scope\",\"nullable\":false,\"optional\":false},{\"name\":\"variable\",\"nullable\":false,\"optional\":false},{\"name\":\"position\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "hasExitAfterSensitiveReadBefore",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "variable",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "position",
+                  "type": "number",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.361Z",
+          "last_verified_at": "2026-05-09T15:16:00.361Z"
+        }
+      ]
+    },
+    {
+      "name": "isInsideConditionalBranch",
+      "kind": "function",
+      "qualified_name": "isInsideConditionalBranch",
+      "signature_hash": "93ab877529f43a63",
+      "node_hash": "85d0b15d4eaa15f0",
+      "line_start": 83,
+      "line_end": 91,
+      "contracts": [
+        {
+          "id": "ct_hQvaaowv",
+          "type": "boundary",
+          "description": "isInsideConditionalBranch returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 83,
+              "line_end": 91,
+              "snippet": "function isInsideConditionalBranch(root: ts.Node, node: ts.Node): boolean { let current: ts.Node | undefined = node.parent; while (current && current !== root) { if (ts.isBlock(current) && ts.isTryStatement(current.parent) && current.paren...",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isInsideConditionalBranch",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "root",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.361Z",
+          "last_verified_at": "2026-05-09T15:16:00.361Z"
+        },
+        {
+          "id": "ct_pwSoE5_K",
+          "type": "boundary",
+          "description": "isInsideConditionalBranch parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 83,
+              "line_end": 91,
+              "snippet": "function isInsideConditionalBranch(root: ts.Node, node: ts.Node): boolean { let current: ts.Node | undefined = node.parent; while (current && current !== root) { if (ts.isBlock(current) && ts.isTryStatement(current.parent) && current.paren...",
+              "reasoning": "Parameter contract: [{\"name\":\"root\",\"type\":\"ts.Node\",\"optional\":false,\"nullable\":false},{\"name\":\"node\",\"type\":\"ts.Node\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isInsideConditionalBranch",
+            "params": {
+              "parameters": [
+                {
+                  "name": "root",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.361Z",
+          "last_verified_at": "2026-05-09T15:16:00.361Z"
+        },
+        {
+          "id": "ct_MEM1q_Wb",
+          "type": "boundary",
+          "description": "isInsideConditionalBranch parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 83,
+              "line_end": 91,
+              "snippet": "function isInsideConditionalBranch(root: ts.Node, node: ts.Node): boolean { let current: ts.Node | undefined = node.parent; while (current && current !== root) { if (ts.isBlock(current) && ts.isTryStatement(current.parent) && current.paren...",
+              "reasoning": "Nullability contract: [{\"name\":\"root\",\"nullable\":false,\"optional\":false},{\"name\":\"node\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isInsideConditionalBranch",
+            "params": {
+              "parameters": [
+                {
+                  "name": "root",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.361Z",
+          "last_verified_at": "2026-05-09T15:16:00.361Z"
+        }
+      ]
+    },
+    {
+      "name": "isInsideFinallyBlock",
+      "kind": "function",
+      "qualified_name": "isInsideFinallyBlock",
+      "signature_hash": "93ab877529f43a63",
+      "node_hash": "d3fa7a930d84a3ca",
+      "line_start": 93,
+      "line_end": 100,
+      "contracts": [
+        {
+          "id": "ct_BvSAz5yi",
+          "type": "boundary",
+          "description": "isInsideFinallyBlock returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 93,
+              "line_end": 100,
+              "snippet": "function isInsideFinallyBlock(root: ts.Node, node: ts.Node): boolean { let current: ts.Node | undefined = node.parent; while (current && current !== root) { if (ts.isBlock(current) && ts.isTryStatement(current.parent) && current.parent.fin...",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isInsideFinallyBlock",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "root",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.368Z",
+          "last_verified_at": "2026-05-09T15:16:00.368Z"
+        },
+        {
+          "id": "ct_9hDYMMZT",
+          "type": "boundary",
+          "description": "isInsideFinallyBlock parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 93,
+              "line_end": 100,
+              "snippet": "function isInsideFinallyBlock(root: ts.Node, node: ts.Node): boolean { let current: ts.Node | undefined = node.parent; while (current && current !== root) { if (ts.isBlock(current) && ts.isTryStatement(current.parent) && current.parent.fin...",
+              "reasoning": "Parameter contract: [{\"name\":\"root\",\"type\":\"ts.Node\",\"optional\":false,\"nullable\":false},{\"name\":\"node\",\"type\":\"ts.Node\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isInsideFinallyBlock",
+            "params": {
+              "parameters": [
+                {
+                  "name": "root",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.368Z",
+          "last_verified_at": "2026-05-09T15:16:00.368Z"
+        },
+        {
+          "id": "ct_1wrMulKS",
+          "type": "boundary",
+          "description": "isInsideFinallyBlock parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 93,
+              "line_end": 100,
+              "snippet": "function isInsideFinallyBlock(root: ts.Node, node: ts.Node): boolean { let current: ts.Node | undefined = node.parent; while (current && current !== root) { if (ts.isBlock(current) && ts.isTryStatement(current.parent) && current.parent.fin...",
+              "reasoning": "Nullability contract: [{\"name\":\"root\",\"nullable\":false,\"optional\":false},{\"name\":\"node\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isInsideFinallyBlock",
+            "params": {
+              "parameters": [
+                {
+                  "name": "root",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.368Z",
+          "last_verified_at": "2026-05-09T15:16:00.368Z"
+        }
+      ]
+    },
+    {
+      "name": "isIdentifierRead",
+      "kind": "function",
+      "qualified_name": "isIdentifierRead",
+      "signature_hash": "e21f82ed723b38da",
+      "node_hash": "5022d9897b3afcdd",
+      "line_start": 102,
+      "line_end": 110,
+      "contracts": [
+        {
+          "id": "ct_SKgKttD8",
+          "type": "boundary",
+          "description": "isIdentifierRead returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 102,
+              "line_end": 110,
+              "snippet": "function isIdentifierRead(node: ts.Identifier): boolean { const parent = node.parent; if (ts.isBindingElement(parent) || ts.isVariableDeclaration(parent) || ts.isParameter(parent)) return false; if (ts.isPropertyAccessExpression(parent) &&...",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isIdentifierRead",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Identifier",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.368Z",
+          "last_verified_at": "2026-05-09T15:16:00.368Z"
+        },
+        {
+          "id": "ct_5dZ05vJ4",
+          "type": "boundary",
+          "description": "isIdentifierRead parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 102,
+              "line_end": 110,
+              "snippet": "function isIdentifierRead(node: ts.Identifier): boolean { const parent = node.parent; if (ts.isBindingElement(parent) || ts.isVariableDeclaration(parent) || ts.isParameter(parent)) return false; if (ts.isPropertyAccessExpression(parent) &&...",
+              "reasoning": "Parameter contract: [{\"name\":\"node\",\"type\":\"ts.Identifier\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isIdentifierRead",
+            "params": {
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Identifier",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.368Z",
+          "last_verified_at": "2026-05-09T15:16:00.368Z"
+        },
+        {
+          "id": "ct_2ux1Jd-A",
+          "type": "boundary",
+          "description": "isIdentifierRead parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 102,
+              "line_end": 110,
+              "snippet": "function isIdentifierRead(node: ts.Identifier): boolean { const parent = node.parent; if (ts.isBindingElement(parent) || ts.isVariableDeclaration(parent) || ts.isParameter(parent)) return false; if (ts.isPropertyAccessExpression(parent) &&...",
+              "reasoning": "Nullability contract: [{\"name\":\"node\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isIdentifierRead",
+            "params": {
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Identifier",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.368Z",
+          "last_verified_at": "2026-05-09T15:16:00.368Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.368Z",
+    "last_checked_at": "2026-05-09T15:16:00.368Z",
+    "total_contracts": 24
+  }
+}

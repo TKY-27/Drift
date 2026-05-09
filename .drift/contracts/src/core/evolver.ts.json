@@ -1,0 +1,429 @@
+{
+  "source_file": "src/core/evolver.ts",
+  "source_hash": "5d84581879f525621f3ebc9821b0bc68feaa365195bf08835280a61e24d3fc5e",
+  "scopes": [
+    {
+      "name": "decideEvolution",
+      "kind": "function",
+      "qualified_name": "decideEvolution",
+      "signature_hash": "bd52a8b25f6fe14c",
+      "node_hash": "8b4febe724f8f65d",
+      "line_start": 27,
+      "line_end": 73,
+      "contracts": [
+        {
+          "id": "ct_JbmsvXqW",
+          "type": "boundary",
+          "description": "decideEvolution returns EvolutionDecision and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 27,
+              "line_end": 73,
+              "snippet": "export function decideEvolution(evolution: Evolution, commitMessage: string, allChanges: FileChange[]): EvolutionDecision { let confidence = 0; const reasons: string[] = []; const lowerMessage = commitMessage.toLowerCase(); const intentKey...",
+              "reasoning": "Explicit return type is EvolutionDecision; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "decideEvolution",
+            "params": {
+              "expected_return": "EvolutionDecision",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "evolution",
+                  "type": "Evolution",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "commitMessage",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "allChanges",
+                  "type": "FileChange[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.519Z",
+          "last_verified_at": "2026-05-09T15:16:00.519Z"
+        },
+        {
+          "id": "ct_JOUPtyNd",
+          "type": "boundary",
+          "description": "decideEvolution parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 27,
+              "line_end": 73,
+              "snippet": "export function decideEvolution(evolution: Evolution, commitMessage: string, allChanges: FileChange[]): EvolutionDecision { let confidence = 0; const reasons: string[] = []; const lowerMessage = commitMessage.toLowerCase(); const intentKey...",
+              "reasoning": "Parameter contract: [{\"name\":\"evolution\",\"type\":\"Evolution\",\"optional\":false,\"nullable\":false},{\"name\":\"commitMessage\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"allChanges\",\"type\":\"FileChange[]\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "decideEvolution",
+            "params": {
+              "parameters": [
+                {
+                  "name": "evolution",
+                  "type": "Evolution",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "commitMessage",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "allChanges",
+                  "type": "FileChange[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.519Z",
+          "last_verified_at": "2026-05-09T15:16:00.519Z"
+        },
+        {
+          "id": "ct_kwZjXBLz",
+          "type": "boundary",
+          "description": "decideEvolution parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 27,
+              "line_end": 73,
+              "snippet": "export function decideEvolution(evolution: Evolution, commitMessage: string, allChanges: FileChange[]): EvolutionDecision { let confidence = 0; const reasons: string[] = []; const lowerMessage = commitMessage.toLowerCase(); const intentKey...",
+              "reasoning": "Nullability contract: [{\"name\":\"evolution\",\"nullable\":false,\"optional\":false},{\"name\":\"commitMessage\",\"nullable\":false,\"optional\":false},{\"name\":\"allChanges\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "decideEvolution",
+            "params": {
+              "parameters": [
+                {
+                  "name": "evolution",
+                  "type": "Evolution",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "commitMessage",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "allChanges",
+                  "type": "FileChange[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.519Z",
+          "last_verified_at": "2026-05-09T15:16:00.519Z"
+        }
+      ]
+    },
+    {
+      "name": "evaluateEvolution",
+      "kind": "function",
+      "qualified_name": "evaluateEvolution",
+      "signature_hash": "48c39e6dd4dd5640",
+      "node_hash": "ab91e2185817dd13",
+      "line_start": 75,
+      "line_end": 93,
+      "contracts": [
+        {
+          "id": "ct_8sBg75eL",
+          "type": "boundary",
+          "description": "evaluateEvolution returns EvolutionDecision and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 75,
+              "line_end": 93,
+              "snippet": "export function evaluateEvolution( evolution: Evolution, context: { commitMessage: string; allChangedFiles: string[]; allEvolutionCandidates: Evolution[]; }, ): EvolutionDecision { const changes = context.allChangedFiles.map((file) => ({ f...",
+              "reasoning": "Explicit return type is EvolutionDecision; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "evaluateEvolution",
+            "params": {
+              "expected_return": "EvolutionDecision",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "evolution",
+                  "type": "Evolution",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "context",
+                  "type": "{\n    commitMessage: string;\n    allChangedFiles: string[];\n    allEvolutionCandidates: Evolution[];\n  }",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.519Z",
+          "last_verified_at": "2026-05-09T15:16:00.519Z"
+        },
+        {
+          "id": "ct_Q_ZkiCw5",
+          "type": "boundary",
+          "description": "evaluateEvolution parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 75,
+              "line_end": 93,
+              "snippet": "export function evaluateEvolution( evolution: Evolution, context: { commitMessage: string; allChangedFiles: string[]; allEvolutionCandidates: Evolution[]; }, ): EvolutionDecision { const changes = context.allChangedFiles.map((file) => ({ f...",
+              "reasoning": "Parameter contract: [{\"name\":\"evolution\",\"type\":\"Evolution\",\"optional\":false,\"nullable\":false},{\"name\":\"context\",\"type\":\"{\\n commitMessage: string;\\n allChangedFiles: string[];\\n allEvolutionCandidates: Evolution[];\\n }\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "evaluateEvolution",
+            "params": {
+              "parameters": [
+                {
+                  "name": "evolution",
+                  "type": "Evolution",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "context",
+                  "type": "{\n    commitMessage: string;\n    allChangedFiles: string[];\n    allEvolutionCandidates: Evolution[];\n  }",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.519Z",
+          "last_verified_at": "2026-05-09T15:16:00.519Z"
+        },
+        {
+          "id": "ct_OOjqBJpa",
+          "type": "boundary",
+          "description": "evaluateEvolution parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 75,
+              "line_end": 93,
+              "snippet": "export function evaluateEvolution( evolution: Evolution, context: { commitMessage: string; allChangedFiles: string[]; allEvolutionCandidates: Evolution[]; }, ): EvolutionDecision { const changes = context.allChangedFiles.map((file) => ({ f...",
+              "reasoning": "Nullability contract: [{\"name\":\"evolution\",\"nullable\":false,\"optional\":false},{\"name\":\"context\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "evaluateEvolution",
+            "params": {
+              "parameters": [
+                {
+                  "name": "evolution",
+                  "type": "Evolution",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "context",
+                  "type": "{\n    commitMessage: string;\n    allChangedFiles: string[];\n    allEvolutionCandidates: Evolution[];\n  }",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.519Z",
+          "last_verified_at": "2026-05-09T15:16:00.519Z"
+        }
+      ]
+    },
+    {
+      "name": "applyEvolution",
+      "kind": "function",
+      "qualified_name": "applyEvolution",
+      "signature_hash": "431cda415e8d9551",
+      "node_hash": "b1a26f19992b9c0e",
+      "line_start": 95,
+      "line_end": 107,
+      "contracts": [
+        {
+          "id": "ct_MpWi-wvv",
+          "type": "boundary",
+          "description": "applyEvolution returns void and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 95,
+              "line_end": 107,
+              "snippet": "export function applyEvolution(store: ContractStore, decision: EvolutionDecision): void { if (decision.action === 'block' || !decision.evolution) return; store.evolveContract( decision.evolution.file, decision.evolution.contract.id, { stat...",
+              "reasoning": "Explicit return type is void; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "applyEvolution",
+            "params": {
+              "expected_return": "void",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "store",
+                  "type": "ContractStore",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "decision",
+                  "type": "EvolutionDecision",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.520Z",
+          "last_verified_at": "2026-05-09T15:16:00.520Z"
+        },
+        {
+          "id": "ct_ftiP1Urz",
+          "type": "boundary",
+          "description": "applyEvolution parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 95,
+              "line_end": 107,
+              "snippet": "export function applyEvolution(store: ContractStore, decision: EvolutionDecision): void { if (decision.action === 'block' || !decision.evolution) return; store.evolveContract( decision.evolution.file, decision.evolution.contract.id, { stat...",
+              "reasoning": "Parameter contract: [{\"name\":\"store\",\"type\":\"ContractStore\",\"optional\":false,\"nullable\":false},{\"name\":\"decision\",\"type\":\"EvolutionDecision\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "applyEvolution",
+            "params": {
+              "parameters": [
+                {
+                  "name": "store",
+                  "type": "ContractStore",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "decision",
+                  "type": "EvolutionDecision",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.520Z",
+          "last_verified_at": "2026-05-09T15:16:00.520Z"
+        },
+        {
+          "id": "ct_XhcYLha3",
+          "type": "boundary",
+          "description": "applyEvolution parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 95,
+              "line_end": 107,
+              "snippet": "export function applyEvolution(store: ContractStore, decision: EvolutionDecision): void { if (decision.action === 'block' || !decision.evolution) return; store.evolveContract( decision.evolution.file, decision.evolution.contract.id, { stat...",
+              "reasoning": "Nullability contract: [{\"name\":\"store\",\"nullable\":false,\"optional\":false},{\"name\":\"decision\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "applyEvolution",
+            "params": {
+              "parameters": [
+                {
+                  "name": "store",
+                  "type": "ContractStore",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "decision",
+                  "type": "EvolutionDecision",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.520Z",
+          "last_verified_at": "2026-05-09T15:16:00.520Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.520Z",
+    "last_checked_at": "2026-05-09T15:16:00.520Z",
+    "total_contracts": 9
+  }
+}

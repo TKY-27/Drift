@@ -1,0 +1,350 @@
+{
+  "source_file": "src/analyzers/pattern-matchers/index.ts",
+  "source_hash": "00ca79a5f7ab4b12b5388209fd4757c12ebda27b5851598a3cb0a6dd0ba589f1",
+  "scopes": [
+    {
+      "name": "detectContractsForScope",
+      "kind": "function",
+      "qualified_name": "detectContractsForScope",
+      "signature_hash": "e6edf0abe8a8686f",
+      "node_hash": "e96ab400d9a05a8f",
+      "line_start": 36,
+      "line_end": 43,
+      "contracts": [
+        {
+          "id": "ct_RdYeGaH1",
+          "type": "boundary",
+          "description": "detectContractsForScope returns Contract[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 36,
+              "line_end": 43,
+              "snippet": "export function detectContractsForScope( config: DriftConfig, parsed: ParsedFile, scope: ScopeInfo, types: TypeContext, ): Contract[] { return uniqueContracts(PATTERN_MATCHERS.flatMap((matcher) => matcher.detect(config, parsed, scope, type...",
+              "reasoning": "Explicit return type is Contract[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectContractsForScope",
+            "params": {
+              "expected_return": "Contract[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "types",
+                  "type": "TypeContext",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.350Z",
+          "last_verified_at": "2026-05-09T15:16:00.350Z"
+        },
+        {
+          "id": "ct_a7oLyM9u",
+          "type": "boundary",
+          "description": "detectContractsForScope parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 36,
+              "line_end": 43,
+              "snippet": "export function detectContractsForScope( config: DriftConfig, parsed: ParsedFile, scope: ScopeInfo, types: TypeContext, ): Contract[] { return uniqueContracts(PATTERN_MATCHERS.flatMap((matcher) => matcher.detect(config, parsed, scope, type...",
+              "reasoning": "Parameter contract: [{\"name\":\"config\",\"type\":\"DriftConfig\",\"optional\":false,\"nullable\":false},{\"name\":\"parsed\",\"type\":\"ParsedFile\",\"optional\":false,\"nullable\":false},{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false},{\"name\":\"types\",\"type\":\"TypeContext\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectContractsForScope",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "types",
+                  "type": "TypeContext",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.350Z",
+          "last_verified_at": "2026-05-09T15:16:00.350Z"
+        },
+        {
+          "id": "ct_EUTBgT_N",
+          "type": "boundary",
+          "description": "detectContractsForScope parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 36,
+              "line_end": 43,
+              "snippet": "export function detectContractsForScope( config: DriftConfig, parsed: ParsedFile, scope: ScopeInfo, types: TypeContext, ): Contract[] { return uniqueContracts(PATTERN_MATCHERS.flatMap((matcher) => matcher.detect(config, parsed, scope, type...",
+              "reasoning": "Nullability contract: [{\"name\":\"config\",\"nullable\":false,\"optional\":false},{\"name\":\"parsed\",\"nullable\":false,\"optional\":false},{\"name\":\"scope\",\"nullable\":false,\"optional\":false},{\"name\":\"types\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectContractsForScope",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "types",
+                  "type": "TypeContext",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.350Z",
+          "last_verified_at": "2026-05-09T15:16:00.350Z"
+        }
+      ]
+    },
+    {
+      "name": "detectContractsForModule",
+      "kind": "function",
+      "qualified_name": "detectContractsForModule",
+      "signature_hash": "e6edf0abe8a8686f",
+      "node_hash": "b71f79e2172c9729",
+      "line_start": 45,
+      "line_end": 52,
+      "contracts": [
+        {
+          "id": "ct_rP-DHf_U",
+          "type": "boundary",
+          "description": "detectContractsForModule returns Contract[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 45,
+              "line_end": 52,
+              "snippet": "export function detectContractsForModule( config: DriftConfig, parsed: ParsedFile, scope: ScopeInfo, types: TypeContext, ): Contract[] { return uniqueContracts(MODULE_PATTERN_MATCHERS.flatMap((matcher) => matcher.detect(config, parsed, sco...",
+              "reasoning": "Explicit return type is Contract[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectContractsForModule",
+            "params": {
+              "expected_return": "Contract[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "types",
+                  "type": "TypeContext",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.350Z",
+          "last_verified_at": "2026-05-09T15:16:00.350Z"
+        },
+        {
+          "id": "ct_B7zxGREd",
+          "type": "boundary",
+          "description": "detectContractsForModule parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 45,
+              "line_end": 52,
+              "snippet": "export function detectContractsForModule( config: DriftConfig, parsed: ParsedFile, scope: ScopeInfo, types: TypeContext, ): Contract[] { return uniqueContracts(MODULE_PATTERN_MATCHERS.flatMap((matcher) => matcher.detect(config, parsed, sco...",
+              "reasoning": "Parameter contract: [{\"name\":\"config\",\"type\":\"DriftConfig\",\"optional\":false,\"nullable\":false},{\"name\":\"parsed\",\"type\":\"ParsedFile\",\"optional\":false,\"nullable\":false},{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false},{\"name\":\"types\",\"type\":\"TypeContext\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectContractsForModule",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "types",
+                  "type": "TypeContext",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.350Z",
+          "last_verified_at": "2026-05-09T15:16:00.350Z"
+        },
+        {
+          "id": "ct_1e0WUZfy",
+          "type": "boundary",
+          "description": "detectContractsForModule parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 45,
+              "line_end": 52,
+              "snippet": "export function detectContractsForModule( config: DriftConfig, parsed: ParsedFile, scope: ScopeInfo, types: TypeContext, ): Contract[] { return uniqueContracts(MODULE_PATTERN_MATCHERS.flatMap((matcher) => matcher.detect(config, parsed, sco...",
+              "reasoning": "Nullability contract: [{\"name\":\"config\",\"nullable\":false,\"optional\":false},{\"name\":\"parsed\",\"nullable\":false,\"optional\":false},{\"name\":\"scope\",\"nullable\":false,\"optional\":false},{\"name\":\"types\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectContractsForModule",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "types",
+                  "type": "TypeContext",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.350Z",
+          "last_verified_at": "2026-05-09T15:16:00.350Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.350Z",
+    "last_checked_at": "2026-05-09T15:16:00.350Z",
+    "total_contracts": 6
+  }
+}

@@ -1,0 +1,253 @@
+{
+  "source_file": "src/commands/add.ts",
+  "source_hash": "1c5fc189c421b256e670f2b48e0a1297aab83eae6640d7aea3124d047e5ac735",
+  "scopes": [
+    {
+      "name": "<module>",
+      "kind": "module",
+      "qualified_name": "<module>",
+      "signature_hash": "58ea489a1b86dfef",
+      "node_hash": "1c5fc189c421b256",
+      "line_start": 1,
+      "line_end": 91,
+      "contracts": [
+        {
+          "id": "ct_w7FHJB8n",
+          "type": "dependency",
+          "description": "Security-sensitive import from ../utils/security.js is preserved",
+          "pattern": "import_constraint",
+          "detection": "import_graph",
+          "severity": "low",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "pattern_match",
+              "line_start": 4,
+              "line_end": 4,
+              "snippet": "import { normalizeRepoRelative, resolveRepoPath, sha256, safeSnippet } from '../utils/security.js';",
+              "reasoning": "Security-related import detected"
+            }
+          ],
+          "verification": {
+            "strategy": "import_presence",
+            "target": "../utils/security.js",
+            "params": {
+              "names": [
+                "normalizeRepoRelative",
+                "resolveRepoPath",
+                "sha256",
+                "safeSnippet"
+              ],
+              "named": [
+                {
+                  "imported": "normalizeRepoRelative",
+                  "local": "normalizeRepoRelative"
+                },
+                {
+                  "imported": "resolveRepoPath",
+                  "local": "resolveRepoPath"
+                },
+                {
+                  "imported": "sha256",
+                  "local": "sha256"
+                },
+                {
+                  "imported": "safeSnippet",
+                  "local": "safeSnippet"
+                }
+              ],
+              "type_only": false
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.429Z",
+          "last_verified_at": "2026-05-09T15:16:00.429Z"
+        }
+      ]
+    },
+    {
+      "name": "addCommand",
+      "kind": "function",
+      "qualified_name": "addCommand",
+      "signature_hash": "47f2078baab72f50",
+      "node_hash": "0a316b216ad4fa7a",
+      "line_start": 8,
+      "line_end": 90,
+      "contracts": [
+        {
+          "id": "ct_pQS0P_HL",
+          "type": "boundary",
+          "description": "addCommand returns void and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 8,
+              "line_end": 90,
+              "snippet": "export function addCommand( rootDir: string, file: string, options: { scope?: string; type?: ContractType; severity?: Severity; pattern?: string; description?: string; strategy?: VerificationStrategy; target?: string; } = {}, ): void { if ...",
+              "reasoning": "Explicit return type is void; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "addCommand",
+            "params": {
+              "expected_return": "void",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "file",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "{\n    scope?: string;\n    type?: ContractType;\n    severity?: Severity;\n    pattern?: string;\n    description?: string;\n    strategy?: VerificationStrategy;\n    target?: string;\n  }",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.429Z",
+          "last_verified_at": "2026-05-09T15:16:00.429Z"
+        },
+        {
+          "id": "ct_3yaJNu0G",
+          "type": "boundary",
+          "description": "addCommand parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 8,
+              "line_end": 90,
+              "snippet": "export function addCommand( rootDir: string, file: string, options: { scope?: string; type?: ContractType; severity?: Severity; pattern?: string; description?: string; strategy?: VerificationStrategy; target?: string; } = {}, ): void { if ...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"file\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"options\",\"type\":\"{\\n scope?: string;\\n type?: ContractType;\\n severity?: Severity;\\n pattern?: string;\\n description?: string;\\n strategy?: VerificationStrategy;\\n target?: string;\\n }\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "addCommand",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "file",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "{\n    scope?: string;\n    type?: ContractType;\n    severity?: Severity;\n    pattern?: string;\n    description?: string;\n    strategy?: VerificationStrategy;\n    target?: string;\n  }",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.429Z",
+          "last_verified_at": "2026-05-09T15:16:00.429Z"
+        },
+        {
+          "id": "ct__1Q8ka3B",
+          "type": "boundary",
+          "description": "addCommand parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 8,
+              "line_end": 90,
+              "snippet": "export function addCommand( rootDir: string, file: string, options: { scope?: string; type?: ContractType; severity?: Severity; pattern?: string; description?: string; strategy?: VerificationStrategy; target?: string; } = {}, ): void { if ...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false},{\"name\":\"file\",\"nullable\":false,\"optional\":false},{\"name\":\"options\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "addCommand",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "file",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "{\n    scope?: string;\n    type?: ContractType;\n    severity?: Severity;\n    pattern?: string;\n    description?: string;\n    strategy?: VerificationStrategy;\n    target?: string;\n  }",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.429Z",
+          "last_verified_at": "2026-05-09T15:16:00.429Z"
+        },
+        {
+          "id": "ct__5mZyKpX",
+          "type": "side_effect",
+          "description": "addCommand writes to a database via store.save",
+          "pattern": "db_write",
+          "detection": "call_graph",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "call_site",
+              "line_start": 87,
+              "line_end": 87,
+              "snippet": "store.save(contractFile)",
+              "reasoning": "store.save is a db_write side effect"
+            }
+          ],
+          "verification": {
+            "strategy": "call_presence",
+            "target": "store.save",
+            "params": {
+              "category": "db_write",
+              "path_kind": "conditional"
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.429Z",
+          "last_verified_at": "2026-05-09T15:16:00.429Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.429Z",
+    "last_checked_at": "2026-05-09T15:16:00.429Z",
+    "total_contracts": 5
+  }
+}

@@ -1,0 +1,242 @@
+{
+  "source_file": "src/commands/watch.ts",
+  "source_hash": "75b90a542ec75db4e6cafd5aec8b6669895aea31a6c2bf96cc5346a1d33c279d",
+  "scopes": [
+    {
+      "name": "watchCommand",
+      "kind": "function",
+      "qualified_name": "watchCommand",
+      "signature_hash": "82f0e5c92ecaa694",
+      "node_hash": "8a8a2bc30fb75d31",
+      "line_start": 3,
+      "line_end": 6,
+      "contracts": [
+        {
+          "id": "ct_s0GbzTlk",
+          "type": "boundary",
+          "description": "watchCommand returns void and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 3,
+              "line_end": 6,
+              "snippet": "export function watchCommand(rootDir: string): void { const result = installHook(rootDir); process.stdout.write(`Drift pre-commit hook ${result}. It requires local ./node_modules/.bin/drift and never downloads via npx.\\n`); }",
+              "reasoning": "Explicit return type is void; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "watchCommand",
+            "params": {
+              "expected_return": "void",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.494Z",
+          "last_verified_at": "2026-05-09T15:16:00.494Z"
+        },
+        {
+          "id": "ct_88SGXFSo",
+          "type": "boundary",
+          "description": "watchCommand parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 3,
+              "line_end": 6,
+              "snippet": "export function watchCommand(rootDir: string): void { const result = installHook(rootDir); process.stdout.write(`Drift pre-commit hook ${result}. It requires local ./node_modules/.bin/drift and never downloads via npx.\\n`); }",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "watchCommand",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.494Z",
+          "last_verified_at": "2026-05-09T15:16:00.494Z"
+        },
+        {
+          "id": "ct_a28YEVhy",
+          "type": "boundary",
+          "description": "watchCommand parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 3,
+              "line_end": 6,
+              "snippet": "export function watchCommand(rootDir: string): void { const result = installHook(rootDir); process.stdout.write(`Drift pre-commit hook ${result}. It requires local ./node_modules/.bin/drift and never downloads via npx.\\n`); }",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "watchCommand",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.494Z",
+          "last_verified_at": "2026-05-09T15:16:00.494Z"
+        }
+      ]
+    },
+    {
+      "name": "unwatchCommand",
+      "kind": "function",
+      "qualified_name": "unwatchCommand",
+      "signature_hash": "82f0e5c92ecaa694",
+      "node_hash": "d40fdb9bfc602892",
+      "line_start": 8,
+      "line_end": 11,
+      "contracts": [
+        {
+          "id": "ct_OrhB0JBe",
+          "type": "boundary",
+          "description": "unwatchCommand returns void and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 8,
+              "line_end": 11,
+              "snippet": "export function unwatchCommand(rootDir: string): void { const result = uninstallHook(rootDir); process.stdout.write(result === 'removed' ? 'Drift pre-commit hook removed.\\n' : 'No Drift hook block found.\\n'); }",
+              "reasoning": "Explicit return type is void; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "unwatchCommand",
+            "params": {
+              "expected_return": "void",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.494Z",
+          "last_verified_at": "2026-05-09T15:16:00.494Z"
+        },
+        {
+          "id": "ct_qVLFuDm2",
+          "type": "boundary",
+          "description": "unwatchCommand parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 8,
+              "line_end": 11,
+              "snippet": "export function unwatchCommand(rootDir: string): void { const result = uninstallHook(rootDir); process.stdout.write(result === 'removed' ? 'Drift pre-commit hook removed.\\n' : 'No Drift hook block found.\\n'); }",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "unwatchCommand",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.494Z",
+          "last_verified_at": "2026-05-09T15:16:00.494Z"
+        },
+        {
+          "id": "ct_R9bHMk5X",
+          "type": "boundary",
+          "description": "unwatchCommand parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 8,
+              "line_end": 11,
+              "snippet": "export function unwatchCommand(rootDir: string): void { const result = uninstallHook(rootDir); process.stdout.write(result === 'removed' ? 'Drift pre-commit hook removed.\\n' : 'No Drift hook block found.\\n'); }",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "unwatchCommand",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.494Z",
+          "last_verified_at": "2026-05-09T15:16:00.494Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.494Z",
+    "last_checked_at": "2026-05-09T15:16:00.494Z",
+    "total_contracts": 6
+  }
+}

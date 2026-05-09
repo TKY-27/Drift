@@ -1,0 +1,641 @@
+{
+  "source_file": "src/commands/init.ts",
+  "source_hash": "0cd446f21c7f753e22e09098725b4894e33175a972a8fd2fbb38892b675b24a6",
+  "scopes": [
+    {
+      "name": "initCommand",
+      "kind": "function",
+      "qualified_name": "initCommand",
+      "signature_hash": "181e8aa26631216b",
+      "node_hash": "dd049d50c8fd4dcb",
+      "line_start": 19,
+      "line_end": 34,
+      "contracts": [
+        {
+          "id": "ct_yCWbfkLw",
+          "type": "boundary",
+          "description": "initCommand returns Promise<void> and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 19,
+              "line_end": 34,
+              "snippet": "export async function initCommand(rootDir: string, options: InitOptions = {}): Promise<void> { if (fs.existsSync(path.join(rootDir, '.drift')) && !options.force && !options.dryRun) { process.stderr.write('Drift is already initialized. Use ...",
+              "reasoning": "Explicit return type is Promise<void>; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "initCommand",
+            "params": {
+              "expected_return": "Promise<void>",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "InitOptions",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.467Z",
+          "last_verified_at": "2026-05-09T15:16:00.467Z"
+        },
+        {
+          "id": "ct_WRsdDgBb",
+          "type": "boundary",
+          "description": "initCommand parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 19,
+              "line_end": 34,
+              "snippet": "export async function initCommand(rootDir: string, options: InitOptions = {}): Promise<void> { if (fs.existsSync(path.join(rootDir, '.drift')) && !options.force && !options.dryRun) { process.stderr.write('Drift is already initialized. Use ...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"options\",\"type\":\"InitOptions\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "initCommand",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "InitOptions",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.467Z",
+          "last_verified_at": "2026-05-09T15:16:00.467Z"
+        },
+        {
+          "id": "ct_3dNDfnaI",
+          "type": "boundary",
+          "description": "initCommand parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 19,
+              "line_end": 34,
+              "snippet": "export async function initCommand(rootDir: string, options: InitOptions = {}): Promise<void> { if (fs.existsSync(path.join(rootDir, '.drift')) && !options.force && !options.dryRun) { process.stderr.write('Drift is already initialized. Use ...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false},{\"name\":\"options\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "initCommand",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "InitOptions",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.467Z",
+          "last_verified_at": "2026-05-09T15:16:00.467Z"
+        }
+      ]
+    },
+    {
+      "name": "refreshCommand",
+      "kind": "function",
+      "qualified_name": "refreshCommand",
+      "signature_hash": "945f5ebfacd87014",
+      "node_hash": "266f8e49bca94724",
+      "line_start": 36,
+      "line_end": 41,
+      "contracts": [
+        {
+          "id": "ct_Z1sQz1TM",
+          "type": "boundary",
+          "description": "refreshCommand returns Promise<void> and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 36,
+              "line_end": 41,
+              "snippet": "export async function refreshCommand(rootDir: string, options: { reporter?: string } = {}): Promise<void> { const config = loadConfig(rootDir); const result = await crystallizeProject(rootDir, config, { preserveExisting: true }); const rep...",
+              "reasoning": "Explicit return type is Promise<void>; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "refreshCommand",
+            "params": {
+              "expected_return": "Promise<void>",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "{ reporter?: string }",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.467Z",
+          "last_verified_at": "2026-05-09T15:16:00.467Z"
+        },
+        {
+          "id": "ct_KGFRFTAz",
+          "type": "boundary",
+          "description": "refreshCommand parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 36,
+              "line_end": 41,
+              "snippet": "export async function refreshCommand(rootDir: string, options: { reporter?: string } = {}): Promise<void> { const config = loadConfig(rootDir); const result = await crystallizeProject(rootDir, config, { preserveExisting: true }); const rep...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"options\",\"type\":\"{ reporter?: string }\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "refreshCommand",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "{ reporter?: string }",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.467Z",
+          "last_verified_at": "2026-05-09T15:16:00.467Z"
+        },
+        {
+          "id": "ct_gq91dJEL",
+          "type": "boundary",
+          "description": "refreshCommand parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 36,
+              "line_end": 41,
+              "snippet": "export async function refreshCommand(rootDir: string, options: { reporter?: string } = {}): Promise<void> { const config = loadConfig(rootDir); const result = await crystallizeProject(rootDir, config, { preserveExisting: true }); const rep...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false},{\"name\":\"options\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "refreshCommand",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "{ reporter?: string }",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.467Z",
+          "last_verified_at": "2026-05-09T15:16:00.467Z"
+        }
+      ]
+    },
+    {
+      "name": "applyInitOverrides",
+      "kind": "function",
+      "qualified_name": "applyInitOverrides",
+      "signature_hash": "0f5f6906ec9ffd0a",
+      "node_hash": "b917ad45f74a3486",
+      "line_start": 43,
+      "line_end": 54,
+      "contracts": [
+        {
+          "id": "ct_LMFqq47X",
+          "type": "boundary",
+          "description": "applyInitOverrides returns DriftConfig and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 43,
+              "line_end": 54,
+              "snippet": "function applyInitOverrides(config: DriftConfig, options: InitOptions): DriftConfig { const next: DriftConfig = { ...config, include: options.include ? splitPatterns(options.include) : config.include, exclude: options.exclude ? splitPatter...",
+              "reasoning": "Explicit return type is DriftConfig; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "applyInitOverrides",
+            "params": {
+              "expected_return": "DriftConfig",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "InitOptions",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.467Z",
+          "last_verified_at": "2026-05-09T15:16:00.467Z"
+        },
+        {
+          "id": "ct_wMJABhot",
+          "type": "boundary",
+          "description": "applyInitOverrides parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 43,
+              "line_end": 54,
+              "snippet": "function applyInitOverrides(config: DriftConfig, options: InitOptions): DriftConfig { const next: DriftConfig = { ...config, include: options.include ? splitPatterns(options.include) : config.include, exclude: options.exclude ? splitPatter...",
+              "reasoning": "Parameter contract: [{\"name\":\"config\",\"type\":\"DriftConfig\",\"optional\":false,\"nullable\":false},{\"name\":\"options\",\"type\":\"InitOptions\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "applyInitOverrides",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "InitOptions",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.467Z",
+          "last_verified_at": "2026-05-09T15:16:00.467Z"
+        },
+        {
+          "id": "ct__X0hVwiV",
+          "type": "boundary",
+          "description": "applyInitOverrides parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 43,
+              "line_end": 54,
+              "snippet": "function applyInitOverrides(config: DriftConfig, options: InitOptions): DriftConfig { const next: DriftConfig = { ...config, include: options.include ? splitPatterns(options.include) : config.include, exclude: options.exclude ? splitPatter...",
+              "reasoning": "Nullability contract: [{\"name\":\"config\",\"nullable\":false,\"optional\":false},{\"name\":\"options\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "applyInitOverrides",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "InitOptions",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.467Z",
+          "last_verified_at": "2026-05-09T15:16:00.467Z"
+        }
+      ]
+    },
+    {
+      "name": "splitPatterns",
+      "kind": "function",
+      "qualified_name": "splitPatterns",
+      "signature_hash": "68c812b2a5cc5c3e",
+      "node_hash": "b7f0c414100595d6",
+      "line_start": 56,
+      "line_end": 58,
+      "contracts": [
+        {
+          "id": "ct_iVWtwi4P",
+          "type": "boundary",
+          "description": "splitPatterns returns string[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 56,
+              "line_end": 58,
+              "snippet": "function splitPatterns(value: string): string[] { return value.split(',').map((item) => item.trim()).filter(Boolean); }",
+              "reasoning": "Explicit return type is string[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "splitPatterns",
+            "params": {
+              "expected_return": "string[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.467Z",
+          "last_verified_at": "2026-05-09T15:16:00.467Z"
+        },
+        {
+          "id": "ct_SFSq4srs",
+          "type": "boundary",
+          "description": "splitPatterns parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 56,
+              "line_end": 58,
+              "snippet": "function splitPatterns(value: string): string[] { return value.split(',').map((item) => item.trim()).filter(Boolean); }",
+              "reasoning": "Parameter contract: [{\"name\":\"value\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "splitPatterns",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.467Z",
+          "last_verified_at": "2026-05-09T15:16:00.467Z"
+        },
+        {
+          "id": "ct_7YUWmp2A",
+          "type": "boundary",
+          "description": "splitPatterns parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 56,
+              "line_end": 58,
+              "snippet": "function splitPatterns(value: string): string[] { return value.split(',').map((item) => item.trim()).filter(Boolean); }",
+              "reasoning": "Nullability contract: [{\"name\":\"value\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "splitPatterns",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.467Z",
+          "last_verified_at": "2026-05-09T15:16:00.467Z"
+        }
+      ]
+    },
+    {
+      "name": "warnIfDriftIgnored",
+      "kind": "function",
+      "qualified_name": "warnIfDriftIgnored",
+      "signature_hash": "82f0e5c92ecaa694",
+      "node_hash": "a8118b186cf631dd",
+      "line_start": 60,
+      "line_end": 67,
+      "contracts": [
+        {
+          "id": "ct_7BpRoHo6",
+          "type": "boundary",
+          "description": "warnIfDriftIgnored returns void and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 60,
+              "line_end": 67,
+              "snippet": "function warnIfDriftIgnored(rootDir: string): void { const gitignore = path.join(rootDir, '.gitignore'); if (!fs.existsSync(gitignore)) return; const ignored = fs.readFileSync(gitignore, 'utf8').split(/\\r?\\n/).some((line) => line.trim() ==...",
+              "reasoning": "Explicit return type is void; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "warnIfDriftIgnored",
+            "params": {
+              "expected_return": "void",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.467Z",
+          "last_verified_at": "2026-05-09T15:16:00.467Z"
+        },
+        {
+          "id": "ct_-A39FOe7",
+          "type": "boundary",
+          "description": "warnIfDriftIgnored parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 60,
+              "line_end": 67,
+              "snippet": "function warnIfDriftIgnored(rootDir: string): void { const gitignore = path.join(rootDir, '.gitignore'); if (!fs.existsSync(gitignore)) return; const ignored = fs.readFileSync(gitignore, 'utf8').split(/\\r?\\n/).some((line) => line.trim() ==...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "warnIfDriftIgnored",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.467Z",
+          "last_verified_at": "2026-05-09T15:16:00.467Z"
+        },
+        {
+          "id": "ct_-74M-7Qu",
+          "type": "boundary",
+          "description": "warnIfDriftIgnored parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 60,
+              "line_end": 67,
+              "snippet": "function warnIfDriftIgnored(rootDir: string): void { const gitignore = path.join(rootDir, '.gitignore'); if (!fs.existsSync(gitignore)) return; const ignored = fs.readFileSync(gitignore, 'utf8').split(/\\r?\\n/).some((line) => line.trim() ==...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "warnIfDriftIgnored",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.467Z",
+          "last_verified_at": "2026-05-09T15:16:00.467Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.468Z",
+    "last_checked_at": "2026-05-09T15:16:00.468Z",
+    "total_contracts": 15
+  }
+}

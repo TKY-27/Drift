@@ -1,0 +1,1983 @@
+{
+  "source_file": "src/utils/config.ts",
+  "source_hash": "04edf0d970b85092b3aa302dd6d61167418b66fde06e0fe62d88655a4789e759",
+  "scopes": [
+    {
+      "name": "<module>",
+      "kind": "module",
+      "qualified_name": "<module>",
+      "signature_hash": "58ea489a1b86dfef",
+      "node_hash": "04edf0d970b85092",
+      "line_start": 1,
+      "line_end": 160,
+      "contracts": [
+        {
+          "id": "ct_PhM_tKwg",
+          "type": "dependency",
+          "description": "Security-sensitive import from ./security.js is preserved",
+          "pattern": "import_constraint",
+          "detection": "import_graph",
+          "severity": "low",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "pattern_match",
+              "line_start": 6,
+              "line_end": 6,
+              "snippet": "import { globMatches, readJsonFile, SecurityError, validateRepoGlob, writeJsonFile } from './security.js';",
+              "reasoning": "Security-related import detected"
+            }
+          ],
+          "verification": {
+            "strategy": "import_presence",
+            "target": "./security.js",
+            "params": {
+              "names": [
+                "globMatches",
+                "readJsonFile",
+                "SecurityError",
+                "validateRepoGlob",
+                "writeJsonFile"
+              ],
+              "named": [
+                {
+                  "imported": "globMatches",
+                  "local": "globMatches"
+                },
+                {
+                  "imported": "readJsonFile",
+                  "local": "readJsonFile"
+                },
+                {
+                  "imported": "SecurityError",
+                  "local": "SecurityError"
+                },
+                {
+                  "imported": "validateRepoGlob",
+                  "local": "validateRepoGlob"
+                },
+                {
+                  "imported": "writeJsonFile",
+                  "local": "writeJsonFile"
+                }
+              ],
+              "type_only": false
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.724Z",
+          "last_verified_at": "2026-05-09T15:16:00.724Z"
+        }
+      ]
+    },
+    {
+      "name": "isSeverity",
+      "kind": "function",
+      "qualified_name": "isSeverity",
+      "signature_hash": "fc3490fecc3ddc5e",
+      "node_hash": "10b518c145f444b9",
+      "line_start": 13,
+      "line_end": 15,
+      "contracts": [
+        {
+          "id": "ct_cnTxI0OE",
+          "type": "boundary",
+          "description": "isSeverity returns value is Severity and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 13,
+              "line_end": 15,
+              "snippet": "function isSeverity(value: unknown): value is Severity { return typeof value === 'string' && severities.includes(value as Severity); }",
+              "reasoning": "Explicit return type is value is Severity; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isSeverity",
+            "params": {
+              "expected_return": "value is Severity",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "unknown",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.721Z",
+          "last_verified_at": "2026-05-09T15:16:00.721Z"
+        },
+        {
+          "id": "ct_kzFCK0X0",
+          "type": "boundary",
+          "description": "isSeverity parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 13,
+              "line_end": 15,
+              "snippet": "function isSeverity(value: unknown): value is Severity { return typeof value === 'string' && severities.includes(value as Severity); }",
+              "reasoning": "Parameter contract: [{\"name\":\"value\",\"type\":\"unknown\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isSeverity",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "unknown",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.721Z",
+          "last_verified_at": "2026-05-09T15:16:00.721Z"
+        },
+        {
+          "id": "ct_Iw6Krsx1",
+          "type": "boundary",
+          "description": "isSeverity parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 13,
+              "line_end": 15,
+              "snippet": "function isSeverity(value: unknown): value is Severity { return typeof value === 'string' && severities.includes(value as Severity); }",
+              "reasoning": "Nullability contract: [{\"name\":\"value\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isSeverity",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "unknown",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.721Z",
+          "last_verified_at": "2026-05-09T15:16:00.721Z"
+        }
+      ]
+    },
+    {
+      "name": "isReporter",
+      "kind": "function",
+      "qualified_name": "isReporter",
+      "signature_hash": "53dc8ae2be1dacbb",
+      "node_hash": "ca8af9377cb206cf",
+      "line_start": 17,
+      "line_end": 19,
+      "contracts": [
+        {
+          "id": "ct_CPw1Opi9",
+          "type": "boundary",
+          "description": "isReporter returns value is Reporter and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 17,
+              "line_end": 19,
+              "snippet": "export function isReporter(value: unknown): value is Reporter { return value === 'terminal' || value === 'json' || value === 'github'; }",
+              "reasoning": "Explicit return type is value is Reporter; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isReporter",
+            "params": {
+              "expected_return": "value is Reporter",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "unknown",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.721Z",
+          "last_verified_at": "2026-05-09T15:16:00.721Z"
+        },
+        {
+          "id": "ct_GwbePv7v",
+          "type": "boundary",
+          "description": "isReporter parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 17,
+              "line_end": 19,
+              "snippet": "export function isReporter(value: unknown): value is Reporter { return value === 'terminal' || value === 'json' || value === 'github'; }",
+              "reasoning": "Parameter contract: [{\"name\":\"value\",\"type\":\"unknown\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isReporter",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "unknown",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.721Z",
+          "last_verified_at": "2026-05-09T15:16:00.721Z"
+        },
+        {
+          "id": "ct_BkQVYEHJ",
+          "type": "boundary",
+          "description": "isReporter parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 17,
+              "line_end": 19,
+              "snippet": "export function isReporter(value: unknown): value is Reporter { return value === 'terminal' || value === 'json' || value === 'github'; }",
+              "reasoning": "Nullability contract: [{\"name\":\"value\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isReporter",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "unknown",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.721Z",
+          "last_verified_at": "2026-05-09T15:16:00.721Z"
+        }
+      ]
+    },
+    {
+      "name": "configPath",
+      "kind": "function",
+      "qualified_name": "configPath",
+      "signature_hash": "98ce3c4194922c8f",
+      "node_hash": "ef29617da573bff8",
+      "line_start": 21,
+      "line_end": 23,
+      "contracts": [
+        {
+          "id": "ct_JHGuQVSH",
+          "type": "boundary",
+          "description": "configPath returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 21,
+              "line_end": 23,
+              "snippet": "export function configPath(rootDir: string): string { return path.join(rootDir, '.drift', 'config.json'); }",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "configPath",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.721Z",
+          "last_verified_at": "2026-05-09T15:16:00.721Z"
+        },
+        {
+          "id": "ct_lp9G-30z",
+          "type": "boundary",
+          "description": "configPath parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 21,
+              "line_end": 23,
+              "snippet": "export function configPath(rootDir: string): string { return path.join(rootDir, '.drift', 'config.json'); }",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "configPath",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.721Z",
+          "last_verified_at": "2026-05-09T15:16:00.721Z"
+        },
+        {
+          "id": "ct_ppWOXpG6",
+          "type": "boundary",
+          "description": "configPath parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 21,
+              "line_end": 23,
+              "snippet": "export function configPath(rootDir: string): string { return path.join(rootDir, '.drift', 'config.json'); }",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "configPath",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.721Z",
+          "last_verified_at": "2026-05-09T15:16:00.721Z"
+        }
+      ]
+    },
+    {
+      "name": "ensureConfig",
+      "kind": "function",
+      "qualified_name": "ensureConfig",
+      "signature_hash": "3d8b3d6c07ce4bb0",
+      "node_hash": "a253698782fda159",
+      "line_start": 25,
+      "line_end": 33,
+      "contracts": [
+        {
+          "id": "ct_UvI_uknX",
+          "type": "boundary",
+          "description": "ensureConfig returns DriftConfig and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 25,
+              "line_end": 33,
+              "snippet": "export function ensureConfig(rootDir: string): DriftConfig { assertDriftDirIsNotSymlink(rootDir); const target = configPath(rootDir); if (!fs.existsSync(target)) { writeJsonFile(target, defaultConfig); return defaultConfig; } return loadCo...",
+              "reasoning": "Explicit return type is DriftConfig; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "ensureConfig",
+            "params": {
+              "expected_return": "DriftConfig",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.721Z",
+          "last_verified_at": "2026-05-09T15:16:00.721Z"
+        },
+        {
+          "id": "ct_bZ-nQlqV",
+          "type": "boundary",
+          "description": "ensureConfig parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 25,
+              "line_end": 33,
+              "snippet": "export function ensureConfig(rootDir: string): DriftConfig { assertDriftDirIsNotSymlink(rootDir); const target = configPath(rootDir); if (!fs.existsSync(target)) { writeJsonFile(target, defaultConfig); return defaultConfig; } return loadCo...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "ensureConfig",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.721Z",
+          "last_verified_at": "2026-05-09T15:16:00.721Z"
+        },
+        {
+          "id": "ct_4A01r2Py",
+          "type": "boundary",
+          "description": "ensureConfig parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 25,
+              "line_end": 33,
+              "snippet": "export function ensureConfig(rootDir: string): DriftConfig { assertDriftDirIsNotSymlink(rootDir); const target = configPath(rootDir); if (!fs.existsSync(target)) { writeJsonFile(target, defaultConfig); return defaultConfig; } return loadCo...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "ensureConfig",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.721Z",
+          "last_verified_at": "2026-05-09T15:16:00.721Z"
+        },
+        {
+          "id": "ct_eJYQos6v",
+          "type": "invariant",
+          "description": "ensureConfig runs guard assertDriftDirIsNotSymlink before core logic",
+          "pattern": "guard_clause",
+          "detection": "control_flow",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "call_site",
+              "line_start": 26,
+              "line_end": 26,
+              "snippet": "assertDriftDirIsNotSymlink(rootDir)",
+              "reasoning": "Guard call appears at the function entry point"
+            }
+          ],
+          "verification": {
+            "strategy": "call_presence",
+            "target": "assertDriftDirIsNotSymlink",
+            "params": {
+              "near_start": true,
+              "before_first_side_effect": true,
+              "path_kind": "unconditional"
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.721Z",
+          "last_verified_at": "2026-05-09T15:16:00.721Z"
+        },
+        {
+          "id": "ct_to8TGuFp",
+          "type": "invariant",
+          "description": "ensureConfig validates input before core logic via assertDriftDirIsNotSymlink",
+          "pattern": "always_validate",
+          "detection": "control_flow",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "call_site",
+              "line_start": 26,
+              "line_end": 26,
+              "snippet": "assertDriftDirIsNotSymlink(rootDir)",
+              "reasoning": "Validation call appears in the first statements of the scope"
+            }
+          ],
+          "verification": {
+            "strategy": "call_presence",
+            "target": "assertDriftDirIsNotSymlink",
+            "params": {
+              "near_start": true
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.721Z",
+          "last_verified_at": "2026-05-09T15:16:00.721Z"
+        }
+      ]
+    },
+    {
+      "name": "loadConfig",
+      "kind": "function",
+      "qualified_name": "loadConfig",
+      "signature_hash": "3d8b3d6c07ce4bb0",
+      "node_hash": "608147d87d29f79b",
+      "line_start": 35,
+      "line_end": 41,
+      "contracts": [
+        {
+          "id": "ct_at0d8tix",
+          "type": "boundary",
+          "description": "loadConfig returns DriftConfig and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 35,
+              "line_end": 41,
+              "snippet": "export function loadConfig(rootDir: string): DriftConfig { assertDriftDirIsNotSymlink(rootDir); const target = configPath(rootDir); if (!fs.existsSync(target)) return defaultConfig; const parsed = readJsonFile<Partial<DriftConfig>>(target,...",
+              "reasoning": "Explicit return type is DriftConfig; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "loadConfig",
+            "params": {
+              "expected_return": "DriftConfig",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.721Z",
+          "last_verified_at": "2026-05-09T15:16:00.721Z"
+        },
+        {
+          "id": "ct_hcqJ6jf0",
+          "type": "boundary",
+          "description": "loadConfig parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 35,
+              "line_end": 41,
+              "snippet": "export function loadConfig(rootDir: string): DriftConfig { assertDriftDirIsNotSymlink(rootDir); const target = configPath(rootDir); if (!fs.existsSync(target)) return defaultConfig; const parsed = readJsonFile<Partial<DriftConfig>>(target,...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "loadConfig",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.721Z",
+          "last_verified_at": "2026-05-09T15:16:00.721Z"
+        },
+        {
+          "id": "ct_1n_krzRV",
+          "type": "boundary",
+          "description": "loadConfig parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 35,
+              "line_end": 41,
+              "snippet": "export function loadConfig(rootDir: string): DriftConfig { assertDriftDirIsNotSymlink(rootDir); const target = configPath(rootDir); if (!fs.existsSync(target)) return defaultConfig; const parsed = readJsonFile<Partial<DriftConfig>>(target,...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "loadConfig",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.721Z",
+          "last_verified_at": "2026-05-09T15:16:00.721Z"
+        },
+        {
+          "id": "ct_BRkXm5nI",
+          "type": "invariant",
+          "description": "loadConfig runs guard assertDriftDirIsNotSymlink before core logic",
+          "pattern": "guard_clause",
+          "detection": "control_flow",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "call_site",
+              "line_start": 36,
+              "line_end": 36,
+              "snippet": "assertDriftDirIsNotSymlink(rootDir)",
+              "reasoning": "Guard call appears at the function entry point"
+            }
+          ],
+          "verification": {
+            "strategy": "call_presence",
+            "target": "assertDriftDirIsNotSymlink",
+            "params": {
+              "near_start": true,
+              "before_first_side_effect": true,
+              "path_kind": "unconditional"
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.722Z",
+          "last_verified_at": "2026-05-09T15:16:00.722Z"
+        },
+        {
+          "id": "ct_EL4-Yc5H",
+          "type": "invariant",
+          "description": "loadConfig validates input before core logic via assertDriftDirIsNotSymlink",
+          "pattern": "always_validate",
+          "detection": "control_flow",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "call_site",
+              "line_start": 36,
+              "line_end": 36,
+              "snippet": "assertDriftDirIsNotSymlink(rootDir)",
+              "reasoning": "Validation call appears in the first statements of the scope"
+            }
+          ],
+          "verification": {
+            "strategy": "call_presence",
+            "target": "assertDriftDirIsNotSymlink",
+            "params": {
+              "near_start": true
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.722Z",
+          "last_verified_at": "2026-05-09T15:16:00.722Z"
+        }
+      ]
+    },
+    {
+      "name": "saveConfig",
+      "kind": "function",
+      "qualified_name": "saveConfig",
+      "signature_hash": "a4b9e98f752bd8a4",
+      "node_hash": "d5afe38acb133db1",
+      "line_start": 43,
+      "line_end": 47,
+      "contracts": [
+        {
+          "id": "ct__tBJMBRh",
+          "type": "boundary",
+          "description": "saveConfig returns void and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 43,
+              "line_end": 47,
+              "snippet": "export function saveConfig(rootDir: string, config: DriftConfig): void { assertDriftDirIsNotSymlink(rootDir); fs.mkdirSync(path.join(rootDir, '.drift'), { recursive: true, mode: 0o755 }); writeJsonFile(configPath(rootDir), normalizeConfig(...",
+              "reasoning": "Explicit return type is void; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "saveConfig",
+            "params": {
+              "expected_return": "void",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.722Z",
+          "last_verified_at": "2026-05-09T15:16:00.722Z"
+        },
+        {
+          "id": "ct_VYBQDzos",
+          "type": "boundary",
+          "description": "saveConfig parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 43,
+              "line_end": 47,
+              "snippet": "export function saveConfig(rootDir: string, config: DriftConfig): void { assertDriftDirIsNotSymlink(rootDir); fs.mkdirSync(path.join(rootDir, '.drift'), { recursive: true, mode: 0o755 }); writeJsonFile(configPath(rootDir), normalizeConfig(...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"config\",\"type\":\"DriftConfig\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "saveConfig",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.722Z",
+          "last_verified_at": "2026-05-09T15:16:00.722Z"
+        },
+        {
+          "id": "ct_zO3GLphk",
+          "type": "boundary",
+          "description": "saveConfig parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 43,
+              "line_end": 47,
+              "snippet": "export function saveConfig(rootDir: string, config: DriftConfig): void { assertDriftDirIsNotSymlink(rootDir); fs.mkdirSync(path.join(rootDir, '.drift'), { recursive: true, mode: 0o755 }); writeJsonFile(configPath(rootDir), normalizeConfig(...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false},{\"name\":\"config\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "saveConfig",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.722Z",
+          "last_verified_at": "2026-05-09T15:16:00.722Z"
+        },
+        {
+          "id": "ct_xoTrCCe9",
+          "type": "invariant",
+          "description": "saveConfig runs guard assertDriftDirIsNotSymlink before core logic",
+          "pattern": "guard_clause",
+          "detection": "control_flow",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "call_site",
+              "line_start": 44,
+              "line_end": 44,
+              "snippet": "assertDriftDirIsNotSymlink(rootDir)",
+              "reasoning": "Guard call appears at the function entry point"
+            }
+          ],
+          "verification": {
+            "strategy": "call_presence",
+            "target": "assertDriftDirIsNotSymlink",
+            "params": {
+              "near_start": true,
+              "before_first_side_effect": true,
+              "path_kind": "unconditional"
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.722Z",
+          "last_verified_at": "2026-05-09T15:16:00.722Z"
+        },
+        {
+          "id": "ct_iGbiTe0q",
+          "type": "invariant",
+          "description": "saveConfig validates input before core logic via assertDriftDirIsNotSymlink",
+          "pattern": "always_validate",
+          "detection": "control_flow",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "call_site",
+              "line_start": 44,
+              "line_end": 44,
+              "snippet": "assertDriftDirIsNotSymlink(rootDir)",
+              "reasoning": "Validation call appears in the first statements of the scope"
+            }
+          ],
+          "verification": {
+            "strategy": "call_presence",
+            "target": "assertDriftDirIsNotSymlink",
+            "params": {
+              "near_start": true
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.722Z",
+          "last_verified_at": "2026-05-09T15:16:00.722Z"
+        }
+      ]
+    },
+    {
+      "name": "assertDriftDirIsNotSymlink",
+      "kind": "function",
+      "qualified_name": "assertDriftDirIsNotSymlink",
+      "signature_hash": "82f0e5c92ecaa694",
+      "node_hash": "dc91e4d4ea9e5549",
+      "line_start": 49,
+      "line_end": 58,
+      "contracts": [
+        {
+          "id": "ct_KZq2v1DW",
+          "type": "boundary",
+          "description": "assertDriftDirIsNotSymlink returns void and may throw",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 49,
+              "line_end": 58,
+              "snippet": "function assertDriftDirIsNotSymlink(rootDir: string): void { const driftDir = path.join(rootDir, '.drift'); if (fs.existsSync(driftDir) && fs.lstatSync(driftDir).isSymbolicLink()) { throw new Error(`Refusing to use symlinked .drift directo...",
+              "reasoning": "Explicit return type is void; no_throw=false"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "assertDriftDirIsNotSymlink",
+            "params": {
+              "expected_return": "void",
+              "no_throw": false,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.722Z",
+          "last_verified_at": "2026-05-09T15:16:00.722Z"
+        },
+        {
+          "id": "ct_F7xnX-9d",
+          "type": "boundary",
+          "description": "assertDriftDirIsNotSymlink parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 49,
+              "line_end": 58,
+              "snippet": "function assertDriftDirIsNotSymlink(rootDir: string): void { const driftDir = path.join(rootDir, '.drift'); if (fs.existsSync(driftDir) && fs.lstatSync(driftDir).isSymbolicLink()) { throw new Error(`Refusing to use symlinked .drift directo...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "assertDriftDirIsNotSymlink",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.722Z",
+          "last_verified_at": "2026-05-09T15:16:00.722Z"
+        },
+        {
+          "id": "ct_iu-STShk",
+          "type": "boundary",
+          "description": "assertDriftDirIsNotSymlink parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 49,
+              "line_end": 58,
+              "snippet": "function assertDriftDirIsNotSymlink(rootDir: string): void { const driftDir = path.join(rootDir, '.drift'); if (fs.existsSync(driftDir) && fs.lstatSync(driftDir).isSymbolicLink()) { throw new Error(`Refusing to use symlinked .drift directo...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "assertDriftDirIsNotSymlink",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.722Z",
+          "last_verified_at": "2026-05-09T15:16:00.722Z"
+        }
+      ]
+    },
+    {
+      "name": "normalizeConfig",
+      "kind": "function",
+      "qualified_name": "normalizeConfig",
+      "signature_hash": "7509f02722b24e44",
+      "node_hash": "68ebf3c347de8b91",
+      "line_start": 60,
+      "line_end": 119,
+      "contracts": [
+        {
+          "id": "ct_cT7gM7MH",
+          "type": "boundary",
+          "description": "normalizeConfig returns DriftConfig and may throw",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 60,
+              "line_end": 119,
+              "snippet": "export function normalizeConfig(input: Partial<DriftConfig>): DriftConfig { if (input.severity_threshold !== undefined && !isSeverity(input.severity_threshold)) { throw new SecurityError(`Unsupported severity_threshold in .drift/config.jso...",
+              "reasoning": "Explicit return type is DriftConfig; no_throw=false"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "normalizeConfig",
+            "params": {
+              "expected_return": "DriftConfig",
+              "no_throw": false,
+              "parameters": [
+                {
+                  "name": "input",
+                  "type": "Partial<DriftConfig>",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.723Z",
+          "last_verified_at": "2026-05-09T15:16:00.723Z"
+        },
+        {
+          "id": "ct_oIPccTEr",
+          "type": "boundary",
+          "description": "normalizeConfig parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 60,
+              "line_end": 119,
+              "snippet": "export function normalizeConfig(input: Partial<DriftConfig>): DriftConfig { if (input.severity_threshold !== undefined && !isSeverity(input.severity_threshold)) { throw new SecurityError(`Unsupported severity_threshold in .drift/config.jso...",
+              "reasoning": "Parameter contract: [{\"name\":\"input\",\"type\":\"Partial<DriftConfig>\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "normalizeConfig",
+            "params": {
+              "parameters": [
+                {
+                  "name": "input",
+                  "type": "Partial<DriftConfig>",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.723Z",
+          "last_verified_at": "2026-05-09T15:16:00.723Z"
+        },
+        {
+          "id": "ct_u4fehxwD",
+          "type": "boundary",
+          "description": "normalizeConfig parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 60,
+              "line_end": 119,
+              "snippet": "export function normalizeConfig(input: Partial<DriftConfig>): DriftConfig { if (input.severity_threshold !== undefined && !isSeverity(input.severity_threshold)) { throw new SecurityError(`Unsupported severity_threshold in .drift/config.jso...",
+              "reasoning": "Nullability contract: [{\"name\":\"input\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "normalizeConfig",
+            "params": {
+              "parameters": [
+                {
+                  "name": "input",
+                  "type": "Partial<DriftConfig>",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.723Z",
+          "last_verified_at": "2026-05-09T15:16:00.723Z"
+        }
+      ]
+    },
+    {
+      "name": "isPlainObject",
+      "kind": "function",
+      "qualified_name": "isPlainObject",
+      "signature_hash": "53745e42265eea5c",
+      "node_hash": "b6fa25736b47558e",
+      "line_start": 121,
+      "line_end": 123,
+      "contracts": [
+        {
+          "id": "ct_DYdfS_op",
+          "type": "boundary",
+          "description": "isPlainObject returns value is Record<string, unknown> and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 121,
+              "line_end": 123,
+              "snippet": "function isPlainObject(value: unknown): value is Record<string, unknown> { return typeof value === 'object' && value !== null && !Array.isArray(value); }",
+              "reasoning": "Explicit return type is value is Record<string, unknown>; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isPlainObject",
+            "params": {
+              "expected_return": "value is Record<string, unknown>",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "unknown",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.723Z",
+          "last_verified_at": "2026-05-09T15:16:00.723Z"
+        },
+        {
+          "id": "ct_A6PXgUW4",
+          "type": "boundary",
+          "description": "isPlainObject parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 121,
+              "line_end": 123,
+              "snippet": "function isPlainObject(value: unknown): value is Record<string, unknown> { return typeof value === 'object' && value !== null && !Array.isArray(value); }",
+              "reasoning": "Parameter contract: [{\"name\":\"value\",\"type\":\"unknown\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isPlainObject",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "unknown",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.723Z",
+          "last_verified_at": "2026-05-09T15:16:00.723Z"
+        },
+        {
+          "id": "ct_BUoXHRua",
+          "type": "boundary",
+          "description": "isPlainObject parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 121,
+              "line_end": 123,
+              "snippet": "function isPlainObject(value: unknown): value is Record<string, unknown> { return typeof value === 'object' && value !== null && !Array.isArray(value); }",
+              "reasoning": "Nullability contract: [{\"name\":\"value\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isPlainObject",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "unknown",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.724Z",
+          "last_verified_at": "2026-05-09T15:16:00.724Z"
+        }
+      ]
+    },
+    {
+      "name": "normalizePatterns",
+      "kind": "function",
+      "qualified_name": "normalizePatterns",
+      "signature_hash": "9a1844d07a9b4d4e",
+      "node_hash": "08176f399500e24c",
+      "line_start": 125,
+      "line_end": 134,
+      "contracts": [
+        {
+          "id": "ct_PS2nFxK3",
+          "type": "boundary",
+          "description": "normalizePatterns returns string[] and may throw",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 125,
+              "line_end": 134,
+              "snippet": "function normalizePatterns(value: unknown, fallback: string[], label: string): string[] { const source = Array.isArray(value) ? value : fallback; const patterns = source.filter((item): item is string => typeof item === 'string').map(valida...",
+              "reasoning": "Explicit return type is string[]; no_throw=false"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "normalizePatterns",
+            "params": {
+              "expected_return": "string[]",
+              "no_throw": false,
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "unknown",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "fallback",
+                  "type": "string[]",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "label",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.724Z",
+          "last_verified_at": "2026-05-09T15:16:00.724Z"
+        },
+        {
+          "id": "ct_skQoHu7-",
+          "type": "boundary",
+          "description": "normalizePatterns parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 125,
+              "line_end": 134,
+              "snippet": "function normalizePatterns(value: unknown, fallback: string[], label: string): string[] { const source = Array.isArray(value) ? value : fallback; const patterns = source.filter((item): item is string => typeof item === 'string').map(valida...",
+              "reasoning": "Parameter contract: [{\"name\":\"value\",\"type\":\"unknown\",\"optional\":false,\"nullable\":false},{\"name\":\"fallback\",\"type\":\"string[]\",\"optional\":false,\"nullable\":false},{\"name\":\"label\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "normalizePatterns",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "unknown",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "fallback",
+                  "type": "string[]",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "label",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.724Z",
+          "last_verified_at": "2026-05-09T15:16:00.724Z"
+        },
+        {
+          "id": "ct_wk61aFXN",
+          "type": "boundary",
+          "description": "normalizePatterns parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 125,
+              "line_end": 134,
+              "snippet": "function normalizePatterns(value: unknown, fallback: string[], label: string): string[] { const source = Array.isArray(value) ? value : fallback; const patterns = source.filter((item): item is string => typeof item === 'string').map(valida...",
+              "reasoning": "Nullability contract: [{\"name\":\"value\",\"nullable\":false,\"optional\":false},{\"name\":\"fallback\",\"nullable\":false,\"optional\":false},{\"name\":\"label\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "normalizePatterns",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "unknown",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "fallback",
+                  "type": "string[]",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "label",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.724Z",
+          "last_verified_at": "2026-05-09T15:16:00.724Z"
+        }
+      ]
+    },
+    {
+      "name": "isPatternEnabled",
+      "kind": "function",
+      "qualified_name": "isPatternEnabled",
+      "signature_hash": "5a5349ac44968c63",
+      "node_hash": "42b1390243a5a1c9",
+      "line_start": 136,
+      "line_end": 138,
+      "contracts": [
+        {
+          "id": "ct_WMrQKH2U",
+          "type": "boundary",
+          "description": "isPatternEnabled returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 136,
+              "line_end": 138,
+              "snippet": "export function isPatternEnabled(config: DriftConfig, pattern: string): boolean { return config.patterns[pattern]?.enabled === true; }",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isPatternEnabled",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "pattern",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.724Z",
+          "last_verified_at": "2026-05-09T15:16:00.724Z"
+        },
+        {
+          "id": "ct_QfthndW9",
+          "type": "boundary",
+          "description": "isPatternEnabled parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 136,
+              "line_end": 138,
+              "snippet": "export function isPatternEnabled(config: DriftConfig, pattern: string): boolean { return config.patterns[pattern]?.enabled === true; }",
+              "reasoning": "Parameter contract: [{\"name\":\"config\",\"type\":\"DriftConfig\",\"optional\":false,\"nullable\":false},{\"name\":\"pattern\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isPatternEnabled",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "pattern",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.724Z",
+          "last_verified_at": "2026-05-09T15:16:00.724Z"
+        },
+        {
+          "id": "ct_5qSA5xoE",
+          "type": "boundary",
+          "description": "isPatternEnabled parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 136,
+              "line_end": 138,
+              "snippet": "export function isPatternEnabled(config: DriftConfig, pattern: string): boolean { return config.patterns[pattern]?.enabled === true; }",
+              "reasoning": "Nullability contract: [{\"name\":\"config\",\"nullable\":false,\"optional\":false},{\"name\":\"pattern\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isPatternEnabled",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "pattern",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.724Z",
+          "last_verified_at": "2026-05-09T15:16:00.724Z"
+        }
+      ]
+    },
+    {
+      "name": "patternSeverity",
+      "kind": "function",
+      "qualified_name": "patternSeverity",
+      "signature_hash": "3b6a1f77a4a351bb",
+      "node_hash": "2a954c39135474c3",
+      "line_start": 140,
+      "line_end": 142,
+      "contracts": [
+        {
+          "id": "ct_OD-7bW8Z",
+          "type": "boundary",
+          "description": "patternSeverity returns Severity and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 140,
+              "line_end": 142,
+              "snippet": "export function patternSeverity(config: DriftConfig, pattern: string, fallback: Severity): Severity { return config.patterns[pattern]?.severity ?? fallback; }",
+              "reasoning": "Explicit return type is Severity; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "patternSeverity",
+            "params": {
+              "expected_return": "Severity",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "pattern",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "fallback",
+                  "type": "Severity",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.724Z",
+          "last_verified_at": "2026-05-09T15:16:00.724Z"
+        },
+        {
+          "id": "ct_KI_X5ZnV",
+          "type": "boundary",
+          "description": "patternSeverity parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 140,
+              "line_end": 142,
+              "snippet": "export function patternSeverity(config: DriftConfig, pattern: string, fallback: Severity): Severity { return config.patterns[pattern]?.severity ?? fallback; }",
+              "reasoning": "Parameter contract: [{\"name\":\"config\",\"type\":\"DriftConfig\",\"optional\":false,\"nullable\":false},{\"name\":\"pattern\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"fallback\",\"type\":\"Severity\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "patternSeverity",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "pattern",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "fallback",
+                  "type": "Severity",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.724Z",
+          "last_verified_at": "2026-05-09T15:16:00.724Z"
+        },
+        {
+          "id": "ct_3SfrcDlD",
+          "type": "boundary",
+          "description": "patternSeverity parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 140,
+              "line_end": 142,
+              "snippet": "export function patternSeverity(config: DriftConfig, pattern: string, fallback: Severity): Severity { return config.patterns[pattern]?.severity ?? fallback; }",
+              "reasoning": "Nullability contract: [{\"name\":\"config\",\"nullable\":false,\"optional\":false},{\"name\":\"pattern\",\"nullable\":false,\"optional\":false},{\"name\":\"fallback\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "patternSeverity",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "pattern",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "fallback",
+                  "type": "Severity",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.724Z",
+          "last_verified_at": "2026-05-09T15:16:00.724Z"
+        }
+      ]
+    },
+    {
+      "name": "sourceMatchesConfig",
+      "kind": "function",
+      "qualified_name": "sourceMatchesConfig",
+      "signature_hash": "8bb0de44a32ac9f0",
+      "node_hash": "6122e04d01c4b5a4",
+      "line_start": 144,
+      "line_end": 148,
+      "contracts": [
+        {
+          "id": "ct_3h6W1sHe",
+          "type": "boundary",
+          "description": "sourceMatchesConfig returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 144,
+              "line_end": 148,
+              "snippet": "export function sourceMatchesConfig(file: string, config: DriftConfig): boolean { if (!/\\.[cm]?[tj]sx?$/.test(file)) return false; if (isHardExcluded(file)) return false; return config.include.some((pattern) => globMatches(file, pattern)) ...",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "sourceMatchesConfig",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "file",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.724Z",
+          "last_verified_at": "2026-05-09T15:16:00.724Z"
+        },
+        {
+          "id": "ct_vG3n9o7x",
+          "type": "boundary",
+          "description": "sourceMatchesConfig parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 144,
+              "line_end": 148,
+              "snippet": "export function sourceMatchesConfig(file: string, config: DriftConfig): boolean { if (!/\\.[cm]?[tj]sx?$/.test(file)) return false; if (isHardExcluded(file)) return false; return config.include.some((pattern) => globMatches(file, pattern)) ...",
+              "reasoning": "Parameter contract: [{\"name\":\"file\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"config\",\"type\":\"DriftConfig\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "sourceMatchesConfig",
+            "params": {
+              "parameters": [
+                {
+                  "name": "file",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.724Z",
+          "last_verified_at": "2026-05-09T15:16:00.724Z"
+        },
+        {
+          "id": "ct_z7fuIfs4",
+          "type": "boundary",
+          "description": "sourceMatchesConfig parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 144,
+              "line_end": 148,
+              "snippet": "export function sourceMatchesConfig(file: string, config: DriftConfig): boolean { if (!/\\.[cm]?[tj]sx?$/.test(file)) return false; if (isHardExcluded(file)) return false; return config.include.some((pattern) => globMatches(file, pattern)) ...",
+              "reasoning": "Nullability contract: [{\"name\":\"file\",\"nullable\":false,\"optional\":false},{\"name\":\"config\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "sourceMatchesConfig",
+            "params": {
+              "parameters": [
+                {
+                  "name": "file",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.724Z",
+          "last_verified_at": "2026-05-09T15:16:00.724Z"
+        }
+      ]
+    },
+    {
+      "name": "isHardExcluded",
+      "kind": "function",
+      "qualified_name": "isHardExcluded",
+      "signature_hash": "1966a1cd62924e36",
+      "node_hash": "13d07dd83965ebaf",
+      "line_start": 150,
+      "line_end": 159,
+      "contracts": [
+        {
+          "id": "ct_6mKVQK_b",
+          "type": "boundary",
+          "description": "isHardExcluded returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 150,
+              "line_end": 159,
+              "snippet": "function isHardExcluded(file: string): boolean { return file.includes('/node_modules/') || file.startsWith('node_modules/') || file.includes('/dist/') || file.startsWith('dist/') || file.includes('/.drift/') || file.startsWith('.drift/') |...",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isHardExcluded",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "file",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.724Z",
+          "last_verified_at": "2026-05-09T15:16:00.724Z"
+        },
+        {
+          "id": "ct_Gk_SF3Xy",
+          "type": "boundary",
+          "description": "isHardExcluded parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 150,
+              "line_end": 159,
+              "snippet": "function isHardExcluded(file: string): boolean { return file.includes('/node_modules/') || file.startsWith('node_modules/') || file.includes('/dist/') || file.startsWith('dist/') || file.includes('/.drift/') || file.startsWith('.drift/') |...",
+              "reasoning": "Parameter contract: [{\"name\":\"file\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isHardExcluded",
+            "params": {
+              "parameters": [
+                {
+                  "name": "file",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.724Z",
+          "last_verified_at": "2026-05-09T15:16:00.724Z"
+        },
+        {
+          "id": "ct_FLKXv700",
+          "type": "boundary",
+          "description": "isHardExcluded parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 150,
+              "line_end": 159,
+              "snippet": "function isHardExcluded(file: string): boolean { return file.includes('/node_modules/') || file.startsWith('node_modules/') || file.includes('/dist/') || file.startsWith('dist/') || file.includes('/.drift/') || file.startsWith('.drift/') |...",
+              "reasoning": "Nullability contract: [{\"name\":\"file\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isHardExcluded",
+            "params": {
+              "parameters": [
+                {
+                  "name": "file",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.724Z",
+          "last_verified_at": "2026-05-09T15:16:00.724Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.724Z",
+    "last_checked_at": "2026-05-09T15:16:00.724Z",
+    "total_contracts": 49
+  }
+}

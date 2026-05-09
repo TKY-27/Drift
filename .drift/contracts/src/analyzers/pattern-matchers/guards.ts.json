@@ -1,0 +1,544 @@
+{
+  "source_file": "src/analyzers/pattern-matchers/guards.ts",
+  "source_hash": "c63e14fbf79292d2bc099b93ea72fe16f759490fb91726041d2e60cf1d65a75a",
+  "scopes": [
+    {
+      "name": "detectGuardContracts",
+      "kind": "function",
+      "qualified_name": "detectGuardContracts",
+      "signature_hash": "5a4ea726ac8fe85a",
+      "node_hash": "3f8f6a19453e0939",
+      "line_start": 21,
+      "line_end": 39,
+      "contracts": [
+        {
+          "id": "ct_OMQ2vVOs",
+          "type": "boundary",
+          "description": "detectGuardContracts returns Contract[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 21,
+              "line_end": 39,
+              "snippet": "export function detectGuardContracts(config: DriftConfig, parsed: ParsedFile, scope: ScopeInfo): Contract[] { if (!isPatternEnabled(config, 'guard_clause')) return []; return entryGuardCalls(scope, extractCalls(parsed, scope)).map((call) =...",
+              "reasoning": "Explicit return type is Contract[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectGuardContracts",
+            "params": {
+              "expected_return": "Contract[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.328Z",
+          "last_verified_at": "2026-05-09T15:16:00.328Z"
+        },
+        {
+          "id": "ct_RcFGKSFA",
+          "type": "boundary",
+          "description": "detectGuardContracts parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 21,
+              "line_end": 39,
+              "snippet": "export function detectGuardContracts(config: DriftConfig, parsed: ParsedFile, scope: ScopeInfo): Contract[] { if (!isPatternEnabled(config, 'guard_clause')) return []; return entryGuardCalls(scope, extractCalls(parsed, scope)).map((call) =...",
+              "reasoning": "Parameter contract: [{\"name\":\"config\",\"type\":\"DriftConfig\",\"optional\":false,\"nullable\":false},{\"name\":\"parsed\",\"type\":\"ParsedFile\",\"optional\":false,\"nullable\":false},{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectGuardContracts",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.328Z",
+          "last_verified_at": "2026-05-09T15:16:00.328Z"
+        },
+        {
+          "id": "ct_LvZ2x3GR",
+          "type": "boundary",
+          "description": "detectGuardContracts parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 21,
+              "line_end": 39,
+              "snippet": "export function detectGuardContracts(config: DriftConfig, parsed: ParsedFile, scope: ScopeInfo): Contract[] { if (!isPatternEnabled(config, 'guard_clause')) return []; return entryGuardCalls(scope, extractCalls(parsed, scope)).map((call) =...",
+              "reasoning": "Nullability contract: [{\"name\":\"config\",\"nullable\":false,\"optional\":false},{\"name\":\"parsed\",\"nullable\":false,\"optional\":false},{\"name\":\"scope\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectGuardContracts",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.328Z",
+          "last_verified_at": "2026-05-09T15:16:00.328Z"
+        }
+      ]
+    },
+    {
+      "name": "entryGuardCalls",
+      "kind": "function",
+      "qualified_name": "entryGuardCalls",
+      "signature_hash": "f3eb0b347e6938ed",
+      "node_hash": "1ecb506345d17451",
+      "line_start": 41,
+      "line_end": 50,
+      "contracts": [
+        {
+          "id": "ct_AQ70B9Jp",
+          "type": "boundary",
+          "description": "entryGuardCalls returns CallSite[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 41,
+              "line_end": 50,
+              "snippet": "function entryGuardCalls(scope: ScopeInfo, calls: CallSite[]): CallSite[] { if (!scope.body) return calls.filter(isGuardCall); const firstStatements = new Set(scope.body.statements.slice(0, 3)); return calls.filter((call) => { const statem...",
+              "reasoning": "Explicit return type is CallSite[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "entryGuardCalls",
+            "params": {
+              "expected_return": "CallSite[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "calls",
+                  "type": "CallSite[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.329Z",
+          "last_verified_at": "2026-05-09T15:16:00.329Z"
+        },
+        {
+          "id": "ct_ydO9wB5s",
+          "type": "boundary",
+          "description": "entryGuardCalls parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 41,
+              "line_end": 50,
+              "snippet": "function entryGuardCalls(scope: ScopeInfo, calls: CallSite[]): CallSite[] { if (!scope.body) return calls.filter(isGuardCall); const firstStatements = new Set(scope.body.statements.slice(0, 3)); return calls.filter((call) => { const statem...",
+              "reasoning": "Parameter contract: [{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false},{\"name\":\"calls\",\"type\":\"CallSite[]\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "entryGuardCalls",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "calls",
+                  "type": "CallSite[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.329Z",
+          "last_verified_at": "2026-05-09T15:16:00.329Z"
+        },
+        {
+          "id": "ct_Wz7bbpvW",
+          "type": "boundary",
+          "description": "entryGuardCalls parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 41,
+              "line_end": 50,
+              "snippet": "function entryGuardCalls(scope: ScopeInfo, calls: CallSite[]): CallSite[] { if (!scope.body) return calls.filter(isGuardCall); const firstStatements = new Set(scope.body.statements.slice(0, 3)); return calls.filter((call) => { const statem...",
+              "reasoning": "Nullability contract: [{\"name\":\"scope\",\"nullable\":false,\"optional\":false},{\"name\":\"calls\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "entryGuardCalls",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "calls",
+                  "type": "CallSite[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.329Z",
+          "last_verified_at": "2026-05-09T15:16:00.329Z"
+        }
+      ]
+    },
+    {
+      "name": "isGuardCall",
+      "kind": "function",
+      "qualified_name": "isGuardCall",
+      "signature_hash": "eb0ce12252e31287",
+      "node_hash": "ccac656d5bb147d9",
+      "line_start": 52,
+      "line_end": 55,
+      "contracts": [
+        {
+          "id": "ct_b3Kmv55U",
+          "type": "boundary",
+          "description": "isGuardCall returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 52,
+              "line_end": 55,
+              "snippet": "function isGuardCall(call: CallSite): boolean { const segment = call.callee.split('.').pop() ?? call.callee; return GUARD_PATTERNS.some((pattern) => pattern.test(segment)); }",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isGuardCall",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "call",
+                  "type": "CallSite",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.329Z",
+          "last_verified_at": "2026-05-09T15:16:00.329Z"
+        },
+        {
+          "id": "ct_Zx79QSgW",
+          "type": "boundary",
+          "description": "isGuardCall parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 52,
+              "line_end": 55,
+              "snippet": "function isGuardCall(call: CallSite): boolean { const segment = call.callee.split('.').pop() ?? call.callee; return GUARD_PATTERNS.some((pattern) => pattern.test(segment)); }",
+              "reasoning": "Parameter contract: [{\"name\":\"call\",\"type\":\"CallSite\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isGuardCall",
+            "params": {
+              "parameters": [
+                {
+                  "name": "call",
+                  "type": "CallSite",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.329Z",
+          "last_verified_at": "2026-05-09T15:16:00.329Z"
+        },
+        {
+          "id": "ct_aZcCGaIx",
+          "type": "boundary",
+          "description": "isGuardCall parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 52,
+              "line_end": 55,
+              "snippet": "function isGuardCall(call: CallSite): boolean { const segment = call.callee.split('.').pop() ?? call.callee; return GUARD_PATTERNS.some((pattern) => pattern.test(segment)); }",
+              "reasoning": "Nullability contract: [{\"name\":\"call\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isGuardCall",
+            "params": {
+              "parameters": [
+                {
+                  "name": "call",
+                  "type": "CallSite",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.329Z",
+          "last_verified_at": "2026-05-09T15:16:00.329Z"
+        }
+      ]
+    },
+    {
+      "name": "enclosingStatement",
+      "kind": "function",
+      "qualified_name": "enclosingStatement",
+      "signature_hash": "252733631e8c518e",
+      "node_hash": "b4af32b0e32cbffd",
+      "line_start": 57,
+      "line_end": 64,
+      "contracts": [
+        {
+          "id": "ct_d7hurhrt",
+          "type": "boundary",
+          "description": "enclosingStatement returns ts.Statement | null and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 57,
+              "line_end": 64,
+              "snippet": "function enclosingStatement(scope: ScopeInfo, node: ts.Node): ts.Statement | null { if (!scope.body) return null; let current: ts.Node = node; while (current.parent && current.parent !== scope.body) { current = current.parent; } return ts....",
+              "reasoning": "Explicit return type is ts.Statement | null; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "enclosingStatement",
+            "params": {
+              "expected_return": "ts.Statement | null",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.329Z",
+          "last_verified_at": "2026-05-09T15:16:00.329Z"
+        },
+        {
+          "id": "ct_XaFs7-HS",
+          "type": "boundary",
+          "description": "enclosingStatement parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 57,
+              "line_end": 64,
+              "snippet": "function enclosingStatement(scope: ScopeInfo, node: ts.Node): ts.Statement | null { if (!scope.body) return null; let current: ts.Node = node; while (current.parent && current.parent !== scope.body) { current = current.parent; } return ts....",
+              "reasoning": "Parameter contract: [{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false},{\"name\":\"node\",\"type\":\"ts.Node\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "enclosingStatement",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.329Z",
+          "last_verified_at": "2026-05-09T15:16:00.329Z"
+        },
+        {
+          "id": "ct_AyIIHfnW",
+          "type": "boundary",
+          "description": "enclosingStatement parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 57,
+              "line_end": 64,
+              "snippet": "function enclosingStatement(scope: ScopeInfo, node: ts.Node): ts.Statement | null { if (!scope.body) return null; let current: ts.Node = node; while (current.parent && current.parent !== scope.body) { current = current.parent; } return ts....",
+              "reasoning": "Nullability contract: [{\"name\":\"scope\",\"nullable\":false,\"optional\":false},{\"name\":\"node\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "enclosingStatement",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.329Z",
+          "last_verified_at": "2026-05-09T15:16:00.329Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.329Z",
+    "last_checked_at": "2026-05-09T15:16:00.329Z",
+    "total_contracts": 12
+  }
+}

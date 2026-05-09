@@ -1,0 +1,127 @@
+{
+  "source_file": "src/llm/description.ts",
+  "source_hash": "84c6a26fa759642ab862a3848e60a27ac363824b3487d3171cc799d80e632aa9",
+  "scopes": [
+    {
+      "name": "fallbackDescription",
+      "kind": "function",
+      "qualified_name": "fallbackDescription",
+      "signature_hash": "ee49892b3ef976b1",
+      "node_hash": "749afd6d2e9c3e09",
+      "line_start": 3,
+      "line_end": 7,
+      "contracts": [
+        {
+          "id": "ct_y5x0j-NJ",
+          "type": "boundary",
+          "description": "fallbackDescription returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 3,
+              "line_end": 7,
+              "snippet": "export function fallbackDescription(contract: Partial<Contract>): string { const pattern = contract.pattern ?? 'semantic_contract'; const target = contract.verification?.target; return target ? `${pattern} is preserved for ${target}` : `${...",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "fallbackDescription",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "contract",
+                  "type": "Partial<Contract>",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.652Z",
+          "last_verified_at": "2026-05-09T15:16:00.652Z"
+        },
+        {
+          "id": "ct_jfCTP34G",
+          "type": "boundary",
+          "description": "fallbackDescription parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 3,
+              "line_end": 7,
+              "snippet": "export function fallbackDescription(contract: Partial<Contract>): string { const pattern = contract.pattern ?? 'semantic_contract'; const target = contract.verification?.target; return target ? `${pattern} is preserved for ${target}` : `${...",
+              "reasoning": "Parameter contract: [{\"name\":\"contract\",\"type\":\"Partial<Contract>\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "fallbackDescription",
+            "params": {
+              "parameters": [
+                {
+                  "name": "contract",
+                  "type": "Partial<Contract>",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.652Z",
+          "last_verified_at": "2026-05-09T15:16:00.652Z"
+        },
+        {
+          "id": "ct_QxiRVodL",
+          "type": "boundary",
+          "description": "fallbackDescription parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 3,
+              "line_end": 7,
+              "snippet": "export function fallbackDescription(contract: Partial<Contract>): string { const pattern = contract.pattern ?? 'semantic_contract'; const target = contract.verification?.target; return target ? `${pattern} is preserved for ${target}` : `${...",
+              "reasoning": "Nullability contract: [{\"name\":\"contract\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "fallbackDescription",
+            "params": {
+              "parameters": [
+                {
+                  "name": "contract",
+                  "type": "Partial<Contract>",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.652Z",
+          "last_verified_at": "2026-05-09T15:16:00.652Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.652Z",
+    "last_checked_at": "2026-05-09T15:16:00.652Z",
+    "total_contracts": 3
+  }
+}

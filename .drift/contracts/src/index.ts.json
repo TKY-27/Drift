@@ -1,0 +1,559 @@
+{
+  "source_file": "src/index.ts",
+  "source_hash": "563820c220446d96fb5106e989bbcfbf99f45bbfbb8744a7c4982a00fadc61ca",
+  "scopes": [
+    {
+      "name": "<module>",
+      "kind": "module",
+      "qualified_name": "<module>",
+      "signature_hash": "58ea489a1b86dfef",
+      "node_hash": "563820c220446d96",
+      "line_start": 1,
+      "line_end": 166,
+      "contracts": [
+        {
+          "id": "ct_m-Nc-gxK",
+          "type": "dependency",
+          "description": "Security-sensitive import from ./utils/security.js is preserved",
+          "pattern": "import_constraint",
+          "detection": "import_graph",
+          "severity": "low",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "pattern_match",
+              "line_start": 12,
+              "line_end": 12,
+              "snippet": "import { safeSnippet } from './utils/security.js';",
+              "reasoning": "Security-related import detected"
+            }
+          ],
+          "verification": {
+            "strategy": "import_presence",
+            "target": "./utils/security.js",
+            "params": {
+              "names": [
+                "safeSnippet"
+              ],
+              "named": [
+                {
+                  "imported": "safeSnippet",
+                  "local": "safeSnippet"
+                }
+              ],
+              "type_only": false
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.635Z",
+          "last_verified_at": "2026-05-09T15:16:00.635Z"
+        }
+      ]
+    },
+    {
+      "name": "projectRoot",
+      "kind": "function",
+      "qualified_name": "projectRoot",
+      "signature_hash": "547d1852bdb26d96",
+      "node_hash": "d187da286ff56a46",
+      "line_start": 16,
+      "line_end": 16,
+      "contracts": [
+        {
+          "id": "ct_Wimo5D_3",
+          "type": "boundary",
+          "description": "projectRoot returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 16,
+              "line_end": 16,
+              "snippet": "(): string => resolveProjectRoot(process.cwd())",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "projectRoot",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": []
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.634Z",
+          "last_verified_at": "2026-05-09T15:16:00.634Z"
+        }
+      ]
+    },
+    {
+      "name": "parseSeverity",
+      "kind": "function",
+      "qualified_name": "parseSeverity",
+      "signature_hash": "e7fb676b8bc80278",
+      "node_hash": "db6e987f69500f7b",
+      "line_start": 135,
+      "line_end": 138,
+      "contracts": [
+        {
+          "id": "ct_g36IzKpu",
+          "type": "boundary",
+          "description": "parseSeverity returns Severity and may throw",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 135,
+              "line_end": 138,
+              "snippet": "function parseSeverity(value: string): Severity { if (value === 'critical' || value === 'high' || value === 'medium' || value === 'low') return value; throw new InvalidArgumentError('Expected one of: critical, high, medium, low'); }",
+              "reasoning": "Explicit return type is Severity; no_throw=false"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "parseSeverity",
+            "params": {
+              "expected_return": "Severity",
+              "no_throw": false,
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.634Z",
+          "last_verified_at": "2026-05-09T15:16:00.634Z"
+        },
+        {
+          "id": "ct__-ylhoNB",
+          "type": "boundary",
+          "description": "parseSeverity parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 135,
+              "line_end": 138,
+              "snippet": "function parseSeverity(value: string): Severity { if (value === 'critical' || value === 'high' || value === 'medium' || value === 'low') return value; throw new InvalidArgumentError('Expected one of: critical, high, medium, low'); }",
+              "reasoning": "Parameter contract: [{\"name\":\"value\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "parseSeverity",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.634Z",
+          "last_verified_at": "2026-05-09T15:16:00.634Z"
+        },
+        {
+          "id": "ct_r26KwZy0",
+          "type": "boundary",
+          "description": "parseSeverity parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 135,
+              "line_end": 138,
+              "snippet": "function parseSeverity(value: string): Severity { if (value === 'critical' || value === 'high' || value === 'medium' || value === 'low') return value; throw new InvalidArgumentError('Expected one of: critical, high, medium, low'); }",
+              "reasoning": "Nullability contract: [{\"name\":\"value\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "parseSeverity",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.634Z",
+          "last_verified_at": "2026-05-09T15:16:00.634Z"
+        }
+      ]
+    },
+    {
+      "name": "parseReporter",
+      "kind": "function",
+      "qualified_name": "parseReporter",
+      "signature_hash": "91f0bb5abb3319e9",
+      "node_hash": "adeacd343fe2bf99",
+      "line_start": 140,
+      "line_end": 143,
+      "contracts": [
+        {
+          "id": "ct__rrp-Fxv",
+          "type": "boundary",
+          "description": "parseReporter returns Reporter and may throw",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 140,
+              "line_end": 143,
+              "snippet": "function parseReporter(value: string): Reporter { if (value === 'terminal' || value === 'json' || value === 'github') return value; throw new InvalidArgumentError('Expected one of: terminal, json, github'); }",
+              "reasoning": "Explicit return type is Reporter; no_throw=false"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "parseReporter",
+            "params": {
+              "expected_return": "Reporter",
+              "no_throw": false,
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.634Z",
+          "last_verified_at": "2026-05-09T15:16:00.634Z"
+        },
+        {
+          "id": "ct_DPN9UD6V",
+          "type": "boundary",
+          "description": "parseReporter parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 140,
+              "line_end": 143,
+              "snippet": "function parseReporter(value: string): Reporter { if (value === 'terminal' || value === 'json' || value === 'github') return value; throw new InvalidArgumentError('Expected one of: terminal, json, github'); }",
+              "reasoning": "Parameter contract: [{\"name\":\"value\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "parseReporter",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.634Z",
+          "last_verified_at": "2026-05-09T15:16:00.634Z"
+        },
+        {
+          "id": "ct_-_3F3LyO",
+          "type": "boundary",
+          "description": "parseReporter parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 140,
+              "line_end": 143,
+              "snippet": "function parseReporter(value: string): Reporter { if (value === 'terminal' || value === 'json' || value === 'github') return value; throw new InvalidArgumentError('Expected one of: terminal, json, github'); }",
+              "reasoning": "Nullability contract: [{\"name\":\"value\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "parseReporter",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.634Z",
+          "last_verified_at": "2026-05-09T15:16:00.634Z"
+        }
+      ]
+    },
+    {
+      "name": "parseContractType",
+      "kind": "function",
+      "qualified_name": "parseContractType",
+      "signature_hash": "1ad3276a7f116ab3",
+      "node_hash": "63ecd560ea0e1587",
+      "line_start": 145,
+      "line_end": 148,
+      "contracts": [
+        {
+          "id": "ct_AR-FulRy",
+          "type": "boundary",
+          "description": "parseContractType returns ContractType and may throw",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 145,
+              "line_end": 148,
+              "snippet": "function parseContractType(value: string): ContractType { if (value === 'invariant' || value === 'boundary' || value === 'side_effect' || value === 'dependency') return value; throw new InvalidArgumentError('Expected one of: invariant, bou...",
+              "reasoning": "Explicit return type is ContractType; no_throw=false"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "parseContractType",
+            "params": {
+              "expected_return": "ContractType",
+              "no_throw": false,
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.634Z",
+          "last_verified_at": "2026-05-09T15:16:00.634Z"
+        },
+        {
+          "id": "ct_tszabz16",
+          "type": "boundary",
+          "description": "parseContractType parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 145,
+              "line_end": 148,
+              "snippet": "function parseContractType(value: string): ContractType { if (value === 'invariant' || value === 'boundary' || value === 'side_effect' || value === 'dependency') return value; throw new InvalidArgumentError('Expected one of: invariant, bou...",
+              "reasoning": "Parameter contract: [{\"name\":\"value\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "parseContractType",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.634Z",
+          "last_verified_at": "2026-05-09T15:16:00.634Z"
+        },
+        {
+          "id": "ct_wk_O2Pt6",
+          "type": "boundary",
+          "description": "parseContractType parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 145,
+              "line_end": 148,
+              "snippet": "function parseContractType(value: string): ContractType { if (value === 'invariant' || value === 'boundary' || value === 'side_effect' || value === 'dependency') return value; throw new InvalidArgumentError('Expected one of: invariant, bou...",
+              "reasoning": "Nullability contract: [{\"name\":\"value\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "parseContractType",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.634Z",
+          "last_verified_at": "2026-05-09T15:16:00.634Z"
+        }
+      ]
+    },
+    {
+      "name": "parseVerificationStrategy",
+      "kind": "function",
+      "qualified_name": "parseVerificationStrategy",
+      "signature_hash": "c1c0b3af599113bb",
+      "node_hash": "ff4097c65ac2c724",
+      "line_start": 150,
+      "line_end": 165,
+      "contracts": [
+        {
+          "id": "ct_afKq67VD",
+          "type": "boundary",
+          "description": "parseVerificationStrategy returns VerificationStrategy and may throw",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 150,
+              "line_end": 165,
+              "snippet": "function parseVerificationStrategy(value: string): VerificationStrategy { if ( value === 'ast_query' || value === 'pattern_absent' || value === 'call_presence' || value === 'call_absence' || value === 'type_check' || value === 'pattern_exi...",
+              "reasoning": "Explicit return type is VerificationStrategy; no_throw=false"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "parseVerificationStrategy",
+            "params": {
+              "expected_return": "VerificationStrategy",
+              "no_throw": false,
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.634Z",
+          "last_verified_at": "2026-05-09T15:16:00.634Z"
+        },
+        {
+          "id": "ct_yUGvmWyi",
+          "type": "boundary",
+          "description": "parseVerificationStrategy parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 150,
+              "line_end": 165,
+              "snippet": "function parseVerificationStrategy(value: string): VerificationStrategy { if ( value === 'ast_query' || value === 'pattern_absent' || value === 'call_presence' || value === 'call_absence' || value === 'type_check' || value === 'pattern_exi...",
+              "reasoning": "Parameter contract: [{\"name\":\"value\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "parseVerificationStrategy",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.634Z",
+          "last_verified_at": "2026-05-09T15:16:00.634Z"
+        },
+        {
+          "id": "ct_djTYN159",
+          "type": "boundary",
+          "description": "parseVerificationStrategy parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 150,
+              "line_end": 165,
+              "snippet": "function parseVerificationStrategy(value: string): VerificationStrategy { if ( value === 'ast_query' || value === 'pattern_absent' || value === 'call_presence' || value === 'call_absence' || value === 'type_check' || value === 'pattern_exi...",
+              "reasoning": "Nullability contract: [{\"name\":\"value\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "parseVerificationStrategy",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.634Z",
+          "last_verified_at": "2026-05-09T15:16:00.634Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.635Z",
+    "last_checked_at": "2026-05-09T15:16:00.635Z",
+    "total_contracts": 14
+  }
+}

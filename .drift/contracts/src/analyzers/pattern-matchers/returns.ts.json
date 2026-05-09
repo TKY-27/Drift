@@ -1,0 +1,181 @@
+{
+  "source_file": "src/analyzers/pattern-matchers/returns.ts",
+  "source_hash": "1a0f03a6e7d5f6e2900e1a2dda2a15ceeef28bcc03c47fd9e0f244d272b0ab32",
+  "scopes": [
+    {
+      "name": "detectReturnTypePattern",
+      "kind": "function",
+      "qualified_name": "detectReturnTypePattern",
+      "signature_hash": "4b1e468b4ca0630a",
+      "node_hash": "10ec84f7bbdb8dba",
+      "line_start": 8,
+      "line_end": 72,
+      "contracts": [
+        {
+          "id": "ct_6D4kkyTT",
+          "type": "boundary",
+          "description": "detectReturnTypePattern returns Contract[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 8,
+              "line_end": 72,
+              "snippet": "export function detectReturnTypePattern( config: DriftConfig, parsed: ParsedFile, typeContext: TypeContext, scope: ScopeInfo, ): Contract[] { if (!isPatternEnabled(config, 'return_type')) return []; const returnType = getReturnType(typeCon...",
+              "reasoning": "Explicit return type is Contract[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectReturnTypePattern",
+            "params": {
+              "expected_return": "Contract[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "typeContext",
+                  "type": "TypeContext",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.378Z",
+          "last_verified_at": "2026-05-09T15:16:00.378Z"
+        },
+        {
+          "id": "ct_qbOiUaaD",
+          "type": "boundary",
+          "description": "detectReturnTypePattern parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 8,
+              "line_end": 72,
+              "snippet": "export function detectReturnTypePattern( config: DriftConfig, parsed: ParsedFile, typeContext: TypeContext, scope: ScopeInfo, ): Contract[] { if (!isPatternEnabled(config, 'return_type')) return []; const returnType = getReturnType(typeCon...",
+              "reasoning": "Parameter contract: [{\"name\":\"config\",\"type\":\"DriftConfig\",\"optional\":false,\"nullable\":false},{\"name\":\"parsed\",\"type\":\"ParsedFile\",\"optional\":false,\"nullable\":false},{\"name\":\"typeContext\",\"type\":\"TypeContext\",\"optional\":false,\"nullable\":false},{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectReturnTypePattern",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "typeContext",
+                  "type": "TypeContext",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.378Z",
+          "last_verified_at": "2026-05-09T15:16:00.378Z"
+        },
+        {
+          "id": "ct_cWMoHvEP",
+          "type": "boundary",
+          "description": "detectReturnTypePattern parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 8,
+              "line_end": 72,
+              "snippet": "export function detectReturnTypePattern( config: DriftConfig, parsed: ParsedFile, typeContext: TypeContext, scope: ScopeInfo, ): Contract[] { if (!isPatternEnabled(config, 'return_type')) return []; const returnType = getReturnType(typeCon...",
+              "reasoning": "Nullability contract: [{\"name\":\"config\",\"nullable\":false,\"optional\":false},{\"name\":\"parsed\",\"nullable\":false,\"optional\":false},{\"name\":\"typeContext\",\"nullable\":false,\"optional\":false},{\"name\":\"scope\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectReturnTypePattern",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "typeContext",
+                  "type": "TypeContext",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.378Z",
+          "last_verified_at": "2026-05-09T15:16:00.378Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.378Z",
+    "last_checked_at": "2026-05-09T15:16:00.378Z",
+    "total_contracts": 3
+  }
+}

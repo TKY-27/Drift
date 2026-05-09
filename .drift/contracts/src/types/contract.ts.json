@@ -1,0 +1,260 @@
+{
+  "source_file": "src/types/contract.ts",
+  "source_hash": "5d8f717dc9a598978ae8991d70b404f4a6eece3523c4009e14aa53be4c926442",
+  "scopes": [
+    {
+      "name": "isAtLeastSeverity",
+      "kind": "function",
+      "qualified_name": "isAtLeastSeverity",
+      "signature_hash": "eea509965bf529fa",
+      "node_hash": "1f71ccf46e177291",
+      "line_start": 104,
+      "line_end": 106,
+      "contracts": [
+        {
+          "id": "ct_63QBe40y",
+          "type": "boundary",
+          "description": "isAtLeastSeverity returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 104,
+              "line_end": 106,
+              "snippet": "export function isAtLeastSeverity(actual: Severity, threshold: Severity): boolean { return severityOrder[actual] >= severityOrder[threshold]; }",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isAtLeastSeverity",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "actual",
+                  "type": "Severity",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "threshold",
+                  "type": "Severity",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.703Z",
+          "last_verified_at": "2026-05-09T15:16:00.703Z"
+        },
+        {
+          "id": "ct_y4-SoSPj",
+          "type": "boundary",
+          "description": "isAtLeastSeverity parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 104,
+              "line_end": 106,
+              "snippet": "export function isAtLeastSeverity(actual: Severity, threshold: Severity): boolean { return severityOrder[actual] >= severityOrder[threshold]; }",
+              "reasoning": "Parameter contract: [{\"name\":\"actual\",\"type\":\"Severity\",\"optional\":false,\"nullable\":false},{\"name\":\"threshold\",\"type\":\"Severity\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isAtLeastSeverity",
+            "params": {
+              "parameters": [
+                {
+                  "name": "actual",
+                  "type": "Severity",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "threshold",
+                  "type": "Severity",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.703Z",
+          "last_verified_at": "2026-05-09T15:16:00.703Z"
+        },
+        {
+          "id": "ct_dh9L1R8a",
+          "type": "boundary",
+          "description": "isAtLeastSeverity parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 104,
+              "line_end": 106,
+              "snippet": "export function isAtLeastSeverity(actual: Severity, threshold: Severity): boolean { return severityOrder[actual] >= severityOrder[threshold]; }",
+              "reasoning": "Nullability contract: [{\"name\":\"actual\",\"nullable\":false,\"optional\":false},{\"name\":\"threshold\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isAtLeastSeverity",
+            "params": {
+              "parameters": [
+                {
+                  "name": "actual",
+                  "type": "Severity",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "threshold",
+                  "type": "Severity",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.703Z",
+          "last_verified_at": "2026-05-09T15:16:00.703Z"
+        }
+      ]
+    },
+    {
+      "name": "maxSeverity",
+      "kind": "function",
+      "qualified_name": "maxSeverity",
+      "signature_hash": "bdc045dc87208c3e",
+      "node_hash": "442e21a17bd06eb3",
+      "line_start": 108,
+      "line_end": 113,
+      "contracts": [
+        {
+          "id": "ct_2DLTnKtp",
+          "type": "boundary",
+          "description": "maxSeverity returns Severity and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 108,
+              "line_end": 113,
+              "snippet": "export function maxSeverity(severities: Severity[]): Severity { return severities.reduce<Severity>( (max, current) => (severityOrder[current] > severityOrder[max] ? current : max), 'low', ); }",
+              "reasoning": "Explicit return type is Severity; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "maxSeverity",
+            "params": {
+              "expected_return": "Severity",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "severities",
+                  "type": "Severity[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.703Z",
+          "last_verified_at": "2026-05-09T15:16:00.703Z"
+        },
+        {
+          "id": "ct_6oErqKe0",
+          "type": "boundary",
+          "description": "maxSeverity parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 108,
+              "line_end": 113,
+              "snippet": "export function maxSeverity(severities: Severity[]): Severity { return severities.reduce<Severity>( (max, current) => (severityOrder[current] > severityOrder[max] ? current : max), 'low', ); }",
+              "reasoning": "Parameter contract: [{\"name\":\"severities\",\"type\":\"Severity[]\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "maxSeverity",
+            "params": {
+              "parameters": [
+                {
+                  "name": "severities",
+                  "type": "Severity[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.703Z",
+          "last_verified_at": "2026-05-09T15:16:00.703Z"
+        },
+        {
+          "id": "ct_a1-n6cOK",
+          "type": "boundary",
+          "description": "maxSeverity parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 108,
+              "line_end": 113,
+              "snippet": "export function maxSeverity(severities: Severity[]): Severity { return severities.reduce<Severity>( (max, current) => (severityOrder[current] > severityOrder[max] ? current : max), 'low', ); }",
+              "reasoning": "Nullability contract: [{\"name\":\"severities\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "maxSeverity",
+            "params": {
+              "parameters": [
+                {
+                  "name": "severities",
+                  "type": "Severity[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.703Z",
+          "last_verified_at": "2026-05-09T15:16:00.703Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.703Z",
+    "last_checked_at": "2026-05-09T15:16:00.703Z",
+    "total_contracts": 6
+  }
+}

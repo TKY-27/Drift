@@ -1,0 +1,81 @@
+{
+  "name": "drift-check",
+  "version": "0.1.1",
+  "description": "Static semantic integrity checks for AI-modified TypeScript code",
+  "author": "TKY-27",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TKY-27/Drift.git"
+  },
+  "homepage": "https://github.com/TKY-27/Drift#readme",
+  "bugs": {
+    "url": "https://github.com/TKY-27/Drift/issues"
+  },
+  "bin": {
+    "drift": "dist/index.js"
+  },
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "assets",
+    "README.md",
+    "SECURITY.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "prepack": "npm run build",
+    "prepublishOnly": "npm run typecheck && npm run lint && npm test"
+  },
+  "dependencies": {
+    "chalk": "5.6.2",
+    "commander": "^12.1.0",
+    "glob": "^11.1.0",
+    "nanoid": "5.1.6",
+    "ora": "^8.2.0",
+    "simple-git": "^3.36.0",
+    "tree-sitter": "0.21.1",
+    "tree-sitter-typescript": "0.21.2",
+    "typescript": "5.9.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@types/node": "^24.10.1",
+    "@vitest/coverage-v8": "^3.2.4",
+    "eslint": "^9.39.1",
+    "tsup": "^8.5.0",
+    "typescript-eslint": "^8.46.3",
+    "vitest": "^3.2.4"
+  },
+  "keywords": [
+    "ai",
+    "semantic-drift",
+    "semantic-integrity",
+    "code-integrity",
+    "typescript",
+    "ast",
+    "static-analysis",
+    "pre-commit",
+    "ci",
+    "security",
+    "ai-coding",
+    "claude-code",
+    "cursor",
+    "copilot"
+  ]
+}

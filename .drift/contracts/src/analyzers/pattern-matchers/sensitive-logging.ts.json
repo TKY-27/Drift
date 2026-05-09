@@ -1,0 +1,1270 @@
+{
+  "source_file": "src/analyzers/pattern-matchers/sensitive-logging.ts",
+  "source_hash": "45737eba90a606206c125288f2e9154efa6c88f4a944253e30b2643e5d39fe63",
+  "scopes": [
+    {
+      "name": "findSensitiveLogging",
+      "kind": "function",
+      "qualified_name": "findSensitiveLogging",
+      "signature_hash": "8633484c07e31933",
+      "node_hash": "6ef064719be3ab53",
+      "line_start": 11,
+      "line_end": 18,
+      "contracts": [
+        {
+          "id": "ct_LcvKmKxS",
+          "type": "boundary",
+          "description": "findSensitiveLogging returns CallSite[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 11,
+              "line_end": 18,
+              "snippet": "export function findSensitiveLogging(parsed: ParsedFile, scope: ScopeInfo, sensitiveNames?: Iterable<string>): CallSite[] { const names = [...collectTaintedNames(scope, sensitiveNames)]; if (names.length === 0) return []; return extractCal...",
+              "reasoning": "Explicit return type is CallSite[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findSensitiveLogging",
+            "params": {
+              "expected_return": "CallSite[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "sensitiveNames",
+                  "type": "Iterable<string>",
+                  "optional": true,
+                  "nullable": true
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.388Z",
+          "last_verified_at": "2026-05-09T15:16:00.388Z"
+        },
+        {
+          "id": "ct_p2SNYJBz",
+          "type": "boundary",
+          "description": "findSensitiveLogging parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 11,
+              "line_end": 18,
+              "snippet": "export function findSensitiveLogging(parsed: ParsedFile, scope: ScopeInfo, sensitiveNames?: Iterable<string>): CallSite[] { const names = [...collectTaintedNames(scope, sensitiveNames)]; if (names.length === 0) return []; return extractCal...",
+              "reasoning": "Parameter contract: [{\"name\":\"parsed\",\"type\":\"ParsedFile\",\"optional\":false,\"nullable\":false},{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false},{\"name\":\"sensitiveNames\",\"type\":\"Iterable<string>\",\"optional\":true,\"nullable\":true}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findSensitiveLogging",
+            "params": {
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "sensitiveNames",
+                  "type": "Iterable<string>",
+                  "optional": true,
+                  "nullable": true
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.388Z",
+          "last_verified_at": "2026-05-09T15:16:00.388Z"
+        },
+        {
+          "id": "ct_uf0w40Z9",
+          "type": "boundary",
+          "description": "findSensitiveLogging parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 11,
+              "line_end": 18,
+              "snippet": "export function findSensitiveLogging(parsed: ParsedFile, scope: ScopeInfo, sensitiveNames?: Iterable<string>): CallSite[] { const names = [...collectTaintedNames(scope, sensitiveNames)]; if (names.length === 0) return []; return extractCal...",
+              "reasoning": "Nullability contract: [{\"name\":\"parsed\",\"nullable\":false,\"optional\":false},{\"name\":\"scope\",\"nullable\":false,\"optional\":false},{\"name\":\"sensitiveNames\",\"nullable\":true,\"optional\":true}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findSensitiveLogging",
+            "params": {
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "sensitiveNames",
+                  "type": "Iterable<string>",
+                  "optional": true,
+                  "nullable": true
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.388Z",
+          "last_verified_at": "2026-05-09T15:16:00.388Z"
+        }
+      ]
+    },
+    {
+      "name": "collectTaintedNames",
+      "kind": "function",
+      "qualified_name": "collectTaintedNames",
+      "signature_hash": "c37ac22eefb3ec80",
+      "node_hash": "920d89dcfba88f0b",
+      "line_start": 20,
+      "line_end": 61,
+      "contracts": [
+        {
+          "id": "ct_P1q8OeYr",
+          "type": "boundary",
+          "description": "collectTaintedNames returns Set<string> and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 20,
+              "line_end": 61,
+              "snippet": "function collectTaintedNames(scope: ScopeInfo, sensitiveNames?: Iterable<string>): Set<string> { const tainted = new Set(sensitiveNames ?? collectSensitiveNames(scope)); let changed = true; while (changed) { changed = false; visit(scope.no...",
+              "reasoning": "Explicit return type is Set<string>; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "collectTaintedNames",
+            "params": {
+              "expected_return": "Set<string>",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "sensitiveNames",
+                  "type": "Iterable<string>",
+                  "optional": true,
+                  "nullable": true
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.388Z",
+          "last_verified_at": "2026-05-09T15:16:00.388Z"
+        },
+        {
+          "id": "ct_xwYx_hNt",
+          "type": "boundary",
+          "description": "collectTaintedNames parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 20,
+              "line_end": 61,
+              "snippet": "function collectTaintedNames(scope: ScopeInfo, sensitiveNames?: Iterable<string>): Set<string> { const tainted = new Set(sensitiveNames ?? collectSensitiveNames(scope)); let changed = true; while (changed) { changed = false; visit(scope.no...",
+              "reasoning": "Parameter contract: [{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false},{\"name\":\"sensitiveNames\",\"type\":\"Iterable<string>\",\"optional\":true,\"nullable\":true}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "collectTaintedNames",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "sensitiveNames",
+                  "type": "Iterable<string>",
+                  "optional": true,
+                  "nullable": true
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.388Z",
+          "last_verified_at": "2026-05-09T15:16:00.388Z"
+        },
+        {
+          "id": "ct_w4MzSnp2",
+          "type": "boundary",
+          "description": "collectTaintedNames parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 20,
+              "line_end": 61,
+              "snippet": "function collectTaintedNames(scope: ScopeInfo, sensitiveNames?: Iterable<string>): Set<string> { const tainted = new Set(sensitiveNames ?? collectSensitiveNames(scope)); let changed = true; while (changed) { changed = false; visit(scope.no...",
+              "reasoning": "Nullability contract: [{\"name\":\"scope\",\"nullable\":false,\"optional\":false},{\"name\":\"sensitiveNames\",\"nullable\":true,\"optional\":true}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "collectTaintedNames",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "sensitiveNames",
+                  "type": "Iterable<string>",
+                  "optional": true,
+                  "nullable": true
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.388Z",
+          "last_verified_at": "2026-05-09T15:16:00.388Z"
+        }
+      ]
+    },
+    {
+      "name": "visit",
+      "kind": "function",
+      "qualified_name": "visit",
+      "signature_hash": "06d2e448d0467c84",
+      "node_hash": "4bf6fe396d59f427",
+      "line_start": 29,
+      "line_end": 44,
+      "contracts": [
+        {
+          "id": "ct_wgmA7g9e",
+          "type": "boundary",
+          "description": "visit returns void and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 29,
+              "line_end": 44,
+              "snippet": "function visit(node: ts.Node): void { if (isNested(node)) return; if (ts.isVariableDeclaration(node) && ts.isIdentifier(node.name) && node.initializer && containsTainted(node.initializer)) { if (!tainted.has(node.name.text)) { tainted.add(...",
+              "reasoning": "Explicit return type is void; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "visit",
+            "params": {
+              "expected_return": "void",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.389Z",
+          "last_verified_at": "2026-05-09T15:16:00.389Z"
+        },
+        {
+          "id": "ct_gv41FoIg",
+          "type": "boundary",
+          "description": "visit parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 29,
+              "line_end": 44,
+              "snippet": "function visit(node: ts.Node): void { if (isNested(node)) return; if (ts.isVariableDeclaration(node) && ts.isIdentifier(node.name) && node.initializer && containsTainted(node.initializer)) { if (!tainted.has(node.name.text)) { tainted.add(...",
+              "reasoning": "Parameter contract: [{\"name\":\"node\",\"type\":\"ts.Node\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "visit",
+            "params": {
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.389Z",
+          "last_verified_at": "2026-05-09T15:16:00.389Z"
+        },
+        {
+          "id": "ct_hS58AZLP",
+          "type": "boundary",
+          "description": "visit parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 29,
+              "line_end": 44,
+              "snippet": "function visit(node: ts.Node): void { if (isNested(node)) return; if (ts.isVariableDeclaration(node) && ts.isIdentifier(node.name) && node.initializer && containsTainted(node.initializer)) { if (!tainted.has(node.name.text)) { tainted.add(...",
+              "reasoning": "Nullability contract: [{\"name\":\"node\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "visit",
+            "params": {
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.389Z",
+          "last_verified_at": "2026-05-09T15:16:00.389Z"
+        }
+      ]
+    },
+    {
+      "name": "containsTainted",
+      "kind": "function",
+      "qualified_name": "containsTainted",
+      "signature_hash": "46bb40de1a3c34f4",
+      "node_hash": "03108d2b139efdda",
+      "line_start": 46,
+      "line_end": 55,
+      "contracts": [
+        {
+          "id": "ct_DBnyb8TC",
+          "type": "boundary",
+          "description": "containsTainted returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 46,
+              "line_end": 55,
+              "snippet": "function containsTainted(node: ts.Node): boolean { let found = false; function walkNode(child: ts.Node): void { if (found) return; if (ts.isIdentifier(child) && tainted.has(child.text)) found = true; ts.forEachChild(child, walkNode); } wal...",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "containsTainted",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.389Z",
+          "last_verified_at": "2026-05-09T15:16:00.389Z"
+        },
+        {
+          "id": "ct_Xi7F5mId",
+          "type": "boundary",
+          "description": "containsTainted parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 46,
+              "line_end": 55,
+              "snippet": "function containsTainted(node: ts.Node): boolean { let found = false; function walkNode(child: ts.Node): void { if (found) return; if (ts.isIdentifier(child) && tainted.has(child.text)) found = true; ts.forEachChild(child, walkNode); } wal...",
+              "reasoning": "Parameter contract: [{\"name\":\"node\",\"type\":\"ts.Node\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "containsTainted",
+            "params": {
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.389Z",
+          "last_verified_at": "2026-05-09T15:16:00.389Z"
+        },
+        {
+          "id": "ct_aLS4rxAR",
+          "type": "boundary",
+          "description": "containsTainted parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 46,
+              "line_end": 55,
+              "snippet": "function containsTainted(node: ts.Node): boolean { let found = false; function walkNode(child: ts.Node): void { if (found) return; if (ts.isIdentifier(child) && tainted.has(child.text)) found = true; ts.forEachChild(child, walkNode); } wal...",
+              "reasoning": "Nullability contract: [{\"name\":\"node\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "containsTainted",
+            "params": {
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.389Z",
+          "last_verified_at": "2026-05-09T15:16:00.389Z"
+        }
+      ]
+    },
+    {
+      "name": "walkNode",
+      "kind": "function",
+      "qualified_name": "walkNode",
+      "signature_hash": "424a89ae18df1e55",
+      "node_hash": "7ff7d7d741af8a8c",
+      "line_start": 48,
+      "line_end": 52,
+      "contracts": [
+        {
+          "id": "ct_wKBoH76T",
+          "type": "boundary",
+          "description": "walkNode returns void and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 48,
+              "line_end": 52,
+              "snippet": "function walkNode(child: ts.Node): void { if (found) return; if (ts.isIdentifier(child) && tainted.has(child.text)) found = true; ts.forEachChild(child, walkNode); }",
+              "reasoning": "Explicit return type is void; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "walkNode",
+            "params": {
+              "expected_return": "void",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "child",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.389Z",
+          "last_verified_at": "2026-05-09T15:16:00.389Z"
+        },
+        {
+          "id": "ct_MTBoVW0o",
+          "type": "boundary",
+          "description": "walkNode parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 48,
+              "line_end": 52,
+              "snippet": "function walkNode(child: ts.Node): void { if (found) return; if (ts.isIdentifier(child) && tainted.has(child.text)) found = true; ts.forEachChild(child, walkNode); }",
+              "reasoning": "Parameter contract: [{\"name\":\"child\",\"type\":\"ts.Node\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "walkNode",
+            "params": {
+              "parameters": [
+                {
+                  "name": "child",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.389Z",
+          "last_verified_at": "2026-05-09T15:16:00.389Z"
+        },
+        {
+          "id": "ct_GFwGYrpT",
+          "type": "boundary",
+          "description": "walkNode parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 48,
+              "line_end": 52,
+              "snippet": "function walkNode(child: ts.Node): void { if (found) return; if (ts.isIdentifier(child) && tainted.has(child.text)) found = true; ts.forEachChild(child, walkNode); }",
+              "reasoning": "Nullability contract: [{\"name\":\"child\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "walkNode",
+            "params": {
+              "parameters": [
+                {
+                  "name": "child",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.389Z",
+          "last_verified_at": "2026-05-09T15:16:00.389Z"
+        }
+      ]
+    },
+    {
+      "name": "isNested",
+      "kind": "function",
+      "qualified_name": "isNested",
+      "signature_hash": "46bb40de1a3c34f4",
+      "node_hash": "b6a576f2d4b88132",
+      "line_start": 57,
+      "line_end": 60,
+      "contracts": [
+        {
+          "id": "ct_oyrBHqxT",
+          "type": "boundary",
+          "description": "isNested returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 57,
+              "line_end": 60,
+              "snippet": "function isNested(node: ts.Node): boolean { return node !== scope.node && (ts.isFunctionDeclaration(node) || ts.isFunctionExpression(node) || ts.isArrowFunction(node) || ts.isMethodDeclaration(node)); }",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isNested",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.390Z",
+          "last_verified_at": "2026-05-09T15:16:00.390Z"
+        },
+        {
+          "id": "ct_gzM16Y05",
+          "type": "boundary",
+          "description": "isNested parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 57,
+              "line_end": 60,
+              "snippet": "function isNested(node: ts.Node): boolean { return node !== scope.node && (ts.isFunctionDeclaration(node) || ts.isFunctionExpression(node) || ts.isArrowFunction(node) || ts.isMethodDeclaration(node)); }",
+              "reasoning": "Parameter contract: [{\"name\":\"node\",\"type\":\"ts.Node\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isNested",
+            "params": {
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.390Z",
+          "last_verified_at": "2026-05-09T15:16:00.390Z"
+        },
+        {
+          "id": "ct_6qmryc1b",
+          "type": "boundary",
+          "description": "isNested parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 57,
+              "line_end": 60,
+              "snippet": "function isNested(node: ts.Node): boolean { return node !== scope.node && (ts.isFunctionDeclaration(node) || ts.isFunctionExpression(node) || ts.isArrowFunction(node) || ts.isMethodDeclaration(node)); }",
+              "reasoning": "Nullability contract: [{\"name\":\"node\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isNested",
+            "params": {
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.390Z",
+          "last_verified_at": "2026-05-09T15:16:00.390Z"
+        }
+      ]
+    },
+    {
+      "name": "detectNoLogSensitivePattern",
+      "kind": "function",
+      "qualified_name": "detectNoLogSensitivePattern",
+      "signature_hash": "5a4ea726ac8fe85a",
+      "node_hash": "1c091f79fd34d155",
+      "line_start": 63,
+      "line_end": 84,
+      "contracts": [
+        {
+          "id": "ct_4IT0NSV5",
+          "type": "boundary",
+          "description": "detectNoLogSensitivePattern returns Contract[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 63,
+              "line_end": 84,
+              "snippet": "export function detectNoLogSensitivePattern(config: DriftConfig, parsed: ParsedFile, scope: ScopeInfo): Contract[] { if (!isPatternEnabled(config, 'no_log_sensitive')) return []; const names = [...collectSensitiveNames(scope)]; if (names.l...",
+              "reasoning": "Explicit return type is Contract[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectNoLogSensitivePattern",
+            "params": {
+              "expected_return": "Contract[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.390Z",
+          "last_verified_at": "2026-05-09T15:16:00.390Z"
+        },
+        {
+          "id": "ct_XoHiQi_t",
+          "type": "boundary",
+          "description": "detectNoLogSensitivePattern parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 63,
+              "line_end": 84,
+              "snippet": "export function detectNoLogSensitivePattern(config: DriftConfig, parsed: ParsedFile, scope: ScopeInfo): Contract[] { if (!isPatternEnabled(config, 'no_log_sensitive')) return []; const names = [...collectSensitiveNames(scope)]; if (names.l...",
+              "reasoning": "Parameter contract: [{\"name\":\"config\",\"type\":\"DriftConfig\",\"optional\":false,\"nullable\":false},{\"name\":\"parsed\",\"type\":\"ParsedFile\",\"optional\":false,\"nullable\":false},{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectNoLogSensitivePattern",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.390Z",
+          "last_verified_at": "2026-05-09T15:16:00.390Z"
+        },
+        {
+          "id": "ct_-aopfbBY",
+          "type": "boundary",
+          "description": "detectNoLogSensitivePattern parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 63,
+              "line_end": 84,
+              "snippet": "export function detectNoLogSensitivePattern(config: DriftConfig, parsed: ParsedFile, scope: ScopeInfo): Contract[] { if (!isPatternEnabled(config, 'no_log_sensitive')) return []; const names = [...collectSensitiveNames(scope)]; if (names.l...",
+              "reasoning": "Nullability contract: [{\"name\":\"config\",\"nullable\":false,\"optional\":false},{\"name\":\"parsed\",\"nullable\":false,\"optional\":false},{\"name\":\"scope\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectNoLogSensitivePattern",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.390Z",
+          "last_verified_at": "2026-05-09T15:16:00.390Z"
+        }
+      ]
+    },
+    {
+      "name": "firstIdentifierNode",
+      "kind": "function",
+      "qualified_name": "firstIdentifierNode",
+      "signature_hash": "d3ec4765fa9da1c1",
+      "node_hash": "c4ba10c3b0e5cc04",
+      "line_start": 86,
+      "line_end": 98,
+      "contracts": [
+        {
+          "id": "ct_TsvIWAeo",
+          "type": "boundary",
+          "description": "firstIdentifierNode returns ts.Node | null and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 86,
+              "line_end": 98,
+              "snippet": "function firstIdentifierNode(root: ts.Node, name: string): ts.Node | null { let result: ts.Node | null = null; function visit(node: ts.Node): void { if (result) return; if (ts.isIdentifier(node) && node.text === name) { result = node; retu...",
+              "reasoning": "Explicit return type is ts.Node | null; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "firstIdentifierNode",
+            "params": {
+              "expected_return": "ts.Node | null",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "root",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "name",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.390Z",
+          "last_verified_at": "2026-05-09T15:16:00.390Z"
+        },
+        {
+          "id": "ct_Q1HqZHAb",
+          "type": "boundary",
+          "description": "firstIdentifierNode parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 86,
+              "line_end": 98,
+              "snippet": "function firstIdentifierNode(root: ts.Node, name: string): ts.Node | null { let result: ts.Node | null = null; function visit(node: ts.Node): void { if (result) return; if (ts.isIdentifier(node) && node.text === name) { result = node; retu...",
+              "reasoning": "Parameter contract: [{\"name\":\"root\",\"type\":\"ts.Node\",\"optional\":false,\"nullable\":false},{\"name\":\"name\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "firstIdentifierNode",
+            "params": {
+              "parameters": [
+                {
+                  "name": "root",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "name",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.390Z",
+          "last_verified_at": "2026-05-09T15:16:00.390Z"
+        },
+        {
+          "id": "ct_6JdAcWhs",
+          "type": "boundary",
+          "description": "firstIdentifierNode parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 86,
+              "line_end": 98,
+              "snippet": "function firstIdentifierNode(root: ts.Node, name: string): ts.Node | null { let result: ts.Node | null = null; function visit(node: ts.Node): void { if (result) return; if (ts.isIdentifier(node) && node.text === name) { result = node; retu...",
+              "reasoning": "Nullability contract: [{\"name\":\"root\",\"nullable\":false,\"optional\":false},{\"name\":\"name\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "firstIdentifierNode",
+            "params": {
+              "parameters": [
+                {
+                  "name": "root",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "name",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.390Z",
+          "last_verified_at": "2026-05-09T15:16:00.390Z"
+        }
+      ]
+    },
+    {
+      "name": "visit",
+      "kind": "function",
+      "qualified_name": "visit",
+      "signature_hash": "06d2e448d0467c84",
+      "node_hash": "3654fa8b71c75672",
+      "line_start": 88,
+      "line_end": 95,
+      "contracts": [
+        {
+          "id": "ct_MamboluP",
+          "type": "boundary",
+          "description": "visit returns void and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 88,
+              "line_end": 95,
+              "snippet": "function visit(node: ts.Node): void { if (result) return; if (ts.isIdentifier(node) && node.text === name) { result = node; return; } ts.forEachChild(node, visit); }",
+              "reasoning": "Explicit return type is void; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "visit",
+            "params": {
+              "expected_return": "void",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.390Z",
+          "last_verified_at": "2026-05-09T15:16:00.390Z"
+        },
+        {
+          "id": "ct_mY3Y0dMp",
+          "type": "boundary",
+          "description": "visit parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 88,
+              "line_end": 95,
+              "snippet": "function visit(node: ts.Node): void { if (result) return; if (ts.isIdentifier(node) && node.text === name) { result = node; return; } ts.forEachChild(node, visit); }",
+              "reasoning": "Parameter contract: [{\"name\":\"node\",\"type\":\"ts.Node\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "visit",
+            "params": {
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.390Z",
+          "last_verified_at": "2026-05-09T15:16:00.390Z"
+        },
+        {
+          "id": "ct_a4Er9t3O",
+          "type": "boundary",
+          "description": "visit parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 88,
+              "line_end": 95,
+              "snippet": "function visit(node: ts.Node): void { if (result) return; if (ts.isIdentifier(node) && node.text === name) { result = node; return; } ts.forEachChild(node, visit); }",
+              "reasoning": "Nullability contract: [{\"name\":\"node\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "visit",
+            "params": {
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.390Z",
+          "last_verified_at": "2026-05-09T15:16:00.390Z"
+        }
+      ]
+    },
+    {
+      "name": "escapeRegExp",
+      "kind": "function",
+      "qualified_name": "escapeRegExp",
+      "signature_hash": "eb0e00a036161359",
+      "node_hash": "e49e6c1f5f8090f7",
+      "line_start": 100,
+      "line_end": 102,
+      "contracts": [
+        {
+          "id": "ct_FCDMdlTZ",
+          "type": "boundary",
+          "description": "escapeRegExp returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 100,
+              "line_end": 102,
+              "snippet": "function escapeRegExp(value: string): string { return value.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&'); }",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "escapeRegExp",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.391Z",
+          "last_verified_at": "2026-05-09T15:16:00.391Z"
+        },
+        {
+          "id": "ct_psFSgDWx",
+          "type": "boundary",
+          "description": "escapeRegExp parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 100,
+              "line_end": 102,
+              "snippet": "function escapeRegExp(value: string): string { return value.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&'); }",
+              "reasoning": "Parameter contract: [{\"name\":\"value\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "escapeRegExp",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.391Z",
+          "last_verified_at": "2026-05-09T15:16:00.391Z"
+        },
+        {
+          "id": "ct_vXzKu8be",
+          "type": "boundary",
+          "description": "escapeRegExp parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 100,
+              "line_end": 102,
+              "snippet": "function escapeRegExp(value: string): string { return value.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&'); }",
+              "reasoning": "Nullability contract: [{\"name\":\"value\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "escapeRegExp",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.391Z",
+          "last_verified_at": "2026-05-09T15:16:00.391Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.391Z",
+    "last_checked_at": "2026-05-09T15:16:00.391Z",
+    "total_contracts": 30
+  }
+}

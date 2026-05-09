@@ -1,0 +1,519 @@
+{
+  "source_file": "src/reporters/github.ts",
+  "source_hash": "147e102a68780de48afb608d184f5eaed5177483c587c334b9212b45449bb17e",
+  "scopes": [
+    {
+      "name": "<module>",
+      "kind": "module",
+      "qualified_name": "<module>",
+      "signature_hash": "58ea489a1b86dfef",
+      "node_hash": "147e102a68780de4",
+      "line_start": 1,
+      "line_end": 53,
+      "contracts": [
+        {
+          "id": "ct_yuNl8uUc",
+          "type": "dependency",
+          "description": "Security-sensitive import from ../utils/security.js is preserved",
+          "pattern": "import_constraint",
+          "detection": "import_graph",
+          "severity": "low",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "pattern_match",
+              "line_start": 2,
+              "line_end": 2,
+              "snippet": "import { safeSnippet } from '../utils/security.js';",
+              "reasoning": "Security-related import detected"
+            }
+          ],
+          "verification": {
+            "strategy": "import_presence",
+            "target": "../utils/security.js",
+            "params": {
+              "names": [
+                "safeSnippet"
+              ],
+              "named": [
+                {
+                  "imported": "safeSnippet",
+                  "local": "safeSnippet"
+                }
+              ],
+              "type_only": false
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.662Z",
+          "last_verified_at": "2026-05-09T15:16:00.662Z"
+        }
+      ]
+    },
+    {
+      "name": "renderGithubCheck",
+      "kind": "function",
+      "qualified_name": "renderGithubCheck",
+      "signature_hash": "066c51c7390890d5",
+      "node_hash": "26660f6216538761",
+      "line_start": 4,
+      "line_end": 27,
+      "contracts": [
+        {
+          "id": "ct_nS9m9mkd",
+          "type": "boundary",
+          "description": "renderGithubCheck returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 4,
+              "line_end": 27,
+              "snippet": "export function renderGithubCheck(result: CheckResult): string { const lines: string[] = []; lines.push('## Drift Semantic Integrity'); lines.push(''); lines.push(`Checked ${result.summary.files_checked} file(s) against ${result.summary.co...",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "renderGithubCheck",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "result",
+                  "type": "CheckResult",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.661Z",
+          "last_verified_at": "2026-05-09T15:16:00.661Z"
+        },
+        {
+          "id": "ct_TMXuW1ox",
+          "type": "boundary",
+          "description": "renderGithubCheck parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 4,
+              "line_end": 27,
+              "snippet": "export function renderGithubCheck(result: CheckResult): string { const lines: string[] = []; lines.push('## Drift Semantic Integrity'); lines.push(''); lines.push(`Checked ${result.summary.files_checked} file(s) against ${result.summary.co...",
+              "reasoning": "Parameter contract: [{\"name\":\"result\",\"type\":\"CheckResult\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "renderGithubCheck",
+            "params": {
+              "parameters": [
+                {
+                  "name": "result",
+                  "type": "CheckResult",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.661Z",
+          "last_verified_at": "2026-05-09T15:16:00.661Z"
+        },
+        {
+          "id": "ct_PdCPHEek",
+          "type": "boundary",
+          "description": "renderGithubCheck parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 4,
+              "line_end": 27,
+              "snippet": "export function renderGithubCheck(result: CheckResult): string { const lines: string[] = []; lines.push('## Drift Semantic Integrity'); lines.push(''); lines.push(`Checked ${result.summary.files_checked} file(s) against ${result.summary.co...",
+              "reasoning": "Nullability contract: [{\"name\":\"result\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "renderGithubCheck",
+            "params": {
+              "parameters": [
+                {
+                  "name": "result",
+                  "type": "CheckResult",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.661Z",
+          "last_verified_at": "2026-05-09T15:16:00.661Z"
+        }
+      ]
+    },
+    {
+      "name": "violationRow",
+      "kind": "function",
+      "qualified_name": "violationRow",
+      "signature_hash": "3705abeeddeaf7e9",
+      "node_hash": "b7d85bad83695cb4",
+      "line_start": 29,
+      "line_end": 39,
+      "contracts": [
+        {
+          "id": "ct_2i9IEydd",
+          "type": "boundary",
+          "description": "violationRow returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 29,
+              "line_end": 39,
+              "snippet": "function violationRow(violation: Violation): string { const scope = violation.scope ?? ''; const contract = violation.contract ? `${violation.contract.pattern} (${violation.contract.id})` : violation.type; return [ violation.severity, code...",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "violationRow",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "violation",
+                  "type": "Violation",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.661Z",
+          "last_verified_at": "2026-05-09T15:16:00.661Z"
+        },
+        {
+          "id": "ct_PX9qJQ8R",
+          "type": "boundary",
+          "description": "violationRow parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 29,
+              "line_end": 39,
+              "snippet": "function violationRow(violation: Violation): string { const scope = violation.scope ?? ''; const contract = violation.contract ? `${violation.contract.pattern} (${violation.contract.id})` : violation.type; return [ violation.severity, code...",
+              "reasoning": "Parameter contract: [{\"name\":\"violation\",\"type\":\"Violation\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "violationRow",
+            "params": {
+              "parameters": [
+                {
+                  "name": "violation",
+                  "type": "Violation",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.661Z",
+          "last_verified_at": "2026-05-09T15:16:00.661Z"
+        },
+        {
+          "id": "ct_dh5dI-AW",
+          "type": "boundary",
+          "description": "violationRow parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 29,
+              "line_end": 39,
+              "snippet": "function violationRow(violation: Violation): string { const scope = violation.scope ?? ''; const contract = violation.contract ? `${violation.contract.pattern} (${violation.contract.id})` : violation.type; return [ violation.severity, code...",
+              "reasoning": "Nullability contract: [{\"name\":\"violation\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "violationRow",
+            "params": {
+              "parameters": [
+                {
+                  "name": "violation",
+                  "type": "Violation",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.661Z",
+          "last_verified_at": "2026-05-09T15:16:00.661Z"
+        }
+      ]
+    },
+    {
+      "name": "markdownText",
+      "kind": "function",
+      "qualified_name": "markdownText",
+      "signature_hash": "eb0e00a036161359",
+      "node_hash": "358c710e3939a0f0",
+      "line_start": 41,
+      "line_end": 48,
+      "contracts": [
+        {
+          "id": "ct_YTny-jl-",
+          "type": "boundary",
+          "description": "markdownText returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 41,
+              "line_end": 48,
+              "snippet": "function markdownText(value: string): string { return safeSnippet(value, 300) .replaceAll('\\\\', '\\\\\\\\') .replaceAll('|', '\\\\|') .replaceAll('@', '@\\u200B') .replaceAll('[', '\\\\[') .replaceAll(']', '\\\\]'); }",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "markdownText",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.661Z",
+          "last_verified_at": "2026-05-09T15:16:00.661Z"
+        },
+        {
+          "id": "ct_oMCu99t_",
+          "type": "boundary",
+          "description": "markdownText parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 41,
+              "line_end": 48,
+              "snippet": "function markdownText(value: string): string { return safeSnippet(value, 300) .replaceAll('\\\\', '\\\\\\\\') .replaceAll('|', '\\\\|') .replaceAll('@', '@\\u200B') .replaceAll('[', '\\\\[') .replaceAll(']', '\\\\]'); }",
+              "reasoning": "Parameter contract: [{\"name\":\"value\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "markdownText",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.661Z",
+          "last_verified_at": "2026-05-09T15:16:00.661Z"
+        },
+        {
+          "id": "ct_qz2WfhPD",
+          "type": "boundary",
+          "description": "markdownText parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 41,
+              "line_end": 48,
+              "snippet": "function markdownText(value: string): string { return safeSnippet(value, 300) .replaceAll('\\\\', '\\\\\\\\') .replaceAll('|', '\\\\|') .replaceAll('@', '@\\u200B') .replaceAll('[', '\\\\[') .replaceAll(']', '\\\\]'); }",
+              "reasoning": "Nullability contract: [{\"name\":\"value\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "markdownText",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.661Z",
+          "last_verified_at": "2026-05-09T15:16:00.661Z"
+        }
+      ]
+    },
+    {
+      "name": "codeText",
+      "kind": "function",
+      "qualified_name": "codeText",
+      "signature_hash": "eb0e00a036161359",
+      "node_hash": "f2ec81da6d5ecc4e",
+      "line_start": 50,
+      "line_end": 52,
+      "contracts": [
+        {
+          "id": "ct_MsfiDuL7",
+          "type": "boundary",
+          "description": "codeText returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 50,
+              "line_end": 52,
+              "snippet": "function codeText(value: string): string { return `\\`${markdownText(value).replaceAll('`', '')}\\``; }",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "codeText",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.662Z",
+          "last_verified_at": "2026-05-09T15:16:00.662Z"
+        },
+        {
+          "id": "ct_KaIGkUql",
+          "type": "boundary",
+          "description": "codeText parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 50,
+              "line_end": 52,
+              "snippet": "function codeText(value: string): string { return `\\`${markdownText(value).replaceAll('`', '')}\\``; }",
+              "reasoning": "Parameter contract: [{\"name\":\"value\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "codeText",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.662Z",
+          "last_verified_at": "2026-05-09T15:16:00.662Z"
+        },
+        {
+          "id": "ct_OkaOcB1j",
+          "type": "boundary",
+          "description": "codeText parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 50,
+              "line_end": 52,
+              "snippet": "function codeText(value: string): string { return `\\`${markdownText(value).replaceAll('`', '')}\\``; }",
+              "reasoning": "Nullability contract: [{\"name\":\"value\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "codeText",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.662Z",
+          "last_verified_at": "2026-05-09T15:16:00.662Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.662Z",
+    "last_checked_at": "2026-05-09T15:16:00.662Z",
+    "total_contracts": 13
+  }
+}

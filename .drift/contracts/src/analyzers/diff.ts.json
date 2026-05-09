@@ -1,0 +1,127 @@
+{
+  "source_file": "src/analyzers/diff.ts",
+  "source_hash": "3f128bb81930e473e8584b7d195ee4e620e0d6f6c2a578a0485b9d22a4f89e7d",
+  "scopes": [
+    {
+      "name": "summarizeScopeRemoval",
+      "kind": "function",
+      "qualified_name": "summarizeScopeRemoval",
+      "signature_hash": "b49f236ee5b6c7c0",
+      "node_hash": "6261f967745b727b",
+      "line_start": 11,
+      "line_end": 17,
+      "contracts": [
+        {
+          "id": "ct_zyR73P6C",
+          "type": "boundary",
+          "description": "summarizeScopeRemoval returns SemanticChange and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 11,
+              "line_end": 17,
+              "snippet": "export function summarizeScopeRemoval(scope: ContractScope): SemanticChange { return { type: 'scope_removed', name: scope.name, from: `${scope.contracts.length} contract(s)`, }; }",
+              "reasoning": "Explicit return type is SemanticChange; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "summarizeScopeRemoval",
+            "params": {
+              "expected_return": "SemanticChange",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ContractScope",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.288Z",
+          "last_verified_at": "2026-05-09T15:16:00.288Z"
+        },
+        {
+          "id": "ct_uBNlzUsO",
+          "type": "boundary",
+          "description": "summarizeScopeRemoval parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 11,
+              "line_end": 17,
+              "snippet": "export function summarizeScopeRemoval(scope: ContractScope): SemanticChange { return { type: 'scope_removed', name: scope.name, from: `${scope.contracts.length} contract(s)`, }; }",
+              "reasoning": "Parameter contract: [{\"name\":\"scope\",\"type\":\"ContractScope\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "summarizeScopeRemoval",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ContractScope",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.288Z",
+          "last_verified_at": "2026-05-09T15:16:00.288Z"
+        },
+        {
+          "id": "ct_lc4QOFOl",
+          "type": "boundary",
+          "description": "summarizeScopeRemoval parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 11,
+              "line_end": 17,
+              "snippet": "export function summarizeScopeRemoval(scope: ContractScope): SemanticChange { return { type: 'scope_removed', name: scope.name, from: `${scope.contracts.length} contract(s)`, }; }",
+              "reasoning": "Nullability contract: [{\"name\":\"scope\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "summarizeScopeRemoval",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ContractScope",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.288Z",
+          "last_verified_at": "2026-05-09T15:16:00.288Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.288Z",
+    "last_checked_at": "2026-05-09T15:16:00.288Z",
+    "total_contracts": 3
+  }
+}

@@ -1,0 +1,882 @@
+{
+  "source_file": "src/reporters/terminal.ts",
+  "source_hash": "582e76c3ffcd1078dfacda0111ba2a86ea21b5b12700f7d363f0d630473a8c4c",
+  "scopes": [
+    {
+      "name": "<module>",
+      "kind": "module",
+      "qualified_name": "<module>",
+      "signature_hash": "58ea489a1b86dfef",
+      "node_hash": "582e76c3ffcd1078",
+      "line_start": 1,
+      "line_end": 149,
+      "contracts": [
+        {
+          "id": "ct_d4vXj88e",
+          "type": "dependency",
+          "description": "Security-sensitive import from ../utils/security.js is preserved",
+          "pattern": "import_constraint",
+          "detection": "import_graph",
+          "severity": "low",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "pattern_match",
+              "line_start": 5,
+              "line_end": 5,
+              "snippet": "import { safeSnippet } from '../utils/security.js';",
+              "reasoning": "Security-related import detected"
+            }
+          ],
+          "verification": {
+            "strategy": "import_presence",
+            "target": "../utils/security.js",
+            "params": {
+              "names": [
+                "safeSnippet"
+              ],
+              "named": [
+                {
+                  "imported": "safeSnippet",
+                  "local": "safeSnippet"
+                }
+              ],
+              "type_only": false
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.685Z",
+          "last_verified_at": "2026-05-09T15:16:00.685Z"
+        }
+      ]
+    },
+    {
+      "name": "renderInit",
+      "kind": "function",
+      "qualified_name": "renderInit",
+      "signature_hash": "d12595b28414b4fa",
+      "node_hash": "79ff880963522606",
+      "line_start": 20,
+      "line_end": 47,
+      "contracts": [
+        {
+          "id": "ct_4l-BqhkI",
+          "type": "boundary",
+          "description": "renderInit returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 20,
+              "line_end": 47,
+              "snippet": "export function renderInit(result: CrystallizeResult): string { const lines: string[] = []; lines.push(''); lines.push(chalk.hex('#ff3d00')(logo)); lines.push(''); lines.push(' Crystallizing semantic contracts'); lines.push(''); lines.push...",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "renderInit",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "result",
+                  "type": "CrystallizeResult",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.681Z",
+          "last_verified_at": "2026-05-09T15:16:00.681Z"
+        },
+        {
+          "id": "ct_6jBPDEHk",
+          "type": "boundary",
+          "description": "renderInit parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 20,
+              "line_end": 47,
+              "snippet": "export function renderInit(result: CrystallizeResult): string { const lines: string[] = []; lines.push(''); lines.push(chalk.hex('#ff3d00')(logo)); lines.push(''); lines.push(' Crystallizing semantic contracts'); lines.push(''); lines.push...",
+              "reasoning": "Parameter contract: [{\"name\":\"result\",\"type\":\"CrystallizeResult\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "renderInit",
+            "params": {
+              "parameters": [
+                {
+                  "name": "result",
+                  "type": "CrystallizeResult",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.681Z",
+          "last_verified_at": "2026-05-09T15:16:00.681Z"
+        },
+        {
+          "id": "ct_KIDsRmdc",
+          "type": "boundary",
+          "description": "renderInit parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 20,
+              "line_end": 47,
+              "snippet": "export function renderInit(result: CrystallizeResult): string { const lines: string[] = []; lines.push(''); lines.push(chalk.hex('#ff3d00')(logo)); lines.push(''); lines.push(' Crystallizing semantic contracts'); lines.push(''); lines.push...",
+              "reasoning": "Nullability contract: [{\"name\":\"result\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "renderInit",
+            "params": {
+              "parameters": [
+                {
+                  "name": "result",
+                  "type": "CrystallizeResult",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.681Z",
+          "last_verified_at": "2026-05-09T15:16:00.681Z"
+        }
+      ]
+    },
+    {
+      "name": "renderCheck",
+      "kind": "function",
+      "qualified_name": "renderCheck",
+      "signature_hash": "066c51c7390890d5",
+      "node_hash": "ff00e1b09212d66a",
+      "line_start": 49,
+      "line_end": 70,
+      "contracts": [
+        {
+          "id": "ct_E_2GejrH",
+          "type": "boundary",
+          "description": "renderCheck returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 49,
+              "line_end": 70,
+              "snippet": "export function renderCheck(result: CheckResult): string { const lines: string[] = []; lines.push(''); lines.push(` ${chalk.hex('#ff3d00')('Drift')} - Checking ${result.summary.files_checked} file(s) against ${result.summary.contracts_veri...",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "renderCheck",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "result",
+                  "type": "CheckResult",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.683Z",
+          "last_verified_at": "2026-05-09T15:16:00.683Z"
+        },
+        {
+          "id": "ct_5YrF_CEl",
+          "type": "boundary",
+          "description": "renderCheck parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 49,
+              "line_end": 70,
+              "snippet": "export function renderCheck(result: CheckResult): string { const lines: string[] = []; lines.push(''); lines.push(` ${chalk.hex('#ff3d00')('Drift')} - Checking ${result.summary.files_checked} file(s) against ${result.summary.contracts_veri...",
+              "reasoning": "Parameter contract: [{\"name\":\"result\",\"type\":\"CheckResult\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "renderCheck",
+            "params": {
+              "parameters": [
+                {
+                  "name": "result",
+                  "type": "CheckResult",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.683Z",
+          "last_verified_at": "2026-05-09T15:16:00.683Z"
+        },
+        {
+          "id": "ct_ZBUJ2I0x",
+          "type": "boundary",
+          "description": "renderCheck parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 49,
+              "line_end": 70,
+              "snippet": "export function renderCheck(result: CheckResult): string { const lines: string[] = []; lines.push(''); lines.push(` ${chalk.hex('#ff3d00')('Drift')} - Checking ${result.summary.files_checked} file(s) against ${result.summary.contracts_veri...",
+              "reasoning": "Nullability contract: [{\"name\":\"result\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "renderCheck",
+            "params": {
+              "parameters": [
+                {
+                  "name": "result",
+                  "type": "CheckResult",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.683Z",
+          "last_verified_at": "2026-05-09T15:16:00.683Z"
+        }
+      ]
+    },
+    {
+      "name": "renderStatus",
+      "kind": "function",
+      "qualified_name": "renderStatus",
+      "signature_hash": "66810ff87aa951db",
+      "node_hash": "100cdb08c80aecec",
+      "line_start": 72,
+      "line_end": 96,
+      "contracts": [
+        {
+          "id": "ct_R04pgkIR",
+          "type": "boundary",
+          "description": "renderStatus returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 72,
+              "line_end": 96,
+              "snippet": "export function renderStatus(stats: { totalFiles: number; totalContracts: number; bySeverity: Record<Severity, number>; byType: Record<string, number>; }): string { return [ '', chalk.hex('#ff3d00')(logo), '', ' Status', '', ` Contract fil...",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "renderStatus",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "stats",
+                  "type": "{\n  totalFiles: number;\n  totalContracts: number;\n  bySeverity: Record<Severity, number>;\n  byType: Record<string, number>;\n}",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.683Z",
+          "last_verified_at": "2026-05-09T15:16:00.683Z"
+        },
+        {
+          "id": "ct_ulKbA__z",
+          "type": "boundary",
+          "description": "renderStatus parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 72,
+              "line_end": 96,
+              "snippet": "export function renderStatus(stats: { totalFiles: number; totalContracts: number; bySeverity: Record<Severity, number>; byType: Record<string, number>; }): string { return [ '', chalk.hex('#ff3d00')(logo), '', ' Status', '', ` Contract fil...",
+              "reasoning": "Parameter contract: [{\"name\":\"stats\",\"type\":\"{\\n totalFiles: number;\\n totalContracts: number;\\n bySeverity: Record<Severity, number>;\\n byType: Record<string, number>;\\n}\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "renderStatus",
+            "params": {
+              "parameters": [
+                {
+                  "name": "stats",
+                  "type": "{\n  totalFiles: number;\n  totalContracts: number;\n  bySeverity: Record<Severity, number>;\n  byType: Record<string, number>;\n}",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.683Z",
+          "last_verified_at": "2026-05-09T15:16:00.683Z"
+        },
+        {
+          "id": "ct_kJ4MjSRR",
+          "type": "boundary",
+          "description": "renderStatus parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 72,
+              "line_end": 96,
+              "snippet": "export function renderStatus(stats: { totalFiles: number; totalContracts: number; bySeverity: Record<Severity, number>; byType: Record<string, number>; }): string { return [ '', chalk.hex('#ff3d00')(logo), '', ' Status', '', ` Contract fil...",
+              "reasoning": "Nullability contract: [{\"name\":\"stats\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "renderStatus",
+            "params": {
+              "parameters": [
+                {
+                  "name": "stats",
+                  "type": "{\n  totalFiles: number;\n  totalContracts: number;\n  bySeverity: Record<Severity, number>;\n  byType: Record<string, number>;\n}",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.683Z",
+          "last_verified_at": "2026-05-09T15:16:00.683Z"
+        }
+      ]
+    },
+    {
+      "name": "renderLs",
+      "kind": "function",
+      "qualified_name": "renderLs",
+      "signature_hash": "866e8f42ee0f52d2",
+      "node_hash": "b4182e2e723105b5",
+      "line_start": 98,
+      "line_end": 114,
+      "contracts": [
+        {
+          "id": "ct_ZKfxRN1V",
+          "type": "boundary",
+          "description": "renderLs returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 98,
+              "line_end": 114,
+              "snippet": "export function renderLs(files: ContractFile[]): string { const lines: string[] = ['']; for (const file of files) { lines.push(` ${chalk.hex('#3d8bff')(terminalText(file.source_file))}`); for (const scope of file.scopes) { for (const contr...",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "renderLs",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "files",
+                  "type": "ContractFile[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.684Z",
+          "last_verified_at": "2026-05-09T15:16:00.684Z"
+        },
+        {
+          "id": "ct_NqkxtYe8",
+          "type": "boundary",
+          "description": "renderLs parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 98,
+              "line_end": 114,
+              "snippet": "export function renderLs(files: ContractFile[]): string { const lines: string[] = ['']; for (const file of files) { lines.push(` ${chalk.hex('#3d8bff')(terminalText(file.source_file))}`); for (const scope of file.scopes) { for (const contr...",
+              "reasoning": "Parameter contract: [{\"name\":\"files\",\"type\":\"ContractFile[]\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "renderLs",
+            "params": {
+              "parameters": [
+                {
+                  "name": "files",
+                  "type": "ContractFile[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.684Z",
+          "last_verified_at": "2026-05-09T15:16:00.684Z"
+        },
+        {
+          "id": "ct_uXVqQ1po",
+          "type": "boundary",
+          "description": "renderLs parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 98,
+              "line_end": 114,
+              "snippet": "export function renderLs(files: ContractFile[]): string { const lines: string[] = ['']; for (const file of files) { lines.push(` ${chalk.hex('#3d8bff')(terminalText(file.source_file))}`); for (const scope of file.scopes) { for (const contr...",
+              "reasoning": "Nullability contract: [{\"name\":\"files\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "renderLs",
+            "params": {
+              "parameters": [
+                {
+                  "name": "files",
+                  "type": "ContractFile[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.684Z",
+          "last_verified_at": "2026-05-09T15:16:00.684Z"
+        }
+      ]
+    },
+    {
+      "name": "renderViolation",
+      "kind": "function",
+      "qualified_name": "renderViolation",
+      "signature_hash": "3705abeeddeaf7e9",
+      "node_hash": "6fd98e2d949ff3ed",
+      "line_start": 116,
+      "line_end": 134,
+      "contracts": [
+        {
+          "id": "ct_2VRLs-ry",
+          "type": "boundary",
+          "description": "renderViolation returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 116,
+              "line_end": 134,
+              "snippet": "function renderViolation(violation: Violation): string { const sev = severityColor[violation.severity](violation.severity.toUpperCase()); const lines = [ ` ${chalk.hex('#ff3d00')('CONTRACT VIOLATION')} ${sev} in ${chalk.hex('#3d8bff')(term...",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "renderViolation",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "violation",
+                  "type": "Violation",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.684Z",
+          "last_verified_at": "2026-05-09T15:16:00.684Z"
+        },
+        {
+          "id": "ct_2hKp4-C7",
+          "type": "boundary",
+          "description": "renderViolation parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 116,
+              "line_end": 134,
+              "snippet": "function renderViolation(violation: Violation): string { const sev = severityColor[violation.severity](violation.severity.toUpperCase()); const lines = [ ` ${chalk.hex('#ff3d00')('CONTRACT VIOLATION')} ${sev} in ${chalk.hex('#3d8bff')(term...",
+              "reasoning": "Parameter contract: [{\"name\":\"violation\",\"type\":\"Violation\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "renderViolation",
+            "params": {
+              "parameters": [
+                {
+                  "name": "violation",
+                  "type": "Violation",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.684Z",
+          "last_verified_at": "2026-05-09T15:16:00.684Z"
+        },
+        {
+          "id": "ct_0-WuFhKI",
+          "type": "boundary",
+          "description": "renderViolation parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 116,
+              "line_end": 134,
+              "snippet": "function renderViolation(violation: Violation): string { const sev = severityColor[violation.severity](violation.severity.toUpperCase()); const lines = [ ` ${chalk.hex('#ff3d00')('CONTRACT VIOLATION')} ${sev} in ${chalk.hex('#3d8bff')(term...",
+              "reasoning": "Nullability contract: [{\"name\":\"violation\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "renderViolation",
+            "params": {
+              "parameters": [
+                {
+                  "name": "violation",
+                  "type": "Violation",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.684Z",
+          "last_verified_at": "2026-05-09T15:16:00.684Z"
+        }
+      ]
+    },
+    {
+      "name": "severityCount",
+      "kind": "function",
+      "qualified_name": "severityCount",
+      "signature_hash": "1ef33a6768310533",
+      "node_hash": "66827e8d4f62b808",
+      "line_start": 136,
+      "line_end": 144,
+      "contracts": [
+        {
+          "id": "ct_9KKKZyrY",
+          "type": "boundary",
+          "description": "severityCount returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 136,
+              "line_end": 144,
+              "snippet": "function severityCount(violations: Violation[]): string { if (violations.length === 0) return chalk.hex('#00d68f')('0 violations'); const counts: Record<Severity, number> = { critical: 0, high: 0, medium: 0, low: 0 }; for (const violation ...",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "severityCount",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "violations",
+                  "type": "Violation[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.685Z",
+          "last_verified_at": "2026-05-09T15:16:00.685Z"
+        },
+        {
+          "id": "ct_rpp8J6mV",
+          "type": "boundary",
+          "description": "severityCount parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 136,
+              "line_end": 144,
+              "snippet": "function severityCount(violations: Violation[]): string { if (violations.length === 0) return chalk.hex('#00d68f')('0 violations'); const counts: Record<Severity, number> = { critical: 0, high: 0, medium: 0, low: 0 }; for (const violation ...",
+              "reasoning": "Parameter contract: [{\"name\":\"violations\",\"type\":\"Violation[]\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "severityCount",
+            "params": {
+              "parameters": [
+                {
+                  "name": "violations",
+                  "type": "Violation[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.685Z",
+          "last_verified_at": "2026-05-09T15:16:00.685Z"
+        },
+        {
+          "id": "ct_AThS9OJH",
+          "type": "boundary",
+          "description": "severityCount parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 136,
+              "line_end": 144,
+              "snippet": "function severityCount(violations: Violation[]): string { if (violations.length === 0) return chalk.hex('#00d68f')('0 violations'); const counts: Record<Severity, number> = { critical: 0, high: 0, medium: 0, low: 0 }; for (const violation ...",
+              "reasoning": "Nullability contract: [{\"name\":\"violations\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "severityCount",
+            "params": {
+              "parameters": [
+                {
+                  "name": "violations",
+                  "type": "Violation[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.685Z",
+          "last_verified_at": "2026-05-09T15:16:00.685Z"
+        }
+      ]
+    },
+    {
+      "name": "terminalText",
+      "kind": "function",
+      "qualified_name": "terminalText",
+      "signature_hash": "7bf75f6a62ae614f",
+      "node_hash": "858c7b51864da677",
+      "line_start": 146,
+      "line_end": 148,
+      "contracts": [
+        {
+          "id": "ct_-DxgSsj7",
+          "type": "boundary",
+          "description": "terminalText returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 146,
+              "line_end": 148,
+              "snippet": "function terminalText(value: string, maxLength = 500): string { return safeSnippet(value, maxLength); }",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "terminalText",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "maxLength",
+                  "type": "number",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.685Z",
+          "last_verified_at": "2026-05-09T15:16:00.685Z"
+        },
+        {
+          "id": "ct_V8UXWYNv",
+          "type": "boundary",
+          "description": "terminalText parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 146,
+              "line_end": 148,
+              "snippet": "function terminalText(value: string, maxLength = 500): string { return safeSnippet(value, maxLength); }",
+              "reasoning": "Parameter contract: [{\"name\":\"value\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"maxLength\",\"type\":\"number\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "terminalText",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "maxLength",
+                  "type": "number",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.685Z",
+          "last_verified_at": "2026-05-09T15:16:00.685Z"
+        },
+        {
+          "id": "ct_61uvlK8E",
+          "type": "boundary",
+          "description": "terminalText parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 146,
+              "line_end": 148,
+              "snippet": "function terminalText(value: string, maxLength = 500): string { return safeSnippet(value, maxLength); }",
+              "reasoning": "Nullability contract: [{\"name\":\"value\",\"nullable\":false,\"optional\":false},{\"name\":\"maxLength\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "terminalText",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "maxLength",
+                  "type": "number",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.685Z",
+          "last_verified_at": "2026-05-09T15:16:00.685Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.685Z",
+    "last_checked_at": "2026-05-09T15:16:00.685Z",
+    "total_contracts": 22
+  }
+}

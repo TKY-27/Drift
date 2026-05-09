@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="650" viewBox="0 0 1120 650" role="img" aria-labelledby="title desc">
+  <title id="title">Drift CLI semantic integrity check</title>
+  <desc id="desc">A terminal screenshot showing Drift blocking a semantic contract violation in a staged TypeScript change.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#09090b"/>
+      <stop offset="1" stop-color="#16161a"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="24" stdDeviation="28" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+  <rect width="1120" height="650" fill="#0b0c0f"/>
+  <rect x="0" y="0" width="1120" height="650" fill="url(#bg)"/>
+  <rect x="80" y="64" width="960" height="522" rx="18" fill="#111114" stroke="#2a2a30" filter="url(#shadow)"/>
+  <rect x="80" y="64" width="960" height="54" rx="18" fill="#19191f"/>
+  <circle cx="112" cy="91" r="7" fill="#ff5f57"/>
+  <circle cx="136" cy="91" r="7" fill="#febc2e"/>
+  <circle cx="160" cy="91" r="7" fill="#28c840"/>
+  <text x="194" y="96" fill="#8a8a95" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15">drift check --staged</text>
+  <text x="116" y="158" fill="#ff3d00" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="22" font-weight="700">Drift</text>
+  <text x="188" y="158" fill="#e8e6e3" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="22">Checking 3 staged files against 12 contracts</text>
+  <text x="116" y="212" fill="#ff3d00" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17" font-weight="700">CONTRACT VIOLATION</text>
+  <text x="324" y="212" fill="#ff3d00" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17" font-weight="700">CRITICAL</text>
+  <text x="430" y="212" fill="#8a8a95" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17">in</text>
+  <text x="462" y="212" fill="#3d8bff" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17">src/auth/session.ts</text>
+  <text x="116" y="252" fill="#ff6b3d" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17">authenticateUser</text>
+  <text x="274" y="252" fill="#e8e6e3" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17">[nullify_after_use]</text>
+  <text x="494" y="252" fill="#5a5a65" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17">ct_vault9k</text>
+  <text x="116" y="292" fill="#8a8a95" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="16">"password is nullified after use in authenticateUser"</text>
+  <text x="116" y="344" fill="#e8e6e3" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="16">Reason:</text>
+  <text x="200" y="344" fill="#c9c6c0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="16">Required nullification for password is missing</text>
+  <text x="116" y="382" fill="#e8e6e3" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="16">Suggested fix:</text>
+  <text x="260" y="382" fill="#c9c6c0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="16">Restore password = null after its final sensitive use</text>
+  <text x="116" y="434" fill="#8a8a95" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15">Before:</text>
+  <rect x="198" y="414" width="506" height="36" rx="6" fill="#1a1a20" stroke="#2a2a30"/>
+  <text x="216" y="438" fill="#00d68f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15">password = null;</text>
+  <line x1="116" y1="488" x2="1004" y2="488" stroke="#2a2a30"/>
+  <text x="116" y="532" fill="#ff3d00" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17">1 critical</text>
+  <text x="244" y="532" fill="#00d68f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17">11 passed</text>
+  <text x="360" y="532" fill="#8a8a95" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17">0 evolved</text>
+  <text x="116" y="562" fill="#ff3d00" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="16">Commit blocked if any violation meets the configured threshold.</text>
+</svg>

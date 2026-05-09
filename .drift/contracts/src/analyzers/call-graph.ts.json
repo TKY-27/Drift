@@ -1,0 +1,1766 @@
+{
+  "source_file": "src/analyzers/call-graph.ts",
+  "source_hash": "2b5fa10a0b238c750638b5c53885c9eb0f29d7aabf5fd1d7174e8968f0b0d78e",
+  "scopes": [
+    {
+      "name": "extractCalls",
+      "kind": "function",
+      "qualified_name": "extractCalls",
+      "signature_hash": "bb17a7cedfb9f9da",
+      "node_hash": "26858c567fd25d2c",
+      "line_start": 43,
+      "line_end": 56,
+      "contracts": [
+        {
+          "id": "ct_5J4L2kh5",
+          "type": "boundary",
+          "description": "extractCalls returns CallSite[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 43,
+              "line_end": 56,
+              "snippet": "export function extractCalls(parsed: ParsedFile, scope: ScopeInfo): CallSite[] { const calls: CallSite[] = []; walk(scope.node, (node) => { if (!ts.isCallExpression(node) || isInsideNestedFunction(scope.node, node)) return; calls.push({ ca...",
+              "reasoning": "Explicit return type is CallSite[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "extractCalls",
+            "params": {
+              "expected_return": "CallSite[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.262Z",
+          "last_verified_at": "2026-05-09T15:16:00.262Z"
+        },
+        {
+          "id": "ct_4QPEDvqa",
+          "type": "boundary",
+          "description": "extractCalls parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 43,
+              "line_end": 56,
+              "snippet": "export function extractCalls(parsed: ParsedFile, scope: ScopeInfo): CallSite[] { const calls: CallSite[] = []; walk(scope.node, (node) => { if (!ts.isCallExpression(node) || isInsideNestedFunction(scope.node, node)) return; calls.push({ ca...",
+              "reasoning": "Parameter contract: [{\"name\":\"parsed\",\"type\":\"ParsedFile\",\"optional\":false,\"nullable\":false},{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "extractCalls",
+            "params": {
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.262Z",
+          "last_verified_at": "2026-05-09T15:16:00.262Z"
+        },
+        {
+          "id": "ct_vtC8y98W",
+          "type": "boundary",
+          "description": "extractCalls parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 43,
+              "line_end": 56,
+              "snippet": "export function extractCalls(parsed: ParsedFile, scope: ScopeInfo): CallSite[] { const calls: CallSite[] = []; walk(scope.node, (node) => { if (!ts.isCallExpression(node) || isInsideNestedFunction(scope.node, node)) return; calls.push({ ca...",
+              "reasoning": "Nullability contract: [{\"name\":\"parsed\",\"nullable\":false,\"optional\":false},{\"name\":\"scope\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "extractCalls",
+            "params": {
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.262Z",
+          "last_verified_at": "2026-05-09T15:16:00.262Z"
+        }
+      ]
+    },
+    {
+      "name": "expressionName",
+      "kind": "function",
+      "qualified_name": "expressionName",
+      "signature_hash": "a9d5d57c816df142",
+      "node_hash": "25b82790b22c8a08",
+      "line_start": 58,
+      "line_end": 67,
+      "contracts": [
+        {
+          "id": "ct_R5-iMAfF",
+          "type": "boundary",
+          "description": "expressionName returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 58,
+              "line_end": 67,
+              "snippet": "export function expressionName(expression: ts.Expression): string { if (ts.isIdentifier(expression)) return expression.text; if (ts.isPropertyAccessExpression(expression)) { return `${expressionName(expression.expression)}.${expression.nam...",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "expressionName",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "expression",
+                  "type": "ts.Expression",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.262Z",
+          "last_verified_at": "2026-05-09T15:16:00.262Z"
+        },
+        {
+          "id": "ct_e_Lpdpi0",
+          "type": "boundary",
+          "description": "expressionName parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 58,
+              "line_end": 67,
+              "snippet": "export function expressionName(expression: ts.Expression): string { if (ts.isIdentifier(expression)) return expression.text; if (ts.isPropertyAccessExpression(expression)) { return `${expressionName(expression.expression)}.${expression.nam...",
+              "reasoning": "Parameter contract: [{\"name\":\"expression\",\"type\":\"ts.Expression\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "expressionName",
+            "params": {
+              "parameters": [
+                {
+                  "name": "expression",
+                  "type": "ts.Expression",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.262Z",
+          "last_verified_at": "2026-05-09T15:16:00.262Z"
+        },
+        {
+          "id": "ct_7uwfeyiC",
+          "type": "boundary",
+          "description": "expressionName parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 58,
+              "line_end": 67,
+              "snippet": "export function expressionName(expression: ts.Expression): string { if (ts.isIdentifier(expression)) return expression.text; if (ts.isPropertyAccessExpression(expression)) { return `${expressionName(expression.expression)}.${expression.nam...",
+              "reasoning": "Nullability contract: [{\"name\":\"expression\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "expressionName",
+            "params": {
+              "parameters": [
+                {
+                  "name": "expression",
+                  "type": "ts.Expression",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.262Z",
+          "last_verified_at": "2026-05-09T15:16:00.262Z"
+        }
+      ]
+    },
+    {
+      "name": "callMatches",
+      "kind": "function",
+      "qualified_name": "callMatches",
+      "signature_hash": "be529320aee3ce6b",
+      "node_hash": "c65ac81b37069135",
+      "line_start": 69,
+      "line_end": 71,
+      "contracts": [
+        {
+          "id": "ct_NLyz21Gf",
+          "type": "boundary",
+          "description": "callMatches returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 69,
+              "line_end": 71,
+              "snippet": "export function callMatches(callee: string, target: string): boolean { return callee === target || callee.endsWith(`.${target}`); }",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "callMatches",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "callee",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "target",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.263Z",
+          "last_verified_at": "2026-05-09T15:16:00.263Z"
+        },
+        {
+          "id": "ct_jjcA1Ezk",
+          "type": "boundary",
+          "description": "callMatches parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 69,
+              "line_end": 71,
+              "snippet": "export function callMatches(callee: string, target: string): boolean { return callee === target || callee.endsWith(`.${target}`); }",
+              "reasoning": "Parameter contract: [{\"name\":\"callee\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"target\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "callMatches",
+            "params": {
+              "parameters": [
+                {
+                  "name": "callee",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "target",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.263Z",
+          "last_verified_at": "2026-05-09T15:16:00.263Z"
+        },
+        {
+          "id": "ct_RD_BkuSt",
+          "type": "boundary",
+          "description": "callMatches parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 69,
+              "line_end": 71,
+              "snippet": "export function callMatches(callee: string, target: string): boolean { return callee === target || callee.endsWith(`.${target}`); }",
+              "reasoning": "Nullability contract: [{\"name\":\"callee\",\"nullable\":false,\"optional\":false},{\"name\":\"target\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "callMatches",
+            "params": {
+              "parameters": [
+                {
+                  "name": "callee",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "target",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.263Z",
+          "last_verified_at": "2026-05-09T15:16:00.263Z"
+        }
+      ]
+    },
+    {
+      "name": "isSideEffectCall",
+      "kind": "function",
+      "qualified_name": "isSideEffectCall",
+      "signature_hash": "9e60b7fe2593e08d",
+      "node_hash": "bc804b97eeda8aeb",
+      "line_start": 73,
+      "line_end": 78,
+      "contracts": [
+        {
+          "id": "ct_HdNvAR95",
+          "type": "boundary",
+          "description": "isSideEffectCall returns SideEffectPattern['category'] | null and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 73,
+              "line_end": 78,
+              "snippet": "export function isSideEffectCall(call: CallSite): SideEffectPattern['category'] | null { for (const group of SIDE_EFFECT_PATTERNS) { if (group.patterns.some((pattern) => pattern.test(call.callee))) return group.category; } return null; }",
+              "reasoning": "Explicit return type is SideEffectPattern['category'] | null; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isSideEffectCall",
+            "params": {
+              "expected_return": "SideEffectPattern['category'] | null",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "call",
+                  "type": "CallSite",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.263Z",
+          "last_verified_at": "2026-05-09T15:16:00.263Z"
+        },
+        {
+          "id": "ct_g7xPvPgE",
+          "type": "boundary",
+          "description": "isSideEffectCall parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 73,
+              "line_end": 78,
+              "snippet": "export function isSideEffectCall(call: CallSite): SideEffectPattern['category'] | null { for (const group of SIDE_EFFECT_PATTERNS) { if (group.patterns.some((pattern) => pattern.test(call.callee))) return group.category; } return null; }",
+              "reasoning": "Parameter contract: [{\"name\":\"call\",\"type\":\"CallSite\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isSideEffectCall",
+            "params": {
+              "parameters": [
+                {
+                  "name": "call",
+                  "type": "CallSite",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.263Z",
+          "last_verified_at": "2026-05-09T15:16:00.263Z"
+        },
+        {
+          "id": "ct_q_vAMvW9",
+          "type": "boundary",
+          "description": "isSideEffectCall parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 73,
+              "line_end": 78,
+              "snippet": "export function isSideEffectCall(call: CallSite): SideEffectPattern['category'] | null { for (const group of SIDE_EFFECT_PATTERNS) { if (group.patterns.some((pattern) => pattern.test(call.callee))) return group.category; } return null; }",
+              "reasoning": "Nullability contract: [{\"name\":\"call\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isSideEffectCall",
+            "params": {
+              "parameters": [
+                {
+                  "name": "call",
+                  "type": "CallSite",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.263Z",
+          "last_verified_at": "2026-05-09T15:16:00.263Z"
+        }
+      ]
+    },
+    {
+      "name": "isValidationCall",
+      "kind": "function",
+      "qualified_name": "isValidationCall",
+      "signature_hash": "eb0ce12252e31287",
+      "node_hash": "b0020d87369b37ea",
+      "line_start": 80,
+      "line_end": 82,
+      "contracts": [
+        {
+          "id": "ct_IswAo-0T",
+          "type": "boundary",
+          "description": "isValidationCall returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 80,
+              "line_end": 82,
+              "snippet": "export function isValidationCall(call: CallSite): boolean { return /(^|\\.)((validate|assert|parse|safeParse|checkInput|requireField)[A-Z_a-z0-9]*|schema\\.(parse|safeParse))$/.test(call.callee); }",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isValidationCall",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "call",
+                  "type": "CallSite",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.263Z",
+          "last_verified_at": "2026-05-09T15:16:00.263Z"
+        },
+        {
+          "id": "ct_uQlb5PiP",
+          "type": "boundary",
+          "description": "isValidationCall parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 80,
+              "line_end": 82,
+              "snippet": "export function isValidationCall(call: CallSite): boolean { return /(^|\\.)((validate|assert|parse|safeParse|checkInput|requireField)[A-Z_a-z0-9]*|schema\\.(parse|safeParse))$/.test(call.callee); }",
+              "reasoning": "Parameter contract: [{\"name\":\"call\",\"type\":\"CallSite\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isValidationCall",
+            "params": {
+              "parameters": [
+                {
+                  "name": "call",
+                  "type": "CallSite",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.263Z",
+          "last_verified_at": "2026-05-09T15:16:00.263Z"
+        },
+        {
+          "id": "ct_TTSSl8vC",
+          "type": "boundary",
+          "description": "isValidationCall parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 80,
+              "line_end": 82,
+              "snippet": "export function isValidationCall(call: CallSite): boolean { return /(^|\\.)((validate|assert|parse|safeParse|checkInput|requireField)[A-Z_a-z0-9]*|schema\\.(parse|safeParse))$/.test(call.callee); }",
+              "reasoning": "Nullability contract: [{\"name\":\"call\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isValidationCall",
+            "params": {
+              "parameters": [
+                {
+                  "name": "call",
+                  "type": "CallSite",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.263Z",
+          "last_verified_at": "2026-05-09T15:16:00.263Z"
+        }
+      ]
+    },
+    {
+      "name": "isRateLimitCall",
+      "kind": "function",
+      "qualified_name": "isRateLimitCall",
+      "signature_hash": "eb0ce12252e31287",
+      "node_hash": "9cbd24d29c75859a",
+      "line_start": 84,
+      "line_end": 87,
+      "contracts": [
+        {
+          "id": "ct_NGs3ouCA",
+          "type": "boundary",
+          "description": "isRateLimitCall returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 84,
+              "line_end": 87,
+              "snippet": "export function isRateLimitCall(call: CallSite): boolean { return /(^|\\.)(rateLimit|rateLimiter|limiter)\\.(check|consume|assert|enforce)$/.test(call.callee) || /(^|\\.)(checkRateLimit|enforceRateLimit|requireRateLimit)$/.test(call.callee); }",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isRateLimitCall",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "call",
+                  "type": "CallSite",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.263Z",
+          "last_verified_at": "2026-05-09T15:16:00.263Z"
+        },
+        {
+          "id": "ct_VSsYIU_-",
+          "type": "boundary",
+          "description": "isRateLimitCall parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 84,
+              "line_end": 87,
+              "snippet": "export function isRateLimitCall(call: CallSite): boolean { return /(^|\\.)(rateLimit|rateLimiter|limiter)\\.(check|consume|assert|enforce)$/.test(call.callee) || /(^|\\.)(checkRateLimit|enforceRateLimit|requireRateLimit)$/.test(call.callee); }",
+              "reasoning": "Parameter contract: [{\"name\":\"call\",\"type\":\"CallSite\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isRateLimitCall",
+            "params": {
+              "parameters": [
+                {
+                  "name": "call",
+                  "type": "CallSite",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.263Z",
+          "last_verified_at": "2026-05-09T15:16:00.263Z"
+        },
+        {
+          "id": "ct_wQCowryO",
+          "type": "boundary",
+          "description": "isRateLimitCall parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 84,
+              "line_end": 87,
+              "snippet": "export function isRateLimitCall(call: CallSite): boolean { return /(^|\\.)(rateLimit|rateLimiter|limiter)\\.(check|consume|assert|enforce)$/.test(call.callee) || /(^|\\.)(checkRateLimit|enforceRateLimit|requireRateLimit)$/.test(call.callee); }",
+              "reasoning": "Nullability contract: [{\"name\":\"call\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isRateLimitCall",
+            "params": {
+              "parameters": [
+                {
+                  "name": "call",
+                  "type": "CallSite",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.263Z",
+          "last_verified_at": "2026-05-09T15:16:00.263Z"
+        }
+      ]
+    },
+    {
+      "name": "isAuthCall",
+      "kind": "function",
+      "qualified_name": "isAuthCall",
+      "signature_hash": "eb0ce12252e31287",
+      "node_hash": "1ce2cff404d2861e",
+      "line_start": 89,
+      "line_end": 91,
+      "contracts": [
+        {
+          "id": "ct__rd6hyK7",
+          "type": "boundary",
+          "description": "isAuthCall returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 89,
+              "line_end": 91,
+              "snippet": "export function isAuthCall(call: CallSite): boolean { return /(^|\\.)(authorize|requireAuth|assertAuth|checkPermission|verifyPermission|verifyToken|authenticate)$/.test(call.callee); }",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isAuthCall",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "call",
+                  "type": "CallSite",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.263Z",
+          "last_verified_at": "2026-05-09T15:16:00.263Z"
+        },
+        {
+          "id": "ct_ZBbMR4Dg",
+          "type": "boundary",
+          "description": "isAuthCall parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 89,
+              "line_end": 91,
+              "snippet": "export function isAuthCall(call: CallSite): boolean { return /(^|\\.)(authorize|requireAuth|assertAuth|checkPermission|verifyPermission|verifyToken|authenticate)$/.test(call.callee); }",
+              "reasoning": "Parameter contract: [{\"name\":\"call\",\"type\":\"CallSite\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isAuthCall",
+            "params": {
+              "parameters": [
+                {
+                  "name": "call",
+                  "type": "CallSite",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.263Z",
+          "last_verified_at": "2026-05-09T15:16:00.263Z"
+        },
+        {
+          "id": "ct_QBFBNn0a",
+          "type": "boundary",
+          "description": "isAuthCall parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 89,
+              "line_end": 91,
+              "snippet": "export function isAuthCall(call: CallSite): boolean { return /(^|\\.)(authorize|requireAuth|assertAuth|checkPermission|verifyPermission|verifyToken|authenticate)$/.test(call.callee); }",
+              "reasoning": "Nullability contract: [{\"name\":\"call\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isAuthCall",
+            "params": {
+              "parameters": [
+                {
+                  "name": "call",
+                  "type": "CallSite",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.263Z",
+          "last_verified_at": "2026-05-09T15:16:00.263Z"
+        }
+      ]
+    },
+    {
+      "name": "isInsideTransactionCall",
+      "kind": "function",
+      "qualified_name": "isInsideTransactionCall",
+      "signature_hash": "eb0ce12252e31287",
+      "node_hash": "34577b6792d91b77",
+      "line_start": 93,
+      "line_end": 100,
+      "contracts": [
+        {
+          "id": "ct_60CjijRy",
+          "type": "boundary",
+          "description": "isInsideTransactionCall returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 93,
+              "line_end": 100,
+              "snippet": "export function isInsideTransactionCall(call: CallSite): boolean { let current: ts.Node | undefined = call.node.parent; while (current) { if (ts.isCallExpression(current) && /(^|\\.)(transaction|\\$transaction)$/.test(expressionName(current....",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isInsideTransactionCall",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "call",
+                  "type": "CallSite",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.263Z",
+          "last_verified_at": "2026-05-09T15:16:00.263Z"
+        },
+        {
+          "id": "ct_wybd-ILB",
+          "type": "boundary",
+          "description": "isInsideTransactionCall parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 93,
+              "line_end": 100,
+              "snippet": "export function isInsideTransactionCall(call: CallSite): boolean { let current: ts.Node | undefined = call.node.parent; while (current) { if (ts.isCallExpression(current) && /(^|\\.)(transaction|\\$transaction)$/.test(expressionName(current....",
+              "reasoning": "Parameter contract: [{\"name\":\"call\",\"type\":\"CallSite\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isInsideTransactionCall",
+            "params": {
+              "parameters": [
+                {
+                  "name": "call",
+                  "type": "CallSite",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.263Z",
+          "last_verified_at": "2026-05-09T15:16:00.263Z"
+        },
+        {
+          "id": "ct_MxdpE2ts",
+          "type": "boundary",
+          "description": "isInsideTransactionCall parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 93,
+              "line_end": 100,
+              "snippet": "export function isInsideTransactionCall(call: CallSite): boolean { let current: ts.Node | undefined = call.node.parent; while (current) { if (ts.isCallExpression(current) && /(^|\\.)(transaction|\\$transaction)$/.test(expressionName(current....",
+              "reasoning": "Nullability contract: [{\"name\":\"call\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isInsideTransactionCall",
+            "params": {
+              "parameters": [
+                {
+                  "name": "call",
+                  "type": "CallSite",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.263Z",
+          "last_verified_at": "2026-05-09T15:16:00.263Z"
+        }
+      ]
+    },
+    {
+      "name": "isCallConditionallyNested",
+      "kind": "function",
+      "qualified_name": "isCallConditionallyNested",
+      "signature_hash": "e451a9e7e0b0f5a4",
+      "node_hash": "0f7281b18c258664",
+      "line_start": 102,
+      "line_end": 109,
+      "contracts": [
+        {
+          "id": "ct_xY-l44_q",
+          "type": "boundary",
+          "description": "isCallConditionallyNested returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 102,
+              "line_end": 109,
+              "snippet": "export function isCallConditionallyNested(scope: ScopeInfo, call: CallSite): boolean { let current: ts.Node | undefined = call.node.parent; while (current && current !== scope.node) { if (ts.isIfStatement(current) || ts.isSwitchStatement(c...",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isCallConditionallyNested",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "call",
+                  "type": "CallSite",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.264Z",
+          "last_verified_at": "2026-05-09T15:16:00.264Z"
+        },
+        {
+          "id": "ct_ltEJRNio",
+          "type": "boundary",
+          "description": "isCallConditionallyNested parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 102,
+              "line_end": 109,
+              "snippet": "export function isCallConditionallyNested(scope: ScopeInfo, call: CallSite): boolean { let current: ts.Node | undefined = call.node.parent; while (current && current !== scope.node) { if (ts.isIfStatement(current) || ts.isSwitchStatement(c...",
+              "reasoning": "Parameter contract: [{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false},{\"name\":\"call\",\"type\":\"CallSite\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isCallConditionallyNested",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "call",
+                  "type": "CallSite",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.264Z",
+          "last_verified_at": "2026-05-09T15:16:00.264Z"
+        },
+        {
+          "id": "ct_Nxvm1_-_",
+          "type": "boundary",
+          "description": "isCallConditionallyNested parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 102,
+              "line_end": 109,
+              "snippet": "export function isCallConditionallyNested(scope: ScopeInfo, call: CallSite): boolean { let current: ts.Node | undefined = call.node.parent; while (current && current !== scope.node) { if (ts.isIfStatement(current) || ts.isSwitchStatement(c...",
+              "reasoning": "Nullability contract: [{\"name\":\"scope\",\"nullable\":false,\"optional\":false},{\"name\":\"call\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isCallConditionallyNested",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "call",
+                  "type": "CallSite",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.264Z",
+          "last_verified_at": "2026-05-09T15:16:00.264Z"
+        }
+      ]
+    },
+    {
+      "name": "hasExitBeforeCall",
+      "kind": "function",
+      "qualified_name": "hasExitBeforeCall",
+      "signature_hash": "e451a9e7e0b0f5a4",
+      "node_hash": "1f70eda5e3530bba",
+      "line_start": 111,
+      "line_end": 118,
+      "contracts": [
+        {
+          "id": "ct_2lJDxNsv",
+          "type": "boundary",
+          "description": "hasExitBeforeCall returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 111,
+              "line_end": 118,
+              "snippet": "export function hasExitBeforeCall(scope: ScopeInfo, call: CallSite): boolean { let found = false; walk(scope.node, (node) => { if (found || node.getStart() >= call.node.getStart() || isInsideNestedFunction(scope.node, node)) return; if (ts...",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "hasExitBeforeCall",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "call",
+                  "type": "CallSite",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.264Z",
+          "last_verified_at": "2026-05-09T15:16:00.264Z"
+        },
+        {
+          "id": "ct_uhhF_F9r",
+          "type": "boundary",
+          "description": "hasExitBeforeCall parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 111,
+              "line_end": 118,
+              "snippet": "export function hasExitBeforeCall(scope: ScopeInfo, call: CallSite): boolean { let found = false; walk(scope.node, (node) => { if (found || node.getStart() >= call.node.getStart() || isInsideNestedFunction(scope.node, node)) return; if (ts...",
+              "reasoning": "Parameter contract: [{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false},{\"name\":\"call\",\"type\":\"CallSite\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "hasExitBeforeCall",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "call",
+                  "type": "CallSite",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.264Z",
+          "last_verified_at": "2026-05-09T15:16:00.264Z"
+        },
+        {
+          "id": "ct_FDcGIi8D",
+          "type": "boundary",
+          "description": "hasExitBeforeCall parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 111,
+              "line_end": 118,
+              "snippet": "export function hasExitBeforeCall(scope: ScopeInfo, call: CallSite): boolean { let found = false; walk(scope.node, (node) => { if (found || node.getStart() >= call.node.getStart() || isInsideNestedFunction(scope.node, node)) return; if (ts...",
+              "reasoning": "Nullability contract: [{\"name\":\"scope\",\"nullable\":false,\"optional\":false},{\"name\":\"call\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "hasExitBeforeCall",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "call",
+                  "type": "CallSite",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.264Z",
+          "last_verified_at": "2026-05-09T15:16:00.264Z"
+        }
+      ]
+    },
+    {
+      "name": "firstStatementsContainCall",
+      "kind": "function",
+      "qualified_name": "firstStatementsContainCall",
+      "signature_hash": "0ee23bcc8166de64",
+      "node_hash": "f2f63479fde19fc7",
+      "line_start": 120,
+      "line_end": 128,
+      "contracts": [
+        {
+          "id": "ct_ZBzCqqng",
+          "type": "boundary",
+          "description": "firstStatementsContainCall returns CallSite | null and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 120,
+              "line_end": 128,
+              "snippet": "export function firstStatementsContainCall(scope: ScopeInfo, calls: CallSite[], predicate: (call: CallSite) => boolean): CallSite | null { if (!scope.body) return calls.find(predicate) ?? null; const firstStatements = new Set(scope.body.st...",
+              "reasoning": "Explicit return type is CallSite | null; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "firstStatementsContainCall",
+            "params": {
+              "expected_return": "CallSite | null",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "calls",
+                  "type": "CallSite[]",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "predicate",
+                  "type": "(call: CallSite) => boolean",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.265Z",
+          "last_verified_at": "2026-05-09T15:16:00.265Z"
+        },
+        {
+          "id": "ct_h0iD_R7B",
+          "type": "boundary",
+          "description": "firstStatementsContainCall parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 120,
+              "line_end": 128,
+              "snippet": "export function firstStatementsContainCall(scope: ScopeInfo, calls: CallSite[], predicate: (call: CallSite) => boolean): CallSite | null { if (!scope.body) return calls.find(predicate) ?? null; const firstStatements = new Set(scope.body.st...",
+              "reasoning": "Parameter contract: [{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false},{\"name\":\"calls\",\"type\":\"CallSite[]\",\"optional\":false,\"nullable\":false},{\"name\":\"predicate\",\"type\":\"(call: CallSite) => boolean\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "firstStatementsContainCall",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "calls",
+                  "type": "CallSite[]",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "predicate",
+                  "type": "(call: CallSite) => boolean",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.265Z",
+          "last_verified_at": "2026-05-09T15:16:00.265Z"
+        },
+        {
+          "id": "ct_lIIn1zmL",
+          "type": "boundary",
+          "description": "firstStatementsContainCall parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 120,
+              "line_end": 128,
+              "snippet": "export function firstStatementsContainCall(scope: ScopeInfo, calls: CallSite[], predicate: (call: CallSite) => boolean): CallSite | null { if (!scope.body) return calls.find(predicate) ?? null; const firstStatements = new Set(scope.body.st...",
+              "reasoning": "Nullability contract: [{\"name\":\"scope\",\"nullable\":false,\"optional\":false},{\"name\":\"calls\",\"nullable\":false,\"optional\":false},{\"name\":\"predicate\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "firstStatementsContainCall",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "calls",
+                  "type": "CallSite[]",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "predicate",
+                  "type": "(call: CallSite) => boolean",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.265Z",
+          "last_verified_at": "2026-05-09T15:16:00.265Z"
+        }
+      ]
+    },
+    {
+      "name": "buildCallGraph",
+      "kind": "function",
+      "qualified_name": "buildCallGraph",
+      "signature_hash": "9401552307d7a491",
+      "node_hash": "a7b24431e881c03d",
+      "line_start": 136,
+      "line_end": 148,
+      "contracts": [
+        {
+          "id": "ct_irzzBoGe",
+          "type": "boundary",
+          "description": "buildCallGraph returns Map<string, CallGraphNode> and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 136,
+              "line_end": 148,
+              "snippet": "export function buildCallGraph(parsed: ParsedFile, scopes: ScopeInfo[]): Map<string, CallGraphNode> { const scopeNames = new Set(scopes.map((scope) => scope.name)); const graph = new Map<string, CallGraphNode>(); for (const scope of scopes...",
+              "reasoning": "Explicit return type is Map<string, CallGraphNode>; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "buildCallGraph",
+            "params": {
+              "expected_return": "Map<string, CallGraphNode>",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scopes",
+                  "type": "ScopeInfo[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.265Z",
+          "last_verified_at": "2026-05-09T15:16:00.265Z"
+        },
+        {
+          "id": "ct_oYV19fJy",
+          "type": "boundary",
+          "description": "buildCallGraph parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 136,
+              "line_end": 148,
+              "snippet": "export function buildCallGraph(parsed: ParsedFile, scopes: ScopeInfo[]): Map<string, CallGraphNode> { const scopeNames = new Set(scopes.map((scope) => scope.name)); const graph = new Map<string, CallGraphNode>(); for (const scope of scopes...",
+              "reasoning": "Parameter contract: [{\"name\":\"parsed\",\"type\":\"ParsedFile\",\"optional\":false,\"nullable\":false},{\"name\":\"scopes\",\"type\":\"ScopeInfo[]\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "buildCallGraph",
+            "params": {
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scopes",
+                  "type": "ScopeInfo[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.265Z",
+          "last_verified_at": "2026-05-09T15:16:00.265Z"
+        },
+        {
+          "id": "ct_PiAODrim",
+          "type": "boundary",
+          "description": "buildCallGraph parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 136,
+              "line_end": 148,
+              "snippet": "export function buildCallGraph(parsed: ParsedFile, scopes: ScopeInfo[]): Map<string, CallGraphNode> { const scopeNames = new Set(scopes.map((scope) => scope.name)); const graph = new Map<string, CallGraphNode>(); for (const scope of scopes...",
+              "reasoning": "Nullability contract: [{\"name\":\"parsed\",\"nullable\":false,\"optional\":false},{\"name\":\"scopes\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "buildCallGraph",
+            "params": {
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scopes",
+                  "type": "ScopeInfo[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.265Z",
+          "last_verified_at": "2026-05-09T15:16:00.265Z"
+        }
+      ]
+    },
+    {
+      "name": "enclosingStatement",
+      "kind": "function",
+      "qualified_name": "enclosingStatement",
+      "signature_hash": "252733631e8c518e",
+      "node_hash": "b4af32b0e32cbffd",
+      "line_start": 150,
+      "line_end": 157,
+      "contracts": [
+        {
+          "id": "ct_Wd0zwFf-",
+          "type": "boundary",
+          "description": "enclosingStatement returns ts.Statement | null and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 150,
+              "line_end": 157,
+              "snippet": "function enclosingStatement(scope: ScopeInfo, node: ts.Node): ts.Statement | null { if (!scope.body) return null; let current: ts.Node = node; while (current.parent && current.parent !== scope.body) { current = current.parent; } return ts....",
+              "reasoning": "Explicit return type is ts.Statement | null; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "enclosingStatement",
+            "params": {
+              "expected_return": "ts.Statement | null",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.265Z",
+          "last_verified_at": "2026-05-09T15:16:00.265Z"
+        },
+        {
+          "id": "ct_fnlO0DYL",
+          "type": "boundary",
+          "description": "enclosingStatement parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 150,
+              "line_end": 157,
+              "snippet": "function enclosingStatement(scope: ScopeInfo, node: ts.Node): ts.Statement | null { if (!scope.body) return null; let current: ts.Node = node; while (current.parent && current.parent !== scope.body) { current = current.parent; } return ts....",
+              "reasoning": "Parameter contract: [{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false},{\"name\":\"node\",\"type\":\"ts.Node\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "enclosingStatement",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.265Z",
+          "last_verified_at": "2026-05-09T15:16:00.265Z"
+        },
+        {
+          "id": "ct_P0uRkk5c",
+          "type": "boundary",
+          "description": "enclosingStatement parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 150,
+              "line_end": 157,
+              "snippet": "function enclosingStatement(scope: ScopeInfo, node: ts.Node): ts.Statement | null { if (!scope.body) return null; let current: ts.Node = node; while (current.parent && current.parent !== scope.body) { current = current.parent; } return ts....",
+              "reasoning": "Nullability contract: [{\"name\":\"scope\",\"nullable\":false,\"optional\":false},{\"name\":\"node\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "enclosingStatement",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.265Z",
+          "last_verified_at": "2026-05-09T15:16:00.265Z"
+        }
+      ]
+    },
+    {
+      "name": "calleeFromImportName",
+      "kind": "function",
+      "qualified_name": "calleeFromImportName",
+      "signature_hash": "75557d445c4b8373",
+      "node_hash": "541e0c6eeff89b74",
+      "line_start": 159,
+      "line_end": 161,
+      "contracts": [
+        {
+          "id": "ct_ZwjeElLV",
+          "type": "boundary",
+          "description": "calleeFromImportName returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 159,
+              "line_end": 161,
+              "snippet": "export function calleeFromImportName(name: ts.PropertyName | ts.BindingName): string { return propertyNameText(name); }",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "calleeFromImportName",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": "ts.PropertyName | ts.BindingName",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.265Z",
+          "last_verified_at": "2026-05-09T15:16:00.265Z"
+        },
+        {
+          "id": "ct_fkoGenoe",
+          "type": "boundary",
+          "description": "calleeFromImportName parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 159,
+              "line_end": 161,
+              "snippet": "export function calleeFromImportName(name: ts.PropertyName | ts.BindingName): string { return propertyNameText(name); }",
+              "reasoning": "Parameter contract: [{\"name\":\"name\",\"type\":\"ts.PropertyName | ts.BindingName\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "calleeFromImportName",
+            "params": {
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": "ts.PropertyName | ts.BindingName",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.265Z",
+          "last_verified_at": "2026-05-09T15:16:00.265Z"
+        },
+        {
+          "id": "ct_YasEu9jr",
+          "type": "boundary",
+          "description": "calleeFromImportName parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 159,
+              "line_end": 161,
+              "snippet": "export function calleeFromImportName(name: ts.PropertyName | ts.BindingName): string { return propertyNameText(name); }",
+              "reasoning": "Nullability contract: [{\"name\":\"name\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "calleeFromImportName",
+            "params": {
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": "ts.PropertyName | ts.BindingName",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.265Z",
+          "last_verified_at": "2026-05-09T15:16:00.265Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.265Z",
+    "last_checked_at": "2026-05-09T15:16:00.265Z",
+    "total_contracts": 42
+  }
+}

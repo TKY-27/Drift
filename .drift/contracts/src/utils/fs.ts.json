@@ -1,0 +1,287 @@
+{
+  "source_file": "src/utils/fs.ts",
+  "source_hash": "a3d7ceaf4e887293c47a924848a22677d66e2d9ec8930418ee0af8e16351368d",
+  "scopes": [
+    {
+      "name": "findUp",
+      "kind": "function",
+      "qualified_name": "findUp",
+      "signature_hash": "9017d35e949d20bd",
+      "node_hash": "e5fb45f7a1ba821a",
+      "line_start": 4,
+      "line_end": 13,
+      "contracts": [
+        {
+          "id": "ct_9Jp4d5SY",
+          "type": "boundary",
+          "description": "findUp returns string | null and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 4,
+              "line_end": 13,
+              "snippet": "export function findUp(startDir: string, target: string): string | null { let current = path.resolve(startDir); while (true) { const candidate = path.join(current, target); if (fs.existsSync(candidate)) return candidate; const parent = pat...",
+              "reasoning": "Explicit return type is string | null; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findUp",
+            "params": {
+              "expected_return": "string | null",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "startDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "target",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.734Z",
+          "last_verified_at": "2026-05-09T15:16:00.734Z"
+        },
+        {
+          "id": "ct_st6MBTfO",
+          "type": "boundary",
+          "description": "findUp parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 4,
+              "line_end": 13,
+              "snippet": "export function findUp(startDir: string, target: string): string | null { let current = path.resolve(startDir); while (true) { const candidate = path.join(current, target); if (fs.existsSync(candidate)) return candidate; const parent = pat...",
+              "reasoning": "Parameter contract: [{\"name\":\"startDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"target\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findUp",
+            "params": {
+              "parameters": [
+                {
+                  "name": "startDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "target",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.734Z",
+          "last_verified_at": "2026-05-09T15:16:00.734Z"
+        },
+        {
+          "id": "ct_lp3LKqst",
+          "type": "boundary",
+          "description": "findUp parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 4,
+              "line_end": 13,
+              "snippet": "export function findUp(startDir: string, target: string): string | null { let current = path.resolve(startDir); while (true) { const candidate = path.join(current, target); if (fs.existsSync(candidate)) return candidate; const parent = pat...",
+              "reasoning": "Nullability contract: [{\"name\":\"startDir\",\"nullable\":false,\"optional\":false},{\"name\":\"target\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findUp",
+            "params": {
+              "parameters": [
+                {
+                  "name": "startDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "target",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.734Z",
+          "last_verified_at": "2026-05-09T15:16:00.734Z"
+        }
+      ]
+    },
+    {
+      "name": "isFile",
+      "kind": "function",
+      "qualified_name": "isFile",
+      "signature_hash": "49a3ba6ffdeefa00",
+      "node_hash": "1b61908eec826159",
+      "line_start": 15,
+      "line_end": 21,
+      "contracts": [
+        {
+          "id": "ct_7WJJNFOZ",
+          "type": "boundary",
+          "description": "isFile returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 15,
+              "line_end": 21,
+              "snippet": "export function isFile(filePath: string): boolean { try { return fs.statSync(filePath).isFile(); } catch { return false; } }",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isFile",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "filePath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.734Z",
+          "last_verified_at": "2026-05-09T15:16:00.734Z"
+        },
+        {
+          "id": "ct_82z49Jg-",
+          "type": "boundary",
+          "description": "isFile parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 15,
+              "line_end": 21,
+              "snippet": "export function isFile(filePath: string): boolean { try { return fs.statSync(filePath).isFile(); } catch { return false; } }",
+              "reasoning": "Parameter contract: [{\"name\":\"filePath\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isFile",
+            "params": {
+              "parameters": [
+                {
+                  "name": "filePath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.734Z",
+          "last_verified_at": "2026-05-09T15:16:00.734Z"
+        },
+        {
+          "id": "ct_LWwbgk5Y",
+          "type": "boundary",
+          "description": "isFile parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 15,
+              "line_end": 21,
+              "snippet": "export function isFile(filePath: string): boolean { try { return fs.statSync(filePath).isFile(); } catch { return false; } }",
+              "reasoning": "Nullability contract: [{\"name\":\"filePath\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isFile",
+            "params": {
+              "parameters": [
+                {
+                  "name": "filePath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.734Z",
+          "last_verified_at": "2026-05-09T15:16:00.734Z"
+        },
+        {
+          "id": "ct_FpxJFbhD",
+          "type": "boundary",
+          "description": "isFile uses fallback error handling",
+          "pattern": "error_boundary",
+          "detection": "control_flow",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "control_path",
+              "line_start": 18,
+              "line_end": 18,
+              "snippet": "catch { return false; }",
+              "reasoning": "Catch block classified as fallback"
+            }
+          ],
+          "verification": {
+            "strategy": "error_strategy",
+            "target": "isFile",
+            "params": {
+              "strategy": "fallback"
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.734Z",
+          "last_verified_at": "2026-05-09T15:16:00.734Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.734Z",
+    "last_checked_at": "2026-05-09T15:16:00.734Z",
+    "total_contracts": 7
+  }
+}

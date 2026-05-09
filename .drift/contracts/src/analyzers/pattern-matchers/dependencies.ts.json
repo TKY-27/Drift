@@ -1,0 +1,250 @@
+{
+  "source_file": "src/analyzers/pattern-matchers/dependencies.ts",
+  "source_hash": "1560e582b344465c3317770170b5c3d155fc30d230106bc6f208f50a840f9f22",
+  "scopes": [
+    {
+      "name": "<module>",
+      "kind": "module",
+      "qualified_name": "<module>",
+      "signature_hash": "58ea489a1b86dfef",
+      "node_hash": "1560e582b344465c",
+      "line_start": 1,
+      "line_end": 94,
+      "contracts": [
+        {
+          "id": "ct_rydyntdV",
+          "type": "dependency",
+          "description": "Security-sensitive import from ../call-graph.js is preserved",
+          "pattern": "import_constraint",
+          "detection": "import_graph",
+          "severity": "low",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "pattern_match",
+              "line_start": 5,
+              "line_end": 5,
+              "snippet": "import { extractCalls, firstStatementsContainCall, hasExitBeforeCall, isAuthCall, isCallConditionallyNested, isInsideTransactionCall, isRateLimitCall, isSideEffectCall, isValidationCall } from '../call-graph.js';",
+              "reasoning": "Security-related import detected"
+            }
+          ],
+          "verification": {
+            "strategy": "import_presence",
+            "target": "../call-graph.js",
+            "params": {
+              "names": [
+                "extractCalls",
+                "firstStatementsContainCall",
+                "hasExitBeforeCall",
+                "isAuthCall",
+                "isCallConditionallyNested",
+                "isInsideTransactionCall",
+                "isRateLimitCall",
+                "isSideEffectCall",
+                "isValidationCall"
+              ],
+              "named": [
+                {
+                  "imported": "extractCalls",
+                  "local": "extractCalls"
+                },
+                {
+                  "imported": "firstStatementsContainCall",
+                  "local": "firstStatementsContainCall"
+                },
+                {
+                  "imported": "hasExitBeforeCall",
+                  "local": "hasExitBeforeCall"
+                },
+                {
+                  "imported": "isAuthCall",
+                  "local": "isAuthCall"
+                },
+                {
+                  "imported": "isCallConditionallyNested",
+                  "local": "isCallConditionallyNested"
+                },
+                {
+                  "imported": "isInsideTransactionCall",
+                  "local": "isInsideTransactionCall"
+                },
+                {
+                  "imported": "isRateLimitCall",
+                  "local": "isRateLimitCall"
+                },
+                {
+                  "imported": "isSideEffectCall",
+                  "local": "isSideEffectCall"
+                },
+                {
+                  "imported": "isValidationCall",
+                  "local": "isValidationCall"
+                }
+              ],
+              "type_only": false
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.310Z",
+          "last_verified_at": "2026-05-09T15:16:00.310Z"
+        }
+      ]
+    },
+    {
+      "name": "detectDependencyPatterns",
+      "kind": "function",
+      "qualified_name": "detectDependencyPatterns",
+      "signature_hash": "5a4ea726ac8fe85a",
+      "node_hash": "4a12ba188cb1a9cd",
+      "line_start": 8,
+      "line_end": 93,
+      "contracts": [
+        {
+          "id": "ct_jUQKtwwi",
+          "type": "boundary",
+          "description": "detectDependencyPatterns returns Contract[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 8,
+              "line_end": 93,
+              "snippet": "export function detectDependencyPatterns(config: DriftConfig, parsed: ParsedFile, scope: ScopeInfo): Contract[] { const calls = extractCalls(parsed, scope); const contracts: Contract[] = []; const validation = firstStatementsContainCall(sc...",
+              "reasoning": "Explicit return type is Contract[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectDependencyPatterns",
+            "params": {
+              "expected_return": "Contract[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.309Z",
+          "last_verified_at": "2026-05-09T15:16:00.309Z"
+        },
+        {
+          "id": "ct_y3T81WiF",
+          "type": "boundary",
+          "description": "detectDependencyPatterns parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 8,
+              "line_end": 93,
+              "snippet": "export function detectDependencyPatterns(config: DriftConfig, parsed: ParsedFile, scope: ScopeInfo): Contract[] { const calls = extractCalls(parsed, scope); const contracts: Contract[] = []; const validation = firstStatementsContainCall(sc...",
+              "reasoning": "Parameter contract: [{\"name\":\"config\",\"type\":\"DriftConfig\",\"optional\":false,\"nullable\":false},{\"name\":\"parsed\",\"type\":\"ParsedFile\",\"optional\":false,\"nullable\":false},{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectDependencyPatterns",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.309Z",
+          "last_verified_at": "2026-05-09T15:16:00.309Z"
+        },
+        {
+          "id": "ct_dPSOSFGk",
+          "type": "boundary",
+          "description": "detectDependencyPatterns parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 8,
+              "line_end": 93,
+              "snippet": "export function detectDependencyPatterns(config: DriftConfig, parsed: ParsedFile, scope: ScopeInfo): Contract[] { const calls = extractCalls(parsed, scope); const contracts: Contract[] = []; const validation = firstStatementsContainCall(sc...",
+              "reasoning": "Nullability contract: [{\"name\":\"config\",\"nullable\":false,\"optional\":false},{\"name\":\"parsed\",\"nullable\":false,\"optional\":false},{\"name\":\"scope\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectDependencyPatterns",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.310Z",
+          "last_verified_at": "2026-05-09T15:16:00.310Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.310Z",
+    "last_checked_at": "2026-05-09T15:16:00.310Z",
+    "total_contracts": 4
+  }
+}

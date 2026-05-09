@@ -1,0 +1,688 @@
+{
+  "source_file": "src/analyzers/pattern-matchers/common.ts",
+  "source_hash": "4a99cf8e0012355d249f3f80b25c9c6bc5332ecf7ecc2c7ea2ace37d438bea89",
+  "scopes": [
+    {
+      "name": "<module>",
+      "kind": "module",
+      "qualified_name": "<module>",
+      "signature_hash": "58ea489a1b86dfef",
+      "node_hash": "4a99cf8e0012355d",
+      "line_start": 1,
+      "line_end": 93,
+      "contracts": [
+        {
+          "id": "ct_nWOFgxXN",
+          "type": "dependency",
+          "description": "Security-sensitive import from ../../utils/security.js is preserved",
+          "pattern": "import_constraint",
+          "detection": "import_graph",
+          "severity": "low",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "pattern_match",
+              "line_start": 6,
+              "line_end": 6,
+              "snippet": "import { safeSnippet } from '../../utils/security.js';",
+              "reasoning": "Security-related import detected"
+            }
+          ],
+          "verification": {
+            "strategy": "import_presence",
+            "target": "../../utils/security.js",
+            "params": {
+              "names": [
+                "safeSnippet"
+              ],
+              "named": [
+                {
+                  "imported": "safeSnippet",
+                  "local": "safeSnippet"
+                }
+              ],
+              "type_only": false
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.299Z",
+          "last_verified_at": "2026-05-09T15:16:00.299Z"
+        }
+      ]
+    },
+    {
+      "name": "isSensitiveName",
+      "kind": "function",
+      "qualified_name": "isSensitiveName",
+      "signature_hash": "f8b659d3e11064fe",
+      "node_hash": "f621a4eacdc4ebbd",
+      "line_start": 30,
+      "line_end": 33,
+      "contracts": [
+        {
+          "id": "ct_gysEnGoR",
+          "type": "boundary",
+          "description": "isSensitiveName returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 30,
+              "line_end": 33,
+              "snippet": "export function isSensitiveName(name: string): boolean { const normalized = name.toLowerCase().replace(/[_-]/g, ''); return SENSITIVE_NAMES.some((candidate) => normalized === candidate.toLowerCase().replace(/[_-]/g, '')); }",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isSensitiveName",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.298Z",
+          "last_verified_at": "2026-05-09T15:16:00.298Z"
+        },
+        {
+          "id": "ct_-QMvgtOF",
+          "type": "boundary",
+          "description": "isSensitiveName parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 30,
+              "line_end": 33,
+              "snippet": "export function isSensitiveName(name: string): boolean { const normalized = name.toLowerCase().replace(/[_-]/g, ''); return SENSITIVE_NAMES.some((candidate) => normalized === candidate.toLowerCase().replace(/[_-]/g, '')); }",
+              "reasoning": "Parameter contract: [{\"name\":\"name\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isSensitiveName",
+            "params": {
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.298Z",
+          "last_verified_at": "2026-05-09T15:16:00.298Z"
+        },
+        {
+          "id": "ct_A1jRvrGC",
+          "type": "boundary",
+          "description": "isSensitiveName parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 30,
+              "line_end": 33,
+              "snippet": "export function isSensitiveName(name: string): boolean { const normalized = name.toLowerCase().replace(/[_-]/g, ''); return SENSITIVE_NAMES.some((candidate) => normalized === candidate.toLowerCase().replace(/[_-]/g, '')); }",
+              "reasoning": "Nullability contract: [{\"name\":\"name\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isSensitiveName",
+            "params": {
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.298Z",
+          "last_verified_at": "2026-05-09T15:16:00.298Z"
+        }
+      ]
+    },
+    {
+      "name": "collectSensitiveNames",
+      "kind": "function",
+      "qualified_name": "collectSensitiveNames",
+      "signature_hash": "2c33a1ca6ff69c44",
+      "node_hash": "dad546535e8463c1",
+      "line_start": 35,
+      "line_end": 42,
+      "contracts": [
+        {
+          "id": "ct_M34h595a",
+          "type": "boundary",
+          "description": "collectSensitiveNames returns Set<string> and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 35,
+              "line_end": 42,
+              "snippet": "export function collectSensitiveNames(scope: ScopeInfo): Set<string> { const names = new Set<string>(); walk(scope.node, (node) => { if (isInsideNestedFunction(scope.node, node)) return; if (ts.isIdentifier(node) && isSensitiveName(node.te...",
+              "reasoning": "Explicit return type is Set<string>; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "collectSensitiveNames",
+            "params": {
+              "expected_return": "Set<string>",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.299Z",
+          "last_verified_at": "2026-05-09T15:16:00.299Z"
+        },
+        {
+          "id": "ct_Z2pxGQRY",
+          "type": "boundary",
+          "description": "collectSensitiveNames parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 35,
+              "line_end": 42,
+              "snippet": "export function collectSensitiveNames(scope: ScopeInfo): Set<string> { const names = new Set<string>(); walk(scope.node, (node) => { if (isInsideNestedFunction(scope.node, node)) return; if (ts.isIdentifier(node) && isSensitiveName(node.te...",
+              "reasoning": "Parameter contract: [{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "collectSensitiveNames",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.299Z",
+          "last_verified_at": "2026-05-09T15:16:00.299Z"
+        },
+        {
+          "id": "ct_TJBmQGJF",
+          "type": "boundary",
+          "description": "collectSensitiveNames parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 35,
+              "line_end": 42,
+              "snippet": "export function collectSensitiveNames(scope: ScopeInfo): Set<string> { const names = new Set<string>(); walk(scope.node, (node) => { if (isInsideNestedFunction(scope.node, node)) return; if (ts.isIdentifier(node) && isSensitiveName(node.te...",
+              "reasoning": "Nullability contract: [{\"name\":\"scope\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "collectSensitiveNames",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.299Z",
+          "last_verified_at": "2026-05-09T15:16:00.299Z"
+        }
+      ]
+    },
+    {
+      "name": "evidence",
+      "kind": "function",
+      "qualified_name": "evidence",
+      "signature_hash": "f1b3eabeac6c6c99",
+      "node_hash": "5a01c35981d31a87",
+      "line_start": 44,
+      "line_end": 52,
+      "contracts": [
+        {
+          "id": "ct_iF9nMp1k",
+          "type": "boundary",
+          "description": "evidence returns ContractEvidence and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 44,
+              "line_end": 52,
+              "snippet": "export function evidence(parsed: ParsedFile, node: ts.Node, type: ContractEvidence['type'], reasoning: string): ContractEvidence { const range = lineRange(parsed.sourceFile, node); return { type, ...range, snippet: safeSnippet(node.getText...",
+              "reasoning": "Explicit return type is ContractEvidence; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "evidence",
+            "params": {
+              "expected_return": "ContractEvidence",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "type",
+                  "type": "ContractEvidence['type']",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "reasoning",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.299Z",
+          "last_verified_at": "2026-05-09T15:16:00.299Z"
+        },
+        {
+          "id": "ct_w4tl-Gf8",
+          "type": "boundary",
+          "description": "evidence parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 44,
+              "line_end": 52,
+              "snippet": "export function evidence(parsed: ParsedFile, node: ts.Node, type: ContractEvidence['type'], reasoning: string): ContractEvidence { const range = lineRange(parsed.sourceFile, node); return { type, ...range, snippet: safeSnippet(node.getText...",
+              "reasoning": "Parameter contract: [{\"name\":\"parsed\",\"type\":\"ParsedFile\",\"optional\":false,\"nullable\":false},{\"name\":\"node\",\"type\":\"ts.Node\",\"optional\":false,\"nullable\":false},{\"name\":\"type\",\"type\":\"ContractEvidence['type']\",\"optional\":false,\"nullable\":false},{\"name\":\"reasoning\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "evidence",
+            "params": {
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "type",
+                  "type": "ContractEvidence['type']",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "reasoning",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.299Z",
+          "last_verified_at": "2026-05-09T15:16:00.299Z"
+        },
+        {
+          "id": "ct_DB3y7Sy1",
+          "type": "boundary",
+          "description": "evidence parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 44,
+              "line_end": 52,
+              "snippet": "export function evidence(parsed: ParsedFile, node: ts.Node, type: ContractEvidence['type'], reasoning: string): ContractEvidence { const range = lineRange(parsed.sourceFile, node); return { type, ...range, snippet: safeSnippet(node.getText...",
+              "reasoning": "Nullability contract: [{\"name\":\"parsed\",\"nullable\":false,\"optional\":false},{\"name\":\"node\",\"nullable\":false,\"optional\":false},{\"name\":\"type\",\"nullable\":false,\"optional\":false},{\"name\":\"reasoning\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "evidence",
+            "params": {
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "type",
+                  "type": "ContractEvidence['type']",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "reasoning",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.299Z",
+          "last_verified_at": "2026-05-09T15:16:00.299Z"
+        }
+      ]
+    },
+    {
+      "name": "makeContract",
+      "kind": "function",
+      "qualified_name": "makeContract",
+      "signature_hash": "b5b987137e46a70d",
+      "node_hash": "261c1c22190a566d",
+      "line_start": 54,
+      "line_end": 82,
+      "contracts": [
+        {
+          "id": "ct_mVdr9Ldi",
+          "type": "boundary",
+          "description": "makeContract returns Contract and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 54,
+              "line_end": 82,
+              "snippet": "export function makeContract(args: { config: DriftConfig; type: ContractType; pattern: string; detection: DetectionMethod; severity?: Severity; description: string; evidence: ContractEvidence[]; verification: { strategy: VerificationStrate...",
+              "reasoning": "Explicit return type is Contract; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "makeContract",
+            "params": {
+              "expected_return": "Contract",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "args",
+                  "type": "{\n  config: DriftConfig;\n  type: ContractType;\n  pattern: string;\n  detection: DetectionMethod;\n  severity?: Severity;\n  description: string;\n  evidence: ContractEvidence[];\n  verification: {\n    strategy: VerificationStrategy;\n    target: string;\n    params?: Record<string, unknown>;\n  };\n}",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.299Z",
+          "last_verified_at": "2026-05-09T15:16:00.299Z"
+        },
+        {
+          "id": "ct_0xZ92jwo",
+          "type": "boundary",
+          "description": "makeContract parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 54,
+              "line_end": 82,
+              "snippet": "export function makeContract(args: { config: DriftConfig; type: ContractType; pattern: string; detection: DetectionMethod; severity?: Severity; description: string; evidence: ContractEvidence[]; verification: { strategy: VerificationStrate...",
+              "reasoning": "Parameter contract: [{\"name\":\"args\",\"type\":\"{\\n config: DriftConfig;\\n type: ContractType;\\n pattern: string;\\n detection: DetectionMethod;\\n severity?: Severity;\\n description: string;\\n evidence: ContractEvidence[];\\n verification: {\\n strategy: VerificationStrategy;\\n target: string;\\n params?: Record<string, unknown>;\\n };\\n}\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "makeContract",
+            "params": {
+              "parameters": [
+                {
+                  "name": "args",
+                  "type": "{\n  config: DriftConfig;\n  type: ContractType;\n  pattern: string;\n  detection: DetectionMethod;\n  severity?: Severity;\n  description: string;\n  evidence: ContractEvidence[];\n  verification: {\n    strategy: VerificationStrategy;\n    target: string;\n    params?: Record<string, unknown>;\n  };\n}",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.299Z",
+          "last_verified_at": "2026-05-09T15:16:00.299Z"
+        },
+        {
+          "id": "ct_rIkc9Hrg",
+          "type": "boundary",
+          "description": "makeContract parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 54,
+              "line_end": 82,
+              "snippet": "export function makeContract(args: { config: DriftConfig; type: ContractType; pattern: string; detection: DetectionMethod; severity?: Severity; description: string; evidence: ContractEvidence[]; verification: { strategy: VerificationStrate...",
+              "reasoning": "Nullability contract: [{\"name\":\"args\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "makeContract",
+            "params": {
+              "parameters": [
+                {
+                  "name": "args",
+                  "type": "{\n  config: DriftConfig;\n  type: ContractType;\n  pattern: string;\n  detection: DetectionMethod;\n  severity?: Severity;\n  description: string;\n  evidence: ContractEvidence[];\n  verification: {\n    strategy: VerificationStrategy;\n    target: string;\n    params?: Record<string, unknown>;\n  };\n}",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.299Z",
+          "last_verified_at": "2026-05-09T15:16:00.299Z"
+        }
+      ]
+    },
+    {
+      "name": "uniqueContracts",
+      "kind": "function",
+      "qualified_name": "uniqueContracts",
+      "signature_hash": "f761358487cc3008",
+      "node_hash": "08e0b2889aedaf99",
+      "line_start": 84,
+      "line_end": 92,
+      "contracts": [
+        {
+          "id": "ct_SDYAUoiv",
+          "type": "boundary",
+          "description": "uniqueContracts returns Contract[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 84,
+              "line_end": 92,
+              "snippet": "export function uniqueContracts(contracts: Contract[]): Contract[] { const seen = new Set<string>(); return contracts.filter((contract) => { const key = `${contract.type}:${contract.pattern}:${contract.verification.strategy}:${contract.ver...",
+              "reasoning": "Explicit return type is Contract[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "uniqueContracts",
+            "params": {
+              "expected_return": "Contract[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "contracts",
+                  "type": "Contract[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.299Z",
+          "last_verified_at": "2026-05-09T15:16:00.299Z"
+        },
+        {
+          "id": "ct_m7KTvssA",
+          "type": "boundary",
+          "description": "uniqueContracts parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 84,
+              "line_end": 92,
+              "snippet": "export function uniqueContracts(contracts: Contract[]): Contract[] { const seen = new Set<string>(); return contracts.filter((contract) => { const key = `${contract.type}:${contract.pattern}:${contract.verification.strategy}:${contract.ver...",
+              "reasoning": "Parameter contract: [{\"name\":\"contracts\",\"type\":\"Contract[]\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "uniqueContracts",
+            "params": {
+              "parameters": [
+                {
+                  "name": "contracts",
+                  "type": "Contract[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.299Z",
+          "last_verified_at": "2026-05-09T15:16:00.299Z"
+        },
+        {
+          "id": "ct_LXMmKowt",
+          "type": "boundary",
+          "description": "uniqueContracts parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 84,
+              "line_end": 92,
+              "snippet": "export function uniqueContracts(contracts: Contract[]): Contract[] { const seen = new Set<string>(); return contracts.filter((contract) => { const key = `${contract.type}:${contract.pattern}:${contract.verification.strategy}:${contract.ver...",
+              "reasoning": "Nullability contract: [{\"name\":\"contracts\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "uniqueContracts",
+            "params": {
+              "parameters": [
+                {
+                  "name": "contracts",
+                  "type": "Contract[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.299Z",
+          "last_verified_at": "2026-05-09T15:16:00.299Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.299Z",
+    "last_checked_at": "2026-05-09T15:16:00.299Z",
+    "total_contracts": 16
+  }
+}

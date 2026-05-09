@@ -1,0 +1,163 @@
+{
+  "source_file": "src/analyzers/pattern-matchers/error-handling.ts",
+  "source_hash": "5a4a3d7f5167908ad906cac23307a21d063254b9175625d49d1ac7fe663bb946",
+  "scopes": [
+    {
+      "name": "detectErrorHandlingPattern",
+      "kind": "function",
+      "qualified_name": "detectErrorHandlingPattern",
+      "signature_hash": "5a4ea726ac8fe85a",
+      "node_hash": "58b7494ecd4e97af",
+      "line_start": 8,
+      "line_end": 36,
+      "contracts": [
+        {
+          "id": "ct_0wJ4QMXz",
+          "type": "boundary",
+          "description": "detectErrorHandlingPattern returns Contract[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 8,
+              "line_end": 36,
+              "snippet": "export function detectErrorHandlingPattern(config: DriftConfig, parsed: ParsedFile, scope: ScopeInfo): Contract[] { if (!isPatternEnabled(config, 'error_boundary')) return []; const pattern = detectErrorHandling(parsed, scope); if (!patter...",
+              "reasoning": "Explicit return type is Contract[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectErrorHandlingPattern",
+            "params": {
+              "expected_return": "Contract[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.319Z",
+          "last_verified_at": "2026-05-09T15:16:00.319Z"
+        },
+        {
+          "id": "ct_LpNv-KMx",
+          "type": "boundary",
+          "description": "detectErrorHandlingPattern parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 8,
+              "line_end": 36,
+              "snippet": "export function detectErrorHandlingPattern(config: DriftConfig, parsed: ParsedFile, scope: ScopeInfo): Contract[] { if (!isPatternEnabled(config, 'error_boundary')) return []; const pattern = detectErrorHandling(parsed, scope); if (!patter...",
+              "reasoning": "Parameter contract: [{\"name\":\"config\",\"type\":\"DriftConfig\",\"optional\":false,\"nullable\":false},{\"name\":\"parsed\",\"type\":\"ParsedFile\",\"optional\":false,\"nullable\":false},{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectErrorHandlingPattern",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.319Z",
+          "last_verified_at": "2026-05-09T15:16:00.319Z"
+        },
+        {
+          "id": "ct_0rVgNuK6",
+          "type": "boundary",
+          "description": "detectErrorHandlingPattern parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 8,
+              "line_end": 36,
+              "snippet": "export function detectErrorHandlingPattern(config: DriftConfig, parsed: ParsedFile, scope: ScopeInfo): Contract[] { if (!isPatternEnabled(config, 'error_boundary')) return []; const pattern = detectErrorHandling(parsed, scope); if (!patter...",
+              "reasoning": "Nullability contract: [{\"name\":\"config\",\"nullable\":false,\"optional\":false},{\"name\":\"parsed\",\"nullable\":false,\"optional\":false},{\"name\":\"scope\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "detectErrorHandlingPattern",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.319Z",
+          "last_verified_at": "2026-05-09T15:16:00.319Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.320Z",
+    "last_checked_at": "2026-05-09T15:16:00.320Z",
+    "total_contracts": 3
+  }
+}

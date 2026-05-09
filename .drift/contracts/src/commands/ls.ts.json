@@ -1,0 +1,296 @@
+{
+  "source_file": "src/commands/ls.ts",
+  "source_hash": "49572104567d1da083fe6b2a1aa31e0d19c465c465b8f8052beeb0bf215c2ad9",
+  "scopes": [
+    {
+      "name": "lsCommand",
+      "kind": "function",
+      "qualified_name": "lsCommand",
+      "signature_hash": "a631a99a78be6664",
+      "node_hash": "f77fdb02fe8fd9cb",
+      "line_start": 6,
+      "line_end": 18,
+      "contracts": [
+        {
+          "id": "ct_EM-NEH3d",
+          "type": "boundary",
+          "description": "lsCommand returns void and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 6,
+              "line_end": 18,
+              "snippet": "export function lsCommand(rootDir: string, file: string | undefined, options: { reporter?: string } = {}): void { const config = loadConfig(rootDir); const store = new ContractStore(rootDir); const loaded = file ? store.load(file) : null; ...",
+              "reasoning": "Explicit return type is void; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "lsCommand",
+            "params": {
+              "expected_return": "void",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "file",
+                  "type": "string | undefined",
+                  "optional": true,
+                  "nullable": true
+                },
+                {
+                  "name": "options",
+                  "type": "{ reporter?: string }",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.477Z",
+          "last_verified_at": "2026-05-09T15:16:00.477Z"
+        },
+        {
+          "id": "ct_yBFw_UXE",
+          "type": "boundary",
+          "description": "lsCommand parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 6,
+              "line_end": 18,
+              "snippet": "export function lsCommand(rootDir: string, file: string | undefined, options: { reporter?: string } = {}): void { const config = loadConfig(rootDir); const store = new ContractStore(rootDir); const loaded = file ? store.load(file) : null; ...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"file\",\"type\":\"string | undefined\",\"optional\":true,\"nullable\":true},{\"name\":\"options\",\"type\":\"{ reporter?: string }\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "lsCommand",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "file",
+                  "type": "string | undefined",
+                  "optional": true,
+                  "nullable": true
+                },
+                {
+                  "name": "options",
+                  "type": "{ reporter?: string }",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.477Z",
+          "last_verified_at": "2026-05-09T15:16:00.477Z"
+        },
+        {
+          "id": "ct_SC4ZBVlf",
+          "type": "boundary",
+          "description": "lsCommand parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 6,
+              "line_end": 18,
+              "snippet": "export function lsCommand(rootDir: string, file: string | undefined, options: { reporter?: string } = {}): void { const config = loadConfig(rootDir); const store = new ContractStore(rootDir); const loaded = file ? store.load(file) : null; ...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false},{\"name\":\"file\",\"nullable\":true,\"optional\":true},{\"name\":\"options\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "lsCommand",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "file",
+                  "type": "string | undefined",
+                  "optional": true,
+                  "nullable": true
+                },
+                {
+                  "name": "options",
+                  "type": "{ reporter?: string }",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.477Z",
+          "last_verified_at": "2026-05-09T15:16:00.477Z"
+        }
+      ]
+    },
+    {
+      "name": "sourceFromContractPath",
+      "kind": "function",
+      "qualified_name": "sourceFromContractPath",
+      "signature_hash": "1a33d737e0f43481",
+      "node_hash": "ef36b094ad335e49",
+      "line_start": 20,
+      "line_end": 23,
+      "contracts": [
+        {
+          "id": "ct_2xlPklDR",
+          "type": "boundary",
+          "description": "sourceFromContractPath returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 20,
+              "line_end": 23,
+              "snippet": "function sourceFromContractPath(contractsDir: string, contractPath: string): string { const relative = contractPath.slice(contractsDir.length + 1).replaceAll('\\\\', '/'); return relative.endsWith('.json') ? relative.slice(0, -'.json'.length...",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "sourceFromContractPath",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "contractsDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "contractPath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.477Z",
+          "last_verified_at": "2026-05-09T15:16:00.477Z"
+        },
+        {
+          "id": "ct_w8S88_Fg",
+          "type": "boundary",
+          "description": "sourceFromContractPath parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 20,
+              "line_end": 23,
+              "snippet": "function sourceFromContractPath(contractsDir: string, contractPath: string): string { const relative = contractPath.slice(contractsDir.length + 1).replaceAll('\\\\', '/'); return relative.endsWith('.json') ? relative.slice(0, -'.json'.length...",
+              "reasoning": "Parameter contract: [{\"name\":\"contractsDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"contractPath\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "sourceFromContractPath",
+            "params": {
+              "parameters": [
+                {
+                  "name": "contractsDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "contractPath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.477Z",
+          "last_verified_at": "2026-05-09T15:16:00.477Z"
+        },
+        {
+          "id": "ct_H3XcoqqT",
+          "type": "boundary",
+          "description": "sourceFromContractPath parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 20,
+              "line_end": 23,
+              "snippet": "function sourceFromContractPath(contractsDir: string, contractPath: string): string { const relative = contractPath.slice(contractsDir.length + 1).replaceAll('\\\\', '/'); return relative.endsWith('.json') ? relative.slice(0, -'.json'.length...",
+              "reasoning": "Nullability contract: [{\"name\":\"contractsDir\",\"nullable\":false,\"optional\":false},{\"name\":\"contractPath\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "sourceFromContractPath",
+            "params": {
+              "parameters": [
+                {
+                  "name": "contractsDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "contractPath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.477Z",
+          "last_verified_at": "2026-05-09T15:16:00.477Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.477Z",
+    "last_checked_at": "2026-05-09T15:16:00.477Z",
+    "total_contracts": 6
+  }
+}

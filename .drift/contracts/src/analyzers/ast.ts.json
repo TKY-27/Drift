@@ -1,0 +1,2715 @@
+{
+  "source_file": "src/analyzers/ast.ts",
+  "source_hash": "fb78eea68f65552d0d269639b6b36fa300859363314502e872ae89d63dc8b82c",
+  "scopes": [
+    {
+      "name": "<module>",
+      "kind": "module",
+      "qualified_name": "<module>",
+      "signature_hash": "58ea489a1b86dfef",
+      "node_hash": "fb78eea68f65552d",
+      "line_start": 1,
+      "line_end": 263,
+      "contracts": [
+        {
+          "id": "ct_QWK1ra5q",
+          "type": "dependency",
+          "description": "Security-sensitive import from ../utils/security.js is preserved",
+          "pattern": "import_constraint",
+          "detection": "import_graph",
+          "severity": "low",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "pattern_match",
+              "line_start": 4,
+              "line_end": 4,
+              "snippet": "import { safeSnippet, sha256 } from '../utils/security.js';",
+              "reasoning": "Security-related import detected"
+            }
+          ],
+          "verification": {
+            "strategy": "import_presence",
+            "target": "../utils/security.js",
+            "params": {
+              "names": [
+                "safeSnippet",
+                "sha256"
+              ],
+              "named": [
+                {
+                  "imported": "safeSnippet",
+                  "local": "safeSnippet"
+                },
+                {
+                  "imported": "sha256",
+                  "local": "sha256"
+                }
+              ],
+              "type_only": false
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.251Z",
+          "last_verified_at": "2026-05-09T15:16:00.251Z"
+        }
+      ]
+    },
+    {
+      "name": "parseSource",
+      "kind": "function",
+      "qualified_name": "parseSource",
+      "signature_hash": "2299bd18267241a7",
+      "node_hash": "2a004a42fedec44f",
+      "line_start": 37,
+      "line_end": 53,
+      "contracts": [
+        {
+          "id": "ct_PyJpQpko",
+          "type": "boundary",
+          "description": "parseSource returns ParsedFile and may throw",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 37,
+              "line_end": 53,
+              "snippet": "export function parseSource(filePath: string, sourceText: string): ParsedFile { const parser = new Parser(); parser.setLanguage(isJsxLike(filePath) ? TypeScript.tsx : TypeScript.typescript); const sourceFile = ts.createSourceFile(filePath,...",
+              "reasoning": "Explicit return type is ParsedFile; no_throw=false"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "parseSource",
+            "params": {
+              "expected_return": "ParsedFile",
+              "no_throw": false,
+              "parameters": [
+                {
+                  "name": "filePath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "sourceText",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.241Z",
+          "last_verified_at": "2026-05-09T15:16:00.241Z"
+        },
+        {
+          "id": "ct_WaJJzbMo",
+          "type": "boundary",
+          "description": "parseSource parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 37,
+              "line_end": 53,
+              "snippet": "export function parseSource(filePath: string, sourceText: string): ParsedFile { const parser = new Parser(); parser.setLanguage(isJsxLike(filePath) ? TypeScript.tsx : TypeScript.typescript); const sourceFile = ts.createSourceFile(filePath,...",
+              "reasoning": "Parameter contract: [{\"name\":\"filePath\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"sourceText\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "parseSource",
+            "params": {
+              "parameters": [
+                {
+                  "name": "filePath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "sourceText",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.242Z",
+          "last_verified_at": "2026-05-09T15:16:00.242Z"
+        },
+        {
+          "id": "ct_y7zH9UUs",
+          "type": "boundary",
+          "description": "parseSource parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 37,
+              "line_end": 53,
+              "snippet": "export function parseSource(filePath: string, sourceText: string): ParsedFile { const parser = new Parser(); parser.setLanguage(isJsxLike(filePath) ? TypeScript.tsx : TypeScript.typescript); const sourceFile = ts.createSourceFile(filePath,...",
+              "reasoning": "Nullability contract: [{\"name\":\"filePath\",\"nullable\":false,\"optional\":false},{\"name\":\"sourceText\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "parseSource",
+            "params": {
+              "parameters": [
+                {
+                  "name": "filePath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "sourceText",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.242Z",
+          "last_verified_at": "2026-05-09T15:16:00.242Z"
+        }
+      ]
+    },
+    {
+      "name": "parseTreeSitter",
+      "kind": "function",
+      "qualified_name": "parseTreeSitter",
+      "signature_hash": "b293bcd94bc2c069",
+      "node_hash": "e058691debe6a06d",
+      "line_start": 55,
+      "line_end": 61,
+      "contracts": [
+        {
+          "id": "ct_9UtiHmvh",
+          "type": "boundary",
+          "description": "parseTreeSitter returns Parser.Tree and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 55,
+              "line_end": 61,
+              "snippet": "function parseTreeSitter(parser: Parser, sourceText: string): Parser.Tree { try { return parser.parse(sourceText); } catch { return parser.parse(''); } }",
+              "reasoning": "Explicit return type is Parser.Tree; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "parseTreeSitter",
+            "params": {
+              "expected_return": "Parser.Tree",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "parser",
+                  "type": "Parser",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "sourceText",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.244Z",
+          "last_verified_at": "2026-05-09T15:16:00.244Z"
+        },
+        {
+          "id": "ct_fLTr2J_b",
+          "type": "boundary",
+          "description": "parseTreeSitter parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 55,
+              "line_end": 61,
+              "snippet": "function parseTreeSitter(parser: Parser, sourceText: string): Parser.Tree { try { return parser.parse(sourceText); } catch { return parser.parse(''); } }",
+              "reasoning": "Parameter contract: [{\"name\":\"parser\",\"type\":\"Parser\",\"optional\":false,\"nullable\":false},{\"name\":\"sourceText\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "parseTreeSitter",
+            "params": {
+              "parameters": [
+                {
+                  "name": "parser",
+                  "type": "Parser",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "sourceText",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.244Z",
+          "last_verified_at": "2026-05-09T15:16:00.244Z"
+        },
+        {
+          "id": "ct_ZS6cuIPx",
+          "type": "boundary",
+          "description": "parseTreeSitter parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 55,
+              "line_end": 61,
+              "snippet": "function parseTreeSitter(parser: Parser, sourceText: string): Parser.Tree { try { return parser.parse(sourceText); } catch { return parser.parse(''); } }",
+              "reasoning": "Nullability contract: [{\"name\":\"parser\",\"nullable\":false,\"optional\":false},{\"name\":\"sourceText\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "parseTreeSitter",
+            "params": {
+              "parameters": [
+                {
+                  "name": "parser",
+                  "type": "Parser",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "sourceText",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.244Z",
+          "last_verified_at": "2026-05-09T15:16:00.244Z"
+        },
+        {
+          "id": "ct_LFGZZZ5f",
+          "type": "boundary",
+          "description": "parseTreeSitter uses fallback error handling",
+          "pattern": "error_boundary",
+          "detection": "control_flow",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "control_path",
+              "line_start": 58,
+              "line_end": 58,
+              "snippet": "catch { return parser.parse(''); }",
+              "reasoning": "Catch block classified as fallback"
+            }
+          ],
+          "verification": {
+            "strategy": "error_strategy",
+            "target": "parseTreeSitter",
+            "params": {
+              "strategy": "fallback"
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.244Z",
+          "last_verified_at": "2026-05-09T15:16:00.244Z"
+        }
+      ]
+    },
+    {
+      "name": "findTreeSitterPattern",
+      "kind": "function",
+      "qualified_name": "findTreeSitterPattern",
+      "signature_hash": "e0bc8853a8533267",
+      "node_hash": "96563fbcbc949f49",
+      "line_start": 63,
+      "line_end": 74,
+      "contracts": [
+        {
+          "id": "ct_5ciz7JA7",
+          "type": "boundary",
+          "description": "findTreeSitterPattern returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 63,
+              "line_end": 74,
+              "snippet": "export function findTreeSitterPattern(parsed: ParsedFile, query: string, scope?: ScopeInfo): boolean { // tree-sitter-typescript ships a native binding with incomplete typed-lint metadata. // eslint-disable-next-line @typescript-eslint/no-...",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findTreeSitterPattern",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "query",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": true,
+                  "nullable": true
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.244Z",
+          "last_verified_at": "2026-05-09T15:16:00.244Z"
+        },
+        {
+          "id": "ct_Pr4OfrZp",
+          "type": "boundary",
+          "description": "findTreeSitterPattern parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 63,
+              "line_end": 74,
+              "snippet": "export function findTreeSitterPattern(parsed: ParsedFile, query: string, scope?: ScopeInfo): boolean { // tree-sitter-typescript ships a native binding with incomplete typed-lint metadata. // eslint-disable-next-line @typescript-eslint/no-...",
+              "reasoning": "Parameter contract: [{\"name\":\"parsed\",\"type\":\"ParsedFile\",\"optional\":false,\"nullable\":false},{\"name\":\"query\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":true,\"nullable\":true}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findTreeSitterPattern",
+            "params": {
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "query",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": true,
+                  "nullable": true
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.244Z",
+          "last_verified_at": "2026-05-09T15:16:00.244Z"
+        },
+        {
+          "id": "ct_UCIz3uuw",
+          "type": "boundary",
+          "description": "findTreeSitterPattern parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 63,
+              "line_end": 74,
+              "snippet": "export function findTreeSitterPattern(parsed: ParsedFile, query: string, scope?: ScopeInfo): boolean { // tree-sitter-typescript ships a native binding with incomplete typed-lint metadata. // eslint-disable-next-line @typescript-eslint/no-...",
+              "reasoning": "Nullability contract: [{\"name\":\"parsed\",\"nullable\":false,\"optional\":false},{\"name\":\"query\",\"nullable\":false,\"optional\":false},{\"name\":\"scope\",\"nullable\":true,\"optional\":true}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findTreeSitterPattern",
+            "params": {
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "query",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": true,
+                  "nullable": true
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.244Z",
+          "last_verified_at": "2026-05-09T15:16:00.244Z"
+        }
+      ]
+    },
+    {
+      "name": "lineRange",
+      "kind": "function",
+      "qualified_name": "lineRange",
+      "signature_hash": "ccbc7b7f4b75026b",
+      "node_hash": "851e770e11fa52b6",
+      "line_start": 76,
+      "line_end": 80,
+      "contracts": [
+        {
+          "id": "ct_sX60tOOM",
+          "type": "boundary",
+          "description": "lineRange returns { line_start: number; line_end: number } and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 76,
+              "line_end": 80,
+              "snippet": "export function lineRange(sourceFile: ts.SourceFile, node: ts.Node): { line_start: number; line_end: number } { const start = sourceFile.getLineAndCharacterOfPosition(node.getStart(sourceFile)).line + 1; const end = sourceFile.getLineAndCh...",
+              "reasoning": "Explicit return type is { line_start: number; line_end: number }; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "lineRange",
+            "params": {
+              "expected_return": "{ line_start: number; line_end: number }",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "sourceFile",
+                  "type": "ts.SourceFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.245Z",
+          "last_verified_at": "2026-05-09T15:16:00.245Z"
+        },
+        {
+          "id": "ct_Sx0aa8KE",
+          "type": "boundary",
+          "description": "lineRange parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 76,
+              "line_end": 80,
+              "snippet": "export function lineRange(sourceFile: ts.SourceFile, node: ts.Node): { line_start: number; line_end: number } { const start = sourceFile.getLineAndCharacterOfPosition(node.getStart(sourceFile)).line + 1; const end = sourceFile.getLineAndCh...",
+              "reasoning": "Parameter contract: [{\"name\":\"sourceFile\",\"type\":\"ts.SourceFile\",\"optional\":false,\"nullable\":false},{\"name\":\"node\",\"type\":\"ts.Node\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "lineRange",
+            "params": {
+              "parameters": [
+                {
+                  "name": "sourceFile",
+                  "type": "ts.SourceFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.245Z",
+          "last_verified_at": "2026-05-09T15:16:00.245Z"
+        },
+        {
+          "id": "ct_OdotDIJg",
+          "type": "boundary",
+          "description": "lineRange parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 76,
+              "line_end": 80,
+              "snippet": "export function lineRange(sourceFile: ts.SourceFile, node: ts.Node): { line_start: number; line_end: number } { const start = sourceFile.getLineAndCharacterOfPosition(node.getStart(sourceFile)).line + 1; const end = sourceFile.getLineAndCh...",
+              "reasoning": "Nullability contract: [{\"name\":\"sourceFile\",\"nullable\":false,\"optional\":false},{\"name\":\"node\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "lineRange",
+            "params": {
+              "parameters": [
+                {
+                  "name": "sourceFile",
+                  "type": "ts.SourceFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.245Z",
+          "last_verified_at": "2026-05-09T15:16:00.245Z"
+        }
+      ]
+    },
+    {
+      "name": "nodeSnippet",
+      "kind": "function",
+      "qualified_name": "nodeSnippet",
+      "signature_hash": "981b5815b94ff089",
+      "node_hash": "92ebf5ec94d3c179",
+      "line_start": 82,
+      "line_end": 84,
+      "contracts": [
+        {
+          "id": "ct_o_9wBpgJ",
+          "type": "boundary",
+          "description": "nodeSnippet returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 82,
+              "line_end": 84,
+              "snippet": "export function nodeSnippet(sourceFile: ts.SourceFile, node: ts.Node): string { return safeSnippet(node.getText(sourceFile)); }",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "nodeSnippet",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "sourceFile",
+                  "type": "ts.SourceFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.245Z",
+          "last_verified_at": "2026-05-09T15:16:00.245Z"
+        },
+        {
+          "id": "ct_CzgSInLT",
+          "type": "boundary",
+          "description": "nodeSnippet parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 82,
+              "line_end": 84,
+              "snippet": "export function nodeSnippet(sourceFile: ts.SourceFile, node: ts.Node): string { return safeSnippet(node.getText(sourceFile)); }",
+              "reasoning": "Parameter contract: [{\"name\":\"sourceFile\",\"type\":\"ts.SourceFile\",\"optional\":false,\"nullable\":false},{\"name\":\"node\",\"type\":\"ts.Node\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "nodeSnippet",
+            "params": {
+              "parameters": [
+                {
+                  "name": "sourceFile",
+                  "type": "ts.SourceFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.245Z",
+          "last_verified_at": "2026-05-09T15:16:00.245Z"
+        },
+        {
+          "id": "ct_Jk50gysC",
+          "type": "boundary",
+          "description": "nodeSnippet parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 82,
+              "line_end": 84,
+              "snippet": "export function nodeSnippet(sourceFile: ts.SourceFile, node: ts.Node): string { return safeSnippet(node.getText(sourceFile)); }",
+              "reasoning": "Nullability contract: [{\"name\":\"sourceFile\",\"nullable\":false,\"optional\":false},{\"name\":\"node\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "nodeSnippet",
+            "params": {
+              "parameters": [
+                {
+                  "name": "sourceFile",
+                  "type": "ts.SourceFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.245Z",
+          "last_verified_at": "2026-05-09T15:16:00.245Z"
+        }
+      ]
+    },
+    {
+      "name": "extractScopes",
+      "kind": "function",
+      "qualified_name": "extractScopes",
+      "signature_hash": "a9a96cde9d6e5f84",
+      "node_hash": "f6e4d4b49f5595e2",
+      "line_start": 86,
+      "line_end": 128,
+      "contracts": [
+        {
+          "id": "ct_0YL3CeXm",
+          "type": "boundary",
+          "description": "extractScopes returns ScopeInfo[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 86,
+              "line_end": 128,
+              "snippet": "export function extractScopes(parsed: ParsedFile): ScopeInfo[] { const scopes: ScopeInfo[] = []; const sourceFile = parsed.sourceFile; function pushScope(node: ts.Node, name: string, kind: ScopeInfo['kind'], body?: ts.Block): void { const ...",
+              "reasoning": "Explicit return type is ScopeInfo[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "extractScopes",
+            "params": {
+              "expected_return": "ScopeInfo[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.245Z",
+          "last_verified_at": "2026-05-09T15:16:00.245Z"
+        },
+        {
+          "id": "ct_8MvWjb7B",
+          "type": "boundary",
+          "description": "extractScopes parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 86,
+              "line_end": 128,
+              "snippet": "export function extractScopes(parsed: ParsedFile): ScopeInfo[] { const scopes: ScopeInfo[] = []; const sourceFile = parsed.sourceFile; function pushScope(node: ts.Node, name: string, kind: ScopeInfo['kind'], body?: ts.Block): void { const ...",
+              "reasoning": "Parameter contract: [{\"name\":\"parsed\",\"type\":\"ParsedFile\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "extractScopes",
+            "params": {
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.245Z",
+          "last_verified_at": "2026-05-09T15:16:00.245Z"
+        },
+        {
+          "id": "ct_LHofNnnl",
+          "type": "boundary",
+          "description": "extractScopes parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 86,
+              "line_end": 128,
+              "snippet": "export function extractScopes(parsed: ParsedFile): ScopeInfo[] { const scopes: ScopeInfo[] = []; const sourceFile = parsed.sourceFile; function pushScope(node: ts.Node, name: string, kind: ScopeInfo['kind'], body?: ts.Block): void { const ...",
+              "reasoning": "Nullability contract: [{\"name\":\"parsed\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "extractScopes",
+            "params": {
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.245Z",
+          "last_verified_at": "2026-05-09T15:16:00.245Z"
+        }
+      ]
+    },
+    {
+      "name": "pushScope",
+      "kind": "function",
+      "qualified_name": "pushScope",
+      "signature_hash": "48ef8f5a9198db18",
+      "node_hash": "dd3fdc32020d16d3",
+      "line_start": 90,
+      "line_end": 104,
+      "contracts": [
+        {
+          "id": "ct_ljFAHCUS",
+          "type": "boundary",
+          "description": "pushScope returns void and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 90,
+              "line_end": 104,
+              "snippet": "function pushScope(node: ts.Node, name: string, kind: ScopeInfo['kind'], body?: ts.Block): void { const range = lineRange(sourceFile, node); const scope: ScopeInfo = { name, kind, qualified_name: qualifiedName(node, name, kind), signature_...",
+              "reasoning": "Explicit return type is void; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "pushScope",
+            "params": {
+              "expected_return": "void",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "name",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "kind",
+                  "type": "ScopeInfo['kind']",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "body",
+                  "type": "ts.Block",
+                  "optional": true,
+                  "nullable": true
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.246Z",
+          "last_verified_at": "2026-05-09T15:16:00.246Z"
+        },
+        {
+          "id": "ct_y9AQ7_Bg",
+          "type": "boundary",
+          "description": "pushScope parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 90,
+              "line_end": 104,
+              "snippet": "function pushScope(node: ts.Node, name: string, kind: ScopeInfo['kind'], body?: ts.Block): void { const range = lineRange(sourceFile, node); const scope: ScopeInfo = { name, kind, qualified_name: qualifiedName(node, name, kind), signature_...",
+              "reasoning": "Parameter contract: [{\"name\":\"node\",\"type\":\"ts.Node\",\"optional\":false,\"nullable\":false},{\"name\":\"name\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"kind\",\"type\":\"ScopeInfo['kind']\",\"optional\":false,\"nullable\":false},{\"name\":\"body\",\"type\":\"ts.Block\",\"optional\":true,\"nullable\":true}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "pushScope",
+            "params": {
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "name",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "kind",
+                  "type": "ScopeInfo['kind']",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "body",
+                  "type": "ts.Block",
+                  "optional": true,
+                  "nullable": true
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.246Z",
+          "last_verified_at": "2026-05-09T15:16:00.246Z"
+        },
+        {
+          "id": "ct_J2U_Es6x",
+          "type": "boundary",
+          "description": "pushScope parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 90,
+              "line_end": 104,
+              "snippet": "function pushScope(node: ts.Node, name: string, kind: ScopeInfo['kind'], body?: ts.Block): void { const range = lineRange(sourceFile, node); const scope: ScopeInfo = { name, kind, qualified_name: qualifiedName(node, name, kind), signature_...",
+              "reasoning": "Nullability contract: [{\"name\":\"node\",\"nullable\":false,\"optional\":false},{\"name\":\"name\",\"nullable\":false,\"optional\":false},{\"name\":\"kind\",\"nullable\":false,\"optional\":false},{\"name\":\"body\",\"nullable\":true,\"optional\":true}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "pushScope",
+            "params": {
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "name",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "kind",
+                  "type": "ScopeInfo['kind']",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "body",
+                  "type": "ts.Block",
+                  "optional": true,
+                  "nullable": true
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.246Z",
+          "last_verified_at": "2026-05-09T15:16:00.246Z"
+        }
+      ]
+    },
+    {
+      "name": "visit",
+      "kind": "function",
+      "qualified_name": "visit",
+      "signature_hash": "06d2e448d0467c84",
+      "node_hash": "cafa203160b1b095",
+      "line_start": 106,
+      "line_end": 124,
+      "contracts": [
+        {
+          "id": "ct_JsoJhIbe",
+          "type": "boundary",
+          "description": "visit returns void and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 106,
+              "line_end": 124,
+              "snippet": "function visit(node: ts.Node): void { if (ts.isFunctionDeclaration(node) && node.name && node.body) { pushScope(node, node.name.text, 'function', node.body); } else if (ts.isVariableStatement(node)) { for (const declaration of node.declara...",
+              "reasoning": "Explicit return type is void; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "visit",
+            "params": {
+              "expected_return": "void",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.246Z",
+          "last_verified_at": "2026-05-09T15:16:00.246Z"
+        },
+        {
+          "id": "ct_RLQ_ujtw",
+          "type": "boundary",
+          "description": "visit parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 106,
+              "line_end": 124,
+              "snippet": "function visit(node: ts.Node): void { if (ts.isFunctionDeclaration(node) && node.name && node.body) { pushScope(node, node.name.text, 'function', node.body); } else if (ts.isVariableStatement(node)) { for (const declaration of node.declara...",
+              "reasoning": "Parameter contract: [{\"name\":\"node\",\"type\":\"ts.Node\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "visit",
+            "params": {
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.246Z",
+          "last_verified_at": "2026-05-09T15:16:00.246Z"
+        },
+        {
+          "id": "ct_N4WV8mEB",
+          "type": "boundary",
+          "description": "visit parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 106,
+              "line_end": 124,
+              "snippet": "function visit(node: ts.Node): void { if (ts.isFunctionDeclaration(node) && node.name && node.body) { pushScope(node, node.name.text, 'function', node.body); } else if (ts.isVariableStatement(node)) { for (const declaration of node.declara...",
+              "reasoning": "Nullability contract: [{\"name\":\"node\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "visit",
+            "params": {
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.246Z",
+          "last_verified_at": "2026-05-09T15:16:00.246Z"
+        }
+      ]
+    },
+    {
+      "name": "extractImports",
+      "kind": "function",
+      "qualified_name": "extractImports",
+      "signature_hash": "2399901fdd1ff642",
+      "node_hash": "e6fcb6c84efd35fe",
+      "line_start": 130,
+      "line_end": 161,
+      "contracts": [
+        {
+          "id": "ct_-VEDPi88",
+          "type": "boundary",
+          "description": "extractImports returns ImportInfo[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 130,
+              "line_end": 161,
+              "snippet": "export function extractImports(parsed: ParsedFile): ImportInfo[] { const imports: ImportInfo[] = []; const sourceFile = parsed.sourceFile; for (const statement of sourceFile.statements) { if (!ts.isImportDeclaration(statement) || !ts.isStr...",
+              "reasoning": "Explicit return type is ImportInfo[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "extractImports",
+            "params": {
+              "expected_return": "ImportInfo[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.247Z",
+          "last_verified_at": "2026-05-09T15:16:00.247Z"
+        },
+        {
+          "id": "ct_3ifln4uW",
+          "type": "boundary",
+          "description": "extractImports parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 130,
+              "line_end": 161,
+              "snippet": "export function extractImports(parsed: ParsedFile): ImportInfo[] { const imports: ImportInfo[] = []; const sourceFile = parsed.sourceFile; for (const statement of sourceFile.statements) { if (!ts.isImportDeclaration(statement) || !ts.isStr...",
+              "reasoning": "Parameter contract: [{\"name\":\"parsed\",\"type\":\"ParsedFile\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "extractImports",
+            "params": {
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.247Z",
+          "last_verified_at": "2026-05-09T15:16:00.247Z"
+        },
+        {
+          "id": "ct_5-YvknIW",
+          "type": "boundary",
+          "description": "extractImports parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 130,
+              "line_end": 161,
+              "snippet": "export function extractImports(parsed: ParsedFile): ImportInfo[] { const imports: ImportInfo[] = []; const sourceFile = parsed.sourceFile; for (const statement of sourceFile.statements) { if (!ts.isImportDeclaration(statement) || !ts.isStr...",
+              "reasoning": "Nullability contract: [{\"name\":\"parsed\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "extractImports",
+            "params": {
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.247Z",
+          "last_verified_at": "2026-05-09T15:16:00.247Z"
+        }
+      ]
+    },
+    {
+      "name": "propertyNameText",
+      "kind": "function",
+      "qualified_name": "propertyNameText",
+      "signature_hash": "75557d445c4b8373",
+      "node_hash": "7e3971da2ad5bd81",
+      "line_start": 163,
+      "line_end": 168,
+      "contracts": [
+        {
+          "id": "ct_9MO4IOno",
+          "type": "boundary",
+          "description": "propertyNameText returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 163,
+              "line_end": 168,
+              "snippet": "export function propertyNameText(name: ts.PropertyName | ts.BindingName): string { if (ts.isIdentifier(name) || ts.isPrivateIdentifier(name)) return name.text; if (ts.isStringLiteral(name) || ts.isNumericLiteral(name)) return name.text; if...",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "propertyNameText",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": "ts.PropertyName | ts.BindingName",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.248Z",
+          "last_verified_at": "2026-05-09T15:16:00.248Z"
+        },
+        {
+          "id": "ct_0iyxjwzy",
+          "type": "boundary",
+          "description": "propertyNameText parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 163,
+              "line_end": 168,
+              "snippet": "export function propertyNameText(name: ts.PropertyName | ts.BindingName): string { if (ts.isIdentifier(name) || ts.isPrivateIdentifier(name)) return name.text; if (ts.isStringLiteral(name) || ts.isNumericLiteral(name)) return name.text; if...",
+              "reasoning": "Parameter contract: [{\"name\":\"name\",\"type\":\"ts.PropertyName | ts.BindingName\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "propertyNameText",
+            "params": {
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": "ts.PropertyName | ts.BindingName",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.248Z",
+          "last_verified_at": "2026-05-09T15:16:00.248Z"
+        },
+        {
+          "id": "ct_HgsqFBVn",
+          "type": "boundary",
+          "description": "propertyNameText parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 163,
+              "line_end": 168,
+              "snippet": "export function propertyNameText(name: ts.PropertyName | ts.BindingName): string { if (ts.isIdentifier(name) || ts.isPrivateIdentifier(name)) return name.text; if (ts.isStringLiteral(name) || ts.isNumericLiteral(name)) return name.text; if...",
+              "reasoning": "Nullability contract: [{\"name\":\"name\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "propertyNameText",
+            "params": {
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": "ts.PropertyName | ts.BindingName",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.248Z",
+          "last_verified_at": "2026-05-09T15:16:00.248Z"
+        }
+      ]
+    },
+    {
+      "name": "walk",
+      "kind": "function",
+      "qualified_name": "walk",
+      "signature_hash": "f6152a85fb303f84",
+      "node_hash": "7db53e02343a009e",
+      "line_start": 170,
+      "line_end": 173,
+      "contracts": [
+        {
+          "id": "ct_EA4Txolz",
+          "type": "boundary",
+          "description": "walk returns void and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 170,
+              "line_end": 173,
+              "snippet": "export function walk(node: ts.Node, visitor: (node: ts.Node) => void): void { visitor(node); ts.forEachChild(node, (child) => walk(child, visitor)); }",
+              "reasoning": "Explicit return type is void; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "walk",
+            "params": {
+              "expected_return": "void",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "visitor",
+                  "type": "(node: ts.Node) => void",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.248Z",
+          "last_verified_at": "2026-05-09T15:16:00.248Z"
+        },
+        {
+          "id": "ct_nHVKhVNa",
+          "type": "boundary",
+          "description": "walk parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 170,
+              "line_end": 173,
+              "snippet": "export function walk(node: ts.Node, visitor: (node: ts.Node) => void): void { visitor(node); ts.forEachChild(node, (child) => walk(child, visitor)); }",
+              "reasoning": "Parameter contract: [{\"name\":\"node\",\"type\":\"ts.Node\",\"optional\":false,\"nullable\":false},{\"name\":\"visitor\",\"type\":\"(node: ts.Node) => void\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "walk",
+            "params": {
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "visitor",
+                  "type": "(node: ts.Node) => void",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.248Z",
+          "last_verified_at": "2026-05-09T15:16:00.248Z"
+        },
+        {
+          "id": "ct_CVB_6vOD",
+          "type": "boundary",
+          "description": "walk parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 170,
+              "line_end": 173,
+              "snippet": "export function walk(node: ts.Node, visitor: (node: ts.Node) => void): void { visitor(node); ts.forEachChild(node, (child) => walk(child, visitor)); }",
+              "reasoning": "Nullability contract: [{\"name\":\"node\",\"nullable\":false,\"optional\":false},{\"name\":\"visitor\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "walk",
+            "params": {
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "visitor",
+                  "type": "(node: ts.Node) => void",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.248Z",
+          "last_verified_at": "2026-05-09T15:16:00.248Z"
+        }
+      ]
+    },
+    {
+      "name": "isInsideNestedFunction",
+      "kind": "function",
+      "qualified_name": "isInsideNestedFunction",
+      "signature_hash": "93ab877529f43a63",
+      "node_hash": "7cdac477a4c3eaa4",
+      "line_start": 175,
+      "line_end": 189,
+      "contracts": [
+        {
+          "id": "ct_QPNjY7BC",
+          "type": "boundary",
+          "description": "isInsideNestedFunction returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 175,
+              "line_end": 189,
+              "snippet": "export function isInsideNestedFunction(root: ts.Node, node: ts.Node): boolean { let current: ts.Node | undefined = node.parent; while (current && current !== root) { if ( ts.isFunctionDeclaration(current) || ts.isFunctionExpression(current...",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isInsideNestedFunction",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "root",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.248Z",
+          "last_verified_at": "2026-05-09T15:16:00.248Z"
+        },
+        {
+          "id": "ct_fJ2BoCoc",
+          "type": "boundary",
+          "description": "isInsideNestedFunction parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 175,
+              "line_end": 189,
+              "snippet": "export function isInsideNestedFunction(root: ts.Node, node: ts.Node): boolean { let current: ts.Node | undefined = node.parent; while (current && current !== root) { if ( ts.isFunctionDeclaration(current) || ts.isFunctionExpression(current...",
+              "reasoning": "Parameter contract: [{\"name\":\"root\",\"type\":\"ts.Node\",\"optional\":false,\"nullable\":false},{\"name\":\"node\",\"type\":\"ts.Node\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isInsideNestedFunction",
+            "params": {
+              "parameters": [
+                {
+                  "name": "root",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.248Z",
+          "last_verified_at": "2026-05-09T15:16:00.248Z"
+        },
+        {
+          "id": "ct_b3hMQPP0",
+          "type": "boundary",
+          "description": "isInsideNestedFunction parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 175,
+              "line_end": 189,
+              "snippet": "export function isInsideNestedFunction(root: ts.Node, node: ts.Node): boolean { let current: ts.Node | undefined = node.parent; while (current && current !== root) { if ( ts.isFunctionDeclaration(current) || ts.isFunctionExpression(current...",
+              "reasoning": "Nullability contract: [{\"name\":\"root\",\"nullable\":false,\"optional\":false},{\"name\":\"node\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isInsideNestedFunction",
+            "params": {
+              "parameters": [
+                {
+                  "name": "root",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.248Z",
+          "last_verified_at": "2026-05-09T15:16:00.248Z"
+        }
+      ]
+    },
+    {
+      "name": "findScope",
+      "kind": "function",
+      "qualified_name": "findScope",
+      "signature_hash": "00ad6b26d1aaf5d5",
+      "node_hash": "5971db264acddc33",
+      "line_start": 191,
+      "line_end": 193,
+      "contracts": [
+        {
+          "id": "ct_MNtpPyB7",
+          "type": "boundary",
+          "description": "findScope returns ScopeInfo | null and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 191,
+              "line_end": 193,
+              "snippet": "export function findScope(scopes: ScopeInfo[], name: string, kind: ScopeInfo['kind']): ScopeInfo | null { return scopes.find((scope) => scope.name === name && scope.kind === kind) ?? null; }",
+              "reasoning": "Explicit return type is ScopeInfo | null; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findScope",
+            "params": {
+              "expected_return": "ScopeInfo | null",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "scopes",
+                  "type": "ScopeInfo[]",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "name",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "kind",
+                  "type": "ScopeInfo['kind']",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.248Z",
+          "last_verified_at": "2026-05-09T15:16:00.248Z"
+        },
+        {
+          "id": "ct_E4RD5GMF",
+          "type": "boundary",
+          "description": "findScope parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 191,
+              "line_end": 193,
+              "snippet": "export function findScope(scopes: ScopeInfo[], name: string, kind: ScopeInfo['kind']): ScopeInfo | null { return scopes.find((scope) => scope.name === name && scope.kind === kind) ?? null; }",
+              "reasoning": "Parameter contract: [{\"name\":\"scopes\",\"type\":\"ScopeInfo[]\",\"optional\":false,\"nullable\":false},{\"name\":\"name\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"kind\",\"type\":\"ScopeInfo['kind']\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findScope",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scopes",
+                  "type": "ScopeInfo[]",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "name",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "kind",
+                  "type": "ScopeInfo['kind']",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.248Z",
+          "last_verified_at": "2026-05-09T15:16:00.248Z"
+        },
+        {
+          "id": "ct_IXPscjpn",
+          "type": "boundary",
+          "description": "findScope parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 191,
+              "line_end": 193,
+              "snippet": "export function findScope(scopes: ScopeInfo[], name: string, kind: ScopeInfo['kind']): ScopeInfo | null { return scopes.find((scope) => scope.name === name && scope.kind === kind) ?? null; }",
+              "reasoning": "Nullability contract: [{\"name\":\"scopes\",\"nullable\":false,\"optional\":false},{\"name\":\"name\",\"nullable\":false,\"optional\":false},{\"name\":\"kind\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findScope",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scopes",
+                  "type": "ScopeInfo[]",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "name",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "kind",
+                  "type": "ScopeInfo['kind']",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.248Z",
+          "last_verified_at": "2026-05-09T15:16:00.248Z"
+        }
+      ]
+    },
+    {
+      "name": "findScopeByStableId",
+      "kind": "function",
+      "qualified_name": "findScopeByStableId",
+      "signature_hash": "33266ebe58cd5c7d",
+      "node_hash": "9f4005741106ad5d",
+      "line_start": 195,
+      "line_end": 214,
+      "contracts": [
+        {
+          "id": "ct_0g1ztljR",
+          "type": "boundary",
+          "description": "findScopeByStableId returns ScopeInfo | null and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 195,
+              "line_end": 214,
+              "snippet": "export function findScopeByStableId(scopes: ScopeInfo[], stored: Pick<ScopeInfo, 'name' | 'kind'> & Partial<Pick<ScopeInfo, 'qualified_name' | 'signature_hash' | 'node_hash'>>): ScopeInfo | null { if (stored.qualified_name) { const byQuali...",
+              "reasoning": "Explicit return type is ScopeInfo | null; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findScopeByStableId",
+            "params": {
+              "expected_return": "ScopeInfo | null",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "scopes",
+                  "type": "ScopeInfo[]",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "stored",
+                  "type": "Pick<ScopeInfo, 'name' | 'kind'> & Partial<Pick<ScopeInfo, 'qualified_name' | 'signature_hash' | 'node_hash'>>",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.249Z",
+          "last_verified_at": "2026-05-09T15:16:00.249Z"
+        },
+        {
+          "id": "ct_tlzvCs87",
+          "type": "boundary",
+          "description": "findScopeByStableId parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 195,
+              "line_end": 214,
+              "snippet": "export function findScopeByStableId(scopes: ScopeInfo[], stored: Pick<ScopeInfo, 'name' | 'kind'> & Partial<Pick<ScopeInfo, 'qualified_name' | 'signature_hash' | 'node_hash'>>): ScopeInfo | null { if (stored.qualified_name) { const byQuali...",
+              "reasoning": "Parameter contract: [{\"name\":\"scopes\",\"type\":\"ScopeInfo[]\",\"optional\":false,\"nullable\":false},{\"name\":\"stored\",\"type\":\"Pick<ScopeInfo, 'name' | 'kind'> & Partial<Pick<ScopeInfo, 'qualified_name' | 'signature_hash' | 'node_hash'>>\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findScopeByStableId",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scopes",
+                  "type": "ScopeInfo[]",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "stored",
+                  "type": "Pick<ScopeInfo, 'name' | 'kind'> & Partial<Pick<ScopeInfo, 'qualified_name' | 'signature_hash' | 'node_hash'>>",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.249Z",
+          "last_verified_at": "2026-05-09T15:16:00.249Z"
+        },
+        {
+          "id": "ct_QT-npN6o",
+          "type": "boundary",
+          "description": "findScopeByStableId parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 195,
+              "line_end": 214,
+              "snippet": "export function findScopeByStableId(scopes: ScopeInfo[], stored: Pick<ScopeInfo, 'name' | 'kind'> & Partial<Pick<ScopeInfo, 'qualified_name' | 'signature_hash' | 'node_hash'>>): ScopeInfo | null { if (stored.qualified_name) { const byQuali...",
+              "reasoning": "Nullability contract: [{\"name\":\"scopes\",\"nullable\":false,\"optional\":false},{\"name\":\"stored\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findScopeByStableId",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scopes",
+                  "type": "ScopeInfo[]",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "stored",
+                  "type": "Pick<ScopeInfo, 'name' | 'kind'> & Partial<Pick<ScopeInfo, 'qualified_name' | 'signature_hash' | 'node_hash'>>",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.249Z",
+          "last_verified_at": "2026-05-09T15:16:00.249Z"
+        }
+      ]
+    },
+    {
+      "name": "isJsxLike",
+      "kind": "function",
+      "qualified_name": "isJsxLike",
+      "signature_hash": "49a3ba6ffdeefa00",
+      "node_hash": "9f395a379f712845",
+      "line_start": 216,
+      "line_end": 218,
+      "contracts": [
+        {
+          "id": "ct_4uXAmob9",
+          "type": "boundary",
+          "description": "isJsxLike returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 216,
+              "line_end": 218,
+              "snippet": "function isJsxLike(filePath: string): boolean { return filePath.endsWith('.tsx') || filePath.endsWith('.jsx'); }",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isJsxLike",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "filePath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.249Z",
+          "last_verified_at": "2026-05-09T15:16:00.249Z"
+        },
+        {
+          "id": "ct_D3Idsz5O",
+          "type": "boundary",
+          "description": "isJsxLike parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 216,
+              "line_end": 218,
+              "snippet": "function isJsxLike(filePath: string): boolean { return filePath.endsWith('.tsx') || filePath.endsWith('.jsx'); }",
+              "reasoning": "Parameter contract: [{\"name\":\"filePath\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isJsxLike",
+            "params": {
+              "parameters": [
+                {
+                  "name": "filePath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.249Z",
+          "last_verified_at": "2026-05-09T15:16:00.249Z"
+        },
+        {
+          "id": "ct_MDjfXfSP",
+          "type": "boundary",
+          "description": "isJsxLike parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 216,
+              "line_end": 218,
+              "snippet": "function isJsxLike(filePath: string): boolean { return filePath.endsWith('.tsx') || filePath.endsWith('.jsx'); }",
+              "reasoning": "Nullability contract: [{\"name\":\"filePath\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isJsxLike",
+            "params": {
+              "parameters": [
+                {
+                  "name": "filePath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.249Z",
+          "last_verified_at": "2026-05-09T15:16:00.249Z"
+        }
+      ]
+    },
+    {
+      "name": "scriptKindFor",
+      "kind": "function",
+      "qualified_name": "scriptKindFor",
+      "signature_hash": "509f14fb55ed8fd4",
+      "node_hash": "8f2c0971837ce180",
+      "line_start": 220,
+      "line_end": 225,
+      "contracts": [
+        {
+          "id": "ct_SlrqMid5",
+          "type": "boundary",
+          "description": "scriptKindFor returns ts.ScriptKind and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 220,
+              "line_end": 225,
+              "snippet": "function scriptKindFor(filePath: string): ts.ScriptKind { if (filePath.endsWith('.tsx')) return ts.ScriptKind.TSX; if (filePath.endsWith('.jsx')) return ts.ScriptKind.JSX; if (filePath.endsWith('.js') || filePath.endsWith('.mjs') || filePa...",
+              "reasoning": "Explicit return type is ts.ScriptKind; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "scriptKindFor",
+            "params": {
+              "expected_return": "ts.ScriptKind",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "filePath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.249Z",
+          "last_verified_at": "2026-05-09T15:16:00.249Z"
+        },
+        {
+          "id": "ct_SZ8QH0Wb",
+          "type": "boundary",
+          "description": "scriptKindFor parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 220,
+              "line_end": 225,
+              "snippet": "function scriptKindFor(filePath: string): ts.ScriptKind { if (filePath.endsWith('.tsx')) return ts.ScriptKind.TSX; if (filePath.endsWith('.jsx')) return ts.ScriptKind.JSX; if (filePath.endsWith('.js') || filePath.endsWith('.mjs') || filePa...",
+              "reasoning": "Parameter contract: [{\"name\":\"filePath\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "scriptKindFor",
+            "params": {
+              "parameters": [
+                {
+                  "name": "filePath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.249Z",
+          "last_verified_at": "2026-05-09T15:16:00.249Z"
+        },
+        {
+          "id": "ct_H526-9SG",
+          "type": "boundary",
+          "description": "scriptKindFor parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 220,
+              "line_end": 225,
+              "snippet": "function scriptKindFor(filePath: string): ts.ScriptKind { if (filePath.endsWith('.tsx')) return ts.ScriptKind.TSX; if (filePath.endsWith('.jsx')) return ts.ScriptKind.JSX; if (filePath.endsWith('.js') || filePath.endsWith('.mjs') || filePa...",
+              "reasoning": "Nullability contract: [{\"name\":\"filePath\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "scriptKindFor",
+            "params": {
+              "parameters": [
+                {
+                  "name": "filePath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.249Z",
+          "last_verified_at": "2026-05-09T15:16:00.249Z"
+        }
+      ]
+    },
+    {
+      "name": "collectIdentifiersBefore",
+      "kind": "function",
+      "qualified_name": "collectIdentifiersBefore",
+      "signature_hash": "6cf4f5cb494bc647",
+      "node_hash": "8c99d852d3ffd6fd",
+      "line_start": 227,
+      "line_end": 236,
+      "contracts": [
+        {
+          "id": "ct_NkritxPM",
+          "type": "boundary",
+          "description": "collectIdentifiersBefore returns Set<string> and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 227,
+              "line_end": 236,
+              "snippet": "export function collectIdentifiersBefore(scope: ScopeInfo, position: number): Set<string> { const names = new Set<string>(); walk(scope.node, (node) => { if (node.getStart() >= position) return; if (ts.isIdentifier(node) && !isInsideNested...",
+              "reasoning": "Explicit return type is Set<string>; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "collectIdentifiersBefore",
+            "params": {
+              "expected_return": "Set<string>",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "position",
+                  "type": "number",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.249Z",
+          "last_verified_at": "2026-05-09T15:16:00.249Z"
+        },
+        {
+          "id": "ct_mBA0gPBN",
+          "type": "boundary",
+          "description": "collectIdentifiersBefore parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 227,
+              "line_end": 236,
+              "snippet": "export function collectIdentifiersBefore(scope: ScopeInfo, position: number): Set<string> { const names = new Set<string>(); walk(scope.node, (node) => { if (node.getStart() >= position) return; if (ts.isIdentifier(node) && !isInsideNested...",
+              "reasoning": "Parameter contract: [{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false},{\"name\":\"position\",\"type\":\"number\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "collectIdentifiersBefore",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "position",
+                  "type": "number",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.250Z",
+          "last_verified_at": "2026-05-09T15:16:00.250Z"
+        },
+        {
+          "id": "ct_jPWaZRzZ",
+          "type": "boundary",
+          "description": "collectIdentifiersBefore parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 227,
+              "line_end": 236,
+              "snippet": "export function collectIdentifiersBefore(scope: ScopeInfo, position: number): Set<string> { const names = new Set<string>(); walk(scope.node, (node) => { if (node.getStart() >= position) return; if (ts.isIdentifier(node) && !isInsideNested...",
+              "reasoning": "Nullability contract: [{\"name\":\"scope\",\"nullable\":false,\"optional\":false},{\"name\":\"position\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "collectIdentifiersBefore",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "position",
+                  "type": "number",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.250Z",
+          "last_verified_at": "2026-05-09T15:16:00.250Z"
+        }
+      ]
+    },
+    {
+      "name": "qualifiedName",
+      "kind": "function",
+      "qualified_name": "qualifiedName",
+      "signature_hash": "ff53660ab7275cbc",
+      "node_hash": "7146122047a94dd0",
+      "line_start": 238,
+      "line_end": 244,
+      "contracts": [
+        {
+          "id": "ct_DNdfZpYx",
+          "type": "boundary",
+          "description": "qualifiedName returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 238,
+              "line_end": 244,
+              "snippet": "function qualifiedName(node: ts.Node, name: string, kind: ScopeInfo['kind']): string { if (kind === 'method') { const classNode = findParentClass(node); if (classNode?.name) return `${classNode.name.text}.${name}`; } return name; }",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "qualifiedName",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "name",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "kind",
+                  "type": "ScopeInfo['kind']",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.250Z",
+          "last_verified_at": "2026-05-09T15:16:00.250Z"
+        },
+        {
+          "id": "ct_aqO4Fer6",
+          "type": "boundary",
+          "description": "qualifiedName parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 238,
+              "line_end": 244,
+              "snippet": "function qualifiedName(node: ts.Node, name: string, kind: ScopeInfo['kind']): string { if (kind === 'method') { const classNode = findParentClass(node); if (classNode?.name) return `${classNode.name.text}.${name}`; } return name; }",
+              "reasoning": "Parameter contract: [{\"name\":\"node\",\"type\":\"ts.Node\",\"optional\":false,\"nullable\":false},{\"name\":\"name\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"kind\",\"type\":\"ScopeInfo['kind']\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "qualifiedName",
+            "params": {
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "name",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "kind",
+                  "type": "ScopeInfo['kind']",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.250Z",
+          "last_verified_at": "2026-05-09T15:16:00.250Z"
+        },
+        {
+          "id": "ct_Sn8f0W0q",
+          "type": "boundary",
+          "description": "qualifiedName parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 238,
+              "line_end": 244,
+              "snippet": "function qualifiedName(node: ts.Node, name: string, kind: ScopeInfo['kind']): string { if (kind === 'method') { const classNode = findParentClass(node); if (classNode?.name) return `${classNode.name.text}.${name}`; } return name; }",
+              "reasoning": "Nullability contract: [{\"name\":\"node\",\"nullable\":false,\"optional\":false},{\"name\":\"name\",\"nullable\":false,\"optional\":false},{\"name\":\"kind\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "qualifiedName",
+            "params": {
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "name",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "kind",
+                  "type": "ScopeInfo['kind']",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.250Z",
+          "last_verified_at": "2026-05-09T15:16:00.250Z"
+        }
+      ]
+    },
+    {
+      "name": "findParentClass",
+      "kind": "function",
+      "qualified_name": "findParentClass",
+      "signature_hash": "a175c6494d872ad2",
+      "node_hash": "b5b9f46a3b1d73d2",
+      "line_start": 246,
+      "line_end": 253,
+      "contracts": [
+        {
+          "id": "ct_AWbzpzj5",
+          "type": "boundary",
+          "description": "findParentClass returns ts.ClassDeclaration | null and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 246,
+              "line_end": 253,
+              "snippet": "function findParentClass(node: ts.Node): ts.ClassDeclaration | null { let current: ts.Node | undefined = node.parent; while (current) { if (ts.isClassDeclaration(current)) return current; current = current.parent; } return null; }",
+              "reasoning": "Explicit return type is ts.ClassDeclaration | null; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findParentClass",
+            "params": {
+              "expected_return": "ts.ClassDeclaration | null",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.250Z",
+          "last_verified_at": "2026-05-09T15:16:00.250Z"
+        },
+        {
+          "id": "ct_sfgazcVC",
+          "type": "boundary",
+          "description": "findParentClass parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 246,
+              "line_end": 253,
+              "snippet": "function findParentClass(node: ts.Node): ts.ClassDeclaration | null { let current: ts.Node | undefined = node.parent; while (current) { if (ts.isClassDeclaration(current)) return current; current = current.parent; } return null; }",
+              "reasoning": "Parameter contract: [{\"name\":\"node\",\"type\":\"ts.Node\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findParentClass",
+            "params": {
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.250Z",
+          "last_verified_at": "2026-05-09T15:16:00.250Z"
+        },
+        {
+          "id": "ct_khlQC6fZ",
+          "type": "boundary",
+          "description": "findParentClass parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 246,
+              "line_end": 253,
+              "snippet": "function findParentClass(node: ts.Node): ts.ClassDeclaration | null { let current: ts.Node | undefined = node.parent; while (current) { if (ts.isClassDeclaration(current)) return current; current = current.parent; } return null; }",
+              "reasoning": "Nullability contract: [{\"name\":\"node\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findParentClass",
+            "params": {
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.250Z",
+          "last_verified_at": "2026-05-09T15:16:00.250Z"
+        }
+      ]
+    },
+    {
+      "name": "signatureText",
+      "kind": "function",
+      "qualified_name": "signatureText",
+      "signature_hash": "981b5815b94ff089",
+      "node_hash": "2eb0b759c2509b44",
+      "line_start": 255,
+      "line_end": 262,
+      "contracts": [
+        {
+          "id": "ct_kW0A04SA",
+          "type": "boundary",
+          "description": "signatureText returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 255,
+              "line_end": 262,
+              "snippet": "function signatureText(sourceFile: ts.SourceFile, node: ts.Node): string { if (ts.isFunctionDeclaration(node) || ts.isMethodDeclaration(node) || ts.isFunctionExpression(node) || ts.isArrowFunction(node)) { const params = node.parameters.ma...",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "signatureText",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "sourceFile",
+                  "type": "ts.SourceFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.250Z",
+          "last_verified_at": "2026-05-09T15:16:00.250Z"
+        },
+        {
+          "id": "ct_IsxN20KC",
+          "type": "boundary",
+          "description": "signatureText parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 255,
+              "line_end": 262,
+              "snippet": "function signatureText(sourceFile: ts.SourceFile, node: ts.Node): string { if (ts.isFunctionDeclaration(node) || ts.isMethodDeclaration(node) || ts.isFunctionExpression(node) || ts.isArrowFunction(node)) { const params = node.parameters.ma...",
+              "reasoning": "Parameter contract: [{\"name\":\"sourceFile\",\"type\":\"ts.SourceFile\",\"optional\":false,\"nullable\":false},{\"name\":\"node\",\"type\":\"ts.Node\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "signatureText",
+            "params": {
+              "parameters": [
+                {
+                  "name": "sourceFile",
+                  "type": "ts.SourceFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.250Z",
+          "last_verified_at": "2026-05-09T15:16:00.250Z"
+        },
+        {
+          "id": "ct_CElbSRXV",
+          "type": "boundary",
+          "description": "signatureText parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 255,
+              "line_end": 262,
+              "snippet": "function signatureText(sourceFile: ts.SourceFile, node: ts.Node): string { if (ts.isFunctionDeclaration(node) || ts.isMethodDeclaration(node) || ts.isFunctionExpression(node) || ts.isArrowFunction(node)) { const params = node.parameters.ma...",
+              "reasoning": "Nullability contract: [{\"name\":\"sourceFile\",\"nullable\":false,\"optional\":false},{\"name\":\"node\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "signatureText",
+            "params": {
+              "parameters": [
+                {
+                  "name": "sourceFile",
+                  "type": "ts.SourceFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.250Z",
+          "last_verified_at": "2026-05-09T15:16:00.250Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.251Z",
+    "last_checked_at": "2026-05-09T15:16:00.251Z",
+    "total_contracts": 62
+  }
+}

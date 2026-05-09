@@ -1,0 +1,287 @@
+{
+  "source_file": "src/utils/root.ts",
+  "source_hash": "98301d601f7d56ff99e1b93025a874158120cb08264fd2303449e5fb1ed9c590",
+  "scopes": [
+    {
+      "name": "resolveProjectRoot",
+      "kind": "function",
+      "qualified_name": "resolveProjectRoot",
+      "signature_hash": "110d1dddf5ce63e0",
+      "node_hash": "6cb20643ae5e0edc",
+      "line_start": 5,
+      "line_end": 21,
+      "contracts": [
+        {
+          "id": "ct_L_2xt8IJ",
+          "type": "boundary",
+          "description": "resolveProjectRoot returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 5,
+              "line_end": 21,
+              "snippet": "export function resolveProjectRoot(startDir: string): string { const resolvedStart = fs.existsSync(startDir) ? fs.realpathSync(startDir) : path.resolve(startDir); const driftRoot = findUp(resolvedStart, path.join('.drift', 'config.json'));...",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "resolveProjectRoot",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "startDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.743Z",
+          "last_verified_at": "2026-05-09T15:16:00.743Z"
+        },
+        {
+          "id": "ct_WNhoGQJ2",
+          "type": "boundary",
+          "description": "resolveProjectRoot parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 5,
+              "line_end": 21,
+              "snippet": "export function resolveProjectRoot(startDir: string): string { const resolvedStart = fs.existsSync(startDir) ? fs.realpathSync(startDir) : path.resolve(startDir); const driftRoot = findUp(resolvedStart, path.join('.drift', 'config.json'));...",
+              "reasoning": "Parameter contract: [{\"name\":\"startDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "resolveProjectRoot",
+            "params": {
+              "parameters": [
+                {
+                  "name": "startDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.744Z",
+          "last_verified_at": "2026-05-09T15:16:00.744Z"
+        },
+        {
+          "id": "ct_atxlmuGe",
+          "type": "boundary",
+          "description": "resolveProjectRoot parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 5,
+              "line_end": 21,
+              "snippet": "export function resolveProjectRoot(startDir: string): string { const resolvedStart = fs.existsSync(startDir) ? fs.realpathSync(startDir) : path.resolve(startDir); const driftRoot = findUp(resolvedStart, path.join('.drift', 'config.json'));...",
+              "reasoning": "Nullability contract: [{\"name\":\"startDir\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "resolveProjectRoot",
+            "params": {
+              "parameters": [
+                {
+                  "name": "startDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.744Z",
+          "last_verified_at": "2026-05-09T15:16:00.744Z"
+        },
+        {
+          "id": "ct_kzwFXtq6",
+          "type": "boundary",
+          "description": "resolveProjectRoot uses swallow error handling",
+          "pattern": "error_boundary",
+          "detection": "control_flow",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "control_path",
+              "line_start": 17,
+              "line_end": 17,
+              "snippet": "catch { // Non-Git directories are valid for `drift init`; use the current directory. }",
+              "reasoning": "Catch block classified as swallow"
+            }
+          ],
+          "verification": {
+            "strategy": "error_strategy",
+            "target": "resolveProjectRoot",
+            "params": {
+              "strategy": "swallow"
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.744Z",
+          "last_verified_at": "2026-05-09T15:16:00.744Z"
+        }
+      ]
+    },
+    {
+      "name": "findUp",
+      "kind": "function",
+      "qualified_name": "findUp",
+      "signature_hash": "a844307ad566e0f7",
+      "node_hash": "786cd0730b303c85",
+      "line_start": 23,
+      "line_end": 32,
+      "contracts": [
+        {
+          "id": "ct_ih5qCr95",
+          "type": "boundary",
+          "description": "findUp returns string | null and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 23,
+              "line_end": 32,
+              "snippet": "function findUp(startDir: string, relativeFile: string): string | null { let current = startDir; while (true) { const candidate = path.join(current, relativeFile); if (fs.existsSync(candidate) && !fs.lstatSync(candidate).isSymbolicLink()) ...",
+              "reasoning": "Explicit return type is string | null; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findUp",
+            "params": {
+              "expected_return": "string | null",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "startDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "relativeFile",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.744Z",
+          "last_verified_at": "2026-05-09T15:16:00.744Z"
+        },
+        {
+          "id": "ct_n-AOkmUe",
+          "type": "boundary",
+          "description": "findUp parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 23,
+              "line_end": 32,
+              "snippet": "function findUp(startDir: string, relativeFile: string): string | null { let current = startDir; while (true) { const candidate = path.join(current, relativeFile); if (fs.existsSync(candidate) && !fs.lstatSync(candidate).isSymbolicLink()) ...",
+              "reasoning": "Parameter contract: [{\"name\":\"startDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"relativeFile\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findUp",
+            "params": {
+              "parameters": [
+                {
+                  "name": "startDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "relativeFile",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.744Z",
+          "last_verified_at": "2026-05-09T15:16:00.744Z"
+        },
+        {
+          "id": "ct_fx3JcEFC",
+          "type": "boundary",
+          "description": "findUp parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 23,
+              "line_end": 32,
+              "snippet": "function findUp(startDir: string, relativeFile: string): string | null { let current = startDir; while (true) { const candidate = path.join(current, relativeFile); if (fs.existsSync(candidate) && !fs.lstatSync(candidate).isSymbolicLink()) ...",
+              "reasoning": "Nullability contract: [{\"name\":\"startDir\",\"nullable\":false,\"optional\":false},{\"name\":\"relativeFile\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findUp",
+            "params": {
+              "parameters": [
+                {
+                  "name": "startDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "relativeFile",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.744Z",
+          "last_verified_at": "2026-05-09T15:16:00.744Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.744Z",
+    "last_checked_at": "2026-05-09T15:16:00.744Z",
+    "total_contracts": 7
+  }
+}

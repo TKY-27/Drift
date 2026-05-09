@@ -1,0 +1,222 @@
+{
+  "version": "0.1.1",
+  "generated_at": "2026-05-09T15:16:00.792Z",
+  "config_hash": "44129dd8071a43e9e7ef2da4196c3a055157e83a289e22b206fc404a6fd46dae",
+  "contracts": [
+    {
+      "source_file": "src/analyzers/ast.ts",
+      "contract_file": ".drift/contracts/src/analyzers/ast.ts.json",
+      "contract_hash": "67d4448cf88aa2ec6ea4dfa3bc5b1fd450f064c8454bff4859fe0810bb059613"
+    },
+    {
+      "source_file": "src/analyzers/call-graph.ts",
+      "contract_file": ".drift/contracts/src/analyzers/call-graph.ts.json",
+      "contract_hash": "66b358c59bbf137054cf4ce7412824b3fccf290b99ab5e20a1d1ce0d24f56a18"
+    },
+    {
+      "source_file": "src/analyzers/control-flow.ts",
+      "contract_file": ".drift/contracts/src/analyzers/control-flow.ts.json",
+      "contract_hash": "54eb60f68f7937c24693d59246adb774426872844ed264e679a6982e9289844f"
+    },
+    {
+      "source_file": "src/analyzers/diff.ts",
+      "contract_file": ".drift/contracts/src/analyzers/diff.ts.json",
+      "contract_hash": "8d71af57ccbfd23472547a23c0c9cde6deab7ebaaabe536998b56d14f26f27fb"
+    },
+    {
+      "source_file": "src/analyzers/pattern-matchers/common.ts",
+      "contract_file": ".drift/contracts/src/analyzers/pattern-matchers/common.ts.json",
+      "contract_hash": "598b08302ce2d8351dfae11a266427603a85ed5475367a49c235579505592592"
+    },
+    {
+      "source_file": "src/analyzers/pattern-matchers/dependencies.ts",
+      "contract_file": ".drift/contracts/src/analyzers/pattern-matchers/dependencies.ts.json",
+      "contract_hash": "b1061d2015428e2901346090cfeef5e53b013c2d84e7672712d509f19e07b838"
+    },
+    {
+      "source_file": "src/analyzers/pattern-matchers/error-handling.ts",
+      "contract_file": ".drift/contracts/src/analyzers/pattern-matchers/error-handling.ts.json",
+      "contract_hash": "26cb14f36658b95007f243cae391423faf9c0ad3f8a94f66727b9b2d11e96acc"
+    },
+    {
+      "source_file": "src/analyzers/pattern-matchers/guards.ts",
+      "contract_file": ".drift/contracts/src/analyzers/pattern-matchers/guards.ts.json",
+      "contract_hash": "e574e8db4591cdef33f78478d5c592b038c30654bc1b41653beec0584e3fa680"
+    },
+    {
+      "source_file": "src/analyzers/pattern-matchers/imports.ts",
+      "contract_file": ".drift/contracts/src/analyzers/pattern-matchers/imports.ts.json",
+      "contract_hash": "4188ab1b046664c431aac29d6732fc6b6fb5b6ea6a7863df86b86dcf40b3ca64"
+    },
+    {
+      "source_file": "src/analyzers/pattern-matchers/index.ts",
+      "contract_file": ".drift/contracts/src/analyzers/pattern-matchers/index.ts.json",
+      "contract_hash": "932e7778fc97f33acd9fda0b0fd10a407f030335e331729c82dc1e71ecdd0ce1"
+    },
+    {
+      "source_file": "src/analyzers/pattern-matchers/nullify.ts",
+      "contract_file": ".drift/contracts/src/analyzers/pattern-matchers/nullify.ts.json",
+      "contract_hash": "735007f4212d367f8f1675a9174ca308c80f2ec89320678222580c3b0665dd1d"
+    },
+    {
+      "source_file": "src/analyzers/pattern-matchers/returns.ts",
+      "contract_file": ".drift/contracts/src/analyzers/pattern-matchers/returns.ts.json",
+      "contract_hash": "e527bedb00afe14ffefc1fcd13c87446f73d0aa6a926ddf488589b9a179715ee"
+    },
+    {
+      "source_file": "src/analyzers/pattern-matchers/sensitive-logging.ts",
+      "contract_file": ".drift/contracts/src/analyzers/pattern-matchers/sensitive-logging.ts.json",
+      "contract_hash": "141dcaeec998fd293f19191bd6a6d250d6ef1f1e9ece33621a07dbaff14eac33"
+    },
+    {
+      "source_file": "src/analyzers/pattern-matchers/side-effects.ts",
+      "contract_file": ".drift/contracts/src/analyzers/pattern-matchers/side-effects.ts.json",
+      "contract_hash": "8ce08ec591a276fa4e652815e3ec26f9563b3fd8e991f918a8ddc0a2160971f8"
+    },
+    {
+      "source_file": "src/analyzers/types.ts",
+      "contract_file": ".drift/contracts/src/analyzers/types.ts.json",
+      "contract_hash": "4c1644f12f6c9c6b427bebf2f34aa571756b1d4abed4cb0ddbe0d7030f619b48"
+    },
+    {
+      "source_file": "src/commands/add.ts",
+      "contract_file": ".drift/contracts/src/commands/add.ts.json",
+      "contract_hash": "bdec61f9db359a781103b14e41477b5e69f849f522a9df85f2312462a5997331"
+    },
+    {
+      "source_file": "src/commands/check.ts",
+      "contract_file": ".drift/contracts/src/commands/check.ts.json",
+      "contract_hash": "17f40715f102b3e29efab030093b695a778c188590b6dce423434abe91c72bb3"
+    },
+    {
+      "source_file": "src/commands/evolve.ts",
+      "contract_file": ".drift/contracts/src/commands/evolve.ts.json",
+      "contract_hash": "b2f84260e0fbdec0f1afb23be5a43c6f3ad7b322d333066d4015cf9e526d48c2"
+    },
+    {
+      "source_file": "src/commands/ignore.ts",
+      "contract_file": ".drift/contracts/src/commands/ignore.ts.json",
+      "contract_hash": "29a2ccf147a73a0b6c6b8c41d4c8209e36d51f2d5c19fd3a9cea48ae4743cea2"
+    },
+    {
+      "source_file": "src/commands/init.ts",
+      "contract_file": ".drift/contracts/src/commands/init.ts.json",
+      "contract_hash": "8bfcb83fb146058bd7f827b54517f7c238bc01bb40b0d53b881cffd35f0eb78e"
+    },
+    {
+      "source_file": "src/commands/ls.ts",
+      "contract_file": ".drift/contracts/src/commands/ls.ts.json",
+      "contract_hash": "33a0f00a11db3884c4dfd027c60ab50baa512c74869086c563031c6d345b1bb6"
+    },
+    {
+      "source_file": "src/commands/status.ts",
+      "contract_file": ".drift/contracts/src/commands/status.ts.json",
+      "contract_hash": "5bcb5b254ff1dee1b4492b16320f257966de68b255f6a918568bd56f67613f7b"
+    },
+    {
+      "source_file": "src/commands/watch.ts",
+      "contract_file": ".drift/contracts/src/commands/watch.ts.json",
+      "contract_hash": "b6a839460eec700d26e00cb84c72673a43ceccbd86e9561e448d58f8a920400b"
+    },
+    {
+      "source_file": "src/core/crystallizer.ts",
+      "contract_file": ".drift/contracts/src/core/crystallizer.ts.json",
+      "contract_hash": "7bc2ad84b19695ba6c562941cadc81c1c04003e400fc052e271765348ff33b0c"
+    },
+    {
+      "source_file": "src/core/evolver.ts",
+      "contract_file": ".drift/contracts/src/core/evolver.ts.json",
+      "contract_hash": "2697fc76a5bf2a02bc39dc6b127784a63d466da8b1412dde2cd0f32a9d17a52b"
+    },
+    {
+      "source_file": "src/core/store.ts",
+      "contract_file": ".drift/contracts/src/core/store.ts.json",
+      "contract_hash": "bdef2b59bd52da7d7c8252df7f7b62dd657bec9a1fbc0f42d260877c218a8779"
+    },
+    {
+      "source_file": "src/core/watcher.ts",
+      "contract_file": ".drift/contracts/src/core/watcher.ts.json",
+      "contract_hash": "61dc9161ef46580367f18d636153a436bd474fabd0f4b6f53d0d5618cca669f0"
+    },
+    {
+      "source_file": "src/git/blame.ts",
+      "contract_file": ".drift/contracts/src/git/blame.ts.json",
+      "contract_hash": "80c39d8bca258fc3085259e7e58d6e65a16ffbfbcc02e3a5f4786c69d691a7a5"
+    },
+    {
+      "source_file": "src/git/diff.ts",
+      "contract_file": ".drift/contracts/src/git/diff.ts.json",
+      "contract_hash": "a0458e46469a7ecaef27630e0a6fe43b9b174b15a4839eb75fbdb605c96a1d4c"
+    },
+    {
+      "source_file": "src/git/hooks.ts",
+      "contract_file": ".drift/contracts/src/git/hooks.ts.json",
+      "contract_hash": "2580b4f0b4a179e4f9d861930a1326f0418b551ed4ae1efc6bbb28ffb4b494f8"
+    },
+    {
+      "source_file": "src/index.ts",
+      "contract_file": ".drift/contracts/src/index.ts.json",
+      "contract_hash": "469e30102e891dc0700b8f4e9379955c93f8eb2e35f8c80136153d724cdbef2a"
+    },
+    {
+      "source_file": "src/llm/client.ts",
+      "contract_file": ".drift/contracts/src/llm/client.ts.json",
+      "contract_hash": "00cdd565d6e4c190a7f1965dd32218db2f52b6c52a1b4f7a7335fb64842f937c"
+    },
+    {
+      "source_file": "src/llm/description.ts",
+      "contract_file": ".drift/contracts/src/llm/description.ts.json",
+      "contract_hash": "899d99b6af2cb1f493ae66ae2284867b7ce7008e7e77d8efc61445bb847bc6cc"
+    },
+    {
+      "source_file": "src/reporters/github.ts",
+      "contract_file": ".drift/contracts/src/reporters/github.ts.json",
+      "contract_hash": "4135d830459b0f613f15ccb2da0cd62c9871e7b61c451b41d4f34747670f16cc"
+    },
+    {
+      "source_file": "src/reporters/json.ts",
+      "contract_file": ".drift/contracts/src/reporters/json.ts.json",
+      "contract_hash": "b96dc783cc00f490719de56c90256c2b4447bcea3ea02574298c3a2decdfce63"
+    },
+    {
+      "source_file": "src/reporters/terminal.ts",
+      "contract_file": ".drift/contracts/src/reporters/terminal.ts.json",
+      "contract_hash": "8bb650478b7bd02f1226971a9da6154dbad4ccd59aa3fb1601f4fb955380a3a5"
+    },
+    {
+      "source_file": "src/types/config.ts",
+      "contract_file": ".drift/contracts/src/types/config.ts.json",
+      "contract_hash": "c3dd20af58baf774647b9f35d9135770d9bc508642c9d42613ba7fc6303aff89"
+    },
+    {
+      "source_file": "src/types/contract.ts",
+      "contract_file": ".drift/contracts/src/types/contract.ts.json",
+      "contract_hash": "2f86ac18f6a440a7be91d9115b37587d7968018368a5d120f7ef00ceaf424378"
+    },
+    {
+      "source_file": "src/types/result.ts",
+      "contract_file": ".drift/contracts/src/types/result.ts.json",
+      "contract_hash": "089cc2e282a5a3b1dd17d3fa394e92b5d76d36829c7270437558a71370073c8f"
+    },
+    {
+      "source_file": "src/utils/config.ts",
+      "contract_file": ".drift/contracts/src/utils/config.ts.json",
+      "contract_hash": "8c1ca27c2ad2f04bfd715d9d6e16afd09aefc182f21c9a082fd668570d34c559"
+    },
+    {
+      "source_file": "src/utils/fs.ts",
+      "contract_file": ".drift/contracts/src/utils/fs.ts.json",
+      "contract_hash": "63f1951d77968876b553e1ed2f463b6a82a503454979110181b6bb703bee104d"
+    },
+    {
+      "source_file": "src/utils/root.ts",
+      "contract_file": ".drift/contracts/src/utils/root.ts.json",
+      "contract_hash": "dd3a704823ea605d4eb9c5ce4758018cee5a7b9f1cfa10f71dc55988b6f143c1"
+    },
+    {
+      "source_file": "src/utils/security.ts",
+      "contract_file": ".drift/contracts/src/utils/security.ts.json",
+      "contract_hash": "85ed06bfeed98e7eabe49676fc17cdb8a7abf6d354065d350eb9428c2532bdf4"
+    }
+  ]
+}

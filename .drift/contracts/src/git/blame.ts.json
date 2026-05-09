@@ -1,0 +1,683 @@
+{
+  "source_file": "src/git/blame.ts",
+  "source_hash": "3ade2bd90733f702234473d20b58a71d3dee2661e3c52227713017bcd843bfb5",
+  "scopes": [
+    {
+      "name": "<module>",
+      "kind": "module",
+      "qualified_name": "<module>",
+      "signature_hash": "58ea489a1b86dfef",
+      "node_hash": "3ade2bd90733f702",
+      "line_start": 1,
+      "line_end": 93,
+      "contracts": [
+        {
+          "id": "ct_jMveLJ_z",
+          "type": "dependency",
+          "description": "Security-sensitive import from ../utils/security.js is preserved",
+          "pattern": "import_constraint",
+          "detection": "import_graph",
+          "severity": "low",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "pattern_match",
+              "line_start": 2,
+              "line_end": 2,
+              "snippet": "import { normalizeRepoRelative } from '../utils/security.js';",
+              "reasoning": "Security-related import detected"
+            }
+          ],
+          "verification": {
+            "strategy": "import_presence",
+            "target": "../utils/security.js",
+            "params": {
+              "names": [
+                "normalizeRepoRelative"
+              ],
+              "named": [
+                {
+                  "imported": "normalizeRepoRelative",
+                  "local": "normalizeRepoRelative"
+                }
+              ],
+              "type_only": false
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.590Z",
+          "last_verified_at": "2026-05-09T15:16:00.590Z"
+        }
+      ]
+    },
+    {
+      "name": "blameFile",
+      "kind": "function",
+      "qualified_name": "blameFile",
+      "signature_hash": "423c9719efbd799e",
+      "node_hash": "bda491924939e588",
+      "line_start": 17,
+      "line_end": 27,
+      "contracts": [
+        {
+          "id": "ct_Caxfuh9E",
+          "type": "boundary",
+          "description": "blameFile returns BlameLine[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 17,
+              "line_end": 27,
+              "snippet": "export function blameFile(rootDir: string, file: string, ref = 'HEAD'): BlameLine[] { validateGitRef(ref); const safeFile = normalizeRepoRelative(file); const output = execFileSync('git', ['blame', '--line-porcelain', ref, '--', safeFile],...",
+              "reasoning": "Explicit return type is BlameLine[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "blameFile",
+            "params": {
+              "expected_return": "BlameLine[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "file",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "ref",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.588Z",
+          "last_verified_at": "2026-05-09T15:16:00.588Z"
+        },
+        {
+          "id": "ct_XAh3-ILN",
+          "type": "boundary",
+          "description": "blameFile parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 17,
+              "line_end": 27,
+              "snippet": "export function blameFile(rootDir: string, file: string, ref = 'HEAD'): BlameLine[] { validateGitRef(ref); const safeFile = normalizeRepoRelative(file); const output = execFileSync('git', ['blame', '--line-porcelain', ref, '--', safeFile],...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"file\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"ref\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "blameFile",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "file",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "ref",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.588Z",
+          "last_verified_at": "2026-05-09T15:16:00.588Z"
+        },
+        {
+          "id": "ct_YDj4oeyr",
+          "type": "boundary",
+          "description": "blameFile parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 17,
+              "line_end": 27,
+              "snippet": "export function blameFile(rootDir: string, file: string, ref = 'HEAD'): BlameLine[] { validateGitRef(ref); const safeFile = normalizeRepoRelative(file); const output = execFileSync('git', ['blame', '--line-porcelain', ref, '--', safeFile],...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false},{\"name\":\"file\",\"nullable\":false,\"optional\":false},{\"name\":\"ref\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "blameFile",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "file",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "ref",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.588Z",
+          "last_verified_at": "2026-05-09T15:16:00.588Z"
+        },
+        {
+          "id": "ct_JOdrwbg6",
+          "type": "invariant",
+          "description": "blameFile runs guard validateGitRef before core logic",
+          "pattern": "guard_clause",
+          "detection": "control_flow",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "call_site",
+              "line_start": 18,
+              "line_end": 18,
+              "snippet": "validateGitRef(ref)",
+              "reasoning": "Guard call appears at the function entry point"
+            }
+          ],
+          "verification": {
+            "strategy": "call_presence",
+            "target": "validateGitRef",
+            "params": {
+              "near_start": true,
+              "before_first_side_effect": true,
+              "path_kind": "unconditional"
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.588Z",
+          "last_verified_at": "2026-05-09T15:16:00.588Z"
+        },
+        {
+          "id": "ct_2dS8oQCh",
+          "type": "invariant",
+          "description": "blameFile validates input before core logic via validateGitRef",
+          "pattern": "always_validate",
+          "detection": "control_flow",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "call_site",
+              "line_start": 18,
+              "line_end": 18,
+              "snippet": "validateGitRef(ref)",
+              "reasoning": "Validation call appears in the first statements of the scope"
+            }
+          ],
+          "verification": {
+            "strategy": "call_presence",
+            "target": "validateGitRef",
+            "params": {
+              "near_start": true
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.588Z",
+          "last_verified_at": "2026-05-09T15:16:00.588Z"
+        }
+      ]
+    },
+    {
+      "name": "blameLine",
+      "kind": "function",
+      "qualified_name": "blameLine",
+      "signature_hash": "47c67c6d355212fe",
+      "node_hash": "f2f19aa6f62ecbb1",
+      "line_start": 29,
+      "line_end": 32,
+      "contracts": [
+        {
+          "id": "ct_hHtrvqV-",
+          "type": "boundary",
+          "description": "blameLine returns BlameLine | null and may throw",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 29,
+              "line_end": 32,
+              "snippet": "export function blameLine(rootDir: string, file: string, line: number, ref = 'HEAD'): BlameLine | null { if (!Number.isInteger(line) || line < 1) throw new Error(`Invalid blame line: ${String(line)}`); return blameFile(rootDir, file, ref)....",
+              "reasoning": "Explicit return type is BlameLine | null; no_throw=false"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "blameLine",
+            "params": {
+              "expected_return": "BlameLine | null",
+              "no_throw": false,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "file",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "line",
+                  "type": "number",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "ref",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.588Z",
+          "last_verified_at": "2026-05-09T15:16:00.588Z"
+        },
+        {
+          "id": "ct_kOX4A_Us",
+          "type": "boundary",
+          "description": "blameLine parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 29,
+              "line_end": 32,
+              "snippet": "export function blameLine(rootDir: string, file: string, line: number, ref = 'HEAD'): BlameLine | null { if (!Number.isInteger(line) || line < 1) throw new Error(`Invalid blame line: ${String(line)}`); return blameFile(rootDir, file, ref)....",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"file\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"line\",\"type\":\"number\",\"optional\":false,\"nullable\":false},{\"name\":\"ref\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "blameLine",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "file",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "line",
+                  "type": "number",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "ref",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.588Z",
+          "last_verified_at": "2026-05-09T15:16:00.588Z"
+        },
+        {
+          "id": "ct_I13fnrLS",
+          "type": "boundary",
+          "description": "blameLine parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 29,
+              "line_end": 32,
+              "snippet": "export function blameLine(rootDir: string, file: string, line: number, ref = 'HEAD'): BlameLine | null { if (!Number.isInteger(line) || line < 1) throw new Error(`Invalid blame line: ${String(line)}`); return blameFile(rootDir, file, ref)....",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false},{\"name\":\"file\",\"nullable\":false,\"optional\":false},{\"name\":\"line\",\"nullable\":false,\"optional\":false},{\"name\":\"ref\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "blameLine",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "file",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "line",
+                  "type": "number",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "ref",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.588Z",
+          "last_verified_at": "2026-05-09T15:16:00.588Z"
+        }
+      ]
+    },
+    {
+      "name": "parseBlamePorcelain",
+      "kind": "function",
+      "qualified_name": "parseBlamePorcelain",
+      "signature_hash": "c1638024f3ae4bd0",
+      "node_hash": "c262a70d8b084125",
+      "line_start": 34,
+      "line_end": 64,
+      "contracts": [
+        {
+          "id": "ct_jV36V4Qt",
+          "type": "boundary",
+          "description": "parseBlamePorcelain returns BlameLine[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 34,
+              "line_end": 64,
+              "snippet": "export function parseBlamePorcelain(output: string): BlameLine[] { const lines = output.split(/\\r?\\n/); const result: BlameLine[] = []; let current: Partial<BlameLine> | null = null; for (const line of lines) { if (!line) continue; if (/^[...",
+              "reasoning": "Explicit return type is BlameLine[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "parseBlamePorcelain",
+            "params": {
+              "expected_return": "BlameLine[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "output",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.589Z",
+          "last_verified_at": "2026-05-09T15:16:00.589Z"
+        },
+        {
+          "id": "ct_f2lxRMEa",
+          "type": "boundary",
+          "description": "parseBlamePorcelain parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 34,
+              "line_end": 64,
+              "snippet": "export function parseBlamePorcelain(output: string): BlameLine[] { const lines = output.split(/\\r?\\n/); const result: BlameLine[] = []; let current: Partial<BlameLine> | null = null; for (const line of lines) { if (!line) continue; if (/^[...",
+              "reasoning": "Parameter contract: [{\"name\":\"output\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "parseBlamePorcelain",
+            "params": {
+              "parameters": [
+                {
+                  "name": "output",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.589Z",
+          "last_verified_at": "2026-05-09T15:16:00.589Z"
+        },
+        {
+          "id": "ct_yBA_6Met",
+          "type": "boundary",
+          "description": "parseBlamePorcelain parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 34,
+              "line_end": 64,
+              "snippet": "export function parseBlamePorcelain(output: string): BlameLine[] { const lines = output.split(/\\r?\\n/); const result: BlameLine[] = []; let current: Partial<BlameLine> | null = null; for (const line of lines) { if (!line) continue; if (/^[...",
+              "reasoning": "Nullability contract: [{\"name\":\"output\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "parseBlamePorcelain",
+            "params": {
+              "parameters": [
+                {
+                  "name": "output",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.589Z",
+          "last_verified_at": "2026-05-09T15:16:00.589Z"
+        }
+      ]
+    },
+    {
+      "name": "pushComplete",
+      "kind": "function",
+      "qualified_name": "pushComplete",
+      "signature_hash": "4b03d724d7ecebbe",
+      "node_hash": "b3b68635d9f1e03e",
+      "line_start": 66,
+      "line_end": 92,
+      "contracts": [
+        {
+          "id": "ct_bb8AdfFU",
+          "type": "boundary",
+          "description": "pushComplete returns void and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 66,
+              "line_end": 92,
+              "snippet": "function pushComplete(result: BlameLine[], entry: Partial<BlameLine>): void { const originalLine = entry.originalLine; const finalLine = entry.finalLine; const authorTime = entry.authorTime; if ( typeof entry.commit === 'string' && typeof ...",
+              "reasoning": "Explicit return type is void; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "pushComplete",
+            "params": {
+              "expected_return": "void",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "result",
+                  "type": "BlameLine[]",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "entry",
+                  "type": "Partial<BlameLine>",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.590Z",
+          "last_verified_at": "2026-05-09T15:16:00.590Z"
+        },
+        {
+          "id": "ct_f8sWf4_X",
+          "type": "boundary",
+          "description": "pushComplete parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 66,
+              "line_end": 92,
+              "snippet": "function pushComplete(result: BlameLine[], entry: Partial<BlameLine>): void { const originalLine = entry.originalLine; const finalLine = entry.finalLine; const authorTime = entry.authorTime; if ( typeof entry.commit === 'string' && typeof ...",
+              "reasoning": "Parameter contract: [{\"name\":\"result\",\"type\":\"BlameLine[]\",\"optional\":false,\"nullable\":false},{\"name\":\"entry\",\"type\":\"Partial<BlameLine>\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "pushComplete",
+            "params": {
+              "parameters": [
+                {
+                  "name": "result",
+                  "type": "BlameLine[]",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "entry",
+                  "type": "Partial<BlameLine>",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.590Z",
+          "last_verified_at": "2026-05-09T15:16:00.590Z"
+        },
+        {
+          "id": "ct_ybpxgKmf",
+          "type": "boundary",
+          "description": "pushComplete parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 66,
+              "line_end": 92,
+              "snippet": "function pushComplete(result: BlameLine[], entry: Partial<BlameLine>): void { const originalLine = entry.originalLine; const finalLine = entry.finalLine; const authorTime = entry.authorTime; if ( typeof entry.commit === 'string' && typeof ...",
+              "reasoning": "Nullability contract: [{\"name\":\"result\",\"nullable\":false,\"optional\":false},{\"name\":\"entry\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "pushComplete",
+            "params": {
+              "parameters": [
+                {
+                  "name": "result",
+                  "type": "BlameLine[]",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "entry",
+                  "type": "Partial<BlameLine>",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.590Z",
+          "last_verified_at": "2026-05-09T15:16:00.590Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.590Z",
+    "last_checked_at": "2026-05-09T15:16:00.590Z",
+    "total_contracts": 15
+  }
+}

@@ -1,0 +1,1871 @@
+{
+  "source_file": "src/core/watcher.ts",
+  "source_hash": "cc6dba4a480613cd358bf255cc3760ce156fa0aa3dc6b7fffe3e3805f49c2055",
+  "scopes": [
+    {
+      "name": "<module>",
+      "kind": "module",
+      "qualified_name": "<module>",
+      "signature_hash": "58ea489a1b86dfef",
+      "node_hash": "cc6dba4a480613cd",
+      "line_start": 1,
+      "line_end": 533,
+      "contracts": [
+        {
+          "id": "ct_tzXR5XId",
+          "type": "dependency",
+          "description": "Security-sensitive import from ../utils/security.js is preserved",
+          "pattern": "import_constraint",
+          "detection": "import_graph",
+          "severity": "low",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "pattern_match",
+              "line_start": 16,
+              "line_end": 16,
+              "snippet": "import { normalizeRepoRelative, safeReadTextFile } from '../utils/security.js';",
+              "reasoning": "Security-related import detected"
+            }
+          ],
+          "verification": {
+            "strategy": "import_presence",
+            "target": "../utils/security.js",
+            "params": {
+              "names": [
+                "normalizeRepoRelative",
+                "safeReadTextFile"
+              ],
+              "named": [
+                {
+                  "imported": "normalizeRepoRelative",
+                  "local": "normalizeRepoRelative"
+                },
+                {
+                  "imported": "safeReadTextFile",
+                  "local": "safeReadTextFile"
+                }
+              ],
+              "type_only": false
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.577Z",
+          "last_verified_at": "2026-05-09T15:16:00.577Z"
+        }
+      ]
+    },
+    {
+      "name": "checkProject",
+      "kind": "function",
+      "qualified_name": "checkProject",
+      "signature_hash": "645e99f94467dc74",
+      "node_hash": "2147469b10e95724",
+      "line_start": 57,
+      "line_end": 229,
+      "contracts": [
+        {
+          "id": "ct_lvpQePEP",
+          "type": "boundary",
+          "description": "checkProject returns Promise<CheckResult> and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 57,
+              "line_end": 229,
+              "snippet": "export async function checkProject(rootDir: string, config: DriftConfig, options: CheckOptions = {}): Promise<CheckResult> { const readMode = options.readMode ?? (options.staged ? 'index' : 'worktree'); const store = new ContractStore(root...",
+              "reasoning": "Explicit return type is Promise<CheckResult>; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "checkProject",
+            "params": {
+              "expected_return": "Promise<CheckResult>",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "CheckOptions",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.569Z",
+          "last_verified_at": "2026-05-09T15:16:00.569Z"
+        },
+        {
+          "id": "ct__i691wG-",
+          "type": "boundary",
+          "description": "checkProject parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 57,
+              "line_end": 229,
+              "snippet": "export async function checkProject(rootDir: string, config: DriftConfig, options: CheckOptions = {}): Promise<CheckResult> { const readMode = options.readMode ?? (options.staged ? 'index' : 'worktree'); const store = new ContractStore(root...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"config\",\"type\":\"DriftConfig\",\"optional\":false,\"nullable\":false},{\"name\":\"options\",\"type\":\"CheckOptions\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "checkProject",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "CheckOptions",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.570Z",
+          "last_verified_at": "2026-05-09T15:16:00.570Z"
+        },
+        {
+          "id": "ct_fpXFttY6",
+          "type": "boundary",
+          "description": "checkProject parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 57,
+              "line_end": 229,
+              "snippet": "export async function checkProject(rootDir: string, config: DriftConfig, options: CheckOptions = {}): Promise<CheckResult> { const readMode = options.readMode ?? (options.staged ? 'index' : 'worktree'); const store = new ContractStore(root...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false},{\"name\":\"config\",\"nullable\":false,\"optional\":false},{\"name\":\"options\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "checkProject",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "CheckOptions",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.570Z",
+          "last_verified_at": "2026-05-09T15:16:00.570Z"
+        },
+        {
+          "id": "ct_qGn-4HqK",
+          "type": "boundary",
+          "description": "checkProject uses fallback error handling",
+          "pattern": "error_boundary",
+          "detection": "control_flow",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "control_path",
+              "line_start": 166,
+              "line_end": 166,
+              "snippet": "catch (error) { violations.push({ type: 'integrity', severity: 'critical', file: sourceFile, reason: `Failed to parse ${sourceFile}: ${error instanceof Error ? error.message : String(error)}`, suggestion: 'Fix the syntax or remove the malf...",
+              "reasoning": "Catch block classified as fallback"
+            }
+          ],
+          "verification": {
+            "strategy": "error_strategy",
+            "target": "checkProject",
+            "params": {
+              "strategy": "fallback"
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.570Z",
+          "last_verified_at": "2026-05-09T15:16:00.570Z"
+        }
+      ]
+    },
+    {
+      "name": "shouldBlock",
+      "kind": "function",
+      "qualified_name": "shouldBlock",
+      "signature_hash": "9db80c56afb72eb7",
+      "node_hash": "591389a162e3c13a",
+      "line_start": 231,
+      "line_end": 233,
+      "contracts": [
+        {
+          "id": "ct_cQfjlvaF",
+          "type": "boundary",
+          "description": "shouldBlock returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 231,
+              "line_end": 233,
+              "snippet": "export function shouldBlock(result: CheckResult, threshold: Severity): boolean { return result.violations.some((violation) => violation.type === 'integrity' || isAtLeastSeverity(violation.severity, threshold)); }",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "shouldBlock",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "result",
+                  "type": "CheckResult",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "threshold",
+                  "type": "Severity",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.571Z",
+          "last_verified_at": "2026-05-09T15:16:00.571Z"
+        },
+        {
+          "id": "ct_fP2JWykU",
+          "type": "boundary",
+          "description": "shouldBlock parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 231,
+              "line_end": 233,
+              "snippet": "export function shouldBlock(result: CheckResult, threshold: Severity): boolean { return result.violations.some((violation) => violation.type === 'integrity' || isAtLeastSeverity(violation.severity, threshold)); }",
+              "reasoning": "Parameter contract: [{\"name\":\"result\",\"type\":\"CheckResult\",\"optional\":false,\"nullable\":false},{\"name\":\"threshold\",\"type\":\"Severity\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "shouldBlock",
+            "params": {
+              "parameters": [
+                {
+                  "name": "result",
+                  "type": "CheckResult",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "threshold",
+                  "type": "Severity",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.571Z",
+          "last_verified_at": "2026-05-09T15:16:00.571Z"
+        },
+        {
+          "id": "ct_vT2yMo-D",
+          "type": "boundary",
+          "description": "shouldBlock parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 231,
+              "line_end": 233,
+              "snippet": "export function shouldBlock(result: CheckResult, threshold: Severity): boolean { return result.violations.some((violation) => violation.type === 'integrity' || isAtLeastSeverity(violation.severity, threshold)); }",
+              "reasoning": "Nullability contract: [{\"name\":\"result\",\"nullable\":false,\"optional\":false},{\"name\":\"threshold\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "shouldBlock",
+            "params": {
+              "parameters": [
+                {
+                  "name": "result",
+                  "type": "CheckResult",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "threshold",
+                  "type": "Severity",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.571Z",
+          "last_verified_at": "2026-05-09T15:16:00.571Z"
+        }
+      ]
+    },
+    {
+      "name": "verifyContract",
+      "kind": "function",
+      "qualified_name": "verifyContract",
+      "signature_hash": "17ed70be3781c03f",
+      "node_hash": "54c328dfc6913732",
+      "line_start": 242,
+      "line_end": 436,
+      "contracts": [
+        {
+          "id": "ct_WGqv6NtA",
+          "type": "boundary",
+          "description": "verifyContract returns VerifyResult and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 242,
+              "line_end": 436,
+              "snippet": "function verifyContract( config: DriftConfig, contract: Contract, storedScope: ContractScope, parsed: ParsedFile, currentScope: ScopeInfo, typeContext: ReturnType<typeof createTypeContext>, ): VerifyResult { void config; void storedScope; ...",
+              "reasoning": "Explicit return type is VerifyResult; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "verifyContract",
+            "params": {
+              "expected_return": "VerifyResult",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "contract",
+                  "type": "Contract",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "storedScope",
+                  "type": "ContractScope",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "currentScope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "typeContext",
+                  "type": "ReturnType<typeof createTypeContext>",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.572Z",
+          "last_verified_at": "2026-05-09T15:16:00.572Z"
+        },
+        {
+          "id": "ct_IW2fCbAc",
+          "type": "boundary",
+          "description": "verifyContract parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 242,
+              "line_end": 436,
+              "snippet": "function verifyContract( config: DriftConfig, contract: Contract, storedScope: ContractScope, parsed: ParsedFile, currentScope: ScopeInfo, typeContext: ReturnType<typeof createTypeContext>, ): VerifyResult { void config; void storedScope; ...",
+              "reasoning": "Parameter contract: [{\"name\":\"config\",\"type\":\"DriftConfig\",\"optional\":false,\"nullable\":false},{\"name\":\"contract\",\"type\":\"Contract\",\"optional\":false,\"nullable\":false},{\"name\":\"storedScope\",\"type\":\"ContractScope\",\"optional\":false,\"nullable\":false},{\"name\":\"parsed\",\"type\":\"ParsedFile\",\"optional\":false,\"nullable\":false},{\"name\":\"currentScope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false},{\"name\":\"typeContext\",\"type\":\"ReturnType<typeof createTypeContext>\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "verifyContract",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "contract",
+                  "type": "Contract",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "storedScope",
+                  "type": "ContractScope",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "currentScope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "typeContext",
+                  "type": "ReturnType<typeof createTypeContext>",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.572Z",
+          "last_verified_at": "2026-05-09T15:16:00.572Z"
+        },
+        {
+          "id": "ct_gZYr2nUC",
+          "type": "boundary",
+          "description": "verifyContract parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 242,
+              "line_end": 436,
+              "snippet": "function verifyContract( config: DriftConfig, contract: Contract, storedScope: ContractScope, parsed: ParsedFile, currentScope: ScopeInfo, typeContext: ReturnType<typeof createTypeContext>, ): VerifyResult { void config; void storedScope; ...",
+              "reasoning": "Nullability contract: [{\"name\":\"config\",\"nullable\":false,\"optional\":false},{\"name\":\"contract\",\"nullable\":false,\"optional\":false},{\"name\":\"storedScope\",\"nullable\":false,\"optional\":false},{\"name\":\"parsed\",\"nullable\":false,\"optional\":false},{\"name\":\"currentScope\",\"nullable\":false,\"optional\":false},{\"name\":\"typeContext\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "verifyContract",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "contract",
+                  "type": "Contract",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "storedScope",
+                  "type": "ContractScope",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "currentScope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "typeContext",
+                  "type": "ReturnType<typeof createTypeContext>",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.573Z",
+          "last_verified_at": "2026-05-09T15:16:00.573Z"
+        },
+        {
+          "id": "ct_l7p9jcNT",
+          "type": "boundary",
+          "description": "verifyContract uses fallback error handling",
+          "pattern": "error_boundary",
+          "detection": "control_flow",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "control_path",
+              "line_start": 429,
+              "line_end": 429,
+              "snippet": "catch (error) { const message = error instanceof Error ? error.message : String(error); return violated(`Invalid AST query in contract: ${message}`, 'Fix or archive the malformed contract', 'invalid ast query'); }",
+              "reasoning": "Catch block classified as fallback"
+            }
+          ],
+          "verification": {
+            "strategy": "error_strategy",
+            "target": "verifyContract",
+            "params": {
+              "strategy": "fallback"
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.573Z",
+          "last_verified_at": "2026-05-09T15:16:00.573Z"
+        }
+      ]
+    },
+    {
+      "name": "maybeEvolve",
+      "kind": "function",
+      "qualified_name": "maybeEvolve",
+      "signature_hash": "4f7784555263c89a",
+      "node_hash": "acea6b499029eadf",
+      "line_start": 438,
+      "line_end": 452,
+      "contracts": [
+        {
+          "id": "ct_KhniYJra",
+          "type": "boundary",
+          "description": "maybeEvolve returns Evolution | null and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 438,
+              "line_end": 452,
+              "snippet": "function maybeEvolve(config: DriftConfig, result: VerifyResult, contract: Contract, scope: string, file: string): Evolution | null { if (!config.evolution.auto_evolve) return null; if (contract.severity === 'critical') return null; if (con...",
+              "reasoning": "Explicit return type is Evolution | null; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "maybeEvolve",
+            "params": {
+              "expected_return": "Evolution | null",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "result",
+                  "type": "VerifyResult",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "contract",
+                  "type": "Contract",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "file",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.575Z",
+          "last_verified_at": "2026-05-09T15:16:00.575Z"
+        },
+        {
+          "id": "ct_jZ8XK7iX",
+          "type": "boundary",
+          "description": "maybeEvolve parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 438,
+              "line_end": 452,
+              "snippet": "function maybeEvolve(config: DriftConfig, result: VerifyResult, contract: Contract, scope: string, file: string): Evolution | null { if (!config.evolution.auto_evolve) return null; if (contract.severity === 'critical') return null; if (con...",
+              "reasoning": "Parameter contract: [{\"name\":\"config\",\"type\":\"DriftConfig\",\"optional\":false,\"nullable\":false},{\"name\":\"result\",\"type\":\"VerifyResult\",\"optional\":false,\"nullable\":false},{\"name\":\"contract\",\"type\":\"Contract\",\"optional\":false,\"nullable\":false},{\"name\":\"scope\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"file\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "maybeEvolve",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "result",
+                  "type": "VerifyResult",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "contract",
+                  "type": "Contract",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "file",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.575Z",
+          "last_verified_at": "2026-05-09T15:16:00.575Z"
+        },
+        {
+          "id": "ct_thJhOV7r",
+          "type": "boundary",
+          "description": "maybeEvolve parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 438,
+              "line_end": 452,
+              "snippet": "function maybeEvolve(config: DriftConfig, result: VerifyResult, contract: Contract, scope: string, file: string): Evolution | null { if (!config.evolution.auto_evolve) return null; if (contract.severity === 'critical') return null; if (con...",
+              "reasoning": "Nullability contract: [{\"name\":\"config\",\"nullable\":false,\"optional\":false},{\"name\":\"result\",\"nullable\":false,\"optional\":false},{\"name\":\"contract\",\"nullable\":false,\"optional\":false},{\"name\":\"scope\",\"nullable\":false,\"optional\":false},{\"name\":\"file\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "maybeEvolve",
+            "params": {
+              "parameters": [
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "result",
+                  "type": "VerifyResult",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "contract",
+                  "type": "Contract",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "file",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.575Z",
+          "last_verified_at": "2026-05-09T15:16:00.575Z"
+        }
+      ]
+    },
+    {
+      "name": "pass",
+      "kind": "function",
+      "qualified_name": "pass",
+      "signature_hash": "3828a4f614c754ce",
+      "node_hash": "1fe4bedf674212de",
+      "line_start": 454,
+      "line_end": 456,
+      "contracts": [
+        {
+          "id": "ct_q3GRAO46",
+          "type": "boundary",
+          "description": "pass returns VerifyResult and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 454,
+              "line_end": 456,
+              "snippet": "function pass(): VerifyResult { return { status: 'passed', reason: '', suggestion: '' }; }",
+              "reasoning": "Explicit return type is VerifyResult; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "pass",
+            "params": {
+              "expected_return": "VerifyResult",
+              "no_throw": true,
+              "parameters": []
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.575Z",
+          "last_verified_at": "2026-05-09T15:16:00.575Z"
+        }
+      ]
+    },
+    {
+      "name": "violated",
+      "kind": "function",
+      "qualified_name": "violated",
+      "signature_hash": "4e3aed428cb88f00",
+      "node_hash": "27ffdbd35aa84d89",
+      "line_start": 458,
+      "line_end": 460,
+      "contracts": [
+        {
+          "id": "ct_o7wI_nLo",
+          "type": "boundary",
+          "description": "violated returns VerifyResult and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 458,
+              "line_end": 460,
+              "snippet": "function violated(reason: string, suggestion: string, newState?: string): VerifyResult { return { status: 'violated', reason, suggestion, newState }; }",
+              "reasoning": "Explicit return type is VerifyResult; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "violated",
+            "params": {
+              "expected_return": "VerifyResult",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "reason",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "suggestion",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "newState",
+                  "type": "string",
+                  "optional": true,
+                  "nullable": true
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.576Z",
+          "last_verified_at": "2026-05-09T15:16:00.576Z"
+        },
+        {
+          "id": "ct_0_g6rQIb",
+          "type": "boundary",
+          "description": "violated parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 458,
+              "line_end": 460,
+              "snippet": "function violated(reason: string, suggestion: string, newState?: string): VerifyResult { return { status: 'violated', reason, suggestion, newState }; }",
+              "reasoning": "Parameter contract: [{\"name\":\"reason\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"suggestion\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"newState\",\"type\":\"string\",\"optional\":true,\"nullable\":true}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "violated",
+            "params": {
+              "parameters": [
+                {
+                  "name": "reason",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "suggestion",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "newState",
+                  "type": "string",
+                  "optional": true,
+                  "nullable": true
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.576Z",
+          "last_verified_at": "2026-05-09T15:16:00.576Z"
+        },
+        {
+          "id": "ct_H6Ugk559",
+          "type": "boundary",
+          "description": "violated parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 458,
+              "line_end": 460,
+              "snippet": "function violated(reason: string, suggestion: string, newState?: string): VerifyResult { return { status: 'violated', reason, suggestion, newState }; }",
+              "reasoning": "Nullability contract: [{\"name\":\"reason\",\"nullable\":false,\"optional\":false},{\"name\":\"suggestion\",\"nullable\":false,\"optional\":false},{\"name\":\"newState\",\"nullable\":true,\"optional\":true}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "violated",
+            "params": {
+              "parameters": [
+                {
+                  "name": "reason",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "suggestion",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "newState",
+                  "type": "string",
+                  "optional": true,
+                  "nullable": true
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.576Z",
+          "last_verified_at": "2026-05-09T15:16:00.576Z"
+        }
+      ]
+    },
+    {
+      "name": "paramString",
+      "kind": "function",
+      "qualified_name": "paramString",
+      "signature_hash": "b83e2b5589e55a14",
+      "node_hash": "4c4a9db60b35ee1c",
+      "line_start": 462,
+      "line_end": 464,
+      "contracts": [
+        {
+          "id": "ct_9g8aq9lZ",
+          "type": "boundary",
+          "description": "paramString returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 462,
+              "line_end": 464,
+              "snippet": "function paramString(value: unknown): string { return typeof value === 'string' ? value : ''; }",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "paramString",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "unknown",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.576Z",
+          "last_verified_at": "2026-05-09T15:16:00.576Z"
+        },
+        {
+          "id": "ct_Jnntp8it",
+          "type": "boundary",
+          "description": "paramString parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 462,
+              "line_end": 464,
+              "snippet": "function paramString(value: unknown): string { return typeof value === 'string' ? value : ''; }",
+              "reasoning": "Parameter contract: [{\"name\":\"value\",\"type\":\"unknown\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "paramString",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "unknown",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.576Z",
+          "last_verified_at": "2026-05-09T15:16:00.576Z"
+        },
+        {
+          "id": "ct_8BdCPZ0x",
+          "type": "boundary",
+          "description": "paramString parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 462,
+              "line_end": 464,
+              "snippet": "function paramString(value: unknown): string { return typeof value === 'string' ? value : ''; }",
+              "reasoning": "Nullability contract: [{\"name\":\"value\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "paramString",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "unknown",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.576Z",
+          "last_verified_at": "2026-05-09T15:16:00.576Z"
+        }
+      ]
+    },
+    {
+      "name": "arrayOfStrings",
+      "kind": "function",
+      "qualified_name": "arrayOfStrings",
+      "signature_hash": "9440eea9fa33a499",
+      "node_hash": "7f9bec7b46e444da",
+      "line_start": 466,
+      "line_end": 468,
+      "contracts": [
+        {
+          "id": "ct_MHLybopo",
+          "type": "boundary",
+          "description": "arrayOfStrings returns string[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 466,
+              "line_end": 468,
+              "snippet": "function arrayOfStrings(value: unknown): string[] { return Array.isArray(value) ? value.filter((item): item is string => typeof item === 'string') : []; }",
+              "reasoning": "Explicit return type is string[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "arrayOfStrings",
+            "params": {
+              "expected_return": "string[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "unknown",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.576Z",
+          "last_verified_at": "2026-05-09T15:16:00.576Z"
+        },
+        {
+          "id": "ct_GR3WDYC2",
+          "type": "boundary",
+          "description": "arrayOfStrings parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 466,
+              "line_end": 468,
+              "snippet": "function arrayOfStrings(value: unknown): string[] { return Array.isArray(value) ? value.filter((item): item is string => typeof item === 'string') : []; }",
+              "reasoning": "Parameter contract: [{\"name\":\"value\",\"type\":\"unknown\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "arrayOfStrings",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "unknown",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.576Z",
+          "last_verified_at": "2026-05-09T15:16:00.576Z"
+        },
+        {
+          "id": "ct_JjpG-n77",
+          "type": "boundary",
+          "description": "arrayOfStrings parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 466,
+              "line_end": 468,
+              "snippet": "function arrayOfStrings(value: unknown): string[] { return Array.isArray(value) ? value.filter((item): item is string => typeof item === 'string') : []; }",
+              "reasoning": "Nullability contract: [{\"name\":\"value\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "arrayOfStrings",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "unknown",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.576Z",
+          "last_verified_at": "2026-05-09T15:16:00.576Z"
+        }
+      ]
+    },
+    {
+      "name": "namedImportParams",
+      "kind": "function",
+      "qualified_name": "namedImportParams",
+      "signature_hash": "d421736a7b15c5c9",
+      "node_hash": "7cd9503bee77e2e7",
+      "line_start": 470,
+      "line_end": 478,
+      "contracts": [
+        {
+          "id": "ct_aUfpW57D",
+          "type": "boundary",
+          "description": "namedImportParams returns Array<{ imported: string; local: string }> and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 470,
+              "line_end": 478,
+              "snippet": "function namedImportParams(value: unknown): Array<{ imported: string; local: string }> { if (!Array.isArray(value)) return []; return value.filter((item): item is { imported: string; local: string } => typeof item === 'object' && item !== ...",
+              "reasoning": "Explicit return type is Array<{ imported: string; local: string }>; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "namedImportParams",
+            "params": {
+              "expected_return": "Array<{ imported: string; local: string }>",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "unknown",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.576Z",
+          "last_verified_at": "2026-05-09T15:16:00.576Z"
+        },
+        {
+          "id": "ct_FnqZHbdD",
+          "type": "boundary",
+          "description": "namedImportParams parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 470,
+              "line_end": 478,
+              "snippet": "function namedImportParams(value: unknown): Array<{ imported: string; local: string }> { if (!Array.isArray(value)) return []; return value.filter((item): item is { imported: string; local: string } => typeof item === 'object' && item !== ...",
+              "reasoning": "Parameter contract: [{\"name\":\"value\",\"type\":\"unknown\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "namedImportParams",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "unknown",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.576Z",
+          "last_verified_at": "2026-05-09T15:16:00.576Z"
+        },
+        {
+          "id": "ct_MSxDuTzc",
+          "type": "boundary",
+          "description": "namedImportParams parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 470,
+              "line_end": 478,
+              "snippet": "function namedImportParams(value: unknown): Array<{ imported: string; local: string }> { if (!Array.isArray(value)) return []; return value.filter((item): item is { imported: string; local: string } => typeof item === 'object' && item !== ...",
+              "reasoning": "Nullability contract: [{\"name\":\"value\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "namedImportParams",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "unknown",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.576Z",
+          "last_verified_at": "2026-05-09T15:16:00.576Z"
+        }
+      ]
+    },
+    {
+      "name": "resolveTargetFiles",
+      "kind": "function",
+      "qualified_name": "resolveTargetFiles",
+      "signature_hash": "85b0a5bfe5d775f2",
+      "node_hash": "b96401b925d06a32",
+      "line_start": 480,
+      "line_end": 501,
+      "contracts": [
+        {
+          "id": "ct_e0Pe5NkC",
+          "type": "boundary",
+          "description": "resolveTargetFiles returns Promise<string[]> and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 480,
+              "line_end": 501,
+              "snippet": "async function resolveTargetFiles( rootDir: string, config: DriftConfig, store: ContractStore, options: CheckOptions, ): Promise<string[]> { if (options.files && options.files.length > 0) return options.files.map(normalizeRepoRelative); if...",
+              "reasoning": "Explicit return type is Promise<string[]>; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "resolveTargetFiles",
+            "params": {
+              "expected_return": "Promise<string[]>",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "store",
+                  "type": "ContractStore",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "CheckOptions",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.576Z",
+          "last_verified_at": "2026-05-09T15:16:00.576Z"
+        },
+        {
+          "id": "ct_yAZ2SRMo",
+          "type": "boundary",
+          "description": "resolveTargetFiles parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 480,
+              "line_end": 501,
+              "snippet": "async function resolveTargetFiles( rootDir: string, config: DriftConfig, store: ContractStore, options: CheckOptions, ): Promise<string[]> { if (options.files && options.files.length > 0) return options.files.map(normalizeRepoRelative); if...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"config\",\"type\":\"DriftConfig\",\"optional\":false,\"nullable\":false},{\"name\":\"store\",\"type\":\"ContractStore\",\"optional\":false,\"nullable\":false},{\"name\":\"options\",\"type\":\"CheckOptions\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "resolveTargetFiles",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "store",
+                  "type": "ContractStore",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "CheckOptions",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.576Z",
+          "last_verified_at": "2026-05-09T15:16:00.576Z"
+        },
+        {
+          "id": "ct_mO96GdlT",
+          "type": "boundary",
+          "description": "resolveTargetFiles parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 480,
+              "line_end": 501,
+              "snippet": "async function resolveTargetFiles( rootDir: string, config: DriftConfig, store: ContractStore, options: CheckOptions, ): Promise<string[]> { if (options.files && options.files.length > 0) return options.files.map(normalizeRepoRelative); if...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false},{\"name\":\"config\",\"nullable\":false,\"optional\":false},{\"name\":\"store\",\"nullable\":false,\"optional\":false},{\"name\":\"options\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "resolveTargetFiles",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "config",
+                  "type": "DriftConfig",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "store",
+                  "type": "ContractStore",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "CheckOptions",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.576Z",
+          "last_verified_at": "2026-05-09T15:16:00.576Z"
+        },
+        {
+          "id": "ct_pNk3STAc",
+          "type": "boundary",
+          "description": "resolveTargetFiles uses fallback error handling",
+          "pattern": "error_boundary",
+          "detection": "control_flow",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "control_path",
+              "line_start": 493,
+              "line_end": 493,
+              "snippet": "catch { manifest = null; }",
+              "reasoning": "Catch block classified as fallback"
+            }
+          ],
+          "verification": {
+            "strategy": "error_strategy",
+            "target": "resolveTargetFiles",
+            "params": {
+              "strategy": "fallback"
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.577Z",
+          "last_verified_at": "2026-05-09T15:16:00.577Z"
+        }
+      ]
+    },
+    {
+      "name": "moduleScope",
+      "kind": "function",
+      "qualified_name": "moduleScope",
+      "signature_hash": "7189f70fc5aa84e6",
+      "node_hash": "4919f687fb3bdee1",
+      "line_start": 503,
+      "line_end": 515,
+      "contracts": [
+        {
+          "id": "ct_dT5JFojG",
+          "type": "boundary",
+          "description": "moduleScope returns ScopeInfo and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 503,
+              "line_end": 515,
+              "snippet": "function moduleScope(parsed: ParsedFile): ScopeInfo { return { name: '<module>', kind: 'module', qualified_name: '<module>', signature_hash: '<module>', node_hash: '<module>', node: parsed.sourceFile, line_start: 1, line_end: parsed.source...",
+              "reasoning": "Explicit return type is ScopeInfo; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "moduleScope",
+            "params": {
+              "expected_return": "ScopeInfo",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.577Z",
+          "last_verified_at": "2026-05-09T15:16:00.577Z"
+        },
+        {
+          "id": "ct_Kz3EYH2l",
+          "type": "boundary",
+          "description": "moduleScope parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 503,
+              "line_end": 515,
+              "snippet": "function moduleScope(parsed: ParsedFile): ScopeInfo { return { name: '<module>', kind: 'module', qualified_name: '<module>', signature_hash: '<module>', node_hash: '<module>', node: parsed.sourceFile, line_start: 1, line_end: parsed.source...",
+              "reasoning": "Parameter contract: [{\"name\":\"parsed\",\"type\":\"ParsedFile\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "moduleScope",
+            "params": {
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.577Z",
+          "last_verified_at": "2026-05-09T15:16:00.577Z"
+        },
+        {
+          "id": "ct_ZbXMXzp3",
+          "type": "boundary",
+          "description": "moduleScope parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 503,
+              "line_end": 515,
+              "snippet": "function moduleScope(parsed: ParsedFile): ScopeInfo { return { name: '<module>', kind: 'module', qualified_name: '<module>', signature_hash: '<module>', node_hash: '<module>', node: parsed.sourceFile, line_start: 1, line_end: parsed.source...",
+              "reasoning": "Nullability contract: [{\"name\":\"parsed\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "moduleScope",
+            "params": {
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.577Z",
+          "last_verified_at": "2026-05-09T15:16:00.577Z"
+        }
+      ]
+    },
+    {
+      "name": "integrityIssueToViolation",
+      "kind": "function",
+      "qualified_name": "integrityIssueToViolation",
+      "signature_hash": "53d80e957452d4e4",
+      "node_hash": "c84337ef7beb46dd",
+      "line_start": 517,
+      "line_end": 528,
+      "contracts": [
+        {
+          "id": "ct_mP-E1bGU",
+          "type": "boundary",
+          "description": "integrityIssueToViolation returns Violation and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 517,
+              "line_end": 528,
+              "snippet": "function integrityIssueToViolation(issue: IntegrityIssue): Violation { return { type: 'integrity', severity: issue.severity, file: issue.file, reason: issue.message, suggestion: issue.type === 'config_tampered' ? 'Review the config change ...",
+              "reasoning": "Explicit return type is Violation; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "integrityIssueToViolation",
+            "params": {
+              "expected_return": "Violation",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "issue",
+                  "type": "IntegrityIssue",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.577Z",
+          "last_verified_at": "2026-05-09T15:16:00.577Z"
+        },
+        {
+          "id": "ct_wqGIgdOt",
+          "type": "boundary",
+          "description": "integrityIssueToViolation parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 517,
+              "line_end": 528,
+              "snippet": "function integrityIssueToViolation(issue: IntegrityIssue): Violation { return { type: 'integrity', severity: issue.severity, file: issue.file, reason: issue.message, suggestion: issue.type === 'config_tampered' ? 'Review the config change ...",
+              "reasoning": "Parameter contract: [{\"name\":\"issue\",\"type\":\"IntegrityIssue\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "integrityIssueToViolation",
+            "params": {
+              "parameters": [
+                {
+                  "name": "issue",
+                  "type": "IntegrityIssue",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.577Z",
+          "last_verified_at": "2026-05-09T15:16:00.577Z"
+        },
+        {
+          "id": "ct_4JjsQ-A8",
+          "type": "boundary",
+          "description": "integrityIssueToViolation parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 517,
+              "line_end": 528,
+              "snippet": "function integrityIssueToViolation(issue: IntegrityIssue): Violation { return { type: 'integrity', severity: issue.severity, file: issue.file, reason: issue.message, suggestion: issue.type === 'config_tampered' ? 'Review the config change ...",
+              "reasoning": "Nullability contract: [{\"name\":\"issue\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "integrityIssueToViolation",
+            "params": {
+              "parameters": [
+                {
+                  "name": "issue",
+                  "type": "IntegrityIssue",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.577Z",
+          "last_verified_at": "2026-05-09T15:16:00.577Z"
+        }
+      ]
+    },
+    {
+      "name": "isActiveContract",
+      "kind": "function",
+      "qualified_name": "isActiveContract",
+      "signature_hash": "4718c153392bc18f",
+      "node_hash": "6515c2c81a168ccb",
+      "line_start": 530,
+      "line_end": 532,
+      "contracts": [
+        {
+          "id": "ct_GGaR4x5U",
+          "type": "boundary",
+          "description": "isActiveContract returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 530,
+              "line_end": 532,
+              "snippet": "function isActiveContract(contract: Contract): boolean { return contract.status !== 'ignored' && contract.status !== 'archived'; }",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isActiveContract",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "contract",
+                  "type": "Contract",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.577Z",
+          "last_verified_at": "2026-05-09T15:16:00.577Z"
+        },
+        {
+          "id": "ct_1yfRxYMq",
+          "type": "boundary",
+          "description": "isActiveContract parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 530,
+              "line_end": 532,
+              "snippet": "function isActiveContract(contract: Contract): boolean { return contract.status !== 'ignored' && contract.status !== 'archived'; }",
+              "reasoning": "Parameter contract: [{\"name\":\"contract\",\"type\":\"Contract\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isActiveContract",
+            "params": {
+              "parameters": [
+                {
+                  "name": "contract",
+                  "type": "Contract",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.577Z",
+          "last_verified_at": "2026-05-09T15:16:00.577Z"
+        },
+        {
+          "id": "ct_V5f-8N2a",
+          "type": "boundary",
+          "description": "isActiveContract parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 530,
+              "line_end": 532,
+              "snippet": "function isActiveContract(contract: Contract): boolean { return contract.status !== 'ignored' && contract.status !== 'archived'; }",
+              "reasoning": "Nullability contract: [{\"name\":\"contract\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isActiveContract",
+            "params": {
+              "parameters": [
+                {
+                  "name": "contract",
+                  "type": "Contract",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.577Z",
+          "last_verified_at": "2026-05-09T15:16:00.577Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.577Z",
+    "last_checked_at": "2026-05-09T15:16:00.577Z",
+    "total_contracts": 41
+  }
+}

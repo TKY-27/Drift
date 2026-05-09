@@ -1,0 +1,163 @@
+{
+  "source_file": "src/llm/client.ts",
+  "source_hash": "85810b0336bf13e28db784b71343c6d53ee7e4655f72a7ac1b5d884f89e1e2f8",
+  "scopes": [
+    {
+      "name": "generateDescription",
+      "kind": "function",
+      "qualified_name": "generateDescription",
+      "signature_hash": "c960372f79b5706e",
+      "node_hash": "71d11cd2f0288801",
+      "line_start": 5,
+      "line_end": 14,
+      "contracts": [
+        {
+          "id": "ct_QSTdo3BB",
+          "type": "boundary",
+          "description": "generateDescription returns Promise<string> and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 5,
+              "line_end": 14,
+              "snippet": "export async function generateDescription( contract: Partial<Contract>, codeSnippet: string, config: DriftConfig['llm'], ): Promise<string> { await Promise.resolve(); if (!config.enabled) return fallbackDescription(contract); void codeSnip...",
+              "reasoning": "Explicit return type is Promise<string>; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "generateDescription",
+            "params": {
+              "expected_return": "Promise<string>",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "contract",
+                  "type": "Partial<Contract>",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "codeSnippet",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "config",
+                  "type": "DriftConfig['llm']",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.643Z",
+          "last_verified_at": "2026-05-09T15:16:00.643Z"
+        },
+        {
+          "id": "ct_a3FfPuFA",
+          "type": "boundary",
+          "description": "generateDescription parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 5,
+              "line_end": 14,
+              "snippet": "export async function generateDescription( contract: Partial<Contract>, codeSnippet: string, config: DriftConfig['llm'], ): Promise<string> { await Promise.resolve(); if (!config.enabled) return fallbackDescription(contract); void codeSnip...",
+              "reasoning": "Parameter contract: [{\"name\":\"contract\",\"type\":\"Partial<Contract>\",\"optional\":false,\"nullable\":false},{\"name\":\"codeSnippet\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"config\",\"type\":\"DriftConfig['llm']\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "generateDescription",
+            "params": {
+              "parameters": [
+                {
+                  "name": "contract",
+                  "type": "Partial<Contract>",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "codeSnippet",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "config",
+                  "type": "DriftConfig['llm']",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.643Z",
+          "last_verified_at": "2026-05-09T15:16:00.643Z"
+        },
+        {
+          "id": "ct_68KRUtu6",
+          "type": "boundary",
+          "description": "generateDescription parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 5,
+              "line_end": 14,
+              "snippet": "export async function generateDescription( contract: Partial<Contract>, codeSnippet: string, config: DriftConfig['llm'], ): Promise<string> { await Promise.resolve(); if (!config.enabled) return fallbackDescription(contract); void codeSnip...",
+              "reasoning": "Nullability contract: [{\"name\":\"contract\",\"nullable\":false,\"optional\":false},{\"name\":\"codeSnippet\",\"nullable\":false,\"optional\":false},{\"name\":\"config\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "generateDescription",
+            "params": {
+              "parameters": [
+                {
+                  "name": "contract",
+                  "type": "Partial<Contract>",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "codeSnippet",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "config",
+                  "type": "DriftConfig['llm']",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.643Z",
+          "last_verified_at": "2026-05-09T15:16:00.643Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.643Z",
+    "last_checked_at": "2026-05-09T15:16:00.643Z",
+    "total_contracts": 3
+  }
+}

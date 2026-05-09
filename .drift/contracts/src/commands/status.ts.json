@@ -1,0 +1,145 @@
+{
+  "source_file": "src/commands/status.ts",
+  "source_hash": "610fdb0874d5809eee79fc53200b795241f3b307ec51a78897698668a17431e9",
+  "scopes": [
+    {
+      "name": "statusCommand",
+      "kind": "function",
+      "qualified_name": "statusCommand",
+      "signature_hash": "d6103413ce18595f",
+      "node_hash": "0a7ac07261b4fddf",
+      "line_start": 6,
+      "line_end": 12,
+      "contracts": [
+        {
+          "id": "ct_Wt041QWq",
+          "type": "boundary",
+          "description": "statusCommand returns void and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 6,
+              "line_end": 12,
+              "snippet": "export function statusCommand(rootDir: string, options: { reporter?: string } = {}): void { const config = loadConfig(rootDir); const store = new ContractStore(rootDir); const stats = store.stats(); const reporter = options.reporter ?? con...",
+              "reasoning": "Explicit return type is void; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "statusCommand",
+            "params": {
+              "expected_return": "void",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "{ reporter?: string }",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.485Z",
+          "last_verified_at": "2026-05-09T15:16:00.485Z"
+        },
+        {
+          "id": "ct_BpJ2Sq_t",
+          "type": "boundary",
+          "description": "statusCommand parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 6,
+              "line_end": 12,
+              "snippet": "export function statusCommand(rootDir: string, options: { reporter?: string } = {}): void { const config = loadConfig(rootDir); const store = new ContractStore(rootDir); const stats = store.stats(); const reporter = options.reporter ?? con...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"options\",\"type\":\"{ reporter?: string }\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "statusCommand",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "{ reporter?: string }",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.485Z",
+          "last_verified_at": "2026-05-09T15:16:00.485Z"
+        },
+        {
+          "id": "ct_UJRRKHVX",
+          "type": "boundary",
+          "description": "statusCommand parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 6,
+              "line_end": 12,
+              "snippet": "export function statusCommand(rootDir: string, options: { reporter?: string } = {}): void { const config = loadConfig(rootDir); const store = new ContractStore(rootDir); const stats = store.stats(); const reporter = options.reporter ?? con...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false},{\"name\":\"options\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "statusCommand",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "{ reporter?: string }",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.485Z",
+          "last_verified_at": "2026-05-09T15:16:00.485Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.485Z",
+    "last_checked_at": "2026-05-09T15:16:00.485Z",
+    "total_contracts": 3
+  }
+}

@@ -1,0 +1,163 @@
+{
+  "source_file": "src/commands/check.ts",
+  "source_hash": "e0c43ae324541d2f045abc1056fc5088d9fbf524b80916b18ae551961d7d294c",
+  "scopes": [
+    {
+      "name": "checkCommand",
+      "kind": "function",
+      "qualified_name": "checkCommand",
+      "signature_hash": "37ddd5a45b2004a2",
+      "node_hash": "a5320345a2328a75",
+      "line_start": 8,
+      "line_end": 25,
+      "contracts": [
+        {
+          "id": "ct_kEJ1cfPG",
+          "type": "boundary",
+          "description": "checkCommand returns Promise<void> and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 8,
+              "line_end": 25,
+              "snippet": "export async function checkCommand( rootDir: string, files: string[], options: { staged?: boolean; diff?: string; baselineRef?: string; reporter?: string; severity?: Severity; severityThreshold?: Severity } = {}, ): Promise<void> { const c...",
+              "reasoning": "Explicit return type is Promise<void>; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "checkCommand",
+            "params": {
+              "expected_return": "Promise<void>",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "files",
+                  "type": "string[]",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "{ staged?: boolean; diff?: string; baselineRef?: string; reporter?: string; severity?: Severity; severityThreshold?: Severity }",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.439Z",
+          "last_verified_at": "2026-05-09T15:16:00.439Z"
+        },
+        {
+          "id": "ct_-MHRVr_H",
+          "type": "boundary",
+          "description": "checkCommand parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 8,
+              "line_end": 25,
+              "snippet": "export async function checkCommand( rootDir: string, files: string[], options: { staged?: boolean; diff?: string; baselineRef?: string; reporter?: string; severity?: Severity; severityThreshold?: Severity } = {}, ): Promise<void> { const c...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"files\",\"type\":\"string[]\",\"optional\":false,\"nullable\":false},{\"name\":\"options\",\"type\":\"{ staged?: boolean; diff?: string; baselineRef?: string; reporter?: string; severity?: Severity; severityThreshold?: Severity }\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "checkCommand",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "files",
+                  "type": "string[]",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "{ staged?: boolean; diff?: string; baselineRef?: string; reporter?: string; severity?: Severity; severityThreshold?: Severity }",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.439Z",
+          "last_verified_at": "2026-05-09T15:16:00.439Z"
+        },
+        {
+          "id": "ct_3gkU6-sN",
+          "type": "boundary",
+          "description": "checkCommand parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 8,
+              "line_end": 25,
+              "snippet": "export async function checkCommand( rootDir: string, files: string[], options: { staged?: boolean; diff?: string; baselineRef?: string; reporter?: string; severity?: Severity; severityThreshold?: Severity } = {}, ): Promise<void> { const c...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false},{\"name\":\"files\",\"nullable\":false,\"optional\":false},{\"name\":\"options\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "checkCommand",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "files",
+                  "type": "string[]",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "{ staged?: boolean; diff?: string; baselineRef?: string; reporter?: string; severity?: Severity; severityThreshold?: Severity }",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.439Z",
+          "last_verified_at": "2026-05-09T15:16:00.439Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.439Z",
+    "last_checked_at": "2026-05-09T15:16:00.439Z",
+    "total_contracts": 3
+  }
+}

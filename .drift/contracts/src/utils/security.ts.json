@@ -1,0 +1,2349 @@
+{
+  "source_file": "src/utils/security.ts",
+  "source_hash": "a33cd562f84dc8c5dc28fa39883333a9d619d35408b22ac26ed4bc6e7d9b5697",
+  "scopes": [
+    {
+      "name": "<module>",
+      "kind": "module",
+      "qualified_name": "<module>",
+      "signature_hash": "58ea489a1b86dfef",
+      "node_hash": "a33cd562f84dc8c5",
+      "line_start": 1,
+      "line_end": 252,
+      "contracts": [
+        {
+          "id": "ct_R-Q6gCh3",
+          "type": "dependency",
+          "description": "Security-sensitive import from node:crypto is preserved",
+          "pattern": "import_constraint",
+          "detection": "import_graph",
+          "severity": "low",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "pattern_match",
+              "line_start": 1,
+              "line_end": 1,
+              "snippet": "import { createHash } from 'node:crypto';",
+              "reasoning": "Security-related import detected"
+            }
+          ],
+          "verification": {
+            "strategy": "import_presence",
+            "target": "node:crypto",
+            "params": {
+              "names": [
+                "createHash"
+              ],
+              "named": [
+                {
+                  "imported": "createHash",
+                  "local": "createHash"
+                }
+              ],
+              "type_only": false
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.761Z",
+          "last_verified_at": "2026-05-09T15:16:00.761Z"
+        }
+      ]
+    },
+    {
+      "name": "stripUnsafeText",
+      "kind": "function",
+      "qualified_name": "stripUnsafeText",
+      "signature_hash": "eb0e00a036161359",
+      "node_hash": "36c32af3f14d2fff",
+      "line_start": 30,
+      "line_end": 32,
+      "contracts": [
+        {
+          "id": "ct_3Nq-d-Qe",
+          "type": "boundary",
+          "description": "stripUnsafeText returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 30,
+              "line_end": 32,
+              "snippet": "export function stripUnsafeText(value: string): string { return value.replace(ANSI_STRING_ESCAPE, '').replace(ANSI_ESCAPE, '').replace(CONTROL_CHARS, '').trim(); }",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "stripUnsafeText",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.754Z",
+          "last_verified_at": "2026-05-09T15:16:00.754Z"
+        },
+        {
+          "id": "ct_jfgkPJ6b",
+          "type": "boundary",
+          "description": "stripUnsafeText parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 30,
+              "line_end": 32,
+              "snippet": "export function stripUnsafeText(value: string): string { return value.replace(ANSI_STRING_ESCAPE, '').replace(ANSI_ESCAPE, '').replace(CONTROL_CHARS, '').trim(); }",
+              "reasoning": "Parameter contract: [{\"name\":\"value\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "stripUnsafeText",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.754Z",
+          "last_verified_at": "2026-05-09T15:16:00.754Z"
+        },
+        {
+          "id": "ct_w36OCJxd",
+          "type": "boundary",
+          "description": "stripUnsafeText parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 30,
+              "line_end": 32,
+              "snippet": "export function stripUnsafeText(value: string): string { return value.replace(ANSI_STRING_ESCAPE, '').replace(ANSI_ESCAPE, '').replace(CONTROL_CHARS, '').trim(); }",
+              "reasoning": "Nullability contract: [{\"name\":\"value\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "stripUnsafeText",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.754Z",
+          "last_verified_at": "2026-05-09T15:16:00.754Z"
+        }
+      ]
+    },
+    {
+      "name": "redactSecrets",
+      "kind": "function",
+      "qualified_name": "redactSecrets",
+      "signature_hash": "eb0e00a036161359",
+      "node_hash": "a1c1be0d6a3e3662",
+      "line_start": 34,
+      "line_end": 40,
+      "contracts": [
+        {
+          "id": "ct_AZhlMc2Q",
+          "type": "boundary",
+          "description": "redactSecrets returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 34,
+              "line_end": 40,
+              "snippet": "export function redactSecrets(value: string): string { return stripUnsafeText(value) .replace(SECRET_QUOTED_VALUE, (_match, quote: string, name: string, separator: string) => `${quote}${name}${quote}${separator}<redacted>`) .replace(SECRET...",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "redactSecrets",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.754Z",
+          "last_verified_at": "2026-05-09T15:16:00.754Z"
+        },
+        {
+          "id": "ct_MxD62h8Z",
+          "type": "boundary",
+          "description": "redactSecrets parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 34,
+              "line_end": 40,
+              "snippet": "export function redactSecrets(value: string): string { return stripUnsafeText(value) .replace(SECRET_QUOTED_VALUE, (_match, quote: string, name: string, separator: string) => `${quote}${name}${quote}${separator}<redacted>`) .replace(SECRET...",
+              "reasoning": "Parameter contract: [{\"name\":\"value\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "redactSecrets",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.754Z",
+          "last_verified_at": "2026-05-09T15:16:00.754Z"
+        },
+        {
+          "id": "ct_4YDYInt6",
+          "type": "boundary",
+          "description": "redactSecrets parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 34,
+              "line_end": 40,
+              "snippet": "export function redactSecrets(value: string): string { return stripUnsafeText(value) .replace(SECRET_QUOTED_VALUE, (_match, quote: string, name: string, separator: string) => `${quote}${name}${quote}${separator}<redacted>`) .replace(SECRET...",
+              "reasoning": "Nullability contract: [{\"name\":\"value\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "redactSecrets",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.754Z",
+          "last_verified_at": "2026-05-09T15:16:00.754Z"
+        }
+      ]
+    },
+    {
+      "name": "safeSnippet",
+      "kind": "function",
+      "qualified_name": "safeSnippet",
+      "signature_hash": "dd7c2a5f48041753",
+      "node_hash": "9bfe9e90d597f12d",
+      "line_start": 42,
+      "line_end": 45,
+      "contracts": [
+        {
+          "id": "ct_lj65VwQE",
+          "type": "boundary",
+          "description": "safeSnippet returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 42,
+              "line_end": 45,
+              "snippet": "export function safeSnippet(value: string, maxLength = MAX_SNIPPET_LENGTH): string { const oneLine = redactSecrets(value).replace(/\\s+/g, ' ').trim(); return oneLine.length > maxLength ? `${oneLine.slice(0, maxLength - 1)}...` : oneLine; }",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "safeSnippet",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "maxLength",
+                  "type": "number",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.755Z",
+          "last_verified_at": "2026-05-09T15:16:00.755Z"
+        },
+        {
+          "id": "ct_yCH1rJdo",
+          "type": "boundary",
+          "description": "safeSnippet parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 42,
+              "line_end": 45,
+              "snippet": "export function safeSnippet(value: string, maxLength = MAX_SNIPPET_LENGTH): string { const oneLine = redactSecrets(value).replace(/\\s+/g, ' ').trim(); return oneLine.length > maxLength ? `${oneLine.slice(0, maxLength - 1)}...` : oneLine; }",
+              "reasoning": "Parameter contract: [{\"name\":\"value\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"maxLength\",\"type\":\"number\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "safeSnippet",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "maxLength",
+                  "type": "number",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.755Z",
+          "last_verified_at": "2026-05-09T15:16:00.755Z"
+        },
+        {
+          "id": "ct_dmOV9qta",
+          "type": "boundary",
+          "description": "safeSnippet parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 42,
+              "line_end": 45,
+              "snippet": "export function safeSnippet(value: string, maxLength = MAX_SNIPPET_LENGTH): string { const oneLine = redactSecrets(value).replace(/\\s+/g, ' ').trim(); return oneLine.length > maxLength ? `${oneLine.slice(0, maxLength - 1)}...` : oneLine; }",
+              "reasoning": "Nullability contract: [{\"name\":\"value\",\"nullable\":false,\"optional\":false},{\"name\":\"maxLength\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "safeSnippet",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "maxLength",
+                  "type": "number",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.755Z",
+          "last_verified_at": "2026-05-09T15:16:00.755Z"
+        }
+      ]
+    },
+    {
+      "name": "sha256",
+      "kind": "function",
+      "qualified_name": "sha256",
+      "signature_hash": "c34ef52133d219bb",
+      "node_hash": "ea8c2ef2aa48e9cb",
+      "line_start": 47,
+      "line_end": 49,
+      "contracts": [
+        {
+          "id": "ct_eiKICA4b",
+          "type": "boundary",
+          "description": "sha256 returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 47,
+              "line_end": 49,
+              "snippet": "export function sha256(value: string | Buffer): string { return createHash('sha256').update(value).digest('hex'); }",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "sha256",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string | Buffer",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.756Z",
+          "last_verified_at": "2026-05-09T15:16:00.756Z"
+        },
+        {
+          "id": "ct_9Km3XOFa",
+          "type": "boundary",
+          "description": "sha256 parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 47,
+              "line_end": 49,
+              "snippet": "export function sha256(value: string | Buffer): string { return createHash('sha256').update(value).digest('hex'); }",
+              "reasoning": "Parameter contract: [{\"name\":\"value\",\"type\":\"string | Buffer\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "sha256",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string | Buffer",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.756Z",
+          "last_verified_at": "2026-05-09T15:16:00.756Z"
+        },
+        {
+          "id": "ct_NVUJvPaz",
+          "type": "boundary",
+          "description": "sha256 parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 47,
+              "line_end": 49,
+              "snippet": "export function sha256(value: string | Buffer): string { return createHash('sha256').update(value).digest('hex'); }",
+              "reasoning": "Nullability contract: [{\"name\":\"value\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "sha256",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string | Buffer",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.756Z",
+          "last_verified_at": "2026-05-09T15:16:00.756Z"
+        }
+      ]
+    },
+    {
+      "name": "normalizeRepoRelative",
+      "kind": "function",
+      "qualified_name": "normalizeRepoRelative",
+      "signature_hash": "f9886204e8a5eeba",
+      "node_hash": "73ee6f80a7992070",
+      "line_start": 51,
+      "line_end": 69,
+      "contracts": [
+        {
+          "id": "ct_HbwVtSCg",
+          "type": "boundary",
+          "description": "normalizeRepoRelative returns string and may throw",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 51,
+              "line_end": 69,
+              "snippet": "export function normalizeRepoRelative(input: string): string { const raw = input.replaceAll('\\\\', '/'); // eslint-disable-next-line no-control-regex if (!raw || /[\\x00-\\x1F\\x7F-\\x9F]/.test(raw)) { throw new SecurityError('Path is empty or ...",
+              "reasoning": "Explicit return type is string; no_throw=false"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "normalizeRepoRelative",
+            "params": {
+              "expected_return": "string",
+              "no_throw": false,
+              "parameters": [
+                {
+                  "name": "input",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.756Z",
+          "last_verified_at": "2026-05-09T15:16:00.756Z"
+        },
+        {
+          "id": "ct_a5pTwkg3",
+          "type": "boundary",
+          "description": "normalizeRepoRelative parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 51,
+              "line_end": 69,
+              "snippet": "export function normalizeRepoRelative(input: string): string { const raw = input.replaceAll('\\\\', '/'); // eslint-disable-next-line no-control-regex if (!raw || /[\\x00-\\x1F\\x7F-\\x9F]/.test(raw)) { throw new SecurityError('Path is empty or ...",
+              "reasoning": "Parameter contract: [{\"name\":\"input\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "normalizeRepoRelative",
+            "params": {
+              "parameters": [
+                {
+                  "name": "input",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.756Z",
+          "last_verified_at": "2026-05-09T15:16:00.756Z"
+        },
+        {
+          "id": "ct_-5gqGGsR",
+          "type": "boundary",
+          "description": "normalizeRepoRelative parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 51,
+              "line_end": 69,
+              "snippet": "export function normalizeRepoRelative(input: string): string { const raw = input.replaceAll('\\\\', '/'); // eslint-disable-next-line no-control-regex if (!raw || /[\\x00-\\x1F\\x7F-\\x9F]/.test(raw)) { throw new SecurityError('Path is empty or ...",
+              "reasoning": "Nullability contract: [{\"name\":\"input\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "normalizeRepoRelative",
+            "params": {
+              "parameters": [
+                {
+                  "name": "input",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.756Z",
+          "last_verified_at": "2026-05-09T15:16:00.756Z"
+        }
+      ]
+    },
+    {
+      "name": "resolveInside",
+      "kind": "function",
+      "qualified_name": "resolveInside",
+      "signature_hash": "1cdb34c632ec501b",
+      "node_hash": "6ad5cb85eb044a75",
+      "line_start": 71,
+      "line_end": 84,
+      "contracts": [
+        {
+          "id": "ct_jsBS3Xe7",
+          "type": "boundary",
+          "description": "resolveInside returns string and may throw",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 71,
+              "line_end": 84,
+              "snippet": "export function resolveInside(baseDir: string, relativePath: string): string { const normalized = normalizeRepoRelative(relativePath); if (fs.existsSync(baseDir) && fs.lstatSync(baseDir).isSymbolicLink()) { throw new SecurityError(`Base di...",
+              "reasoning": "Explicit return type is string; no_throw=false"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "resolveInside",
+            "params": {
+              "expected_return": "string",
+              "no_throw": false,
+              "parameters": [
+                {
+                  "name": "baseDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "relativePath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.757Z",
+          "last_verified_at": "2026-05-09T15:16:00.757Z"
+        },
+        {
+          "id": "ct_cn6phiRc",
+          "type": "boundary",
+          "description": "resolveInside parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 71,
+              "line_end": 84,
+              "snippet": "export function resolveInside(baseDir: string, relativePath: string): string { const normalized = normalizeRepoRelative(relativePath); if (fs.existsSync(baseDir) && fs.lstatSync(baseDir).isSymbolicLink()) { throw new SecurityError(`Base di...",
+              "reasoning": "Parameter contract: [{\"name\":\"baseDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"relativePath\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "resolveInside",
+            "params": {
+              "parameters": [
+                {
+                  "name": "baseDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "relativePath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.757Z",
+          "last_verified_at": "2026-05-09T15:16:00.757Z"
+        },
+        {
+          "id": "ct_McwXm8eO",
+          "type": "boundary",
+          "description": "resolveInside parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 71,
+              "line_end": 84,
+              "snippet": "export function resolveInside(baseDir: string, relativePath: string): string { const normalized = normalizeRepoRelative(relativePath); if (fs.existsSync(baseDir) && fs.lstatSync(baseDir).isSymbolicLink()) { throw new SecurityError(`Base di...",
+              "reasoning": "Nullability contract: [{\"name\":\"baseDir\",\"nullable\":false,\"optional\":false},{\"name\":\"relativePath\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "resolveInside",
+            "params": {
+              "parameters": [
+                {
+                  "name": "baseDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "relativePath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.757Z",
+          "last_verified_at": "2026-05-09T15:16:00.757Z"
+        }
+      ]
+    },
+    {
+      "name": "resolveRepoPath",
+      "kind": "function",
+      "qualified_name": "resolveRepoPath",
+      "signature_hash": "d860eec68c85e941",
+      "node_hash": "f6f57d09c12f3fca",
+      "line_start": 86,
+      "line_end": 106,
+      "contracts": [
+        {
+          "id": "ct_0BN7kfuL",
+          "type": "boundary",
+          "description": "resolveRepoPath returns string and may throw",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 86,
+              "line_end": 106,
+              "snippet": "export function resolveRepoPath(rootDir: string, relativePath: string, label = 'path'): string { const resolvedRoot = fs.existsSync(rootDir) ? fs.realpathSync(rootDir) : path.resolve(rootDir); if (fs.existsSync(rootDir) && fs.lstatSync(roo...",
+              "reasoning": "Explicit return type is string; no_throw=false"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "resolveRepoPath",
+            "params": {
+              "expected_return": "string",
+              "no_throw": false,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "relativePath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "label",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.758Z",
+          "last_verified_at": "2026-05-09T15:16:00.758Z"
+        },
+        {
+          "id": "ct_4kljwsEe",
+          "type": "boundary",
+          "description": "resolveRepoPath parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 86,
+              "line_end": 106,
+              "snippet": "export function resolveRepoPath(rootDir: string, relativePath: string, label = 'path'): string { const resolvedRoot = fs.existsSync(rootDir) ? fs.realpathSync(rootDir) : path.resolve(rootDir); if (fs.existsSync(rootDir) && fs.lstatSync(roo...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"relativePath\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"label\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "resolveRepoPath",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "relativePath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "label",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.758Z",
+          "last_verified_at": "2026-05-09T15:16:00.758Z"
+        },
+        {
+          "id": "ct_imaKLVVH",
+          "type": "boundary",
+          "description": "resolveRepoPath parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 86,
+              "line_end": 106,
+              "snippet": "export function resolveRepoPath(rootDir: string, relativePath: string, label = 'path'): string { const resolvedRoot = fs.existsSync(rootDir) ? fs.realpathSync(rootDir) : path.resolve(rootDir); if (fs.existsSync(rootDir) && fs.lstatSync(roo...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false},{\"name\":\"relativePath\",\"nullable\":false,\"optional\":false},{\"name\":\"label\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "resolveRepoPath",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "relativePath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "label",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.758Z",
+          "last_verified_at": "2026-05-09T15:16:00.758Z"
+        }
+      ]
+    },
+    {
+      "name": "assertNoSymlinkWithin",
+      "kind": "function",
+      "qualified_name": "assertNoSymlinkWithin",
+      "signature_hash": "4b6a812bbb735ee4",
+      "node_hash": "f3ae815a11c9f5fa",
+      "line_start": 108,
+      "line_end": 123,
+      "contracts": [
+        {
+          "id": "ct_35pVlv9E",
+          "type": "boundary",
+          "description": "assertNoSymlinkWithin returns void and may throw",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 108,
+              "line_end": 123,
+              "snippet": "export function assertNoSymlinkWithin(baseDir: string, targetPath: string): void { const resolvedBase = path.resolve(baseDir); const resolvedTarget = path.resolve(targetPath); const relative = path.relative(resolvedBase, resolvedTarget); i...",
+              "reasoning": "Explicit return type is void; no_throw=false"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "assertNoSymlinkWithin",
+            "params": {
+              "expected_return": "void",
+              "no_throw": false,
+              "parameters": [
+                {
+                  "name": "baseDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "targetPath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.758Z",
+          "last_verified_at": "2026-05-09T15:16:00.758Z"
+        },
+        {
+          "id": "ct_sCQBd6OT",
+          "type": "boundary",
+          "description": "assertNoSymlinkWithin parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 108,
+              "line_end": 123,
+              "snippet": "export function assertNoSymlinkWithin(baseDir: string, targetPath: string): void { const resolvedBase = path.resolve(baseDir); const resolvedTarget = path.resolve(targetPath); const relative = path.relative(resolvedBase, resolvedTarget); i...",
+              "reasoning": "Parameter contract: [{\"name\":\"baseDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"targetPath\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "assertNoSymlinkWithin",
+            "params": {
+              "parameters": [
+                {
+                  "name": "baseDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "targetPath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.758Z",
+          "last_verified_at": "2026-05-09T15:16:00.758Z"
+        },
+        {
+          "id": "ct_ZpHBHrph",
+          "type": "boundary",
+          "description": "assertNoSymlinkWithin parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 108,
+              "line_end": 123,
+              "snippet": "export function assertNoSymlinkWithin(baseDir: string, targetPath: string): void { const resolvedBase = path.resolve(baseDir); const resolvedTarget = path.resolve(targetPath); const relative = path.relative(resolvedBase, resolvedTarget); i...",
+              "reasoning": "Nullability contract: [{\"name\":\"baseDir\",\"nullable\":false,\"optional\":false},{\"name\":\"targetPath\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "assertNoSymlinkWithin",
+            "params": {
+              "parameters": [
+                {
+                  "name": "baseDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "targetPath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.758Z",
+          "last_verified_at": "2026-05-09T15:16:00.758Z"
+        }
+      ]
+    },
+    {
+      "name": "toPosixRelative",
+      "kind": "function",
+      "qualified_name": "toPosixRelative",
+      "signature_hash": "ca2df1270d11f710",
+      "node_hash": "99676a9f0c27c081",
+      "line_start": 125,
+      "line_end": 131,
+      "contracts": [
+        {
+          "id": "ct_cJZW2YIS",
+          "type": "boundary",
+          "description": "toPosixRelative returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 125,
+              "line_end": 131,
+              "snippet": "export function toPosixRelative(rootDir: string, absoluteOrRelative: string): string { const absolute = path.isAbsolute(absoluteOrRelative) ? path.resolve(absoluteOrRelative) : path.resolve(rootDir, absoluteOrRelative); const relative = pa...",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "toPosixRelative",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "absoluteOrRelative",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.758Z",
+          "last_verified_at": "2026-05-09T15:16:00.758Z"
+        },
+        {
+          "id": "ct_ds5dYtol",
+          "type": "boundary",
+          "description": "toPosixRelative parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 125,
+              "line_end": 131,
+              "snippet": "export function toPosixRelative(rootDir: string, absoluteOrRelative: string): string { const absolute = path.isAbsolute(absoluteOrRelative) ? path.resolve(absoluteOrRelative) : path.resolve(rootDir, absoluteOrRelative); const relative = pa...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"absoluteOrRelative\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "toPosixRelative",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "absoluteOrRelative",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.758Z",
+          "last_verified_at": "2026-05-09T15:16:00.758Z"
+        },
+        {
+          "id": "ct_RBU-m2lf",
+          "type": "boundary",
+          "description": "toPosixRelative parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 125,
+              "line_end": 131,
+              "snippet": "export function toPosixRelative(rootDir: string, absoluteOrRelative: string): string { const absolute = path.isAbsolute(absoluteOrRelative) ? path.resolve(absoluteOrRelative) : path.resolve(rootDir, absoluteOrRelative); const relative = pa...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false},{\"name\":\"absoluteOrRelative\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "toPosixRelative",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "absoluteOrRelative",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.758Z",
+          "last_verified_at": "2026-05-09T15:16:00.758Z"
+        }
+      ]
+    },
+    {
+      "name": "assertJsonObject",
+      "kind": "function",
+      "qualified_name": "assertJsonObject",
+      "signature_hash": "cea2f85c356233d6",
+      "node_hash": "446fdf072233698d",
+      "line_start": 133,
+      "line_end": 137,
+      "contracts": [
+        {
+          "id": "ct_W0ZC4UOV",
+          "type": "boundary",
+          "description": "assertJsonObject returns asserts value is Record<string, unknown> and may throw",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 133,
+              "line_end": 137,
+              "snippet": "export function assertJsonObject(value: unknown, label: string): asserts value is Record<string, unknown> { if (typeof value !== 'object' || value === null || Array.isArray(value)) { throw new SecurityError(`${label} must be a JSON object`...",
+              "reasoning": "Explicit return type is asserts value is Record<string, unknown>; no_throw=false"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "assertJsonObject",
+            "params": {
+              "expected_return": "asserts value is Record<string, unknown>",
+              "no_throw": false,
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "unknown",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "label",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.759Z",
+          "last_verified_at": "2026-05-09T15:16:00.759Z"
+        },
+        {
+          "id": "ct_0AHTYAFJ",
+          "type": "boundary",
+          "description": "assertJsonObject parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 133,
+              "line_end": 137,
+              "snippet": "export function assertJsonObject(value: unknown, label: string): asserts value is Record<string, unknown> { if (typeof value !== 'object' || value === null || Array.isArray(value)) { throw new SecurityError(`${label} must be a JSON object`...",
+              "reasoning": "Parameter contract: [{\"name\":\"value\",\"type\":\"unknown\",\"optional\":false,\"nullable\":false},{\"name\":\"label\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "assertJsonObject",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "unknown",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "label",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.759Z",
+          "last_verified_at": "2026-05-09T15:16:00.759Z"
+        },
+        {
+          "id": "ct_xigGX3-i",
+          "type": "boundary",
+          "description": "assertJsonObject parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 133,
+              "line_end": 137,
+              "snippet": "export function assertJsonObject(value: unknown, label: string): asserts value is Record<string, unknown> { if (typeof value !== 'object' || value === null || Array.isArray(value)) { throw new SecurityError(`${label} must be a JSON object`...",
+              "reasoning": "Nullability contract: [{\"name\":\"value\",\"nullable\":false,\"optional\":false},{\"name\":\"label\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "assertJsonObject",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "unknown",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "label",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.759Z",
+          "last_verified_at": "2026-05-09T15:16:00.759Z"
+        }
+      ]
+    },
+    {
+      "name": "readJsonFile",
+      "kind": "function",
+      "qualified_name": "readJsonFile",
+      "signature_hash": "cc500f3ecdfcfe02",
+      "node_hash": "de3c07bcf90b0d37",
+      "line_start": 139,
+      "line_end": 158,
+      "contracts": [
+        {
+          "id": "ct_5tJB4MxG",
+          "type": "boundary",
+          "description": "readJsonFile returns T and may throw",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 139,
+              "line_end": 158,
+              "snippet": "export function readJsonFile<T>(filePath: string, maxBytes: number, label: string): T { const lst = fs.lstatSync(filePath); if (lst.isSymbolicLink()) { throw new SecurityError(`${label} must not be a symlink`); } const stat = fs.statSync(f...",
+              "reasoning": "Explicit return type is T; no_throw=false"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "readJsonFile",
+            "params": {
+              "expected_return": "T",
+              "no_throw": false,
+              "parameters": [
+                {
+                  "name": "filePath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "maxBytes",
+                  "type": "number",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "label",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.759Z",
+          "last_verified_at": "2026-05-09T15:16:00.759Z"
+        },
+        {
+          "id": "ct_iUKHCClG",
+          "type": "boundary",
+          "description": "readJsonFile parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 139,
+              "line_end": 158,
+              "snippet": "export function readJsonFile<T>(filePath: string, maxBytes: number, label: string): T { const lst = fs.lstatSync(filePath); if (lst.isSymbolicLink()) { throw new SecurityError(`${label} must not be a symlink`); } const stat = fs.statSync(f...",
+              "reasoning": "Parameter contract: [{\"name\":\"filePath\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"maxBytes\",\"type\":\"number\",\"optional\":false,\"nullable\":false},{\"name\":\"label\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "readJsonFile",
+            "params": {
+              "parameters": [
+                {
+                  "name": "filePath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "maxBytes",
+                  "type": "number",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "label",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.759Z",
+          "last_verified_at": "2026-05-09T15:16:00.759Z"
+        },
+        {
+          "id": "ct_tZEYl6xI",
+          "type": "boundary",
+          "description": "readJsonFile parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 139,
+              "line_end": 158,
+              "snippet": "export function readJsonFile<T>(filePath: string, maxBytes: number, label: string): T { const lst = fs.lstatSync(filePath); if (lst.isSymbolicLink()) { throw new SecurityError(`${label} must not be a symlink`); } const stat = fs.statSync(f...",
+              "reasoning": "Nullability contract: [{\"name\":\"filePath\",\"nullable\":false,\"optional\":false},{\"name\":\"maxBytes\",\"nullable\":false,\"optional\":false},{\"name\":\"label\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "readJsonFile",
+            "params": {
+              "parameters": [
+                {
+                  "name": "filePath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "maxBytes",
+                  "type": "number",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "label",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.759Z",
+          "last_verified_at": "2026-05-09T15:16:00.759Z"
+        }
+      ]
+    },
+    {
+      "name": "writeJsonFile",
+      "kind": "function",
+      "qualified_name": "writeJsonFile",
+      "signature_hash": "20510499623dbe7f",
+      "node_hash": "87475dc188184428",
+      "line_start": 160,
+      "line_end": 193,
+      "contracts": [
+        {
+          "id": "ct__j6OnkY5",
+          "type": "boundary",
+          "description": "writeJsonFile returns void and may throw",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 160,
+              "line_end": 193,
+              "snippet": "export function writeJsonFile(filePath: string, value: unknown): void { fs.mkdirSync(path.dirname(filePath), { recursive: true, mode: 0o755 }); const dir = path.dirname(filePath); const beforeDirReal = fs.realpathSync(dir); if (fs.existsSy...",
+              "reasoning": "Explicit return type is void; no_throw=false"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "writeJsonFile",
+            "params": {
+              "expected_return": "void",
+              "no_throw": false,
+              "parameters": [
+                {
+                  "name": "filePath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "value",
+                  "type": "unknown",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.759Z",
+          "last_verified_at": "2026-05-09T15:16:00.759Z"
+        },
+        {
+          "id": "ct_Y01TGTwJ",
+          "type": "boundary",
+          "description": "writeJsonFile parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 160,
+              "line_end": 193,
+              "snippet": "export function writeJsonFile(filePath: string, value: unknown): void { fs.mkdirSync(path.dirname(filePath), { recursive: true, mode: 0o755 }); const dir = path.dirname(filePath); const beforeDirReal = fs.realpathSync(dir); if (fs.existsSy...",
+              "reasoning": "Parameter contract: [{\"name\":\"filePath\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"value\",\"type\":\"unknown\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "writeJsonFile",
+            "params": {
+              "parameters": [
+                {
+                  "name": "filePath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "value",
+                  "type": "unknown",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.759Z",
+          "last_verified_at": "2026-05-09T15:16:00.759Z"
+        },
+        {
+          "id": "ct_I2QBI0UA",
+          "type": "boundary",
+          "description": "writeJsonFile parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 160,
+              "line_end": 193,
+              "snippet": "export function writeJsonFile(filePath: string, value: unknown): void { fs.mkdirSync(path.dirname(filePath), { recursive: true, mode: 0o755 }); const dir = path.dirname(filePath); const beforeDirReal = fs.realpathSync(dir); if (fs.existsSy...",
+              "reasoning": "Nullability contract: [{\"name\":\"filePath\",\"nullable\":false,\"optional\":false},{\"name\":\"value\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "writeJsonFile",
+            "params": {
+              "parameters": [
+                {
+                  "name": "filePath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "value",
+                  "type": "unknown",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.759Z",
+          "last_verified_at": "2026-05-09T15:16:00.759Z"
+        },
+        {
+          "id": "ct_f0kzkRsF",
+          "type": "boundary",
+          "description": "writeJsonFile uses swallow error handling",
+          "pattern": "error_boundary",
+          "detection": "control_flow",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "control_path",
+              "line_start": 190,
+              "line_end": 190,
+              "snippet": "catch { // Directory fsync is best-effort across platforms. }",
+              "reasoning": "Catch block classified as swallow"
+            }
+          ],
+          "verification": {
+            "strategy": "error_strategy",
+            "target": "writeJsonFile",
+            "params": {
+              "strategy": "swallow"
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.759Z",
+          "last_verified_at": "2026-05-09T15:16:00.759Z"
+        }
+      ]
+    },
+    {
+      "name": "safeReadTextFile",
+      "kind": "function",
+      "qualified_name": "safeReadTextFile",
+      "signature_hash": "d52a360e71fe9e1d",
+      "node_hash": "cc325ecc6388317a",
+      "line_start": 195,
+      "line_end": 202,
+      "contracts": [
+        {
+          "id": "ct_oUJEZ63f",
+          "type": "boundary",
+          "description": "safeReadTextFile returns string and may throw",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 195,
+              "line_end": 202,
+              "snippet": "export function safeReadTextFile(rootDir: string, relativePath: string, maxBytes: number, label = 'source file'): string { const absolute = resolveRepoPath(rootDir, relativePath, label); const stat = fs.statSync(absolute); if (!stat.isFile...",
+              "reasoning": "Explicit return type is string; no_throw=false"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "safeReadTextFile",
+            "params": {
+              "expected_return": "string",
+              "no_throw": false,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "relativePath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "maxBytes",
+                  "type": "number",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "label",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.760Z",
+          "last_verified_at": "2026-05-09T15:16:00.760Z"
+        },
+        {
+          "id": "ct_Qr-6D06p",
+          "type": "boundary",
+          "description": "safeReadTextFile parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 195,
+              "line_end": 202,
+              "snippet": "export function safeReadTextFile(rootDir: string, relativePath: string, maxBytes: number, label = 'source file'): string { const absolute = resolveRepoPath(rootDir, relativePath, label); const stat = fs.statSync(absolute); if (!stat.isFile...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"relativePath\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"maxBytes\",\"type\":\"number\",\"optional\":false,\"nullable\":false},{\"name\":\"label\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "safeReadTextFile",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "relativePath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "maxBytes",
+                  "type": "number",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "label",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.760Z",
+          "last_verified_at": "2026-05-09T15:16:00.760Z"
+        },
+        {
+          "id": "ct_snN2eoNT",
+          "type": "boundary",
+          "description": "safeReadTextFile parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 195,
+              "line_end": 202,
+              "snippet": "export function safeReadTextFile(rootDir: string, relativePath: string, maxBytes: number, label = 'source file'): string { const absolute = resolveRepoPath(rootDir, relativePath, label); const stat = fs.statSync(absolute); if (!stat.isFile...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false},{\"name\":\"relativePath\",\"nullable\":false,\"optional\":false},{\"name\":\"maxBytes\",\"nullable\":false,\"optional\":false},{\"name\":\"label\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "safeReadTextFile",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "relativePath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "maxBytes",
+                  "type": "number",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "label",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.760Z",
+          "last_verified_at": "2026-05-09T15:16:00.760Z"
+        }
+      ]
+    },
+    {
+      "name": "validateRepoGlob",
+      "kind": "function",
+      "qualified_name": "validateRepoGlob",
+      "signature_hash": "8d18f7daed8a216e",
+      "node_hash": "79778d3ccc3b66ac",
+      "line_start": 204,
+      "line_end": 217,
+      "contracts": [
+        {
+          "id": "ct_-Yczja3g",
+          "type": "boundary",
+          "description": "validateRepoGlob returns string and may throw",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 204,
+              "line_end": 217,
+              "snippet": "export function validateRepoGlob(pattern: string): string { const raw = pattern.replaceAll('\\\\', '/'); // eslint-disable-next-line no-control-regex if (!raw || /[\\x00-\\x1F\\x7F-\\x9F]/.test(raw)) throw new SecurityError('Glob pattern is empt...",
+              "reasoning": "Explicit return type is string; no_throw=false"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "validateRepoGlob",
+            "params": {
+              "expected_return": "string",
+              "no_throw": false,
+              "parameters": [
+                {
+                  "name": "pattern",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.760Z",
+          "last_verified_at": "2026-05-09T15:16:00.760Z"
+        },
+        {
+          "id": "ct_sdaTaOxY",
+          "type": "boundary",
+          "description": "validateRepoGlob parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 204,
+              "line_end": 217,
+              "snippet": "export function validateRepoGlob(pattern: string): string { const raw = pattern.replaceAll('\\\\', '/'); // eslint-disable-next-line no-control-regex if (!raw || /[\\x00-\\x1F\\x7F-\\x9F]/.test(raw)) throw new SecurityError('Glob pattern is empt...",
+              "reasoning": "Parameter contract: [{\"name\":\"pattern\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "validateRepoGlob",
+            "params": {
+              "parameters": [
+                {
+                  "name": "pattern",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.760Z",
+          "last_verified_at": "2026-05-09T15:16:00.760Z"
+        },
+        {
+          "id": "ct_Zg4Y9wdx",
+          "type": "boundary",
+          "description": "validateRepoGlob parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 204,
+              "line_end": 217,
+              "snippet": "export function validateRepoGlob(pattern: string): string { const raw = pattern.replaceAll('\\\\', '/'); // eslint-disable-next-line no-control-regex if (!raw || /[\\x00-\\x1F\\x7F-\\x9F]/.test(raw)) throw new SecurityError('Glob pattern is empt...",
+              "reasoning": "Nullability contract: [{\"name\":\"pattern\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "validateRepoGlob",
+            "params": {
+              "parameters": [
+                {
+                  "name": "pattern",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.760Z",
+          "last_verified_at": "2026-05-09T15:16:00.760Z"
+        }
+      ]
+    },
+    {
+      "name": "globMatches",
+      "kind": "function",
+      "qualified_name": "globMatches",
+      "signature_hash": "fb81b081dc811305",
+      "node_hash": "9e160c0069729b02",
+      "line_start": 219,
+      "line_end": 223,
+      "contracts": [
+        {
+          "id": "ct_zySRR8rq",
+          "type": "boundary",
+          "description": "globMatches returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 219,
+              "line_end": 223,
+              "snippet": "export function globMatches(file: string, pattern: string): boolean { const normalizedFile = normalizeRepoRelative(file); const normalizedPattern = validateRepoGlob(pattern); return globToRegExp(normalizedPattern).test(normalizedFile); }",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "globMatches",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "file",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "pattern",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.760Z",
+          "last_verified_at": "2026-05-09T15:16:00.760Z"
+        },
+        {
+          "id": "ct_Y2Vi6uDX",
+          "type": "boundary",
+          "description": "globMatches parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 219,
+              "line_end": 223,
+              "snippet": "export function globMatches(file: string, pattern: string): boolean { const normalizedFile = normalizeRepoRelative(file); const normalizedPattern = validateRepoGlob(pattern); return globToRegExp(normalizedPattern).test(normalizedFile); }",
+              "reasoning": "Parameter contract: [{\"name\":\"file\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"pattern\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "globMatches",
+            "params": {
+              "parameters": [
+                {
+                  "name": "file",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "pattern",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.760Z",
+          "last_verified_at": "2026-05-09T15:16:00.760Z"
+        },
+        {
+          "id": "ct_mDOiGV_w",
+          "type": "boundary",
+          "description": "globMatches parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 219,
+              "line_end": 223,
+              "snippet": "export function globMatches(file: string, pattern: string): boolean { const normalizedFile = normalizeRepoRelative(file); const normalizedPattern = validateRepoGlob(pattern); return globToRegExp(normalizedPattern).test(normalizedFile); }",
+              "reasoning": "Nullability contract: [{\"name\":\"file\",\"nullable\":false,\"optional\":false},{\"name\":\"pattern\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "globMatches",
+            "params": {
+              "parameters": [
+                {
+                  "name": "file",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "pattern",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.760Z",
+          "last_verified_at": "2026-05-09T15:16:00.760Z"
+        },
+        {
+          "id": "ct_kM20xWOq",
+          "type": "invariant",
+          "description": "globMatches runs guard validateRepoGlob before core logic",
+          "pattern": "guard_clause",
+          "detection": "control_flow",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "call_site",
+              "line_start": 221,
+              "line_end": 221,
+              "snippet": "validateRepoGlob(pattern)",
+              "reasoning": "Guard call appears at the function entry point"
+            }
+          ],
+          "verification": {
+            "strategy": "call_presence",
+            "target": "validateRepoGlob",
+            "params": {
+              "near_start": true,
+              "before_first_side_effect": true,
+              "path_kind": "unconditional"
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.760Z",
+          "last_verified_at": "2026-05-09T15:16:00.760Z"
+        },
+        {
+          "id": "ct_L2MS9yui",
+          "type": "invariant",
+          "description": "globMatches validates input before core logic via validateRepoGlob",
+          "pattern": "always_validate",
+          "detection": "control_flow",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "call_site",
+              "line_start": 221,
+              "line_end": 221,
+              "snippet": "validateRepoGlob(pattern)",
+              "reasoning": "Validation call appears in the first statements of the scope"
+            }
+          ],
+          "verification": {
+            "strategy": "call_presence",
+            "target": "validateRepoGlob",
+            "params": {
+              "near_start": true
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.760Z",
+          "last_verified_at": "2026-05-09T15:16:00.760Z"
+        }
+      ]
+    },
+    {
+      "name": "globToRegExp",
+      "kind": "function",
+      "qualified_name": "globToRegExp",
+      "signature_hash": "38dad4cf6bf14409",
+      "node_hash": "853642b1ee8d6da7",
+      "line_start": 225,
+      "line_end": 247,
+      "contracts": [
+        {
+          "id": "ct_w95KkT_P",
+          "type": "boundary",
+          "description": "globToRegExp returns RegExp and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 225,
+              "line_end": 247,
+              "snippet": "function globToRegExp(pattern: string): RegExp { let regex = '^'; for (let i = 0; i < pattern.length; i += 1) { const char = pattern[i]; const next = pattern[i + 1]; const after = pattern[i + 2]; if (char === '*' && next === '*' && after =...",
+              "reasoning": "Explicit return type is RegExp; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "globToRegExp",
+            "params": {
+              "expected_return": "RegExp",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "pattern",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.760Z",
+          "last_verified_at": "2026-05-09T15:16:00.760Z"
+        },
+        {
+          "id": "ct_aMRZ9YNB",
+          "type": "boundary",
+          "description": "globToRegExp parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 225,
+              "line_end": 247,
+              "snippet": "function globToRegExp(pattern: string): RegExp { let regex = '^'; for (let i = 0; i < pattern.length; i += 1) { const char = pattern[i]; const next = pattern[i + 1]; const after = pattern[i + 2]; if (char === '*' && next === '*' && after =...",
+              "reasoning": "Parameter contract: [{\"name\":\"pattern\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "globToRegExp",
+            "params": {
+              "parameters": [
+                {
+                  "name": "pattern",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.760Z",
+          "last_verified_at": "2026-05-09T15:16:00.760Z"
+        },
+        {
+          "id": "ct_80RzyvUm",
+          "type": "boundary",
+          "description": "globToRegExp parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 225,
+              "line_end": 247,
+              "snippet": "function globToRegExp(pattern: string): RegExp { let regex = '^'; for (let i = 0; i < pattern.length; i += 1) { const char = pattern[i]; const next = pattern[i + 1]; const after = pattern[i + 2]; if (char === '*' && next === '*' && after =...",
+              "reasoning": "Nullability contract: [{\"name\":\"pattern\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "globToRegExp",
+            "params": {
+              "parameters": [
+                {
+                  "name": "pattern",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.760Z",
+          "last_verified_at": "2026-05-09T15:16:00.760Z"
+        }
+      ]
+    },
+    {
+      "name": "escapeRegExp",
+      "kind": "function",
+      "qualified_name": "escapeRegExp",
+      "signature_hash": "eb0e00a036161359",
+      "node_hash": "5e7036950b196ca2",
+      "line_start": 249,
+      "line_end": 251,
+      "contracts": [
+        {
+          "id": "ct_UXFFsnCa",
+          "type": "boundary",
+          "description": "escapeRegExp returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 249,
+              "line_end": 251,
+              "snippet": "function escapeRegExp(value: string): string { return value.replace(/[|\\\\{}()[\\]^$+?.]/g, '\\\\$&'); }",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "escapeRegExp",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.761Z",
+          "last_verified_at": "2026-05-09T15:16:00.761Z"
+        },
+        {
+          "id": "ct_mTsh9fp7",
+          "type": "boundary",
+          "description": "escapeRegExp parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 249,
+              "line_end": 251,
+              "snippet": "function escapeRegExp(value: string): string { return value.replace(/[|\\\\{}()[\\]^$+?.]/g, '\\\\$&'); }",
+              "reasoning": "Parameter contract: [{\"name\":\"value\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "escapeRegExp",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.761Z",
+          "last_verified_at": "2026-05-09T15:16:00.761Z"
+        },
+        {
+          "id": "ct_hqmkQHWL",
+          "type": "boundary",
+          "description": "escapeRegExp parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 249,
+              "line_end": 251,
+              "snippet": "function escapeRegExp(value: string): string { return value.replace(/[|\\\\{}()[\\]^$+?.]/g, '\\\\$&'); }",
+              "reasoning": "Nullability contract: [{\"name\":\"value\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "escapeRegExp",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.761Z",
+          "last_verified_at": "2026-05-09T15:16:00.761Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.761Z",
+    "last_checked_at": "2026-05-09T15:16:00.761Z",
+    "total_contracts": 55
+  }
+}

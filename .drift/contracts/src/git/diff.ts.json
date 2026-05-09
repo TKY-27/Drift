@@ -1,0 +1,1880 @@
+{
+  "source_file": "src/git/diff.ts",
+  "source_hash": "6a2aa08c380aa296e2c99d4e73732b2ea6eb2059d454f1967db9c77c3ff93602",
+  "scopes": [
+    {
+      "name": "<module>",
+      "kind": "module",
+      "qualified_name": "<module>",
+      "signature_hash": "58ea489a1b86dfef",
+      "node_hash": "6a2aa08c380aa296",
+      "line_start": 1,
+      "line_end": 218,
+      "contracts": [
+        {
+          "id": "ct_6mkamRk5",
+          "type": "dependency",
+          "description": "Security-sensitive import from ../utils/security.js is preserved",
+          "pattern": "import_constraint",
+          "detection": "import_graph",
+          "severity": "low",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "pattern_match",
+              "line_start": 4,
+              "line_end": 4,
+              "snippet": "import { normalizeRepoRelative } from '../utils/security.js';",
+              "reasoning": "Security-related import detected"
+            }
+          ],
+          "verification": {
+            "strategy": "import_presence",
+            "target": "../utils/security.js",
+            "params": {
+              "names": [
+                "normalizeRepoRelative"
+              ],
+              "named": [
+                {
+                  "imported": "normalizeRepoRelative",
+                  "local": "normalizeRepoRelative"
+                }
+              ],
+              "type_only": false
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.609Z",
+          "last_verified_at": "2026-05-09T15:16:00.609Z"
+        }
+      ]
+    },
+    {
+      "name": "findGitDir",
+      "kind": "function",
+      "qualified_name": "findGitDir",
+      "signature_hash": "d55aaa36800fc34f",
+      "node_hash": "db11688c9c461373",
+      "line_start": 9,
+      "line_end": 34,
+      "contracts": [
+        {
+          "id": "ct_RzGZExEa",
+          "type": "boundary",
+          "description": "findGitDir returns string | null and may throw",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 9,
+              "line_end": 34,
+              "snippet": "export function findGitDir(rootDir: string): string | null { const direct = path.join(rootDir, '.git'); if (fs.existsSync(direct)) { if (fs.lstatSync(direct).isSymbolicLink()) throw new Error(`Refusing to use symlinked .git directory: ${di...",
+              "reasoning": "Explicit return type is string | null; no_throw=false"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findGitDir",
+            "params": {
+              "expected_return": "string | null",
+              "no_throw": false,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.601Z",
+          "last_verified_at": "2026-05-09T15:16:00.601Z"
+        },
+        {
+          "id": "ct_ZJYfxI-7",
+          "type": "boundary",
+          "description": "findGitDir parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 9,
+              "line_end": 34,
+              "snippet": "export function findGitDir(rootDir: string): string | null { const direct = path.join(rootDir, '.git'); if (fs.existsSync(direct)) { if (fs.lstatSync(direct).isSymbolicLink()) throw new Error(`Refusing to use symlinked .git directory: ${di...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findGitDir",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.601Z",
+          "last_verified_at": "2026-05-09T15:16:00.601Z"
+        },
+        {
+          "id": "ct_hwWfguXa",
+          "type": "boundary",
+          "description": "findGitDir parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 9,
+              "line_end": 34,
+              "snippet": "export function findGitDir(rootDir: string): string | null { const direct = path.join(rootDir, '.git'); if (fs.existsSync(direct)) { if (fs.lstatSync(direct).isSymbolicLink()) throw new Error(`Refusing to use symlinked .git directory: ${di...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findGitDir",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.601Z",
+          "last_verified_at": "2026-05-09T15:16:00.601Z"
+        },
+        {
+          "id": "ct_3I-CYM5w",
+          "type": "boundary",
+          "description": "findGitDir uses fallback error handling",
+          "pattern": "error_boundary",
+          "detection": "control_flow",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "control_path",
+              "line_start": 30,
+              "line_end": 30,
+              "snippet": "catch (error) { if (error instanceof Error && error.message.startsWith('Refusing ')) throw error; return null; }",
+              "reasoning": "Catch block classified as fallback"
+            }
+          ],
+          "verification": {
+            "strategy": "error_strategy",
+            "target": "findGitDir",
+            "params": {
+              "strategy": "fallback"
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.601Z",
+          "last_verified_at": "2026-05-09T15:16:00.601Z"
+        }
+      ]
+    },
+    {
+      "name": "stagedFiles",
+      "kind": "function",
+      "qualified_name": "stagedFiles",
+      "signature_hash": "42eb048835165069",
+      "node_hash": "9e4efa457101783f",
+      "line_start": 36,
+      "line_end": 44,
+      "contracts": [
+        {
+          "id": "ct_WKwcCsuI",
+          "type": "boundary",
+          "description": "stagedFiles returns string[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 36,
+              "line_end": 44,
+              "snippet": "export function stagedFiles(rootDir: string): string[] { const output = execFileSync('git', ['diff', '--cached', '--name-status', '-z', '-M', '--diff-filter=ACMRD'], { cwd: rootDir, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], maxB...",
+              "reasoning": "Explicit return type is string[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "stagedFiles",
+            "params": {
+              "expected_return": "string[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.601Z",
+          "last_verified_at": "2026-05-09T15:16:00.601Z"
+        },
+        {
+          "id": "ct_2OwPIrgP",
+          "type": "boundary",
+          "description": "stagedFiles parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 36,
+              "line_end": 44,
+              "snippet": "export function stagedFiles(rootDir: string): string[] { const output = execFileSync('git', ['diff', '--cached', '--name-status', '-z', '-M', '--diff-filter=ACMRD'], { cwd: rootDir, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], maxB...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "stagedFiles",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.601Z",
+          "last_verified_at": "2026-05-09T15:16:00.601Z"
+        },
+        {
+          "id": "ct_acvW-xnJ",
+          "type": "boundary",
+          "description": "stagedFiles parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 36,
+              "line_end": 44,
+              "snippet": "export function stagedFiles(rootDir: string): string[] { const output = execFileSync('git', ['diff', '--cached', '--name-status', '-z', '-M', '--diff-filter=ACMRD'], { cwd: rootDir, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], maxB...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "stagedFiles",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.601Z",
+          "last_verified_at": "2026-05-09T15:16:00.601Z"
+        }
+      ]
+    },
+    {
+      "name": "stagedFileContent",
+      "kind": "function",
+      "qualified_name": "stagedFileContent",
+      "signature_hash": "13d501fc2081aaf6",
+      "node_hash": "0b6ac50fd07b2537",
+      "line_start": 46,
+      "line_end": 62,
+      "contracts": [
+        {
+          "id": "ct_uX-rfIMs",
+          "type": "boundary",
+          "description": "stagedFileContent returns string | null and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 46,
+              "line_end": 62,
+              "snippet": "export function stagedFileContent(rootDir: string, file: string): string | null { const safeFile = normalizeRepoRelative(file); try { const size = stagedFileSize(rootDir, safeFile); if (size !== null && size > STAGED_SOURCE_MAX_BYTES) { th...",
+              "reasoning": "Explicit return type is string | null; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "stagedFileContent",
+            "params": {
+              "expected_return": "string | null",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "file",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.601Z",
+          "last_verified_at": "2026-05-09T15:16:00.601Z"
+        },
+        {
+          "id": "ct_wLEuQKiL",
+          "type": "boundary",
+          "description": "stagedFileContent parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 46,
+              "line_end": 62,
+              "snippet": "export function stagedFileContent(rootDir: string, file: string): string | null { const safeFile = normalizeRepoRelative(file); try { const size = stagedFileSize(rootDir, safeFile); if (size !== null && size > STAGED_SOURCE_MAX_BYTES) { th...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"file\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "stagedFileContent",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "file",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.601Z",
+          "last_verified_at": "2026-05-09T15:16:00.601Z"
+        },
+        {
+          "id": "ct_KxPo29vQ",
+          "type": "boundary",
+          "description": "stagedFileContent parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 46,
+              "line_end": 62,
+              "snippet": "export function stagedFileContent(rootDir: string, file: string): string | null { const safeFile = normalizeRepoRelative(file); try { const size = stagedFileSize(rootDir, safeFile); if (size !== null && size > STAGED_SOURCE_MAX_BYTES) { th...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false},{\"name\":\"file\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "stagedFileContent",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "file",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.601Z",
+          "last_verified_at": "2026-05-09T15:16:00.601Z"
+        },
+        {
+          "id": "ct_9V04241_",
+          "type": "boundary",
+          "description": "stagedFileContent uses fallback error handling",
+          "pattern": "error_boundary",
+          "detection": "control_flow",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "control_path",
+              "line_start": 59,
+              "line_end": 59,
+              "snippet": "catch { return null; }",
+              "reasoning": "Catch block classified as fallback"
+            }
+          ],
+          "verification": {
+            "strategy": "error_strategy",
+            "target": "stagedFileContent",
+            "params": {
+              "strategy": "fallback"
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.601Z",
+          "last_verified_at": "2026-05-09T15:16:00.601Z"
+        }
+      ]
+    },
+    {
+      "name": "stagedFileSize",
+      "kind": "function",
+      "qualified_name": "stagedFileSize",
+      "signature_hash": "c459af3b8fc74e0d",
+      "node_hash": "43879b6d95814f81",
+      "line_start": 64,
+      "line_end": 78,
+      "contracts": [
+        {
+          "id": "ct_1EA1TNmu",
+          "type": "boundary",
+          "description": "stagedFileSize returns number | null and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 64,
+              "line_end": 78,
+              "snippet": "export function stagedFileSize(rootDir: string, file: string): number | null { const safeFile = normalizeRepoRelative(file); try { const output = execFileSync('git', ['cat-file', '-s', `:${safeFile}`], { cwd: rootDir, encoding: 'utf8', std...",
+              "reasoning": "Explicit return type is number | null; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "stagedFileSize",
+            "params": {
+              "expected_return": "number | null",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "file",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.602Z",
+          "last_verified_at": "2026-05-09T15:16:00.602Z"
+        },
+        {
+          "id": "ct_bxlapjUT",
+          "type": "boundary",
+          "description": "stagedFileSize parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 64,
+              "line_end": 78,
+              "snippet": "export function stagedFileSize(rootDir: string, file: string): number | null { const safeFile = normalizeRepoRelative(file); try { const output = execFileSync('git', ['cat-file', '-s', `:${safeFile}`], { cwd: rootDir, encoding: 'utf8', std...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"file\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "stagedFileSize",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "file",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.602Z",
+          "last_verified_at": "2026-05-09T15:16:00.602Z"
+        },
+        {
+          "id": "ct_OzB08Bk6",
+          "type": "boundary",
+          "description": "stagedFileSize parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 64,
+              "line_end": 78,
+              "snippet": "export function stagedFileSize(rootDir: string, file: string): number | null { const safeFile = normalizeRepoRelative(file); try { const output = execFileSync('git', ['cat-file', '-s', `:${safeFile}`], { cwd: rootDir, encoding: 'utf8', std...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false},{\"name\":\"file\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "stagedFileSize",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "file",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.602Z",
+          "last_verified_at": "2026-05-09T15:16:00.602Z"
+        },
+        {
+          "id": "ct_0lYwiMNn",
+          "type": "boundary",
+          "description": "stagedFileSize uses fallback error handling",
+          "pattern": "error_boundary",
+          "detection": "control_flow",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "control_path",
+              "line_start": 75,
+              "line_end": 75,
+              "snippet": "catch { return null; }",
+              "reasoning": "Catch block classified as fallback"
+            }
+          ],
+          "verification": {
+            "strategy": "error_strategy",
+            "target": "stagedFileSize",
+            "params": {
+              "strategy": "fallback"
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.602Z",
+          "last_verified_at": "2026-05-09T15:16:00.602Z"
+        }
+      ]
+    },
+    {
+      "name": "diffFiles",
+      "kind": "function",
+      "qualified_name": "diffFiles",
+      "signature_hash": "f9aadd2892694980",
+      "node_hash": "2b9fb81fe8b4c6cc",
+      "line_start": 80,
+      "line_end": 89,
+      "contracts": [
+        {
+          "id": "ct_Ws6dOOU9",
+          "type": "boundary",
+          "description": "diffFiles returns string[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 80,
+              "line_end": 89,
+              "snippet": "export function diffFiles(rootDir: string, ref = 'HEAD'): string[] { validateGitRef(ref); const output = execFileSync('git', ['diff', '--name-status', '-z', '-M', '--diff-filter=ACMRD', ref, '--'], { cwd: rootDir, encoding: 'utf8', stdio: ...",
+              "reasoning": "Explicit return type is string[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "diffFiles",
+            "params": {
+              "expected_return": "string[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "ref",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.602Z",
+          "last_verified_at": "2026-05-09T15:16:00.602Z"
+        },
+        {
+          "id": "ct_-HnmilTn",
+          "type": "boundary",
+          "description": "diffFiles parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 80,
+              "line_end": 89,
+              "snippet": "export function diffFiles(rootDir: string, ref = 'HEAD'): string[] { validateGitRef(ref); const output = execFileSync('git', ['diff', '--name-status', '-z', '-M', '--diff-filter=ACMRD', ref, '--'], { cwd: rootDir, encoding: 'utf8', stdio: ...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"ref\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "diffFiles",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "ref",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.602Z",
+          "last_verified_at": "2026-05-09T15:16:00.602Z"
+        },
+        {
+          "id": "ct_BYlniovD",
+          "type": "boundary",
+          "description": "diffFiles parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 80,
+              "line_end": 89,
+              "snippet": "export function diffFiles(rootDir: string, ref = 'HEAD'): string[] { validateGitRef(ref); const output = execFileSync('git', ['diff', '--name-status', '-z', '-M', '--diff-filter=ACMRD', ref, '--'], { cwd: rootDir, encoding: 'utf8', stdio: ...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false},{\"name\":\"ref\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "diffFiles",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "ref",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.602Z",
+          "last_verified_at": "2026-05-09T15:16:00.602Z"
+        },
+        {
+          "id": "ct_pg9SKTvI",
+          "type": "invariant",
+          "description": "diffFiles runs guard validateGitRef before core logic",
+          "pattern": "guard_clause",
+          "detection": "control_flow",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "call_site",
+              "line_start": 81,
+              "line_end": 81,
+              "snippet": "validateGitRef(ref)",
+              "reasoning": "Guard call appears at the function entry point"
+            }
+          ],
+          "verification": {
+            "strategy": "call_presence",
+            "target": "validateGitRef",
+            "params": {
+              "near_start": true,
+              "before_first_side_effect": true,
+              "path_kind": "unconditional"
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.606Z",
+          "last_verified_at": "2026-05-09T15:16:00.606Z"
+        },
+        {
+          "id": "ct_Xni6QgNW",
+          "type": "invariant",
+          "description": "diffFiles validates input before core logic via validateGitRef",
+          "pattern": "always_validate",
+          "detection": "control_flow",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "call_site",
+              "line_start": 81,
+              "line_end": 81,
+              "snippet": "validateGitRef(ref)",
+              "reasoning": "Validation call appears in the first statements of the scope"
+            }
+          ],
+          "verification": {
+            "strategy": "call_presence",
+            "target": "validateGitRef",
+            "params": {
+              "near_start": true
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.606Z",
+          "last_verified_at": "2026-05-09T15:16:00.606Z"
+        }
+      ]
+    },
+    {
+      "name": "unstagedDriftFiles",
+      "kind": "function",
+      "qualified_name": "unstagedDriftFiles",
+      "signature_hash": "42eb048835165069",
+      "node_hash": "86b4b0b8f13d4057",
+      "line_start": 91,
+      "line_end": 109,
+      "contracts": [
+        {
+          "id": "ct_hTmjVUBQ",
+          "type": "boundary",
+          "description": "unstagedDriftFiles returns string[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 91,
+              "line_end": 109,
+              "snippet": "export function unstagedDriftFiles(rootDir: string): string[] { try { const output = execFileSync('git', ['status', '--porcelain=v1', '-z', '--', '.drift'], { cwd: rootDir, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], maxBuffer: ...",
+              "reasoning": "Explicit return type is string[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "unstagedDriftFiles",
+            "params": {
+              "expected_return": "string[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.606Z",
+          "last_verified_at": "2026-05-09T15:16:00.606Z"
+        },
+        {
+          "id": "ct_yGsdXaiV",
+          "type": "boundary",
+          "description": "unstagedDriftFiles parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 91,
+              "line_end": 109,
+              "snippet": "export function unstagedDriftFiles(rootDir: string): string[] { try { const output = execFileSync('git', ['status', '--porcelain=v1', '-z', '--', '.drift'], { cwd: rootDir, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], maxBuffer: ...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "unstagedDriftFiles",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.606Z",
+          "last_verified_at": "2026-05-09T15:16:00.606Z"
+        },
+        {
+          "id": "ct_qbJXqbru",
+          "type": "boundary",
+          "description": "unstagedDriftFiles parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 91,
+              "line_end": 109,
+              "snippet": "export function unstagedDriftFiles(rootDir: string): string[] { try { const output = execFileSync('git', ['status', '--porcelain=v1', '-z', '--', '.drift'], { cwd: rootDir, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], maxBuffer: ...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "unstagedDriftFiles",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.606Z",
+          "last_verified_at": "2026-05-09T15:16:00.606Z"
+        },
+        {
+          "id": "ct_hiFnen3b",
+          "type": "boundary",
+          "description": "unstagedDriftFiles uses fallback error handling",
+          "pattern": "error_boundary",
+          "detection": "control_flow",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "control_path",
+              "line_start": 106,
+              "line_end": 106,
+              "snippet": "catch { return []; }",
+              "reasoning": "Catch block classified as fallback"
+            }
+          ],
+          "verification": {
+            "strategy": "error_strategy",
+            "target": "unstagedDriftFiles",
+            "params": {
+              "strategy": "fallback"
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.606Z",
+          "last_verified_at": "2026-05-09T15:16:00.606Z"
+        }
+      ]
+    },
+    {
+      "name": "unmergedFiles",
+      "kind": "function",
+      "qualified_name": "unmergedFiles",
+      "signature_hash": "42eb048835165069",
+      "node_hash": "a5ad61ebecabb082",
+      "line_start": 111,
+      "line_end": 128,
+      "contracts": [
+        {
+          "id": "ct_qnZ6niHE",
+          "type": "boundary",
+          "description": "unmergedFiles returns string[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 111,
+              "line_end": 128,
+              "snippet": "export function unmergedFiles(rootDir: string): string[] { try { const output = execFileSync('git', ['ls-files', '-u', '-z'], { cwd: rootDir, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], maxBuffer: GIT_LIST_MAX_BUFFER, }); return...",
+              "reasoning": "Explicit return type is string[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "unmergedFiles",
+            "params": {
+              "expected_return": "string[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.607Z",
+          "last_verified_at": "2026-05-09T15:16:00.607Z"
+        },
+        {
+          "id": "ct_-wYIsbmw",
+          "type": "boundary",
+          "description": "unmergedFiles parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 111,
+              "line_end": 128,
+              "snippet": "export function unmergedFiles(rootDir: string): string[] { try { const output = execFileSync('git', ['ls-files', '-u', '-z'], { cwd: rootDir, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], maxBuffer: GIT_LIST_MAX_BUFFER, }); return...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "unmergedFiles",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.607Z",
+          "last_verified_at": "2026-05-09T15:16:00.607Z"
+        },
+        {
+          "id": "ct_0OuKXrZw",
+          "type": "boundary",
+          "description": "unmergedFiles parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 111,
+              "line_end": 128,
+              "snippet": "export function unmergedFiles(rootDir: string): string[] { try { const output = execFileSync('git', ['ls-files', '-u', '-z'], { cwd: rootDir, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], maxBuffer: GIT_LIST_MAX_BUFFER, }); return...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "unmergedFiles",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.607Z",
+          "last_verified_at": "2026-05-09T15:16:00.607Z"
+        },
+        {
+          "id": "ct_wUAAB34l",
+          "type": "boundary",
+          "description": "unmergedFiles uses fallback error handling",
+          "pattern": "error_boundary",
+          "detection": "control_flow",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "control_path",
+              "line_start": 125,
+              "line_end": 125,
+              "snippet": "catch { return []; }",
+              "reasoning": "Catch block classified as fallback"
+            }
+          ],
+          "verification": {
+            "strategy": "error_strategy",
+            "target": "unmergedFiles",
+            "params": {
+              "strategy": "fallback"
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.607Z",
+          "last_verified_at": "2026-05-09T15:16:00.607Z"
+        }
+      ]
+    },
+    {
+      "name": "stagedBinaryFiles",
+      "kind": "function",
+      "qualified_name": "stagedBinaryFiles",
+      "signature_hash": "42eb048835165069",
+      "node_hash": "f4fdc8337354316b",
+      "line_start": 130,
+      "line_end": 148,
+      "contracts": [
+        {
+          "id": "ct_IZppIFDV",
+          "type": "boundary",
+          "description": "stagedBinaryFiles returns string[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 130,
+              "line_end": 148,
+              "snippet": "export function stagedBinaryFiles(rootDir: string): string[] { try { const output = execFileSync('git', ['diff', '--cached', '--numstat', '-z'], { cwd: rootDir, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], maxBuffer: GIT_LIST_MAX...",
+              "reasoning": "Explicit return type is string[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "stagedBinaryFiles",
+            "params": {
+              "expected_return": "string[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.607Z",
+          "last_verified_at": "2026-05-09T15:16:00.607Z"
+        },
+        {
+          "id": "ct__d6xLTe3",
+          "type": "boundary",
+          "description": "stagedBinaryFiles parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 130,
+              "line_end": 148,
+              "snippet": "export function stagedBinaryFiles(rootDir: string): string[] { try { const output = execFileSync('git', ['diff', '--cached', '--numstat', '-z'], { cwd: rootDir, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], maxBuffer: GIT_LIST_MAX...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "stagedBinaryFiles",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.608Z",
+          "last_verified_at": "2026-05-09T15:16:00.608Z"
+        },
+        {
+          "id": "ct_ouBx-4iz",
+          "type": "boundary",
+          "description": "stagedBinaryFiles parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 130,
+              "line_end": 148,
+              "snippet": "export function stagedBinaryFiles(rootDir: string): string[] { try { const output = execFileSync('git', ['diff', '--cached', '--numstat', '-z'], { cwd: rootDir, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], maxBuffer: GIT_LIST_MAX...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "stagedBinaryFiles",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.608Z",
+          "last_verified_at": "2026-05-09T15:16:00.608Z"
+        },
+        {
+          "id": "ct_de_IJ9Bi",
+          "type": "boundary",
+          "description": "stagedBinaryFiles uses fallback error handling",
+          "pattern": "error_boundary",
+          "detection": "control_flow",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "control_path",
+              "line_start": 145,
+              "line_end": 145,
+              "snippet": "catch { return []; }",
+              "reasoning": "Catch block classified as fallback"
+            }
+          ],
+          "verification": {
+            "strategy": "error_strategy",
+            "target": "stagedBinaryFiles",
+            "params": {
+              "strategy": "fallback"
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.608Z",
+          "last_verified_at": "2026-05-09T15:16:00.608Z"
+        }
+      ]
+    },
+    {
+      "name": "configuredHooksDir",
+      "kind": "function",
+      "qualified_name": "configuredHooksDir",
+      "signature_hash": "d55aaa36800fc34f",
+      "node_hash": "68dd42abc317abb9",
+      "line_start": 150,
+      "line_end": 169,
+      "contracts": [
+        {
+          "id": "ct_Plz7Elbr",
+          "type": "boundary",
+          "description": "configuredHooksDir returns string | null and may throw",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 150,
+              "line_end": 169,
+              "snippet": "export function configuredHooksDir(rootDir: string): string | null { let output = ''; try { output = execFileSync('git', ['config', '--get', 'core.hooksPath'], { cwd: rootDir, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], maxBuffe...",
+              "reasoning": "Explicit return type is string | null; no_throw=false"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "configuredHooksDir",
+            "params": {
+              "expected_return": "string | null",
+              "no_throw": false,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.608Z",
+          "last_verified_at": "2026-05-09T15:16:00.608Z"
+        },
+        {
+          "id": "ct_Xgajxv_v",
+          "type": "boundary",
+          "description": "configuredHooksDir parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 150,
+              "line_end": 169,
+              "snippet": "export function configuredHooksDir(rootDir: string): string | null { let output = ''; try { output = execFileSync('git', ['config', '--get', 'core.hooksPath'], { cwd: rootDir, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], maxBuffe...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "configuredHooksDir",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.608Z",
+          "last_verified_at": "2026-05-09T15:16:00.608Z"
+        },
+        {
+          "id": "ct_zX3YgIai",
+          "type": "boundary",
+          "description": "configuredHooksDir parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 150,
+              "line_end": 169,
+              "snippet": "export function configuredHooksDir(rootDir: string): string | null { let output = ''; try { output = execFileSync('git', ['config', '--get', 'core.hooksPath'], { cwd: rootDir, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], maxBuffe...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "configuredHooksDir",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.608Z",
+          "last_verified_at": "2026-05-09T15:16:00.608Z"
+        },
+        {
+          "id": "ct_mk7yH_-B",
+          "type": "boundary",
+          "description": "configuredHooksDir uses fallback error handling",
+          "pattern": "error_boundary",
+          "detection": "control_flow",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "control_path",
+              "line_start": 159,
+              "line_end": 159,
+              "snippet": "catch { return null; }",
+              "reasoning": "Catch block classified as fallback"
+            }
+          ],
+          "verification": {
+            "strategy": "error_strategy",
+            "target": "configuredHooksDir",
+            "params": {
+              "strategy": "fallback"
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.608Z",
+          "last_verified_at": "2026-05-09T15:16:00.608Z"
+        }
+      ]
+    },
+    {
+      "name": "parseNameStatus",
+      "kind": "function",
+      "qualified_name": "parseNameStatus",
+      "signature_hash": "dc1b6591de9f6cc6",
+      "node_hash": "a5a6a8e42ef3f7e4",
+      "line_start": 177,
+      "line_end": 192,
+      "contracts": [
+        {
+          "id": "ct_MgoSoxgx",
+          "type": "boundary",
+          "description": "parseNameStatus returns NameStatusChange[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 177,
+              "line_end": 192,
+              "snippet": "function parseNameStatus(output: string): NameStatusChange[] { const parts = output.split('\\0').filter(Boolean); const changes: NameStatusChange[] = []; for (let index = 0; index < parts.length;) { const status = parts[index++] ?? ''; if (...",
+              "reasoning": "Explicit return type is NameStatusChange[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "parseNameStatus",
+            "params": {
+              "expected_return": "NameStatusChange[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "output",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.608Z",
+          "last_verified_at": "2026-05-09T15:16:00.608Z"
+        },
+        {
+          "id": "ct_m6AG8dQr",
+          "type": "boundary",
+          "description": "parseNameStatus parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 177,
+              "line_end": 192,
+              "snippet": "function parseNameStatus(output: string): NameStatusChange[] { const parts = output.split('\\0').filter(Boolean); const changes: NameStatusChange[] = []; for (let index = 0; index < parts.length;) { const status = parts[index++] ?? ''; if (...",
+              "reasoning": "Parameter contract: [{\"name\":\"output\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "parseNameStatus",
+            "params": {
+              "parameters": [
+                {
+                  "name": "output",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.608Z",
+          "last_verified_at": "2026-05-09T15:16:00.608Z"
+        },
+        {
+          "id": "ct_YLZ_mRQs",
+          "type": "boundary",
+          "description": "parseNameStatus parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 177,
+              "line_end": 192,
+              "snippet": "function parseNameStatus(output: string): NameStatusChange[] { const parts = output.split('\\0').filter(Boolean); const changes: NameStatusChange[] = []; for (let index = 0; index < parts.length;) { const status = parts[index++] ?? ''; if (...",
+              "reasoning": "Nullability contract: [{\"name\":\"output\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "parseNameStatus",
+            "params": {
+              "parameters": [
+                {
+                  "name": "output",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.608Z",
+          "last_verified_at": "2026-05-09T15:16:00.608Z"
+        }
+      ]
+    },
+    {
+      "name": "unique",
+      "kind": "function",
+      "qualified_name": "unique",
+      "signature_hash": "2c9faf313a490164",
+      "node_hash": "16e3d50d162a2dc2",
+      "line_start": 194,
+      "line_end": 196,
+      "contracts": [
+        {
+          "id": "ct_xmvpwNOy",
+          "type": "boundary",
+          "description": "unique returns string[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 194,
+              "line_end": 196,
+              "snippet": "function unique(files: string[]): string[] { return [...new Set(files)].sort(); }",
+              "reasoning": "Explicit return type is string[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "unique",
+            "params": {
+              "expected_return": "string[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "files",
+                  "type": "string[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.609Z",
+          "last_verified_at": "2026-05-09T15:16:00.609Z"
+        },
+        {
+          "id": "ct_JoHU8ES5",
+          "type": "boundary",
+          "description": "unique parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 194,
+              "line_end": 196,
+              "snippet": "function unique(files: string[]): string[] { return [...new Set(files)].sort(); }",
+              "reasoning": "Parameter contract: [{\"name\":\"files\",\"type\":\"string[]\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "unique",
+            "params": {
+              "parameters": [
+                {
+                  "name": "files",
+                  "type": "string[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.609Z",
+          "last_verified_at": "2026-05-09T15:16:00.609Z"
+        },
+        {
+          "id": "ct_LkmKF9bR",
+          "type": "boundary",
+          "description": "unique parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 194,
+              "line_end": 196,
+              "snippet": "function unique(files: string[]): string[] { return [...new Set(files)].sort(); }",
+              "reasoning": "Nullability contract: [{\"name\":\"files\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "unique",
+            "params": {
+              "parameters": [
+                {
+                  "name": "files",
+                  "type": "string[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.609Z",
+          "last_verified_at": "2026-05-09T15:16:00.609Z"
+        }
+      ]
+    },
+    {
+      "name": "validateGitRef",
+      "kind": "function",
+      "qualified_name": "validateGitRef",
+      "signature_hash": "87a556465fe4e27d",
+      "node_hash": "6b25da03bfe3a370",
+      "line_start": 198,
+      "line_end": 205,
+      "contracts": [
+        {
+          "id": "ct_6gzq8uYp",
+          "type": "boundary",
+          "description": "validateGitRef returns void and may throw",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 198,
+              "line_end": 205,
+              "snippet": "export function validateGitRef(ref: string): void { if (!ref || ref.startsWith('-') || [...ref].some((char) => char.charCodeAt(0) <= 0x20 || char.charCodeAt(0) === 0x7f)) { throw new Error(`Unsafe git ref: ${ref}`); } if (ref.includes('..'...",
+              "reasoning": "Explicit return type is void; no_throw=false"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "validateGitRef",
+            "params": {
+              "expected_return": "void",
+              "no_throw": false,
+              "parameters": [
+                {
+                  "name": "ref",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.609Z",
+          "last_verified_at": "2026-05-09T15:16:00.609Z"
+        },
+        {
+          "id": "ct_fv4jm_Yg",
+          "type": "boundary",
+          "description": "validateGitRef parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 198,
+              "line_end": 205,
+              "snippet": "export function validateGitRef(ref: string): void { if (!ref || ref.startsWith('-') || [...ref].some((char) => char.charCodeAt(0) <= 0x20 || char.charCodeAt(0) === 0x7f)) { throw new Error(`Unsafe git ref: ${ref}`); } if (ref.includes('..'...",
+              "reasoning": "Parameter contract: [{\"name\":\"ref\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "validateGitRef",
+            "params": {
+              "parameters": [
+                {
+                  "name": "ref",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.609Z",
+          "last_verified_at": "2026-05-09T15:16:00.609Z"
+        },
+        {
+          "id": "ct_JWaYt_LD",
+          "type": "boundary",
+          "description": "validateGitRef parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 198,
+              "line_end": 205,
+              "snippet": "export function validateGitRef(ref: string): void { if (!ref || ref.startsWith('-') || [...ref].some((char) => char.charCodeAt(0) <= 0x20 || char.charCodeAt(0) === 0x7f)) { throw new Error(`Unsafe git ref: ${ref}`); } if (ref.includes('..'...",
+              "reasoning": "Nullability contract: [{\"name\":\"ref\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "validateGitRef",
+            "params": {
+              "parameters": [
+                {
+                  "name": "ref",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.609Z",
+          "last_verified_at": "2026-05-09T15:16:00.609Z"
+        }
+      ]
+    },
+    {
+      "name": "lastCommitMessage",
+      "kind": "function",
+      "qualified_name": "lastCommitMessage",
+      "signature_hash": "98ce3c4194922c8f",
+      "node_hash": "f764922910ae86a5",
+      "line_start": 207,
+      "line_end": 217,
+      "contracts": [
+        {
+          "id": "ct_3G88EAfI",
+          "type": "boundary",
+          "description": "lastCommitMessage returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 207,
+              "line_end": 217,
+              "snippet": "export function lastCommitMessage(rootDir: string): string { try { return execFileSync('git', ['log', '-1', '--pretty=%B'], { cwd: rootDir, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], }).trim(); } catch { return ''; } }",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "lastCommitMessage",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.609Z",
+          "last_verified_at": "2026-05-09T15:16:00.609Z"
+        },
+        {
+          "id": "ct_nyXT49JG",
+          "type": "boundary",
+          "description": "lastCommitMessage parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 207,
+              "line_end": 217,
+              "snippet": "export function lastCommitMessage(rootDir: string): string { try { return execFileSync('git', ['log', '-1', '--pretty=%B'], { cwd: rootDir, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], }).trim(); } catch { return ''; } }",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "lastCommitMessage",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.609Z",
+          "last_verified_at": "2026-05-09T15:16:00.609Z"
+        },
+        {
+          "id": "ct_x3ykTc4q",
+          "type": "boundary",
+          "description": "lastCommitMessage parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 207,
+              "line_end": 217,
+              "snippet": "export function lastCommitMessage(rootDir: string): string { try { return execFileSync('git', ['log', '-1', '--pretty=%B'], { cwd: rootDir, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], }).trim(); } catch { return ''; } }",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "lastCommitMessage",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.609Z",
+          "last_verified_at": "2026-05-09T15:16:00.609Z"
+        },
+        {
+          "id": "ct_vLW-6U4e",
+          "type": "boundary",
+          "description": "lastCommitMessage uses fallback error handling",
+          "pattern": "error_boundary",
+          "detection": "control_flow",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "control_path",
+              "line_start": 214,
+              "line_end": 214,
+              "snippet": "catch { return ''; }",
+              "reasoning": "Catch block classified as fallback"
+            }
+          ],
+          "verification": {
+            "strategy": "error_strategy",
+            "target": "lastCommitMessage",
+            "params": {
+              "strategy": "fallback"
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.609Z",
+          "last_verified_at": "2026-05-09T15:16:00.609Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.609Z",
+    "last_checked_at": "2026-05-09T15:16:00.609Z",
+    "total_contracts": 50
+  }
+}

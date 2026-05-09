@@ -1,0 +1,242 @@
+{
+  "source_file": "src/types/result.ts",
+  "source_hash": "b9d465addb1593c6700b724e326f43f832a1bdca2e640fa2fedc7e361eb09127",
+  "scopes": [
+    {
+      "name": "ok",
+      "kind": "function",
+      "qualified_name": "ok",
+      "signature_hash": "3ddfadde76800478",
+      "node_hash": "c0b5f038fb2c55e6",
+      "line_start": 5,
+      "line_end": 7,
+      "contracts": [
+        {
+          "id": "ct_nG_mIAte",
+          "type": "boundary",
+          "description": "ok returns Result<T, never> and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 5,
+              "line_end": 7,
+              "snippet": "export function ok<T>(value: T): Result<T, never> { return { ok: true, value }; }",
+              "reasoning": "Explicit return type is Result<T, never>; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "ok",
+            "params": {
+              "expected_return": "Result<T, never>",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "T",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.712Z",
+          "last_verified_at": "2026-05-09T15:16:00.712Z"
+        },
+        {
+          "id": "ct_Tmx5dpzc",
+          "type": "boundary",
+          "description": "ok parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 5,
+              "line_end": 7,
+              "snippet": "export function ok<T>(value: T): Result<T, never> { return { ok: true, value }; }",
+              "reasoning": "Parameter contract: [{\"name\":\"value\",\"type\":\"T\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "ok",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "T",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.712Z",
+          "last_verified_at": "2026-05-09T15:16:00.712Z"
+        },
+        {
+          "id": "ct_Cb3uNJ-x",
+          "type": "boundary",
+          "description": "ok parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 5,
+              "line_end": 7,
+              "snippet": "export function ok<T>(value: T): Result<T, never> { return { ok: true, value }; }",
+              "reasoning": "Nullability contract: [{\"name\":\"value\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "ok",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "T",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.712Z",
+          "last_verified_at": "2026-05-09T15:16:00.712Z"
+        }
+      ]
+    },
+    {
+      "name": "err",
+      "kind": "function",
+      "qualified_name": "err",
+      "signature_hash": "47dbae3a1c5b9e54",
+      "node_hash": "b4272997cdd9d1c6",
+      "line_start": 9,
+      "line_end": 11,
+      "contracts": [
+        {
+          "id": "ct_NZq70eei",
+          "type": "boundary",
+          "description": "err returns Result<never, E> and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 9,
+              "line_end": 11,
+              "snippet": "export function err<E>(error: E): Result<never, E> { return { ok: false, error }; }",
+              "reasoning": "Explicit return type is Result<never, E>; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "err",
+            "params": {
+              "expected_return": "Result<never, E>",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "error",
+                  "type": "E",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.712Z",
+          "last_verified_at": "2026-05-09T15:16:00.712Z"
+        },
+        {
+          "id": "ct_nfP-Xwaz",
+          "type": "boundary",
+          "description": "err parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 9,
+              "line_end": 11,
+              "snippet": "export function err<E>(error: E): Result<never, E> { return { ok: false, error }; }",
+              "reasoning": "Parameter contract: [{\"name\":\"error\",\"type\":\"E\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "err",
+            "params": {
+              "parameters": [
+                {
+                  "name": "error",
+                  "type": "E",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.712Z",
+          "last_verified_at": "2026-05-09T15:16:00.712Z"
+        },
+        {
+          "id": "ct_O_vvQ76W",
+          "type": "boundary",
+          "description": "err parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 9,
+              "line_end": 11,
+              "snippet": "export function err<E>(error: E): Result<never, E> { return { ok: false, error }; }",
+              "reasoning": "Nullability contract: [{\"name\":\"error\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "err",
+            "params": {
+              "parameters": [
+                {
+                  "name": "error",
+                  "type": "E",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.712Z",
+          "last_verified_at": "2026-05-09T15:16:00.712Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.712Z",
+    "last_checked_at": "2026-05-09T15:16:00.712Z",
+    "total_contracts": 6
+  }
+}

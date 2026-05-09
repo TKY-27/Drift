@@ -1,0 +1,189 @@
+{
+  "source_file": "src/reporters/json.ts",
+  "source_hash": "c35667d83e99d0d32ced3ae29093ed4a1ccfc97c024ad10bffb8f672d5331c82",
+  "scopes": [
+    {
+      "name": "<module>",
+      "kind": "module",
+      "qualified_name": "<module>",
+      "signature_hash": "58ea489a1b86dfef",
+      "node_hash": "c35667d83e99d0d3",
+      "line_start": 1,
+      "line_end": 15,
+      "contracts": [
+        {
+          "id": "ct_WbDf9Rix",
+          "type": "dependency",
+          "description": "Security-sensitive import from ../utils/security.js is preserved",
+          "pattern": "import_constraint",
+          "detection": "import_graph",
+          "severity": "low",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "pattern_match",
+              "line_start": 1,
+              "line_end": 1,
+              "snippet": "import { stripUnsafeText, safeSnippet } from '../utils/security.js';",
+              "reasoning": "Security-related import detected"
+            }
+          ],
+          "verification": {
+            "strategy": "import_presence",
+            "target": "../utils/security.js",
+            "params": {
+              "names": [
+                "stripUnsafeText",
+                "safeSnippet"
+              ],
+              "named": [
+                {
+                  "imported": "stripUnsafeText",
+                  "local": "stripUnsafeText"
+                },
+                {
+                  "imported": "safeSnippet",
+                  "local": "safeSnippet"
+                }
+              ],
+              "type_only": false
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.670Z",
+          "last_verified_at": "2026-05-09T15:16:00.670Z"
+        }
+      ]
+    },
+    {
+      "name": "renderJson",
+      "kind": "function",
+      "qualified_name": "renderJson",
+      "signature_hash": "b83e2b5589e55a14",
+      "node_hash": "27afc06a10c0303d",
+      "line_start": 3,
+      "line_end": 5,
+      "contracts": [
+        {
+          "id": "ct_UxFkawZo",
+          "type": "boundary",
+          "description": "renderJson returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 3,
+              "line_end": 5,
+              "snippet": "export function renderJson(value: unknown): string { return `${JSON.stringify(sanitizeJson(value), null, 2)}\\n`; }",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "renderJson",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "unknown",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.670Z",
+          "last_verified_at": "2026-05-09T15:16:00.670Z"
+        },
+        {
+          "id": "ct_94IWK7Sy",
+          "type": "boundary",
+          "description": "renderJson parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 3,
+              "line_end": 5,
+              "snippet": "export function renderJson(value: unknown): string { return `${JSON.stringify(sanitizeJson(value), null, 2)}\\n`; }",
+              "reasoning": "Parameter contract: [{\"name\":\"value\",\"type\":\"unknown\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "renderJson",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "unknown",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.670Z",
+          "last_verified_at": "2026-05-09T15:16:00.670Z"
+        },
+        {
+          "id": "ct_Crc7WOF2",
+          "type": "boundary",
+          "description": "renderJson parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 3,
+              "line_end": 5,
+              "snippet": "export function renderJson(value: unknown): string { return `${JSON.stringify(sanitizeJson(value), null, 2)}\\n`; }",
+              "reasoning": "Nullability contract: [{\"name\":\"value\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "renderJson",
+            "params": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "unknown",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.670Z",
+          "last_verified_at": "2026-05-09T15:16:00.670Z"
+        }
+      ]
+    },
+    {
+      "name": "sanitizeJson",
+      "kind": "function",
+      "qualified_name": "sanitizeJson",
+      "signature_hash": "e7cf08b7897197ee",
+      "node_hash": "b9faa84112f27cc6",
+      "line_start": 7,
+      "line_end": 14,
+      "contracts": []
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.670Z",
+    "last_checked_at": "2026-05-09T15:16:00.670Z",
+    "total_contracts": 4
+  }
+}

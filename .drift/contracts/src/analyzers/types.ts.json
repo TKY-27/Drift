@@ -1,0 +1,2611 @@
+{
+  "source_file": "src/analyzers/types.ts",
+  "source_hash": "2fc508b15360bc889998317058f91fce642c77c014353b045c816bb5b927a608",
+  "scopes": [
+    {
+      "name": "createTypeContext",
+      "kind": "function",
+      "qualified_name": "createTypeContext",
+      "signature_hash": "87733ebec1db36ee",
+      "node_hash": "9afbb0be601b17ed",
+      "line_start": 15,
+      "line_end": 46,
+      "contracts": [
+        {
+          "id": "ct_UUoXxpzy",
+          "type": "boundary",
+          "description": "createTypeContext returns TypeContext and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 15,
+              "line_end": 46,
+              "snippet": "export function createTypeContext(rootDir: string, fileNames: string[]): TypeContext { const resolvedRoot = fs.existsSync(rootDir) ? fs.realpathSync(rootDir) : path.resolve(rootDir); const configPath = path.join(resolvedRoot, 'tsconfig.jso...",
+              "reasoning": "Explicit return type is TypeContext; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "createTypeContext",
+            "params": {
+              "expected_return": "TypeContext",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "fileNames",
+                  "type": "string[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.412Z",
+          "last_verified_at": "2026-05-09T15:16:00.412Z"
+        },
+        {
+          "id": "ct_Vlcx1GIH",
+          "type": "boundary",
+          "description": "createTypeContext parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 15,
+              "line_end": 46,
+              "snippet": "export function createTypeContext(rootDir: string, fileNames: string[]): TypeContext { const resolvedRoot = fs.existsSync(rootDir) ? fs.realpathSync(rootDir) : path.resolve(rootDir); const configPath = path.join(resolvedRoot, 'tsconfig.jso...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"fileNames\",\"type\":\"string[]\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "createTypeContext",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "fileNames",
+                  "type": "string[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.412Z",
+          "last_verified_at": "2026-05-09T15:16:00.412Z"
+        },
+        {
+          "id": "ct_kAkCE4PP",
+          "type": "boundary",
+          "description": "createTypeContext parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 15,
+              "line_end": 46,
+              "snippet": "export function createTypeContext(rootDir: string, fileNames: string[]): TypeContext { const resolvedRoot = fs.existsSync(rootDir) ? fs.realpathSync(rootDir) : path.resolve(rootDir); const configPath = path.join(resolvedRoot, 'tsconfig.jso...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false},{\"name\":\"fileNames\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "createTypeContext",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "fileNames",
+                  "type": "string[]",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.412Z",
+          "last_verified_at": "2026-05-09T15:16:00.412Z"
+        },
+        {
+          "id": "ct_aJLsWHBQ",
+          "type": "boundary",
+          "description": "createTypeContext uses fallback error handling",
+          "pattern": "error_boundary",
+          "detection": "control_flow",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "control_path",
+              "line_start": 43,
+              "line_end": 43,
+              "snippet": "catch { return { rootDir: resolvedRoot, program: null, checker: null }; }",
+              "reasoning": "Catch block classified as fallback"
+            }
+          ],
+          "verification": {
+            "strategy": "error_strategy",
+            "target": "createTypeContext",
+            "params": {
+              "strategy": "fallback"
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.412Z",
+          "last_verified_at": "2026-05-09T15:16:00.412Z"
+        }
+      ]
+    },
+    {
+      "name": "getExplicitReturnType",
+      "kind": "function",
+      "qualified_name": "getExplicitReturnType",
+      "signature_hash": "b7d58caae30c7e02",
+      "node_hash": "ef5fab05a941e86b",
+      "line_start": 48,
+      "line_end": 57,
+      "contracts": [
+        {
+          "id": "ct_CbJ0QdKn",
+          "type": "boundary",
+          "description": "getExplicitReturnType returns string | null and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 48,
+              "line_end": 57,
+              "snippet": "export function getExplicitReturnType(parsed: ParsedFile, scope: ScopeInfo): string | null { const node = scope.node; if ( (ts.isFunctionDeclaration(node) || ts.isMethodDeclaration(node) || ts.isFunctionExpression(node) || ts.isArrowFuncti...",
+              "reasoning": "Explicit return type is string | null; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "getExplicitReturnType",
+            "params": {
+              "expected_return": "string | null",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.412Z",
+          "last_verified_at": "2026-05-09T15:16:00.412Z"
+        },
+        {
+          "id": "ct_2Pdu8w7G",
+          "type": "boundary",
+          "description": "getExplicitReturnType parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 48,
+              "line_end": 57,
+              "snippet": "export function getExplicitReturnType(parsed: ParsedFile, scope: ScopeInfo): string | null { const node = scope.node; if ( (ts.isFunctionDeclaration(node) || ts.isMethodDeclaration(node) || ts.isFunctionExpression(node) || ts.isArrowFuncti...",
+              "reasoning": "Parameter contract: [{\"name\":\"parsed\",\"type\":\"ParsedFile\",\"optional\":false,\"nullable\":false},{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "getExplicitReturnType",
+            "params": {
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.412Z",
+          "last_verified_at": "2026-05-09T15:16:00.412Z"
+        },
+        {
+          "id": "ct_LEB11qt3",
+          "type": "boundary",
+          "description": "getExplicitReturnType parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 48,
+              "line_end": 57,
+              "snippet": "export function getExplicitReturnType(parsed: ParsedFile, scope: ScopeInfo): string | null { const node = scope.node; if ( (ts.isFunctionDeclaration(node) || ts.isMethodDeclaration(node) || ts.isFunctionExpression(node) || ts.isArrowFuncti...",
+              "reasoning": "Nullability contract: [{\"name\":\"parsed\",\"nullable\":false,\"optional\":false},{\"name\":\"scope\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "getExplicitReturnType",
+            "params": {
+              "parameters": [
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.412Z",
+          "last_verified_at": "2026-05-09T15:16:00.412Z"
+        }
+      ]
+    },
+    {
+      "name": "getReturnType",
+      "kind": "function",
+      "qualified_name": "getReturnType",
+      "signature_hash": "6f5faa0c5d7946ce",
+      "node_hash": "6007041f1dc8c483",
+      "line_start": 59,
+      "line_end": 72,
+      "contracts": [
+        {
+          "id": "ct_8hhHB9Tr",
+          "type": "boundary",
+          "description": "getReturnType returns string and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 59,
+              "line_end": 72,
+              "snippet": "export function getReturnType(typeContext: TypeContext, parsed: ParsedFile, scope: ScopeInfo): string { const explicit = getExplicitReturnType(parsed, scope); if (explicit) return explicit; const node = findProgramFunctionNode(typeContext,...",
+              "reasoning": "Explicit return type is string; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "getReturnType",
+            "params": {
+              "expected_return": "string",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "typeContext",
+                  "type": "TypeContext",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.412Z",
+          "last_verified_at": "2026-05-09T15:16:00.412Z"
+        },
+        {
+          "id": "ct_RKDAMqeI",
+          "type": "boundary",
+          "description": "getReturnType parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 59,
+              "line_end": 72,
+              "snippet": "export function getReturnType(typeContext: TypeContext, parsed: ParsedFile, scope: ScopeInfo): string { const explicit = getExplicitReturnType(parsed, scope); if (explicit) return explicit; const node = findProgramFunctionNode(typeContext,...",
+              "reasoning": "Parameter contract: [{\"name\":\"typeContext\",\"type\":\"TypeContext\",\"optional\":false,\"nullable\":false},{\"name\":\"parsed\",\"type\":\"ParsedFile\",\"optional\":false,\"nullable\":false},{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "getReturnType",
+            "params": {
+              "parameters": [
+                {
+                  "name": "typeContext",
+                  "type": "TypeContext",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.412Z",
+          "last_verified_at": "2026-05-09T15:16:00.412Z"
+        },
+        {
+          "id": "ct_a_gsSjq3",
+          "type": "boundary",
+          "description": "getReturnType parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 59,
+              "line_end": 72,
+              "snippet": "export function getReturnType(typeContext: TypeContext, parsed: ParsedFile, scope: ScopeInfo): string { const explicit = getExplicitReturnType(parsed, scope); if (explicit) return explicit; const node = findProgramFunctionNode(typeContext,...",
+              "reasoning": "Nullability contract: [{\"name\":\"typeContext\",\"nullable\":false,\"optional\":false},{\"name\":\"parsed\",\"nullable\":false,\"optional\":false},{\"name\":\"scope\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "getReturnType",
+            "params": {
+              "parameters": [
+                {
+                  "name": "typeContext",
+                  "type": "TypeContext",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.412Z",
+          "last_verified_at": "2026-05-09T15:16:00.412Z"
+        },
+        {
+          "id": "ct_VaqcGmOt",
+          "type": "boundary",
+          "description": "getReturnType uses fallback error handling",
+          "pattern": "error_boundary",
+          "detection": "control_flow",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "control_path",
+              "line_start": 69,
+              "line_end": 69,
+              "snippet": "catch { return 'unknown'; }",
+              "reasoning": "Catch block classified as fallback"
+            }
+          ],
+          "verification": {
+            "strategy": "error_strategy",
+            "target": "getReturnType",
+            "params": {
+              "strategy": "fallback"
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.412Z",
+          "last_verified_at": "2026-05-09T15:16:00.412Z"
+        }
+      ]
+    },
+    {
+      "name": "getParameterInfo",
+      "kind": "function",
+      "qualified_name": "getParameterInfo",
+      "signature_hash": "94c8aa6fed40f6be",
+      "node_hash": "f16f4f69550bf86f",
+      "line_start": 81,
+      "line_end": 105,
+      "contracts": [
+        {
+          "id": "ct_Zg9AILHe",
+          "type": "boundary",
+          "description": "getParameterInfo returns ParameterContractInfo[] and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 81,
+              "line_end": 105,
+              "snippet": "export function getParameterInfo(typeContext: TypeContext, parsed: ParsedFile, scope: ScopeInfo): ParameterContractInfo[] { const parsedNode = scope.node; if (!isSupportedFunctionNode(parsedNode)) return []; const checkerNode = findProgram...",
+              "reasoning": "Explicit return type is ParameterContractInfo[]; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "getParameterInfo",
+            "params": {
+              "expected_return": "ParameterContractInfo[]",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "typeContext",
+                  "type": "TypeContext",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.413Z",
+          "last_verified_at": "2026-05-09T15:16:00.413Z"
+        },
+        {
+          "id": "ct_IExRa7mz",
+          "type": "boundary",
+          "description": "getParameterInfo parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 81,
+              "line_end": 105,
+              "snippet": "export function getParameterInfo(typeContext: TypeContext, parsed: ParsedFile, scope: ScopeInfo): ParameterContractInfo[] { const parsedNode = scope.node; if (!isSupportedFunctionNode(parsedNode)) return []; const checkerNode = findProgram...",
+              "reasoning": "Parameter contract: [{\"name\":\"typeContext\",\"type\":\"TypeContext\",\"optional\":false,\"nullable\":false},{\"name\":\"parsed\",\"type\":\"ParsedFile\",\"optional\":false,\"nullable\":false},{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "getParameterInfo",
+            "params": {
+              "parameters": [
+                {
+                  "name": "typeContext",
+                  "type": "TypeContext",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.413Z",
+          "last_verified_at": "2026-05-09T15:16:00.413Z"
+        },
+        {
+          "id": "ct__eG-pVSU",
+          "type": "boundary",
+          "description": "getParameterInfo parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 81,
+              "line_end": 105,
+              "snippet": "export function getParameterInfo(typeContext: TypeContext, parsed: ParsedFile, scope: ScopeInfo): ParameterContractInfo[] { const parsedNode = scope.node; if (!isSupportedFunctionNode(parsedNode)) return []; const checkerNode = findProgram...",
+              "reasoning": "Nullability contract: [{\"name\":\"typeContext\",\"nullable\":false,\"optional\":false},{\"name\":\"parsed\",\"nullable\":false,\"optional\":false},{\"name\":\"scope\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "getParameterInfo",
+            "params": {
+              "parameters": [
+                {
+                  "name": "typeContext",
+                  "type": "TypeContext",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.413Z",
+          "last_verified_at": "2026-05-09T15:16:00.413Z"
+        }
+      ]
+    },
+    {
+      "name": "isSupportedFunctionNode",
+      "kind": "function",
+      "qualified_name": "isSupportedFunctionNode",
+      "signature_hash": "9f947d914c2248ec",
+      "node_hash": "72466026f3568578",
+      "line_start": 109,
+      "line_end": 111,
+      "contracts": [
+        {
+          "id": "ct__trShnl8",
+          "type": "boundary",
+          "description": "isSupportedFunctionNode returns node is SupportedFunctionNode and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 109,
+              "line_end": 111,
+              "snippet": "function isSupportedFunctionNode(node: ts.Node): node is SupportedFunctionNode { return ts.isFunctionDeclaration(node) || ts.isMethodDeclaration(node) || ts.isFunctionExpression(node) || ts.isArrowFunction(node); }",
+              "reasoning": "Explicit return type is node is SupportedFunctionNode; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isSupportedFunctionNode",
+            "params": {
+              "expected_return": "node is SupportedFunctionNode",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.413Z",
+          "last_verified_at": "2026-05-09T15:16:00.413Z"
+        },
+        {
+          "id": "ct_h6TMauBZ",
+          "type": "boundary",
+          "description": "isSupportedFunctionNode parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 109,
+              "line_end": 111,
+              "snippet": "function isSupportedFunctionNode(node: ts.Node): node is SupportedFunctionNode { return ts.isFunctionDeclaration(node) || ts.isMethodDeclaration(node) || ts.isFunctionExpression(node) || ts.isArrowFunction(node); }",
+              "reasoning": "Parameter contract: [{\"name\":\"node\",\"type\":\"ts.Node\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isSupportedFunctionNode",
+            "params": {
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.413Z",
+          "last_verified_at": "2026-05-09T15:16:00.413Z"
+        },
+        {
+          "id": "ct_3A-CaG3j",
+          "type": "boundary",
+          "description": "isSupportedFunctionNode parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 109,
+              "line_end": 111,
+              "snippet": "function isSupportedFunctionNode(node: ts.Node): node is SupportedFunctionNode { return ts.isFunctionDeclaration(node) || ts.isMethodDeclaration(node) || ts.isFunctionExpression(node) || ts.isArrowFunction(node); }",
+              "reasoning": "Nullability contract: [{\"name\":\"node\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isSupportedFunctionNode",
+            "params": {
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.413Z",
+          "last_verified_at": "2026-05-09T15:16:00.413Z"
+        }
+      ]
+    },
+    {
+      "name": "findProgramFunctionNode",
+      "kind": "function",
+      "qualified_name": "findProgramFunctionNode",
+      "signature_hash": "ffc75e9df6900e26",
+      "node_hash": "d0862e8418bd4e22",
+      "line_start": 113,
+      "line_end": 130,
+      "contracts": [
+        {
+          "id": "ct_ZaSZjkko",
+          "type": "boundary",
+          "description": "findProgramFunctionNode returns SupportedFunctionNode | null and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 113,
+              "line_end": 130,
+              "snippet": "function findProgramFunctionNode(typeContext: TypeContext, parsed: ParsedFile, scope: ScopeInfo): SupportedFunctionNode | null { if (!typeContext.program || !isSupportedFunctionNode(scope.node)) return null; const programSource = findProgr...",
+              "reasoning": "Explicit return type is SupportedFunctionNode | null; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findProgramFunctionNode",
+            "params": {
+              "expected_return": "SupportedFunctionNode | null",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "typeContext",
+                  "type": "TypeContext",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.413Z",
+          "last_verified_at": "2026-05-09T15:16:00.413Z"
+        },
+        {
+          "id": "ct_vlXeEO6k",
+          "type": "boundary",
+          "description": "findProgramFunctionNode parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 113,
+              "line_end": 130,
+              "snippet": "function findProgramFunctionNode(typeContext: TypeContext, parsed: ParsedFile, scope: ScopeInfo): SupportedFunctionNode | null { if (!typeContext.program || !isSupportedFunctionNode(scope.node)) return null; const programSource = findProgr...",
+              "reasoning": "Parameter contract: [{\"name\":\"typeContext\",\"type\":\"TypeContext\",\"optional\":false,\"nullable\":false},{\"name\":\"parsed\",\"type\":\"ParsedFile\",\"optional\":false,\"nullable\":false},{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findProgramFunctionNode",
+            "params": {
+              "parameters": [
+                {
+                  "name": "typeContext",
+                  "type": "TypeContext",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.413Z",
+          "last_verified_at": "2026-05-09T15:16:00.413Z"
+        },
+        {
+          "id": "ct_-f2LmX7s",
+          "type": "boundary",
+          "description": "findProgramFunctionNode parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 113,
+              "line_end": 130,
+              "snippet": "function findProgramFunctionNode(typeContext: TypeContext, parsed: ParsedFile, scope: ScopeInfo): SupportedFunctionNode | null { if (!typeContext.program || !isSupportedFunctionNode(scope.node)) return null; const programSource = findProgr...",
+              "reasoning": "Nullability contract: [{\"name\":\"typeContext\",\"nullable\":false,\"optional\":false},{\"name\":\"parsed\",\"nullable\":false,\"optional\":false},{\"name\":\"scope\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findProgramFunctionNode",
+            "params": {
+              "parameters": [
+                {
+                  "name": "typeContext",
+                  "type": "TypeContext",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.413Z",
+          "last_verified_at": "2026-05-09T15:16:00.413Z"
+        }
+      ]
+    },
+    {
+      "name": "visit",
+      "kind": "function",
+      "qualified_name": "visit",
+      "signature_hash": "06d2e448d0467c84",
+      "node_hash": "4860753aad26d40b",
+      "line_start": 120,
+      "line_end": 127,
+      "contracts": [
+        {
+          "id": "ct_E1CyuiM_",
+          "type": "boundary",
+          "description": "visit returns void and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 120,
+              "line_end": 127,
+              "snippet": "(node: ts.Node): void => { if (found) return; if (isSupportedFunctionNode(node) && node.getStart(programSource) === start && node.getEnd() === end) { found = node; return; } ts.forEachChild(node, visit); }",
+              "reasoning": "Explicit return type is void; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "visit",
+            "params": {
+              "expected_return": "void",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.414Z",
+          "last_verified_at": "2026-05-09T15:16:00.414Z"
+        },
+        {
+          "id": "ct_C9cUzGZL",
+          "type": "boundary",
+          "description": "visit parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 120,
+              "line_end": 127,
+              "snippet": "(node: ts.Node): void => { if (found) return; if (isSupportedFunctionNode(node) && node.getStart(programSource) === start && node.getEnd() === end) { found = node; return; } ts.forEachChild(node, visit); }",
+              "reasoning": "Parameter contract: [{\"name\":\"node\",\"type\":\"ts.Node\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "visit",
+            "params": {
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.414Z",
+          "last_verified_at": "2026-05-09T15:16:00.414Z"
+        },
+        {
+          "id": "ct_hz8whDp0",
+          "type": "boundary",
+          "description": "visit parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 120,
+              "line_end": 127,
+              "snippet": "(node: ts.Node): void => { if (found) return; if (isSupportedFunctionNode(node) && node.getStart(programSource) === start && node.getEnd() === end) { found = node; return; } ts.forEachChild(node, visit); }",
+              "reasoning": "Nullability contract: [{\"name\":\"node\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "visit",
+            "params": {
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.414Z",
+          "last_verified_at": "2026-05-09T15:16:00.414Z"
+        }
+      ]
+    },
+    {
+      "name": "findProgramSourceFile",
+      "kind": "function",
+      "qualified_name": "findProgramSourceFile",
+      "signature_hash": "478e771d3775caef",
+      "node_hash": "e3d016bd1cca57a2",
+      "line_start": 132,
+      "line_end": 137,
+      "contracts": [
+        {
+          "id": "ct_cYKo7OUr",
+          "type": "boundary",
+          "description": "findProgramSourceFile returns ts.SourceFile | null and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 132,
+              "line_end": 137,
+              "snippet": "function findProgramSourceFile(typeContext: TypeContext, parsed: ParsedFile): ts.SourceFile | null { const expected = path.resolve(typeContext.rootDir, parsed.filePath); return typeContext.program?.getSourceFile(expected) ?? typeContext.pr...",
+              "reasoning": "Explicit return type is ts.SourceFile | null; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findProgramSourceFile",
+            "params": {
+              "expected_return": "ts.SourceFile | null",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "typeContext",
+                  "type": "TypeContext",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.414Z",
+          "last_verified_at": "2026-05-09T15:16:00.414Z"
+        },
+        {
+          "id": "ct_rl0X-QZa",
+          "type": "boundary",
+          "description": "findProgramSourceFile parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 132,
+              "line_end": 137,
+              "snippet": "function findProgramSourceFile(typeContext: TypeContext, parsed: ParsedFile): ts.SourceFile | null { const expected = path.resolve(typeContext.rootDir, parsed.filePath); return typeContext.program?.getSourceFile(expected) ?? typeContext.pr...",
+              "reasoning": "Parameter contract: [{\"name\":\"typeContext\",\"type\":\"TypeContext\",\"optional\":false,\"nullable\":false},{\"name\":\"parsed\",\"type\":\"ParsedFile\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findProgramSourceFile",
+            "params": {
+              "parameters": [
+                {
+                  "name": "typeContext",
+                  "type": "TypeContext",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.414Z",
+          "last_verified_at": "2026-05-09T15:16:00.414Z"
+        },
+        {
+          "id": "ct_b0KRbHNg",
+          "type": "boundary",
+          "description": "findProgramSourceFile parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 132,
+              "line_end": 137,
+              "snippet": "function findProgramSourceFile(typeContext: TypeContext, parsed: ParsedFile): ts.SourceFile | null { const expected = path.resolve(typeContext.rootDir, parsed.filePath); return typeContext.program?.getSourceFile(expected) ?? typeContext.pr...",
+              "reasoning": "Nullability contract: [{\"name\":\"typeContext\",\"nullable\":false,\"optional\":false},{\"name\":\"parsed\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "findProgramSourceFile",
+            "params": {
+              "parameters": [
+                {
+                  "name": "typeContext",
+                  "type": "TypeContext",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "parsed",
+                  "type": "ParsedFile",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.414Z",
+          "last_verified_at": "2026-05-09T15:16:00.414Z"
+        }
+      ]
+    },
+    {
+      "name": "samePath",
+      "kind": "function",
+      "qualified_name": "samePath",
+      "signature_hash": "f3f3e36637b584d4",
+      "node_hash": "1d09bced57945751",
+      "line_start": 139,
+      "line_end": 141,
+      "contracts": [
+        {
+          "id": "ct_Tce-mLKw",
+          "type": "boundary",
+          "description": "samePath returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 139,
+              "line_end": 141,
+              "snippet": "function samePath(left: string, right: string): boolean { return path.resolve(left) === path.resolve(right); }",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "samePath",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "left",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "right",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.414Z",
+          "last_verified_at": "2026-05-09T15:16:00.414Z"
+        },
+        {
+          "id": "ct_FB-ESgBn",
+          "type": "boundary",
+          "description": "samePath parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 139,
+              "line_end": 141,
+              "snippet": "function samePath(left: string, right: string): boolean { return path.resolve(left) === path.resolve(right); }",
+              "reasoning": "Parameter contract: [{\"name\":\"left\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"right\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "samePath",
+            "params": {
+              "parameters": [
+                {
+                  "name": "left",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "right",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.414Z",
+          "last_verified_at": "2026-05-09T15:16:00.414Z"
+        },
+        {
+          "id": "ct_1xiurGGo",
+          "type": "boundary",
+          "description": "samePath parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 139,
+              "line_end": 141,
+              "snippet": "function samePath(left: string, right: string): boolean { return path.resolve(left) === path.resolve(right); }",
+              "reasoning": "Nullability contract: [{\"name\":\"left\",\"nullable\":false,\"optional\":false},{\"name\":\"right\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "samePath",
+            "params": {
+              "parameters": [
+                {
+                  "name": "left",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "right",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.414Z",
+          "last_verified_at": "2026-05-09T15:16:00.414Z"
+        }
+      ]
+    },
+    {
+      "name": "hasThrowStatement",
+      "kind": "function",
+      "qualified_name": "hasThrowStatement",
+      "signature_hash": "807ee4710ed54e5e",
+      "node_hash": "1455beacc7dc7822",
+      "line_start": 143,
+      "line_end": 163,
+      "contracts": [
+        {
+          "id": "ct_bg54jDmm",
+          "type": "boundary",
+          "description": "hasThrowStatement returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 143,
+              "line_end": 163,
+              "snippet": "export function hasThrowStatement(scope: ScopeInfo): boolean { let found = false; function visit(node: ts.Node, insideCaughtTry = false): void { if (found) return; if (ts.isTryStatement(node)) { ts.forEachChild(node.tryBlock, (child) => vi...",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "hasThrowStatement",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.414Z",
+          "last_verified_at": "2026-05-09T15:16:00.414Z"
+        },
+        {
+          "id": "ct_Ok3ze7J_",
+          "type": "boundary",
+          "description": "hasThrowStatement parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 143,
+              "line_end": 163,
+              "snippet": "export function hasThrowStatement(scope: ScopeInfo): boolean { let found = false; function visit(node: ts.Node, insideCaughtTry = false): void { if (found) return; if (ts.isTryStatement(node)) { ts.forEachChild(node.tryBlock, (child) => vi...",
+              "reasoning": "Parameter contract: [{\"name\":\"scope\",\"type\":\"ScopeInfo\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "hasThrowStatement",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.414Z",
+          "last_verified_at": "2026-05-09T15:16:00.414Z"
+        },
+        {
+          "id": "ct_MGR5mVNU",
+          "type": "boundary",
+          "description": "hasThrowStatement parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 143,
+              "line_end": 163,
+              "snippet": "export function hasThrowStatement(scope: ScopeInfo): boolean { let found = false; function visit(node: ts.Node, insideCaughtTry = false): void { if (found) return; if (ts.isTryStatement(node)) { ts.forEachChild(node.tryBlock, (child) => vi...",
+              "reasoning": "Nullability contract: [{\"name\":\"scope\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "hasThrowStatement",
+            "params": {
+              "parameters": [
+                {
+                  "name": "scope",
+                  "type": "ScopeInfo",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.414Z",
+          "last_verified_at": "2026-05-09T15:16:00.414Z"
+        }
+      ]
+    },
+    {
+      "name": "visit",
+      "kind": "function",
+      "qualified_name": "visit",
+      "signature_hash": "509414db215a0603",
+      "node_hash": "1d9f1d2c1b26ceb8",
+      "line_start": 146,
+      "line_end": 159,
+      "contracts": [
+        {
+          "id": "ct_fYgM_lKd",
+          "type": "boundary",
+          "description": "visit returns void and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 146,
+              "line_end": 159,
+              "snippet": "function visit(node: ts.Node, insideCaughtTry = false): void { if (found) return; if (ts.isTryStatement(node)) { ts.forEachChild(node.tryBlock, (child) => visit(child, node.catchClause !== undefined)); if (node.catchClause) visit(node.catc...",
+              "reasoning": "Explicit return type is void; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "visit",
+            "params": {
+              "expected_return": "void",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "insideCaughtTry",
+                  "type": "boolean",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.417Z",
+          "last_verified_at": "2026-05-09T15:16:00.417Z"
+        },
+        {
+          "id": "ct_0s05occX",
+          "type": "boundary",
+          "description": "visit parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 146,
+              "line_end": 159,
+              "snippet": "function visit(node: ts.Node, insideCaughtTry = false): void { if (found) return; if (ts.isTryStatement(node)) { ts.forEachChild(node.tryBlock, (child) => visit(child, node.catchClause !== undefined)); if (node.catchClause) visit(node.catc...",
+              "reasoning": "Parameter contract: [{\"name\":\"node\",\"type\":\"ts.Node\",\"optional\":false,\"nullable\":false},{\"name\":\"insideCaughtTry\",\"type\":\"boolean\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "visit",
+            "params": {
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "insideCaughtTry",
+                  "type": "boolean",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.417Z",
+          "last_verified_at": "2026-05-09T15:16:00.417Z"
+        },
+        {
+          "id": "ct_ZLmQiV4o",
+          "type": "boundary",
+          "description": "visit parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 146,
+              "line_end": 159,
+              "snippet": "function visit(node: ts.Node, insideCaughtTry = false): void { if (found) return; if (ts.isTryStatement(node)) { ts.forEachChild(node.tryBlock, (child) => visit(child, node.catchClause !== undefined)); if (node.catchClause) visit(node.catc...",
+              "reasoning": "Nullability contract: [{\"name\":\"node\",\"nullable\":false,\"optional\":false},{\"name\":\"insideCaughtTry\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "visit",
+            "params": {
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": "ts.Node",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "insideCaughtTry",
+                  "type": "boolean",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.417Z",
+          "last_verified_at": "2026-05-09T15:16:00.417Z"
+        }
+      ]
+    },
+    {
+      "name": "isInsideRoot",
+      "kind": "function",
+      "qualified_name": "isInsideRoot",
+      "signature_hash": "137e1b9dbacba2a2",
+      "node_hash": "6f306f43d7a4e1cb",
+      "line_start": 165,
+      "line_end": 169,
+      "contracts": [
+        {
+          "id": "ct_d2BKa4_z",
+          "type": "boundary",
+          "description": "isInsideRoot returns boolean and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 165,
+              "line_end": 169,
+              "snippet": "function isInsideRoot(rootDir: string, fileName: string): boolean { const resolved = fs.existsSync(fileName) ? fs.realpathSync(fileName) : path.resolve(fileName); const relative = path.relative(rootDir, resolved); return relative !== '' &&...",
+              "reasoning": "Explicit return type is boolean; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isInsideRoot",
+            "params": {
+              "expected_return": "boolean",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "fileName",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.417Z",
+          "last_verified_at": "2026-05-09T15:16:00.417Z"
+        },
+        {
+          "id": "ct_bJVdrBNl",
+          "type": "boundary",
+          "description": "isInsideRoot parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 165,
+              "line_end": 169,
+              "snippet": "function isInsideRoot(rootDir: string, fileName: string): boolean { const resolved = fs.existsSync(fileName) ? fs.realpathSync(fileName) : path.resolve(fileName); const relative = path.relative(rootDir, resolved); return relative !== '' &&...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"fileName\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isInsideRoot",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "fileName",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.417Z",
+          "last_verified_at": "2026-05-09T15:16:00.417Z"
+        },
+        {
+          "id": "ct_xWEjnln_",
+          "type": "boundary",
+          "description": "isInsideRoot parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 165,
+              "line_end": 169,
+              "snippet": "function isInsideRoot(rootDir: string, fileName: string): boolean { const resolved = fs.existsSync(fileName) ? fs.realpathSync(fileName) : path.resolve(fileName); const relative = path.relative(rootDir, resolved); return relative !== '' &&...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false},{\"name\":\"fileName\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "isInsideRoot",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "fileName",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.417Z",
+          "last_verified_at": "2026-05-09T15:16:00.417Z"
+        }
+      ]
+    },
+    {
+      "name": "safeRealFile",
+      "kind": "function",
+      "qualified_name": "safeRealFile",
+      "signature_hash": "f135a32b912d3ee6",
+      "node_hash": "4f85311c8f0346c0",
+      "line_start": 171,
+      "line_end": 179,
+      "contracts": [
+        {
+          "id": "ct_rgYZ-Qby",
+          "type": "boundary",
+          "description": "safeRealFile returns string | null and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 171,
+              "line_end": 179,
+              "snippet": "function safeRealFile(rootDir: string, fileName: string): string | null { const resolved = path.resolve(fileName); if (!isInsideRoot(rootDir, resolved)) return null; if (!fs.existsSync(resolved)) return null; if (fs.lstatSync(resolved).isS...",
+              "reasoning": "Explicit return type is string | null; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "safeRealFile",
+            "params": {
+              "expected_return": "string | null",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "fileName",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.417Z",
+          "last_verified_at": "2026-05-09T15:16:00.417Z"
+        },
+        {
+          "id": "ct_IcidoirS",
+          "type": "boundary",
+          "description": "safeRealFile parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 171,
+              "line_end": 179,
+              "snippet": "function safeRealFile(rootDir: string, fileName: string): string | null { const resolved = path.resolve(fileName); if (!isInsideRoot(rootDir, resolved)) return null; if (!fs.existsSync(resolved)) return null; if (fs.lstatSync(resolved).isS...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"fileName\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "safeRealFile",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "fileName",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.417Z",
+          "last_verified_at": "2026-05-09T15:16:00.417Z"
+        },
+        {
+          "id": "ct_3wOiVIef",
+          "type": "boundary",
+          "description": "safeRealFile parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 171,
+              "line_end": 179,
+              "snippet": "function safeRealFile(rootDir: string, fileName: string): string | null { const resolved = path.resolve(fileName); if (!isInsideRoot(rootDir, resolved)) return null; if (!fs.existsSync(resolved)) return null; if (fs.lstatSync(resolved).isS...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false},{\"name\":\"fileName\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "safeRealFile",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "fileName",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.417Z",
+          "last_verified_at": "2026-05-09T15:16:00.417Z"
+        }
+      ]
+    },
+    {
+      "name": "guardedParseHost",
+      "kind": "function",
+      "qualified_name": "guardedParseHost",
+      "signature_hash": "82ebf503484e1447",
+      "node_hash": "54e6836ce116e3c0",
+      "line_start": 181,
+      "line_end": 193,
+      "contracts": [
+        {
+          "id": "ct_5vjTMwqY",
+          "type": "boundary",
+          "description": "guardedParseHost returns ts.ParseConfigHost and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 181,
+              "line_end": 193,
+              "snippet": "function guardedParseHost(rootDir: string, state: { bytesRead: number }): ts.ParseConfigHost { return { useCaseSensitiveFileNames: ts.sys.useCaseSensitiveFileNames, fileExists: (filePath) => safeRealFile(rootDir, filePath) !== null, readFi...",
+              "reasoning": "Explicit return type is ts.ParseConfigHost; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "guardedParseHost",
+            "params": {
+              "expected_return": "ts.ParseConfigHost",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "state",
+                  "type": "{ bytesRead: number }",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.417Z",
+          "last_verified_at": "2026-05-09T15:16:00.417Z"
+        },
+        {
+          "id": "ct_ev40C_9G",
+          "type": "boundary",
+          "description": "guardedParseHost parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 181,
+              "line_end": 193,
+              "snippet": "function guardedParseHost(rootDir: string, state: { bytesRead: number }): ts.ParseConfigHost { return { useCaseSensitiveFileNames: ts.sys.useCaseSensitiveFileNames, fileExists: (filePath) => safeRealFile(rootDir, filePath) !== null, readFi...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"state\",\"type\":\"{ bytesRead: number }\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "guardedParseHost",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "state",
+                  "type": "{ bytesRead: number }",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.417Z",
+          "last_verified_at": "2026-05-09T15:16:00.417Z"
+        },
+        {
+          "id": "ct_QLdHgO4C",
+          "type": "boundary",
+          "description": "guardedParseHost parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 181,
+              "line_end": 193,
+              "snippet": "function guardedParseHost(rootDir: string, state: { bytesRead: number }): ts.ParseConfigHost { return { useCaseSensitiveFileNames: ts.sys.useCaseSensitiveFileNames, fileExists: (filePath) => safeRealFile(rootDir, filePath) !== null, readFi...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false},{\"name\":\"state\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "guardedParseHost",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "state",
+                  "type": "{ bytesRead: number }",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.417Z",
+          "last_verified_at": "2026-05-09T15:16:00.417Z"
+        }
+      ]
+    },
+    {
+      "name": "guardedCompilerHost",
+      "kind": "function",
+      "qualified_name": "guardedCompilerHost",
+      "signature_hash": "e9a8ce4942725514",
+      "node_hash": "0c10514fa7564513",
+      "line_start": 195,
+      "line_end": 207,
+      "contracts": [
+        {
+          "id": "ct_gXRwJdn3",
+          "type": "boundary",
+          "description": "guardedCompilerHost returns ts.CompilerHost and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 195,
+              "line_end": 207,
+              "snippet": "function guardedCompilerHost(rootDir: string, state: { bytesRead: number }, options: ts.CompilerOptions): ts.CompilerHost { const host = ts.createCompilerHost(options); host.fileExists = (filePath) => safeRealFile(rootDir, filePath) !== nu...",
+              "reasoning": "Explicit return type is ts.CompilerHost; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "guardedCompilerHost",
+            "params": {
+              "expected_return": "ts.CompilerHost",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "state",
+                  "type": "{ bytesRead: number }",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "ts.CompilerOptions",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.417Z",
+          "last_verified_at": "2026-05-09T15:16:00.417Z"
+        },
+        {
+          "id": "ct_HHXktCGm",
+          "type": "boundary",
+          "description": "guardedCompilerHost parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 195,
+              "line_end": 207,
+              "snippet": "function guardedCompilerHost(rootDir: string, state: { bytesRead: number }, options: ts.CompilerOptions): ts.CompilerHost { const host = ts.createCompilerHost(options); host.fileExists = (filePath) => safeRealFile(rootDir, filePath) !== nu...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"state\",\"type\":\"{ bytesRead: number }\",\"optional\":false,\"nullable\":false},{\"name\":\"options\",\"type\":\"ts.CompilerOptions\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "guardedCompilerHost",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "state",
+                  "type": "{ bytesRead: number }",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "ts.CompilerOptions",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.417Z",
+          "last_verified_at": "2026-05-09T15:16:00.417Z"
+        },
+        {
+          "id": "ct_9BxDY7Cn",
+          "type": "boundary",
+          "description": "guardedCompilerHost parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 195,
+              "line_end": 207,
+              "snippet": "function guardedCompilerHost(rootDir: string, state: { bytesRead: number }, options: ts.CompilerOptions): ts.CompilerHost { const host = ts.createCompilerHost(options); host.fileExists = (filePath) => safeRealFile(rootDir, filePath) !== nu...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false},{\"name\":\"state\",\"nullable\":false,\"optional\":false},{\"name\":\"options\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "guardedCompilerHost",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "state",
+                  "type": "{ bytesRead: number }",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "options",
+                  "type": "ts.CompilerOptions",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.417Z",
+          "last_verified_at": "2026-05-09T15:16:00.417Z"
+        }
+      ]
+    },
+    {
+      "name": "guardedReadFile",
+      "kind": "function",
+      "qualified_name": "guardedReadFile",
+      "signature_hash": "19984c8001460871",
+      "node_hash": "b252b5eafa83b012",
+      "line_start": 209,
+      "line_end": 216,
+      "contracts": [
+        {
+          "id": "ct_GxA88tE3",
+          "type": "boundary",
+          "description": "guardedReadFile returns string | undefined and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 209,
+              "line_end": 216,
+              "snippet": "function guardedReadFile(rootDir: string, state: { bytesRead: number }, filePath: string): string | undefined { const safeFile = safeRealFile(rootDir, filePath); if (!safeFile) return undefined; const stat = fs.statSync(safeFile); if (stat...",
+              "reasoning": "Explicit return type is string | undefined; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "guardedReadFile",
+            "params": {
+              "expected_return": "string | undefined",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "state",
+                  "type": "{ bytesRead: number }",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "filePath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.418Z",
+          "last_verified_at": "2026-05-09T15:16:00.418Z"
+        },
+        {
+          "id": "ct_hv6x-brv",
+          "type": "boundary",
+          "description": "guardedReadFile parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 209,
+              "line_end": 216,
+              "snippet": "function guardedReadFile(rootDir: string, state: { bytesRead: number }, filePath: string): string | undefined { const safeFile = safeRealFile(rootDir, filePath); if (!safeFile) return undefined; const stat = fs.statSync(safeFile); if (stat...",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"state\",\"type\":\"{ bytesRead: number }\",\"optional\":false,\"nullable\":false},{\"name\":\"filePath\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "guardedReadFile",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "state",
+                  "type": "{ bytesRead: number }",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "filePath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.418Z",
+          "last_verified_at": "2026-05-09T15:16:00.418Z"
+        },
+        {
+          "id": "ct_m3fJXMcD",
+          "type": "boundary",
+          "description": "guardedReadFile parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 209,
+              "line_end": 216,
+              "snippet": "function guardedReadFile(rootDir: string, state: { bytesRead: number }, filePath: string): string | undefined { const safeFile = safeRealFile(rootDir, filePath); if (!safeFile) return undefined; const stat = fs.statSync(safeFile); if (stat...",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false},{\"name\":\"state\",\"nullable\":false,\"optional\":false},{\"name\":\"filePath\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "guardedReadFile",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "state",
+                  "type": "{ bytesRead: number }",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "filePath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.418Z",
+          "last_verified_at": "2026-05-09T15:16:00.418Z"
+        }
+      ]
+    },
+    {
+      "name": "safeRealDirectory",
+      "kind": "function",
+      "qualified_name": "safeRealDirectory",
+      "signature_hash": "2e182436973b1860",
+      "node_hash": "66786eb4a2e53e3b",
+      "line_start": 218,
+      "line_end": 226,
+      "contracts": [
+        {
+          "id": "ct_vEH8Q0n1",
+          "type": "boundary",
+          "description": "safeRealDirectory returns string | null and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 218,
+              "line_end": 226,
+              "snippet": "function safeRealDirectory(rootDir: string, dirPath: string): string | null { const resolved = path.resolve(dirPath); if (!isInsideRoot(rootDir, resolved)) return null; if (!fs.existsSync(resolved)) return null; if (fs.lstatSync(resolved)....",
+              "reasoning": "Explicit return type is string | null; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "safeRealDirectory",
+            "params": {
+              "expected_return": "string | null",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "dirPath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.418Z",
+          "last_verified_at": "2026-05-09T15:16:00.418Z"
+        },
+        {
+          "id": "ct_Z_FmTy5v",
+          "type": "boundary",
+          "description": "safeRealDirectory parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 218,
+              "line_end": 226,
+              "snippet": "function safeRealDirectory(rootDir: string, dirPath: string): string | null { const resolved = path.resolve(dirPath); if (!isInsideRoot(rootDir, resolved)) return null; if (!fs.existsSync(resolved)) return null; if (fs.lstatSync(resolved)....",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"dirPath\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "safeRealDirectory",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "dirPath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.418Z",
+          "last_verified_at": "2026-05-09T15:16:00.418Z"
+        },
+        {
+          "id": "ct__Jl3M1s8",
+          "type": "boundary",
+          "description": "safeRealDirectory parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 218,
+              "line_end": 226,
+              "snippet": "function safeRealDirectory(rootDir: string, dirPath: string): string | null { const resolved = path.resolve(dirPath); if (!isInsideRoot(rootDir, resolved)) return null; if (!fs.existsSync(resolved)) return null; if (fs.lstatSync(resolved)....",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false},{\"name\":\"dirPath\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "safeRealDirectory",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "dirPath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.418Z",
+          "last_verified_at": "2026-05-09T15:16:00.418Z"
+        }
+      ]
+    },
+    {
+      "name": "safeRealPath",
+      "kind": "function",
+      "qualified_name": "safeRealPath",
+      "signature_hash": "64e01f98722bcd49",
+      "node_hash": "d1b1d0d6bf1d194d",
+      "line_start": 228,
+      "line_end": 230,
+      "contracts": [
+        {
+          "id": "ct_MXTOKu72",
+          "type": "boundary",
+          "description": "safeRealPath returns string | null and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 228,
+              "line_end": 230,
+              "snippet": "function safeRealPath(rootDir: string, targetPath: string): string | null { return safeRealFile(rootDir, targetPath) ?? safeRealDirectory(rootDir, targetPath); }",
+              "reasoning": "Explicit return type is string | null; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "safeRealPath",
+            "params": {
+              "expected_return": "string | null",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "targetPath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.418Z",
+          "last_verified_at": "2026-05-09T15:16:00.418Z"
+        },
+        {
+          "id": "ct_MvZEU1rH",
+          "type": "boundary",
+          "description": "safeRealPath parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 228,
+              "line_end": 230,
+              "snippet": "function safeRealPath(rootDir: string, targetPath: string): string | null { return safeRealFile(rootDir, targetPath) ?? safeRealDirectory(rootDir, targetPath); }",
+              "reasoning": "Parameter contract: [{\"name\":\"rootDir\",\"type\":\"string\",\"optional\":false,\"nullable\":false},{\"name\":\"targetPath\",\"type\":\"string\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "safeRealPath",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "targetPath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.418Z",
+          "last_verified_at": "2026-05-09T15:16:00.418Z"
+        },
+        {
+          "id": "ct_2lsl54mv",
+          "type": "boundary",
+          "description": "safeRealPath parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 228,
+              "line_end": 230,
+              "snippet": "function safeRealPath(rootDir: string, targetPath: string): string | null { return safeRealFile(rootDir, targetPath) ?? safeRealDirectory(rootDir, targetPath); }",
+              "reasoning": "Nullability contract: [{\"name\":\"rootDir\",\"nullable\":false,\"optional\":false},{\"name\":\"targetPath\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "safeRealPath",
+            "params": {
+              "parameters": [
+                {
+                  "name": "rootDir",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                },
+                {
+                  "name": "targetPath",
+                  "type": "string",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.418Z",
+          "last_verified_at": "2026-05-09T15:16:00.418Z"
+        }
+      ]
+    },
+    {
+      "name": "sanitizeCompilerOptions",
+      "kind": "function",
+      "qualified_name": "sanitizeCompilerOptions",
+      "signature_hash": "b1a392e564605ed0",
+      "node_hash": "a423668d7360c7a8",
+      "line_start": 232,
+      "line_end": 249,
+      "contracts": [
+        {
+          "id": "ct_xyeCVUNk",
+          "type": "boundary",
+          "description": "sanitizeCompilerOptions returns ts.CompilerOptions and never throws",
+          "pattern": "return_type",
+          "detection": "type_analysis",
+          "severity": "high",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 232,
+              "line_end": 249,
+              "snippet": "function sanitizeCompilerOptions(options: ts.CompilerOptions): ts.CompilerOptions { const sanitized: ts.CompilerOptions = { allowJs: options.allowJs ?? true, checkJs: options.checkJs ?? false, module: options.module ?? ts.ModuleKind.ESNext...",
+              "reasoning": "Explicit return type is ts.CompilerOptions; no_throw=true"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "sanitizeCompilerOptions",
+            "params": {
+              "expected_return": "ts.CompilerOptions",
+              "no_throw": true,
+              "parameters": [
+                {
+                  "name": "options",
+                  "type": "ts.CompilerOptions",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.418Z",
+          "last_verified_at": "2026-05-09T15:16:00.418Z"
+        },
+        {
+          "id": "ct_zVm42Llg",
+          "type": "boundary",
+          "description": "sanitizeCompilerOptions parameter types and optionality are stable",
+          "pattern": "param_constraint",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 232,
+              "line_end": 249,
+              "snippet": "function sanitizeCompilerOptions(options: ts.CompilerOptions): ts.CompilerOptions { const sanitized: ts.CompilerOptions = { allowJs: options.allowJs ?? true, checkJs: options.checkJs ?? false, module: options.module ?? ts.ModuleKind.ESNext...",
+              "reasoning": "Parameter contract: [{\"name\":\"options\",\"type\":\"ts.CompilerOptions\",\"optional\":false,\"nullable\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "sanitizeCompilerOptions",
+            "params": {
+              "parameters": [
+                {
+                  "name": "options",
+                  "type": "ts.CompilerOptions",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.418Z",
+          "last_verified_at": "2026-05-09T15:16:00.418Z"
+        },
+        {
+          "id": "ct_1VxS5J72",
+          "type": "boundary",
+          "description": "sanitizeCompilerOptions parameter nullability is stable",
+          "pattern": "nullability",
+          "detection": "type_analysis",
+          "severity": "medium",
+          "status": "active",
+          "evidence": [
+            {
+              "type": "type_signature",
+              "line_start": 232,
+              "line_end": 249,
+              "snippet": "function sanitizeCompilerOptions(options: ts.CompilerOptions): ts.CompilerOptions { const sanitized: ts.CompilerOptions = { allowJs: options.allowJs ?? true, checkJs: options.checkJs ?? false, module: options.module ?? ts.ModuleKind.ESNext...",
+              "reasoning": "Nullability contract: [{\"name\":\"options\",\"nullable\":false,\"optional\":false}]"
+            }
+          ],
+          "verification": {
+            "strategy": "type_check",
+            "target": "sanitizeCompilerOptions",
+            "params": {
+              "parameters": [
+                {
+                  "name": "options",
+                  "type": "ts.CompilerOptions",
+                  "optional": false,
+                  "nullable": false
+                }
+              ]
+            }
+          },
+          "crystallized_at": "2026-05-09T15:16:00.418Z",
+          "last_verified_at": "2026-05-09T15:16:00.418Z"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "drift_version": "0.1.1",
+    "crystallized_at": "2026-05-09T15:16:00.418Z",
+    "last_checked_at": "2026-05-09T15:16:00.418Z",
+    "total_contracts": 59
+  }
+}

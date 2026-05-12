@@ -2,6 +2,15 @@ node_modules/
 dist/
 .env
 .env.*
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
 .DS_Store
 coverage/
+build/
+tmp/
+.cache/
 .vite/
+.turbo/
+*.tsbuildinfo

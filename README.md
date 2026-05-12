@@ -46,7 +46,7 @@ pull request / AI edit
 blocks contract deletion, weakening, ignored critical contracts, and source drift
 ```
 
-## Install
+## Installation
 
 ```bash
 npm install --save-dev drift-check
@@ -104,6 +104,12 @@ The first `init` creates reviewable files:
 Commit those files with the source they describe. CI then compares every PR
 against the trusted version on `origin/main`.
 
+## Usage
+
+Run Drift locally before committing security-sensitive TypeScript or JavaScript
+changes, and run `drift ci --baseline-ref <trusted-ref>` in CI against a trusted
+base branch.
+
 ## What Drift Guards
 
 | Contract | What it catches | Example |
@@ -113,7 +119,7 @@ against the trusted version on `origin/main`.
 | Side effect | Required external state changes | Database writes, events, cache mutations, file writes |
 | Dependency | Required calls and imports | Authorization happens before side effects |
 
-Current detectors include:
+Current contract patterns include:
 
 - `nullify_after_use`
 - `no_log_sensitive`
@@ -175,7 +181,7 @@ drift add <file>                   # add a manual contract
 drift refresh                      # non-destructively refresh generated contracts
 ```
 
-## Security Model
+## Security / Privacy
 
 Drift treats repository files and `.drift` JSON as untrusted input.
 
@@ -194,6 +200,8 @@ Drift treats repository files and `.drift` JSON as untrusted input.
   to `PATH`, `npx`, or network downloads.
 - LLM output is disabled in the default config and is never part of trust
   decisions.
+- Drift runs locally and does not require API keys or a cloud service for its
+  default static-analysis workflow.
 
 See [SECURITY.md](SECURITY.md) for reporting and trust-boundary details.
 
@@ -231,6 +239,16 @@ Drift is static analysis, not a proof system. It will not understand every
 dynamic dispatch pattern, runtime-only dependency, generated file, or business
 rule that has no local code signal. Use `drift add` for project-specific
 contracts and keep high-risk behavior covered by tests as well.
+
+## Roadmap
+
+See [ROADMAP.md](ROADMAP.md) for the current release roadmap. Near-term work is
+focused on improving contract precision, reducing false positives, and expanding
+CI/review workflows without changing Drift's local-first security model.
+
+## License
+
+Drift is released under the [MIT License](LICENSE).
 
 ## Philosophy
 
